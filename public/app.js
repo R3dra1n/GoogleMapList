@@ -1,0 +1,26 @@
+import {visibleData,resolveRoute} from './model.js';
+const $=id=>document.getElementById(id);
+const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const icons={pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',food:'<path d="M5 3v7m4-7v7M3 3v5a4 4 0 0 0 8 0V3M7 12v9M19 3c-3 3-4 7-4 10h4m0-10v18"/>',sights:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="m8 6 2-3h4l2 3"/><circle cx="12" cy="13" r="4"/>'};
+const icon=name=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
+const path=(a,c)=>`#/${a}${c?`/${c}`:''}`;
+function cover(item,label){return `<div class="cover"><div class="cover-fallback" ${item.image?'hidden':''} aria-hidden="true">${escape(item.name)}</div>${item.image?`<img src="./${escape(item.image)}" alt="${escape(item.imageAlt)}" loading="lazy" width="720" height="440">`:''}<span class="region-tag">${escape(label)}</span></div>`;}
+function mapButton(url,label,name){return url?`<a class="map-button ${name==='sights'?'secondary':''}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，在 Google Maps 開啟新分頁">${icon(name)}${label}<span aria-hidden="true">↗</span></a>`:`<button class="map-button" disabled>${icon(name)}${label}・整理中</button>`;}
+let data;
+function render(moveFocus=false){
+ const route=resolveRoute(location.hash,data);$('cards').setAttribute('aria-busy','false');
+ $('continents').innerHTML=data.continents.map(a=>`<a class="continent-tab" href="${path(a.id)}" ${route?.continent.id===a.id?'aria-current="page"':''}>${escape(a.name)} <span>${escape(a.english||'')}</span></a>`).join('');
+ if(!route){$('breadcrumbs').innerHTML='<a href="#/asia">所有目的地</a>';$('section-title').textContent='這個目的地還沒收進口袋';$('section-count').textContent='';$('cards').innerHTML='<p class="empty">此區域尚未公開，或網址已變更。<br><a href="#/">回到目的地目錄</a></p>';return;}
+ const {continent:a,country:c}=route;
+ document.title=`${c?.name||a.name}｜William 的口袋地圖`;
+ $('breadcrumbs').innerHTML=`<a href="#/">目的地</a><span aria-hidden="true">/</span>${c?`<a href="${path(a.id)}">${escape(a.name)}</a><span aria-hidden="true">/</span><span aria-current="page">${escape(c.name)}</span>`:`<span aria-current="page">${escape(a.name)}</span>`}`;
+ $('section-title').textContent=c?`下一站，${c.name}`:`探索${a.name}`;
+ $('section-kicker').textContent=c?'YOUR NEXT STOP':'THE DESTINATIONS';
+ const items=c?data.cities.filter(x=>x.country===c.id):data.countries.filter(x=>x.continent===a.id);
+ $('section-count').textContent=`${items.length} 個${c?'目的地':'國家／地區'}`;
+ $('cards').innerHTML=items.map(item=>c?`<article class="destination-card city-card">${cover(item,c.name)}<div class="card-body"><div class="card-top"><h3 class="card-title">${escape(item.name)}</h3>${icon('pin')}</div><p class="card-english">${escape(item.english)}</p><p class="card-description">${escape(item.description)}</p>${item.food&&item.food===item.sights?'<span class="combined">綜合清單 · 美食與景點共用</span>':''}<div class="actions">${mapButton(item.food,'美食','food')}${mapButton(item.sights,'景點','sights')}</div></div></article>`:`<article class="destination-card country-card"><a href="${path(a.id,item.id)}" aria-label="探索${escape(item.name)}">${cover(item,a.name)}<div class="card-body"><div class="card-top"><h3 class="card-title">${escape(item.name)}</h3><span class="card-arrow" aria-hidden="true">↗</span></div><p class="card-english">${escape(item.english)}</p><p class="card-description">${escape(item.description)}</p><div class="card-meta">${icon('pin')}<span>${data.cities.filter(x=>x.country===item.id).map(x=>escape(x.name)).join('・')}</span></div></div></a></article>`).join('');
+ document.querySelectorAll('.cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
+ if(moveFocus)$('section-title').focus({preventScroll:true});
+}
+try{const response=await fetch('./data.json');if(!response.ok)throw new Error('load');data=visibleData(await response.json());render();window.addEventListener('hashchange',()=>render(true));const entries=[...data.countries,...data.cities].filter(x=>x.imageCredit);const seen=new Set();$('credits-list').innerHTML=entries.filter(x=>{if(seen.has(x.image))return false;seen.add(x.image);return true;}).map(x=>`<p><strong>${escape(x.name)}</strong><br>${escape(x.imageCredit)}<br><a href="${escape(x.imageSource)}" target="_blank" rel="noopener noreferrer">原始照片</a> · <a href="${escape(x.imageLicense)}" target="_blank" rel="noopener noreferrer">授權條款</a><br>圖片經縮放與版面裁切；授權沿用原作。</p>`).join('')||'<p>目前使用預設封面。</p>';}catch{$('cards').setAttribute('aria-busy','false');$('cards').innerHTML='<p class="empty">暫時無法載入清單，請重新整理再試一次。</p>';}
+$('credits-button').addEventListener('click',()=>$('credits').showModal());$('close-credits').addEventListener('click',()=>$('credits').close());$('credits').addEventListener('click',e=>{if(e.target===$('credits')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});

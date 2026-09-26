@@ -1,0 +1,16 @@
+{
+  "id": "chiang-mai",
+  "name": "清邁",
+  "english": "Chiang Mai",
+  "country": "thailand",
+  "description": "寺院、市集與古城裡的好味道。綜合清單可能包含周邊地點。",
+  "food": "https://maps.app.goo.gl/2KTs2ftc481PcyUa8",
+  "sights": "https://maps.app.goo.gl/2KTs2ftc481PcyUa8",
+  "image": "assets/thailand.jpg",
+  "imageAlt": "清邁寺院前懸掛燈籠的僧人",
+  "order": 6,
+  "published": true,
+  "imageCredit": "CEphoto, Uwe Aranas / CC BY-SA 3.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Chiang-Mai_Thailand_Buddhist-monks-installing-lampioons-01.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/3.0/"
+}

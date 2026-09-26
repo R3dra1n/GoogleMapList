@@ -1,0 +1,14 @@
+{
+  "id": "taiwan",
+  "name": "台灣",
+  "english": "Taiwan",
+  "description": "沿著山海，收集日常裡的好味道。",
+  "continent": "asia",
+  "order": 1,
+  "published": true,
+  "image": "assets/taiwan.jpg",
+  "imageAlt": "台北天際線與台北 101",
+  "imageCredit": "Heeheemalu / CC BY-SA 4.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:2021_Taipei_Skyline.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+}

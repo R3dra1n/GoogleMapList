@@ -1,0 +1,16 @@
+{
+  "id": "hualien",
+  "name": "花蓮縣",
+  "english": "Hualien",
+  "country": "taiwan",
+  "description": "在山海之間，找一頓好吃的，再出發走走。",
+  "food": "https://maps.app.goo.gl/5wpnSUyxxYqL2gK47",
+  "sights": "https://maps.app.goo.gl/CdsGKehdXxXz7qbu9",
+  "image": "assets/hualien.jpg",
+  "imageAlt": "花蓮清水斷崖與太平洋",
+  "order": 2,
+  "published": true,
+  "imageCredit": "Andrewhaimerl / CC BY-SA 4.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Qingshui_Cliffs.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+}

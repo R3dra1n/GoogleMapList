@@ -1,0 +1,9 @@
+name = "pocket-atlas-auth"
+main = "index.mjs"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[vars]
+SITE_ORIGIN = "https://r3dra1n.github.io"
+GITHUB_REPO = "R3dra1n/GoogleMapList"
+# GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET are configured via wrangler secret put.

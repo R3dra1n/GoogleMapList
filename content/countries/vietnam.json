@@ -1,0 +1,14 @@
+{
+  "id": "vietnam",
+  "name": "越南",
+  "english": "Vietnam",
+  "description": "街邊咖啡與城市散步的口袋提案。",
+  "continent": "asia",
+  "order": 3,
+  "published": true,
+  "image": "assets/vietnam.jpg",
+  "imageAlt": "胡志明市夜間天際線",
+  "imageCredit": "Tri Nguyen / CC BY 2.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City_skyline.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by/2.0/"
+}

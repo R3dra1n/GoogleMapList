@@ -1,0 +1,16 @@
+{
+  "id": "kuala-lumpur",
+  "name": "吉隆坡",
+  "english": "Kuala Lumpur",
+  "country": "malaysia",
+  "description": "茶室、美食與城市地標。綜合清單可能包含周邊地點。",
+  "food": "https://maps.app.goo.gl/KEFF4CGzh4qSEdHZ8",
+  "sights": "https://maps.app.goo.gl/KEFF4CGzh4qSEdHZ8",
+  "image": "assets/malaysia.jpg",
+  "imageAlt": "吉隆坡城市天際線",
+  "order": 5,
+  "published": true,
+  "imageCredit": "CEphoto, Uwe Aranas / CC BY-SA 3.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Malaysia_Skyline-01.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/3.0/"
+}

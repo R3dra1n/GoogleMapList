@@ -1,0 +1,16 @@
+{
+  "id": "busan",
+  "name": "釜山",
+  "english": "Busan",
+  "country": "korea",
+  "description": "海邊散步、在地料理與城市探索。綜合清單可能包含周邊地點。",
+  "food": "https://maps.app.goo.gl/eKAfsFhSLoqXSu1Q7",
+  "sights": "https://maps.app.goo.gl/eKAfsFhSLoqXSu1Q7",
+  "image": "assets/korea.jpg",
+  "imageAlt": "釜山廣安大橋與海岸城市天際線",
+  "order": 3,
+  "published": true,
+  "imageCredit": "S h y numis / CC BY 4.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Busan_Including_Gwangan_Bridge,_Marine_City_and_LCT_Skyscrapers.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by/4.0/"
+}

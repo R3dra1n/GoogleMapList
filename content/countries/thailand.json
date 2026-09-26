@@ -1,0 +1,14 @@
+{
+  "id": "thailand",
+  "name": "泰國",
+  "english": "Thailand",
+  "description": "在古城與市集之間，找到旅行的步調。",
+  "continent": "asia",
+  "order": 5,
+  "published": true,
+  "image": "assets/thailand.jpg",
+  "imageAlt": "清邁寺院前懸掛燈籠的僧人",
+  "imageCredit": "CEphoto, Uwe Aranas / CC BY-SA 3.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Chiang-Mai_Thailand_Buddhist-monks-installing-lampioons-01.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/3.0/"
+}

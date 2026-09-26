@@ -1,0 +1,14 @@
+{
+  "id": "korea",
+  "name": "韓國",
+  "english": "South Korea",
+  "description": "走進港都街巷，吃飯、看海、慢慢走。",
+  "continent": "asia",
+  "order": 2,
+  "published": true,
+  "image": "assets/korea.jpg",
+  "imageAlt": "釜山廣安大橋與海岸城市天際線",
+  "imageCredit": "S h y numis / CC BY 4.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Busan_Including_Gwangan_Bridge,_Marine_City_and_LCT_Skyscrapers.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by/4.0/"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "yilan",
+  "name": "宜蘭縣",
+  "english": "Yilan",
+  "country": "taiwan",
+  "description": "收集宜蘭的早餐、小吃與聚餐口袋名單。",
+  "food": "https://maps.app.goo.gl/p8eDToV2jjbXH3tm7",
+  "sights": "",
+  "image": "assets/yilan.jpg",
+  "imageAlt": "蘭陽平原、海岸與龜山島",
+  "order": 1,
+  "published": true,
+  "imageCredit": "曾 成訓 / CC BY 2.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Yilan_Plain_and_Gueishan_Island_2019.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by/2.0/"
+}

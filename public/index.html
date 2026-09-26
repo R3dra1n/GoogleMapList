@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1647dd">
+  <meta name="description" content="William 的旅行口袋清單。從亞洲出發，按國家與城市尋找美食、景點，一鍵打開 Google Maps。">
+  <meta property="og:title" content="William 的口袋地圖">
+  <meta property="og:description" content="下一站，從口袋清單出發。依目的地探索美食與景點。">
+  <title>William 的口袋地圖</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%231647dd'/%3E%3Cpath d='M12 26V13l8 4 8-4v13l-8 4zM20 17v13' fill='none' stroke='white' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至目的地</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="#/asia" aria-label="William 的口袋地圖首頁"><span class="brand-mark" aria-hidden="true">⌑</span><span>William 的口袋地圖<span class="brand-sub">THE POCKET ATLAS</span></span></a>
+    <a class="header-link" href="#/asia">探索目的地 <span aria-hidden="true">↗</span></a>
+  </div></header>
+  <main id="main" class="container" tabindex="-1">
+    <section class="intro"><div class="intro-copy"><p class="eyebrow">PLACES WORTH KEEPING</p><h1>下一站，<br class="mobile-break">從口袋清單出發<span class="blue">。</span></h1><p class="intro-text">想吃的、想去的，都收在這裡。<br>選一個目的地，帶著地圖慢慢探索。</p></div><div class="intro-stamp" aria-hidden="true"><span>WILLIAM'S</span><b>LET'S<br>WANDER</b><span>GOOD PLACES, SAVED.</span></div></section>
+    <nav id="continents" class="continent-nav" aria-label="選擇大洲"></nav>
+    <section class="directory" aria-labelledby="section-title">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="麵包屑導覽"></nav>
+      <div class="section-heading"><div><p id="section-kicker" class="eyebrow">THE DESTINATIONS</p><h2 id="section-title" tabindex="-1">探索亞洲</h2></div><p id="section-count" class="count"></p></div>
+      <div id="cards" class="card-grid" aria-busy="true"><p class="empty">正在打開口袋地圖…</p></div>
+    </section>
+    <aside class="save-tip"><span class="tip-icon" aria-hidden="true">✧</span><div><strong>把喜歡的地方，放進你的地圖。</strong><p>打開清單後，在 Google Maps 點「儲存／追蹤」，下次出門就能找到。</p></div><span class="tip-label">SAVE IT FOR LATER</span></aside>
+  </main>
+  <footer class="site-footer container"><div><strong>William 的口袋地圖</strong><span>一點收集，一點分享，下一站見。</span></div><div class="footer-links"><button id="credits-button" type="button">影像來源</button><a href="./admin/">管理清單 <span aria-hidden="true">↗</span></a></div></footer>
+  <dialog id="credits"><div class="dialog-head"><h2>影像來源</h2><button id="close-credits" aria-label="關閉影像來源">✕</button></div><div id="credits-list"></div></dialog>
+  <noscript><p class="container">請啟用 JavaScript 以瀏覽目的地清單。</p></noscript>
+</body></html>

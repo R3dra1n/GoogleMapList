@@ -1,0 +1,16 @@
+{
+  "id": "ho-chi-minh",
+  "name": "胡志明市",
+  "english": "Ho Chi Minh City",
+  "country": "vietnam",
+  "description": "咖啡、越南料理與旅行途中想去的地方。綜合清單可能包含周邊地點。",
+  "food": "https://maps.app.goo.gl/yci2TWx3K2unvujN7",
+  "sights": "https://maps.app.goo.gl/yci2TWx3K2unvujN7",
+  "image": "assets/vietnam.jpg",
+  "imageAlt": "胡志明市夜間天際線",
+  "order": 4,
+  "published": true,
+  "imageCredit": "Tri Nguyen / CC BY 2.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City_skyline.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by/2.0/"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "malaysia",
+  "name": "馬來西亞",
+  "english": "Malaysia",
+  "description": "從在地餐桌出發，探索熱鬧的城市。",
+  "continent": "asia",
+  "order": 4,
+  "published": true,
+  "image": "assets/malaysia.jpg",
+  "imageAlt": "吉隆坡城市天際線",
+  "imageCredit": "CEphoto, Uwe Aranas / CC BY-SA 3.0",
+  "imageSource": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Malaysia_Skyline-01.jpg",
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/3.0/"
+}
