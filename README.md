@@ -91,3 +91,24 @@ My Maps 欄位接受 Google 完整網址（`https://www.google.com/maps/d/viewer
 前台會在回到頁面及每分鐘檢查新版本；若內容已發布，顯示「載入最新內容」提示，點擊後更新資料並保留當前區域。Google My Maps 在城市卡片上以「我的地圖」入口呈現，進入文章頁後可載入互動地圖。
 
 目前語言切換使用已儲存的翻譯，尚未連接自動翻譯服務；沒有填寫的語言回退原文。可另外配置發布時自動翻譯，應先選定服務、確認費用及安全保存 API 憑證。
+
+## Google 自動翻譯接入
+
+使用 Cloud Translation Basic v2 的 `nmt` 標準模型。中文名稱、介紹、圖片描述與旅行筆記會翻成简体中文、English、日本語、한국어，直接寫入原有 JSON 欄位，英文名稱寫入 `english`。連結、ID、圖片來源與作者不送翻譯。
+
+- 非空且沒有機器記錄的譯文視為人工內容，永不自動覆蓋。
+- 機器譯文在中文原文變更時更新；若你改過譯文，改視為人工內容。要重新自動翻譯，清空該譯文欄位再發布。
+- `translation/state.json` 保存來源／結果指紋及可重用的翻譯快取。這不是密鑰，也不會發佈到網站。
+- 發布後等 Actions 完成，再重新開啟後台內容，便能看到新增譯文。請避免用仍開著的舊表單覆蓋新譯文。
+- 沒有 API key 時保留現有內容並正常發布。已配置但 API 失敗時，停止發布，上一版網站保留；原文提交仍在 GitHub。
+- 每次工作流程最多送出 50,000 字符，超限在呼叫 Google 前停止。這不是每月帳單上限；Google 免費額度與其他專案用量需在 Cloud Console 核對。單欄文字目前上限 5,000 字符。
+- 正常重複建置不會再翻譯相同內容。API 成功但後續 Git 推送失敗時，重跑可能再次產生用量；不保證分散式流程恰好呼叫一次。
+
+設定步驟：
+1. 在 Google Cloud 建立或選擇專案，連接結算帳戶，啟用 **Cloud Translation API**。
+2. 在「API 和服務 → 憑證」建立 API key，將 API 限制設為 **Cloud Translation API**。此 key 供 GitHub Actions 伺服器使用，不是瀏覽器 referrer key。
+3. 在 GitHub 倉庫 Settings → Secrets and variables → Actions → New repository secret，名稱填 `GOOGLE_TRANSLATE_API_KEY`，值填 API key。不要放在公開程式碼、CMS 欄位或聊天裡。
+4. 也可填入本機 `.env.translation`，執行 `node scripts/configure-translation.mjs` 安全上傳（此檔已被 `.gitignore` 排除）。
+5. 在 Actions → Validate and publish Pocket Atlas → Run workflow，觸發第一次翻譯。之後正常發布內容就會自動執行。
+
+檢查待翻譯數量且不呼叫 API：`node scripts/translate-content.mjs --check`。只有 GitHub Actions 的翻譯步驟會取得密鑰；網站訪客不呼叫 Google 翻譯 API，也不會取得密鑰。

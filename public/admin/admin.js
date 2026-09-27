@@ -37,7 +37,7 @@ CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
   status.textContent='正在儲存修改；完成後將自動排程發佈。';
   return data;
 }});
-for(const event of ['postSave','postPublish','postUnpublish'])CMS.registerEventListener({name:event,handler:()=>{status.textContent='修改已儲存到 GitHub，等待網站發佈。請查看發佈進度確認是否上線。';}});
+for(const event of ['postSave','postPublish','postUnpublish'])CMS.registerEventListener({name:event,handler:()=>{status.textContent='修改已儲存到 GitHub，等待翻譯與網站發佈。請查看發佈進度；完成後重新開啟內容查看譯文。';}});
 try {
   const response=await fetch('./connection.json',{cache:'no-store'});
   if(!response.ok)throw new Error('無法讀取管理後台設定，請稍後重試。');

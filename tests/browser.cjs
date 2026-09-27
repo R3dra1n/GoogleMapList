@@ -34,7 +34,7 @@ const base=process.env.TEST_URL||'http://127.0.0.1:4173';
  await cms.getByText('發布',{exact:true}).first().click();
 
  await cms.getByText(/立即發[布佈]|現在發[布佈]/,{exact:true}).click();
- await cms.getByText('修改已儲存到 GitHub，等待網站發佈。請查看發佈進度確認是否上線。',{exact:true}).waitFor();
+ await cms.getByText('修改已儲存到 GitHub，等待翻譯與網站發佈。請查看發佈進度；完成後重新開啟內容查看譯文。',{exact:true}).waitFor();
 
  await cms.waitForFunction(()=>Object.keys(window.repoFiles.continents||{}).length===1);
  await cms.getByText('已儲存變更',{exact:true}).waitFor();
