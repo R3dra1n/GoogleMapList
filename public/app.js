@@ -1,4 +1,4 @@
-import {language,setLanguage,localized,t} from './i18n.js';
+import {language,setLanguage,localized,t,suffixes} from './i18n.js';
 import {readPreference,savePreference,applyTheme} from './preferences.js';
 import {visibleData,resolveRoute,myMapId} from './model.js';
 const $=id=>document.getElementById(id);
@@ -8,7 +8,7 @@ const icon=name=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 const path=(a,c)=>`#/${a}${c?`/${c}`:''}`;
 function cover(item,label){return `<div class="cover"><div class="cover-fallback" ${item.image?'hidden':''} aria-hidden="true">${escape(localized(item,'name'))}</div>${item.image?`<img src="./${escape(item.image)}" alt="${escape(localized(item,'imageAlt'))}" loading="lazy" width="720" height="440">`:''}<span class="region-tag">${escape(label)}</span></div>`;}
 function mapButton(url,label,name){return url?`<a class="map-button ${name==='sights'?'secondary':''}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${t('mapsOpen')}">${icon(name)}${label}<span aria-hidden="true">↗</span></a>`:`<button class="map-button" disabled>${icon(name)}${label}・${t('soon')}</button>`;}
-let data;
+let data;let version;let pendingData;
 function render(moveFocus=false){
  const route=resolveRoute(location.hash,data);$('cards').setAttribute('aria-busy','false');$('story').hidden=true;$('cards').hidden=false;
  $('continents').innerHTML=data.continents.map(a=>`<a class="continent-tab" href="${path(a.id)}" ${route?.continent.id===a.id?'aria-current="page"':''}>${escape(localized(a,'name'))} <span>${escape(a.english||'')}</span></a>`).join('');
@@ -21,7 +21,7 @@ function render(moveFocus=false){
  if(city){renderStory(city,a,c);if(moveFocus)$('section-title').focus({preventScroll:true});return;}
  const items=c?data.cities.filter(x=>x.country===c.id):data.countries.filter(x=>x.continent===a.id);
  $('section-count').textContent=`${items.length} ${t(c?'cities':'countries')}`;
- $('cards').innerHTML=items.map(item=>c?`<article class="destination-card city-card">${cover(item,localized(c,'name'))}<div class="card-body"><div class="card-top"><h3 class="card-title">${escape(localized(item,'name'))}</h3>${icon('pin')}</div><p class="card-english">${escape(item.english)}</p><p class="card-description">${escape(localized(item,'description'))}</p>${item.food&&item.food===item.sights?`<span class="combined">${t('combined')}</span>`:''}<div class="actions">${mapButton(item.food,t('food'),'food')}${mapButton(item.sights,t('sights'),'sights')}</div>${item.myMap||item.article||item.articleEn||item.articleHans?`<a class="story-link" href="${path(a.id,c.id)}/${item.id}">${t('story')} →</a>`:''}</div></article>`:`<article class="destination-card country-card"><a href="${path(a.id,item.id)}" aria-label="${t('discover')}${escape(localized(item,'name'))}">${cover(item,localized(a,'name'))}<div class="card-body"><div class="card-top"><h3 class="card-title">${escape(localized(item,'name'))}</h3><span class="card-arrow" aria-hidden="true">↗</span></div><p class="card-english">${escape(item.english)}</p><p class="card-description">${escape(localized(item,'description'))}</p><div class="card-meta">${icon('pin')}<span>${data.cities.filter(x=>x.country===item.id).map(x=>escape(localized(x,'name'))).join('・')}</span></div></div></a></article>`).join('');
+ $('cards').innerHTML=items.map(item=>c?`<article class="destination-card city-card">${cover(item,localized(c,'name'))}<div class="card-body"><div class="card-top"><h3 class="card-title">${escape(localized(item,'name'))}</h3>${icon('pin')}</div><p class="card-english">${escape(item.english)}</p><p class="card-description">${escape(localized(item,'description'))}</p>${item.food&&item.food===item.sights?`<span class="combined">${t('combined')}</span>`:''}<div class="actions">${mapButton(item.food,t('food'),'food')}${mapButton(item.sights,t('sights'),'sights')}</div>${item.myMap||item.article||item.articleEn||item.articleHans||item.articleJa||item.articleKo?`<a class="story-link" href="${path(a.id,c.id)}/${item.id}">${item.myMap?t('myMap'):t('story')} →</a>`:''}</div></article>`:`<article class="destination-card country-card"><a href="${path(a.id,item.id)}" aria-label="${t('discover')}${escape(localized(item,'name'))}">${cover(item,localized(a,'name'))}<div class="card-body"><div class="card-top"><h3 class="card-title">${escape(localized(item,'name'))}</h3><span class="card-arrow" aria-hidden="true">↗</span></div><p class="card-english">${escape(item.english)}</p><p class="card-description">${escape(localized(item,'description'))}</p><div class="card-meta">${icon('pin')}<span>${data.cities.filter(x=>x.country===item.id).map(x=>escape(localized(x,'name'))).join('・')}</span></div></div></a></article>`).join('');
  document.querySelectorAll('.cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
  if(moveFocus)$('section-title').focus({preventScroll:true});
 }
@@ -30,16 +30,17 @@ function renderStory(city,a,c){
  $('cards').hidden=true;$('story').hidden=false;
  $('section-title').textContent=localized(city,'name');$('section-count').textContent=t('story');
  $('breadcrumbs').innerHTML=`<a href="#/">${t('destinations')}</a><span>/</span><a href="${path(a.id)}">${escape(localized(a,'name'))}</a><span>/</span><a href="${path(a.id,c.id)}">${escape(localized(c,'name'))}</a><span>/</span><span aria-current="page">${escape(localized(city,'name'))}</span>`;
- const mid=myMapId(city.myMap);const body=localized(city,'article');const suffix=language==='en'?'En':'Hans';
+ const mid=myMapId(city.myMap);const body=localized(city,'article');const suffix=suffixes[language];
  $('story').innerHTML=`<article class="travel-story">${cover(city,localized(c,'name'))}<div class="story-body"><p class="card-description">${escape(localized(city,'description'))}</p><div class="actions">${mapButton(city.food,t('food'),'food')}${mapButton(city.sights,t('sights'),'sights')}</div>${body?`${language!=='zh-Hant'&&!city['article'+suffix]?`<p class="translation-note">${t('fallback')}</p>`:''}<div class="story-prose">${body.split(/\n\s*\n/).map(p=>`<p>${escape(p)}</p>`).join('')}</div>`:''}${mid?`<section class="embedded-map"><h3>${t('myMap')}</h3><p>${t('mapNotice')}</p><button id="load-map" class="map-button" type="button">${t('loadMap')}</button><a class="story-link" href="https://www.google.com/maps/d/viewer?mid=${mid}" target="_blank" rel="noopener noreferrer">${t('openMap')}</a><div id="map-frame"></div></section>`:''}</div></article>`;
  if(mid)$('load-map').addEventListener('click',()=>{const frame=document.createElement('iframe');frame.src=`https://www.google.com/maps/d/embed?mid=${mid}`;frame.title=`${localized(city,'name')} — ${t('myMap')}`;frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';$('map-frame').replaceChildren(frame);$('load-map').hidden=true;});
  document.querySelectorAll('#story .cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
 }
 function translateUI(){
  setLanguage(language);
+ $('update-label').textContent=t('update');$('refresh-content').textContent=t('refresh');
  const texts={'.skip':'skip','.intro h1':'heading','.intro-text':'intro','.save-tip strong':'saveTitle','.save-tip p':'saveText','.site-footer strong':'brand','.site-footer>div>span':'footer','#credits-button':'credits','.footer-links a':'admin','.dialog-head h2':'credits'};
  for(const [selector,key] of Object.entries(texts))document.querySelector(selector).textContent=t(key);
- if(language!=='en'){const heading=document.querySelector('.intro h1');const [first,rest]=t('heading').split('，');heading.replaceChildren(document.createTextNode(first+'，'),Object.assign(document.createElement('br'),{className:'mobile-break'}),document.createTextNode(rest));}
+ if(['zh-Hant','zh-Hans'].includes(language)){const heading=document.querySelector('.intro h1');const [first,rest]=t('heading').split('，');heading.replaceChildren(document.createTextNode(first+'，'),Object.assign(document.createElement('br'),{className:'mobile-break'}),document.createTextNode(rest));}
  const brand=document.querySelector('.brand>span:last-child');brand.firstChild.textContent=t('brand');document.querySelector('.brand').setAttribute('aria-label',t('brand'));
  $('close-credits').setAttribute('aria-label',t('close'));$('theme').setAttribute('aria-label',t('theme'));$('language').setAttribute('aria-label',t('language'));$('continents').setAttribute('aria-label',t('destinations'));$('breadcrumbs').setAttribute('aria-label',t('destinations'));
  for(const option of $('theme').options)option.textContent=t(option.value);
@@ -50,5 +51,15 @@ function translateUI(){
 $('language').value=language;$('theme').value=readPreference('atlas-theme','system');translateUI();
 $('language').addEventListener('change',e=>{setLanguage(e.target.value);savePreference('atlas-language',language);translateUI();if(data)render();});
 $('theme').addEventListener('change',e=>{savePreference('atlas-theme',e.target.value);applyTheme(e.target.value);});
-try{const response=await fetch('./data.json');if(!response.ok)throw new Error('load');data=visibleData(await response.json());translateUI();render();window.addEventListener('hashchange',()=>render(true));}catch{$('cards').setAttribute('aria-busy','false');$('cards').innerHTML=`<p class="empty">${t('loadError')}</p>`;}
+try{const response=await fetch('./data.json',{cache:'no-store'});if(!response.ok)throw new Error('load');const payload=await response.json();version=payload.version;data=visibleData(payload);translateUI();render();window.addEventListener('hashchange',()=>render(true));}catch{$('cards').setAttribute('aria-busy','false');$('cards').innerHTML=`<p class="empty">${t('loadError')}</p>`;}
 $('credits-button').addEventListener('click',()=>$('credits').showModal());$('close-credits').addEventListener('click',()=>$('credits').close());$('credits').addEventListener('click',e=>{if(e.target===$('credits')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
+
+// Check when returning to a previously opened tab; never discard the active route.
+let checking=false;
+async function checkUpdates(){
+ if(checking||document.visibilityState!=='visible'||!version)return;
+ checking=true;
+ try{const response=await fetch('./data.json',{cache:'no-store'});if(!response.ok)return;const next=await response.json();if(next.version!==version){pendingData=next;$('content-update').hidden=false;}}catch{}finally{checking=false;}
+}
+$('refresh-content').addEventListener('click',()=>{if(!pendingData)return;data=visibleData(pendingData);version=pendingData.version;pendingData=null;$('content-update').hidden=true;translateUI();render(true);});
+window.addEventListener('focus',checkUpdates);document.addEventListener('visibilitychange',checkUpdates);setInterval(checkUpdates,60000);

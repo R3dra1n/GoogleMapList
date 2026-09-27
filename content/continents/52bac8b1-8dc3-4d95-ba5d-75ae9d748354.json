@@ -3,5 +3,9 @@
   "order": 10,
   "published": true,
   "id": "52bac8b1-8dc3-4d95-ba5d-75ae9d748354",
-  "name": "歐洲"
+  "name": "歐洲",
+  "nameJa": "ヨーロッパ",
+  "nameKo": "유럽",
+  "descriptionJa": "",
+  "descriptionKo": ""
 }

@@ -28,7 +28,7 @@ export function validate(data) {
       if (names.has(scopedName)) throw new Error(`${entry.name} 在同一區域重複，請檢查既有清單`);
       names.add(scopedName);
       if (typeof entry.published !== 'boolean' || !Number.isFinite(entry.order)) throw new Error(`${entry.id} 的顯示狀態或順序無效`);
-      for (const key of ['description','english','image','imageAlt','imageCredit','imageSource','imageLicense','nameEn','nameHans','descriptionEn','descriptionHans','imageAltEn','imageAltHans','article','articleEn','articleHans','myMap']) {
+      for (const key of ['description','english','image','imageAlt','imageCredit','imageSource','imageLicense','nameEn','nameHans','descriptionEn','descriptionHans','imageAltEn','imageAltHans','article','articleEn','articleHans','nameJa','nameKo','descriptionJa','descriptionKo','imageAltJa','imageAltKo','articleJa','articleKo','myMap']) {
         if (entry[key] != null && typeof entry[key] !== 'string') throw new Error(`${entry.id} 的 ${key} 必須是文字`);
       }
       if (!isImagePath(entry.image)) throw new Error(`${entry.id} 的封面路徑無效`);
