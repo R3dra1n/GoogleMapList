@@ -12,5 +12,10 @@
   "published": true,
   "imageCredit": "CEphoto, Uwe Aranas / CC BY-SA 3.0",
   "imageSource": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Malaysia_Skyline-01.jpg",
-  "imageLicense": "https://creativecommons.org/licenses/by-sa/3.0/"
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "nameHans": "吉隆坡",
+  "descriptionHans": "茶室、美食与城市地标。综合清单可能包含周边地点。",
+  "descriptionEn": "Coffee shops, food and city landmarks. This combined list may include nearby places.",
+  "imageAltEn": "Kuala Lumpur skyline",
+  "imageAltHans": "吉隆坡城市天际线"
 }

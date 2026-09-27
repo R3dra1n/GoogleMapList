@@ -1,4 +1,4 @@
-import { isMapsLink, isImagePath } from '../model.js';
+import { isMapsLink, isImagePath, myMapId } from '../model.js';
 const status=document.getElementById('publish-status');
 const CMS=window.CMS;
 if(!CMS){document.getElementById('admin-setup').hidden=false;document.getElementById('admin-setup').textContent='管理介面未能載入，請檢查網路後重新整理。';throw new Error('CMS unavailable');}
@@ -23,6 +23,7 @@ CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
   if(!data.get('name'))throw new Error('請填寫名稱。');
   if(data.get('image')&&!data.get('imageAlt'))throw new Error('請為封面照片填寫圖片描述。');
   if(!isImagePath(data.get('image')))throw new Error('請上傳 JPG、PNG、WebP 或 GIF 圖片；檔名不能包含 %、? 或 #。');
+  if(kind==='cities'&&data.get('myMap')&&!myMapId(data.get('myMap')))throw new Error('請貼上 Google 我的地圖完整網址（含 mid），不要貼 iframe 程式碼。');
   if(kind==='cities')for(const field of ['food','sights']){data=data.set(field,data.get(field)||'');if(!isMapsLink(data.get(field)))throw new Error('請貼上 HTTPS 的 Google Maps 分享連結。');}
   for(const field of ['imageSource','imageLicense'])if(data.get(field)&&!/^https:\/\//.test(data.get(field)))throw new Error('圖片來源與授權網址必須使用 HTTPS。');
   // Fetch the latest branch, rather than a possibly stale deployed content snapshot.

@@ -12,5 +12,10 @@
   "published": true,
   "imageCredit": "Andrewhaimerl / CC BY-SA 4.0",
   "imageSource": "https://commons.wikimedia.org/wiki/File:Qingshui_Cliffs.jpg",
-  "imageLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "nameHans": "花莲县",
+  "descriptionHans": "在山海之间，找一顿好吃的，再出发走走。",
+  "descriptionEn": "Find a good meal between the mountains and sea, then head out for a walk.",
+  "imageAltEn": "Qingshui Cliffs and the Pacific Ocean in Hualien",
+  "imageAltHans": "花莲清水断崖与太平洋"
 }

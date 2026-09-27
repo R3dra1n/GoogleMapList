@@ -3,5 +3,10 @@
   "name": "亞洲",
   "english": "Asia",
   "order": 1,
-  "published": true
+  "published": true,
+  "nameHans": "亚洲",
+  "descriptionHans": "",
+  "descriptionEn": "",
+  "imageAltEn": "",
+  "imageAltHans": ""
 }

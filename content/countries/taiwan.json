@@ -10,5 +10,10 @@
   "imageAlt": "台北天際線與台北 101",
   "imageCredit": "Heeheemalu / CC BY-SA 4.0",
   "imageSource": "https://commons.wikimedia.org/wiki/File:2021_Taipei_Skyline.jpg",
-  "imageLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+  "imageLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "nameHans": "台湾",
+  "descriptionHans": "沿着山海，收集日常里的好味道。",
+  "descriptionEn": "Follow the coast and mountains to everyday local favourites.",
+  "imageAltEn": "Taipei skyline with Taipei 101",
+  "imageAltHans": "台北天际线与台北 101"
 }

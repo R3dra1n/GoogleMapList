@@ -12,5 +12,10 @@
   "published": true,
   "imageCredit": "曾 成訓 / CC BY 2.0",
   "imageSource": "https://commons.wikimedia.org/wiki/File:Yilan_Plain_and_Gueishan_Island_2019.jpg",
-  "imageLicense": "https://creativecommons.org/licenses/by/2.0/"
+  "imageLicense": "https://creativecommons.org/licenses/by/2.0/",
+  "nameHans": "宜兰县",
+  "descriptionHans": "收集宜兰的早餐、小吃与聚餐口袋名单。",
+  "descriptionEn": "Breakfast spots, snacks and places to share a meal in Yilan.",
+  "imageAltEn": "Yilan Plain, the coast and Guishan Island",
+  "imageAltHans": "兰阳平原、海岸与龟山岛"
 }

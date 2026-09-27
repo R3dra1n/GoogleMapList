@@ -12,5 +12,10 @@
   "published": true,
   "imageCredit": "Tri Nguyen / CC BY 2.0",
   "imageSource": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City_skyline.jpg",
-  "imageLicense": "https://creativecommons.org/licenses/by/2.0/"
+  "imageLicense": "https://creativecommons.org/licenses/by/2.0/",
+  "nameHans": "胡志明市",
+  "descriptionHans": "咖啡、越南料理与旅行途中想去的地方。综合清单可能包含周边地点。",
+  "descriptionEn": "Coffee, Vietnamese food and places to explore. This combined list may include nearby places.",
+  "imageAltEn": "Ho Chi Minh City skyline at night",
+  "imageAltHans": "胡志明市夜间天际线"
 }

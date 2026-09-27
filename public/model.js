@@ -28,7 +28,7 @@ export function validate(data) {
       if (names.has(scopedName)) throw new Error(`${entry.name} 在同一區域重複，請檢查既有清單`);
       names.add(scopedName);
       if (typeof entry.published !== 'boolean' || !Number.isFinite(entry.order)) throw new Error(`${entry.id} 的顯示狀態或順序無效`);
-      for (const key of ['description','english','image','imageAlt','imageCredit','imageSource','imageLicense']) {
+      for (const key of ['description','english','image','imageAlt','imageCredit','imageSource','imageLicense','nameEn','nameHans','descriptionEn','descriptionHans','imageAltEn','imageAltHans','article','articleEn','articleHans','myMap']) {
         if (entry[key] != null && typeof entry[key] !== 'string') throw new Error(`${entry.id} 的 ${key} 必須是文字`);
       }
       if (!isImagePath(entry.image)) throw new Error(`${entry.id} 的封面路徑無效`);
@@ -38,6 +38,7 @@ export function validate(data) {
   }
   for (const country of data.countries) if (!data.continents.some(x => x.id === country.continent)) throw new Error(`${country.name} 找不到所屬大洲`);
   for (const city of data.cities) {
+    if(city.myMap&&!myMapId(city.myMap))throw new Error(`${city.name} 的 My Maps 網址無效`);
     if (!data.countries.some(x => x.id === city.country)) throw new Error(`${city.name} 找不到所屬國家／地區`);
     for (const key of ['food', 'sights']) if (typeof city[key] !== 'string' || !isMapsLink(city[key])) throw new Error(`${city.name} 的 ${key} 不是有效的 Google Maps HTTPS 連結`);
   }
@@ -52,10 +53,17 @@ export function visibleData(data) {
 }
 export function resolveRoute(hash, data) {
   let parts; try { parts=decodeURIComponent(hash.replace(/^#\/?/, '')).split('/').filter(Boolean); } catch { return null; }
-  if (parts.length>2) return null;
+  if (parts.length>3) return null;
   const continent=data.continents.find(c=>c.id===(parts[0] || (data.continents.some(c=>c.id==='asia')?'asia':data.continents[0]?.id)));
   if (!continent) return null;
   const country=parts[1]?data.countries.find(c=>c.id===parts[1]&&c.continent===continent.id):null;
   if (parts[1]&&!country) return null;
-  return {continent,country};
+  const city=parts[2]?data.cities.find(c=>c.id===parts[2]&&c.country===country?.id):null;
+  if(parts[2]&&!city)return null;
+  return {continent,country,...(city?{city}:{})};
+}
+
+export function myMapId(value){
+ if(!value)return null;
+ try{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password||u.port||!['www.google.com','google.com'].includes(u.hostname)||!/^\/maps\/d\/(?:u\/\d+\/)?(?:edit|viewer|embed)\/?$/.test(u.pathname))return null;const id=u.searchParams.get('mid');return /^[a-zA-Z0-9_-]{10,200}$/.test(id||'')?id:null;}catch{return null;}
 }
