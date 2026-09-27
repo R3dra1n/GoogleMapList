@@ -22,5 +22,11 @@
   "id": "hualien",
   "image": "assets/hualien.jpg",
   "description": "在山海之間，找一頓好吃的，再出發走走。",
-  "food": "https://maps.app.goo.gl/5wpnSUyxxYqL2gK47"
+  "food": "https://maps.app.goo.gl/5wpnSUyxxYqL2gK47",
+  "articleHans": "旅行笔记测试\n第二行 测试",
+  "articleEn": "Travel Notes Test\nSecond Line Test",
+  "imageAltJa": "花蓮の清水断崖と太平洋",
+  "articleJa": "旅行記テスト\n2行目テスト",
+  "imageAltKo": "화롄 청수 절벽과 태평양",
+  "articleKo": "여행기 테스트\n두 번째 줄 테스트"
 }

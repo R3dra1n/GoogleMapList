@@ -4,7 +4,7 @@
   "published": true,
   "imageAlt": "",
   "order": 16,
-  "english": "",
+  "english": "U.K.",
   "imageCredit": "",
   "continent": "52bac8b1-8dc3-4d95-ba5d-75ae9d748354",
   "imageSource": "",
@@ -14,5 +14,6 @@
   "nameJa": "イギリス",
   "nameKo": "영국",
   "descriptionJa": "",
-  "descriptionKo": ""
+  "descriptionKo": "",
+  "nameHans": "英国"
 }
