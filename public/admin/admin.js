@@ -1,8 +1,18 @@
-import { isMapsLink } from '../model.js';
+import { isMapsLink, isImagePath } from '../model.js';
 const status=document.getElementById('publish-status');
 const CMS=window.CMS;
 if(!CMS){document.getElementById('admin-setup').hidden=false;document.getElementById('admin-setup').textContent='管理介面未能載入，請檢查網路後重新整理。';throw new Error('CMS unavailable');}
 const h=window.h;
+const relation=CMS.getWidget('relation');
+// Decap's relation control re-emits the unchanged parent when it reloads
+// display metadata. Only an actual parent change should dirty this form.
+class ParentRelation extends relation.control {
+  shouldComponentUpdate(nextProps,nextState){
+    return super.shouldComponentUpdate(nextProps,nextState)||nextState.initialOptions!==this.state.initialOptions;
+  }
+  triggerInitialOnChange(){}
+}
+CMS.registerWidget('parent-relation',ParentRelation,relation.preview,relation.schema);
 CMS.registerWidget('stable-id',window.createClass({
   componentDidMount(){if(!this.props.value)this.props.onChange(crypto.randomUUID());},
   render(){return h('div',{},h('input',{id:this.props.forID,value:this.props.value||'',readOnly:true,style:{width:'100%',padding:'12px',background:'#f1f4f8',border:'1px solid #d7deeb',borderRadius:'5px',color:'#65738a'}}),h('small',{},'自動建立，改名稱不會改變識別碼。'));}
@@ -12,6 +22,7 @@ CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
   for(const key of ['name','food','sights','image','imageAlt','imageSource','imageLicense'])if(typeof data.get(key)==='string')data=data.set(key,data.get(key).trim());
   if(!data.get('name'))throw new Error('請填寫名稱。');
   if(data.get('image')&&!data.get('imageAlt'))throw new Error('請為封面照片填寫圖片描述。');
+  if(!isImagePath(data.get('image')))throw new Error('請上傳 JPG、PNG、WebP 或 GIF 圖片；檔名不能包含 %、? 或 #。');
   if(kind==='cities')for(const field of ['food','sights']){data=data.set(field,data.get(field)||'');if(!isMapsLink(data.get(field)))throw new Error('請貼上 HTTPS 的 Google Maps 分享連結。');}
   for(const field of ['imageSource','imageLicense'])if(data.get(field)&&!/^https:\/\//.test(data.get(field)))throw new Error('圖片來源與授權網址必須使用 HTTPS。');
   // Fetch the latest branch, rather than a possibly stale deployed content snapshot.

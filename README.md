@@ -31,22 +31,23 @@ npm run dev
 GitHub Pages 可以獨立上線。管理後台必須完成下面的一次性設定；未設定時登入入口會明確顯示尚未連接，不會導向虛構的認證網址。
 
 1. 登入 Cloudflare：`wrangler login`。
-2. 發佈 Worker：`npm run deploy:auth`。記下輸出的 `https://pocket-atlas-auth.<你的子網域>.workers.dev`。
+2. Worker 已部署至 `https://pocket-atlas-auth.huayang-hsu.workers.dev`。日後更新可執行 `npm run deploy:auth`。
 3. 到 https://github.com/settings/developers → OAuth Apps → New OAuth App，填寫：
-   - Application name：William Pocket Atlas
+   - Application name：TravelLikeLocal（可自訂）
    - Homepage URL：https://r3dra1n.github.io/GoogleMapList/
-   - Authorization callback URL：`<Worker 網址>/callback`
-4. 將 Client ID 和 Client Secret 存入 Worker。請在終端機互動輸入，不要提交到 Git：
+   - Authorization callback URL：`https://pocket-atlas-auth.huayang-hsu.workers.dev/callback`
+   - Allow wildcard matching 與 Enable Device Flow 保持關閉。Expire user access tokens 可保持開啟；目前 Decap GitHub backend 不自動續期，過期後請登出再登入。
+4. 將 Client ID 和 Client Secret 填入本機 `worker/.dev.vars`（此檔已被 Git 忽略），執行 `node scripts/configure-auth.mjs` 即可安全上傳。腳本不輸出密鑰。也可使用終端機互動輸入：
 
 ```sh
 wrangler secret put GITHUB_CLIENT_ID --config worker/wrangler.toml
 wrangler secret put GITHUB_CLIENT_SECRET --config worker/wrangler.toml
 ```
 
-5. 執行 `node scripts/connect-auth.mjs https://pocket-atlas-auth.<你的子網域>.workers.dev`。腳本確認 `/health` 就緒後更新公開的後台網址。
+5. 執行 `node scripts/connect-auth.mjs https://pocket-atlas-auth.huayang-hsu.workers.dev`。腳本確認 `/health` 就緒後更新公開的後台網址。
 6. 提交與推送這個設定。從正式網站 `/admin/` 登入驗證。允許的 GitHub 帳號必須對 `R3dra1n/GoogleMapList` 有 push 權限。
 
-OAuth 使用 `public_repo` scope，隨機 state + Secure/HttpOnly/SameSite=Lax cookie，精確的 postMessage origin/opener 檢查。GitHub Client Secret 僅存在 Worker。OAuth 只允許正式 GitHub Pages origin；本地預覽不能完成正式登入。
+OAuth 使用 `public_repo` scope，隨機 state + Secure/HttpOnly/SameSite=Lax cookie，精確的 postMessage origin/opener 檢查。GitHub Client Secret 不會進入網站或 Git；部署於 Worker secrets，本機設定檔也受到 Git 忽略保護。OAuth 只允許正式 GitHub Pages origin；本地預覽不能完成正式登入。
 
 ## 部署
 

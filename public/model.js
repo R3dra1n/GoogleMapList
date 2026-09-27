@@ -1,4 +1,9 @@
 export const kinds = ['continents', 'countries', 'cities'];
+export function isImagePath(value) {
+  if (!value) return true;
+  if (typeof value !== 'string' || !/^(assets|uploads)\//.test(value) || /[\\%?#\u0000-\u001f]/.test(value)) return false;
+  return !value.split('/').some(part => !part || part === '.' || part === '..') && /\.(jpg|jpeg|png|webp|gif)$/i.test(value);
+}
 export function isMapsLink(value) {
   if (!value) return true;
   try {
@@ -26,7 +31,7 @@ export function validate(data) {
       for (const key of ['description','english','image','imageAlt','imageCredit','imageSource','imageLicense']) {
         if (entry[key] != null && typeof entry[key] !== 'string') throw new Error(`${entry.id} 的 ${key} 必須是文字`);
       }
-      if (entry.image && (!/^(assets|uploads)\/[a-zA-Z0-9_./ -]+\.(jpg|jpeg|png|webp|gif)$/i.test(entry.image) || entry.image.includes('..'))) throw new Error(`${entry.id} 的封面路徑無效`);
+      if (!isImagePath(entry.image)) throw new Error(`${entry.id} 的封面路徑無效`);
       if (entry.image && !entry.imageAlt?.trim()) throw new Error(`${entry.id} 的圖片需要替代文字`);
       for (const key of ['imageSource','imageLicense']) if (entry[key] && !/^https:\/\//.test(entry[key])) throw new Error(`${entry.id} 的圖片出處連結無效`);
     }

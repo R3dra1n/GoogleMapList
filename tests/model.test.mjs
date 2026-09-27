@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile,readdir} from 'node:fs/promises';
-import {validate,visibleData,resolveRoute,isMapsLink} from '../public/model.js';
+import {readFile} from 'node:fs/promises';
+import {validate,visibleData,resolveRoute,isMapsLink,isImagePath} from '../public/model.js';
 const data=JSON.parse(await readFile(new URL('./fixtures/initial.json',import.meta.url),'utf8'));
 const clone=()=>structuredClone(data);
 test('initial links and hierarchy match the approved source lists',()=>{validate(data);assert.equal(data.cities.length,6);const expected={yilan:['taiwan','p8eDToV2jjbXH3tm7',''],hualien:['taiwan','5wpnSUyxxYqL2gK47','CdsGKehdXxXz7qbu9'],busan:['korea','eKAfsFhSLoqXSu1Q7','eKAfsFhSLoqXSu1Q7'],'ho-chi-minh':['vietnam','yci2TWx3K2unvujN7','yci2TWx3K2unvujN7'],'kuala-lumpur':['malaysia','KEFF4CGzh4qSEdHZ8','KEFF4CGzh4qSEdHZ8'],'chiang-mai':['thailand','2KTs2ftc481PcyUa8','2KTs2ftc481PcyUa8']};for(const c of data.cities){const [parent,f,s]=expected[c.id];assert.equal(c.country,parent);assert.equal(c.food,'https://maps.app.goo.gl/'+f);assert.equal(c.sights,s?'https://maps.app.goo.gl/'+s:'');}});
@@ -11,3 +11,11 @@ test('new continent and city appear without code changes; order is respected',()
 test('routes support deep links and reject invalid or hidden ancestors',()=>{const d=visibleData(data);assert.equal(resolveRoute('',d).continent.id,'asia');assert.equal(resolveRoute('#/asia/taiwan',d).country.id,'taiwan');assert.equal(resolveRoute('#/europe/taiwan',d),null);assert.equal(resolveRoute('#/asia/taiwan/extra',d),null);assert.equal(resolveRoute('#/%XX',d),null);});
 test('Google links reject spoofed hosts, code and non-HTTPS URLs',()=>{for(const url of ['','https://maps.app.goo.gl/abc123','https://www.google.com/maps/@/data=x'])assert.ok(isMapsLink(url));for(const url of ['javascript:alert(1)','http://maps.app.goo.gl/abc','https://maps.app.goo.gl.evil.test/abc','https://www.google.com.evil.test/maps','https://user@maps.app.goo.gl/abc','https://example.com','https://www.google.com/search?q=x'])assert.equal(isMapsLink(url),false);const d=clone();d.cities[0].food='javascript:alert(1)';assert.throws(()=>validate(d),/HTTPS/);});
 test('malformed content and image paths cannot produce a published build',()=>{let d=clone();d.cities[0].image='../secret.jpg';assert.throws(()=>validate(d),/封面/);d=clone();d.cities[0].imageAlt='';assert.throws(()=>validate(d),/替代文字/);d=clone();d.cities.push({...d.cities[0]});assert.throws(()=>validate(d),/重複/);});
+test('uploaded Chinese filenames work while path traversal and executable files are rejected',()=>{
+  for(const path of ['uploads/宜蘭 海邊 (1).jpg','uploads/清邁.png','assets/taiwan.jpg',''])assert.equal(isImagePath(path),true);
+  for(const path of ['uploads/../secret.jpg','uploads/%2e%2e/secret.jpg','uploads/x.svg','uploads/x.html','uploads/x.jpg?code=1','https://example.com/a.jpg','uploads/a\\b.jpg'])assert.equal(isImagePath(path),false);
+});
+test('duplicate names are scoped to the parent region',()=>{
+  const d=clone();d.cities.push({...d.cities[0],id:'another-city'});assert.throws(()=>validate(d),/同一區域重複/);
+  d.cities.at(-1).country=d.cities[0].country==='korea'?'taiwan':'korea';validate(d);
+});
