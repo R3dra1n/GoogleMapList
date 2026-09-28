@@ -13,3 +13,6 @@ binding = "DB"
 database_name = "pocket-atlas-recommendations"
 database_id = "df5e3d9b-067f-4399-98d3-8162364d7e6f"
 migrations_dir = "migrations"
+
+[triggers]
+crons = ["*/5 * * * *"]

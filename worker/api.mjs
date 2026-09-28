@@ -1,3 +1,4 @@
+import {notificationStatus} from './notifications.mjs';
 import {ApiError,submitRecommendation,manageRecommendations} from './community.mjs';
 import {githubClient,destinations,searchPhotos,importPhoto} from './photos.mjs';
 export async function api(request,env,fetcher){
@@ -18,6 +19,7 @@ export async function api(request,env,fetcher){
   if(check.status===401)throw new ApiError('Please sign in again',401);
   if(!check.ok||!(await check.json()).permissions?.push)throw new ApiError('Editor access required',403);
   const github=githubClient(env,token,fetcher);
+  if(url.pathname==='/api/admin/notifications'&&request.method==='GET')return json(await notificationStatus(env));
   if(url.pathname==='/api/admin/recommendations')return json(await manageRecommendations(request,env,url));
   if(url.pathname==='/api/admin/destinations'&&request.method==='GET')return json(await destinations(github,Number(url.searchParams.get('offset')||0),url.searchParams.get('snapshot')||''));
   if(url.pathname==='/api/admin/photos/search'&&request.method==='GET')return json(await searchPhotos(url.searchParams.get('q')?.trim(),fetcher));

@@ -128,3 +128,11 @@ My Maps 欄位接受 Google 完整網址（`https://www.google.com/maps/d/viewer
 Worker 設定：`DB` 綁定私密 D1、`RATE_SALT` 存於 Worker secret。資料結構在 `worker/migrations/0001_recommendations.sql`。部署順序：套用 D1 migration → `npm run deploy:auth` → 推送網站。不要把 D1 資料匯出檔提交到公開倉庫。
 
 `npm test` 使用 Node 22 的實驗性 SQLite 測試實際 SQL；`tests/community-browser.cjs` 驗證推薦失敗保留、重試、審核、刪除、選圖、衝突及登入過期。正式服務已測試推薦提交、權限、狀態更新與刪除測試資料，亦測試真實 Wikimedia 搜圖及下載；正式封面由維護者自行選擇。
+
+### 推薦 Email 通知
+
+接收地址使用 Worker Secret `NOTIFICATION_EMAIL`，發信 API Key 使用 `RESEND_API_KEY`，不放入公開內容。預設寄件者為 `Pocket Atlas <onboarding@resend.dev>`，只用於通知同一 Resend 帳號的已驗證信箱；使用其他收件地址時需先驗證自己的寄信網域，再設定 `NOTIFICATION_FROM`。
+
+新增推薦會透過 D1 trigger 加入通知佇列。Worker 每 5 分鐘檢查，僅寄收件編號與私人收件箱連結，不寄訪客 Email 或推薦全文。供應商失敗時每小時重試，最多 6 次、首次嘗試後最多 23 小時；使用固定 idempotency key 防止重複投遞。刪除推薦也會刪除其佇列資料。通知失敗不影響推薦保存。後台顯示待寄、已交付發信服務、失敗數量；「已交付」不代表已送達收件匣。
+
+初次啟用只通知新增資料，不自動補寄既有推薦。

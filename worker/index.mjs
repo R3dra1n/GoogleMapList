@@ -1,3 +1,4 @@
+import {sendNotifications} from './notifications.mjs';
 import {api} from './api.mjs';
 const COOKIE='__Host-pocket_oauth';
 const securityHeaders={'Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'};
@@ -36,4 +37,4 @@ export function createHandler(fetcher=fetch){return async(request,env)=>{
   return popup(origin,auth.access_token);
  }catch{return text('登入服務暫時無法使用，請重試。',502);}
 };}
-export default {fetch:createHandler()};
+export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(sendNotifications(env));}};

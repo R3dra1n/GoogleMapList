@@ -33,19 +33,35 @@ export async function destinations(github,offset=0,snapshot=''){
 export async function importPhoto(request,github,fetcher){
  const body=await readJSON(request);const path=contentPath(body.kind,body.id);if(!Number.isSafeInteger(body.pageId)||body.pageId<=0||typeof body.expectedSha!=='string')throw new ApiError('Invalid photo');
  const alt=typeof body.alt==='string'?body.alt.trim():'';if(!alt||alt.length>500)throw new ApiError('Image description required (max 500 characters)');
+ let stage='確認圖片授權';
+ try{
  const photo=(await commons({pageids:String(body.pageId)},fetcher))[0];if(!photo)throw new ApiError('Photo has no supported, verifiable license');
+ stage='讀取目的地';
  const ref=await github('git/ref/heads/main');const current=await github(`contents/${path}?ref=${ref.object.sha}`);if(current.sha!==body.expectedSha)throw new ApiError('Content changed. Refresh and choose again.',409);
  const data=JSON.parse(fromBase64(current.content));if(data.id!==body.id)throw new ApiError('Invalid content');
- const response=await fetcher(photo.url,{redirect:'error',headers:{'User-Agent':'WilliamPocketAtlas/1.0 (https://r3dra1n.github.io/GoogleMapList/)'},signal:AbortSignal.timeout(20000)});
+ stage='下載 Wikimedia 圖片';
+ let downloadUrl=photo.url,response;
+ for(let redirects=0;redirects<=3;redirects++){
+  if(!trustedImage(downloadUrl))throw new ApiError('圖片下載跳轉至不受信任的來源，請換一張照片。',502);
+  response=await fetcher(downloadUrl,{redirect:'manual',headers:{'User-Agent':'WilliamPocketAtlas/1.0 (https://r3dra1n.github.io/GoogleMapList/)'},signal:AbortSignal.timeout(20000)});
+  if(![301,302,303,307,308].includes(response.status))break;
+  const location=response.headers.get('location');await response.body?.cancel();
+  if(!location||redirects===3)throw new ApiError('圖片下載跳轉次數過多，請換一張照片。',502);
+  downloadUrl=new URL(location,downloadUrl).href;
+ }
  if(!response.ok||!['image/jpeg','image/png','image/webp'].includes(response.headers.get('content-type')?.split(';')[0]))throw new ApiError('Unable to download image',502);
  if(Number(response.headers.get('content-length'))>2500000)throw new ApiError('Image too large; choose another photo');
  const reader=response.body.getReader();let count=0,chunks=[];while(true){const {done,value}=await reader.read();if(done)break;count+=value.length;if(count>2500000){await reader.cancel();throw new ApiError('Image too large; choose another photo');}chunks.push(value);}
+ stage='處理圖片';
  const bytes=new Uint8Array(count);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length;}
  const mime=response.headers.get('content-type').split(';')[0],ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[mime];
  const image=`uploads/commons-${body.pageId}-${crypto.randomUUID()}.${ext}`;data.image=image;data.imageAlt=alt;data.imageCredit=`${photo.artist} / ${photo.license}`;data.imageSource=photo.source;data.imageLicense=photo.licenseUrl;
  for(const suffix of ['Hans','En','Ja','Ko'])data['imageAlt'+suffix]='';
+ stage='保存圖片到 GitHub';
  const imageBlob=await github('git/blobs',{content:toBase64(bytes),encoding:'base64'});const contentBlob=await github('git/blobs',{content:JSON.stringify(data,null,2)+'\n',encoding:'utf-8'});
+ stage='提交封面修改';
  const parent=await github(`git/commits/${ref.object.sha}`);const tree=await github('git/trees',{base_tree:parent.tree.sha,tree:[{path:'public/'+image,mode:'100644',type:'blob',sha:imageBlob.sha},{path,mode:'100644',type:'blob',sha:contentBlob.sha}]});
  const commit=await github('git/commits',{message:`content: update Wikimedia cover for ${data.name}`,tree:tree.sha,parents:[ref.object.sha]});await github('git/refs/heads/main',{sha:commit.sha,force:false},'PATCH');
  return {ok:true,image,sha:contentBlob.sha,commit:commit.sha};
+ }catch(error){if(error instanceof ApiError)throw error;console.error(JSON.stringify({operation:'photo-import',stage,type:error?.name||'Error'}));throw new ApiError(stage+'失敗，請稍後重試。',502);}
 }
