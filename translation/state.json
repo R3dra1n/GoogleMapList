@@ -527,6 +527,38 @@
     "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:descriptionKo": {
       "source": "4602ca88f5b726d50bfe72e33266e389e8d778aaff44e5605b5d65b04dccd2ad",
       "output": "7bb53c2fab4cf3ce51d372ec5131c286d8f0f96d7895af16ff348a8262ea8e94"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:nameHans": {
+      "source": "697ffac5d75520e874e4e257f44118fb7844386731084a84e5d7ea6309b5bdd0",
+      "output": "9f154e82badfc4ff2fe318dd405a3b471bd6bfc15aff1c535a76bc01c61bbc21"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:descriptionHans": {
+      "source": "52b470628b6b0c9d257a2175a5e5a1c7b23d88920db82f98555e199ecc034542",
+      "output": "4376204a89791182509012eb9cb9369c138b28b65eb19f5f94723ab2ecd97c8d"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:english": {
+      "source": "205dea139b154af9c4d9fe36c4b9874d4d4f8ca6dc2998893e46b58f6932fa4b",
+      "output": "563f681eafaa9f331d0379a441149ec194dd925bcdf2b29c0c585a12148881a8"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:descriptionEn": {
+      "source": "0b66ed458daeafb6806e11483794f8b7c2d202c282ce90aea518b8d85bfb3dd2",
+      "output": "525eba401a60424008afbe2ac1beadaa0a7f4588288b496e904fa0d6d4be4d1e"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:nameJa": {
+      "source": "9f8257f900a8c7277709cbc97726be14c28e69321c4e05bc9842337a067ceaaf",
+      "output": "8cb3586dbfd2a77e7600f3b31547685ef711719ab28527591a6192b7df6b8dd2"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:descriptionJa": {
+      "source": "4db474a6ce353607aa0c2991dcbfebe3a41c039edf298f47f3fe6336e271fb11",
+      "output": "40efee73a9ee079e2dfb3de1c0360c2a1d6f27d3f65b5a6eeaae358a76e94535"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:nameKo": {
+      "source": "a56a382d631a1e88a364ed93c303cefc9f6d24635084537059b252dc3f987266",
+      "output": "01940fea391ebafa31fd1cc2e81ecc49871892914a52f4a87394c088b5736b3b"
+    },
+    "content/themes/64863022-b144-47e8-a8ef-fcf6fadcf9ff.json:descriptionKo": {
+      "source": "d452a43deeb06f0695e87c7a315c314c618e78987c434c2c0c33938df63cbddf",
+      "output": "87c7e1386612354d600b91e7574d8866f88be6f1a8937728ab9bda5fcbadf971"
     }
   },
   "cache": {
@@ -682,6 +714,14 @@
     "4a4c2ef33fea8d5d3d7678fc942981c95e8b402fd1ad3cb038a124a02bdd7b89": "ブラジル",
     "e3fc55b687bd7fd24b42ab781f564348b93fbe744ef48e52379ce7c412ed6861": "ブラジルは南米最大の国であり、熱帯雨林、美しいビーチ、そして豊かな文化で知られている。",
     "9ce9ed03a402e81cdd725dd1aaa344ebd1b6861cf09a57416a56fcaa25b74a2f": "브라질",
-    "4602ca88f5b726d50bfe72e33266e389e8d778aaff44e5605b5d65b04dccd2ad": "브라질은 남아메리카에서 가장 큰 나라로, 열대우림, 아름다운 해변, 풍부한 문화로 유명합니다."
+    "4602ca88f5b726d50bfe72e33266e389e8d778aaff44e5605b5d65b04dccd2ad": "브라질은 남아메리카에서 가장 큰 나라로, 열대우림, 아름다운 해변, 풍부한 문화로 유명합니다.",
+    "697ffac5d75520e874e4e257f44118fb7844386731084a84e5d7ea6309b5bdd0": "DoDoMan-开箱冷门城市生活-巴西",
+    "52b470628b6b0c9d257a2175a5e5a1c7b23d88920db82f98555e199ecc034542": "库里奇巴（Curitiba）与瓜拉图巴（Guaratuba）这两座城市是 Victor 在巴西的家乡与主要生活圈（位于巴拉那州），相较于里约，这里展现了更真实、温暖的巴西在地日常\n\nhttps://www.youtube.com/watch?v=J5vkPysXJTw",
+    "205dea139b154af9c4d9fe36c4b9874d4d4f8ca6dc2998893e46b58f6932fa4b": "DoDoMan - Unboxing Lesser-Known City Lifestyles in Brazil",
+    "0b66ed458daeafb6806e11483794f8b7c2d202c282ce90aea518b8d85bfb3dd2": "Curitiba and Guaratuba are Victor's hometowns and main living areas in Brazil (located in Paraná state). Compared to Rio, these cities offer a more authentic and heartwarming glimpse into everyday Brazilian life.\n\nhttps://www.youtube.com/watch?v=J5vkPysXJTw",
+    "9f8257f900a8c7277709cbc97726be14c28e69321c4e05bc9842337a067ceaaf": "DoDoMan - ブラジルの知られざる都市生活の実態を明らかにする",
+    "4db474a6ce353607aa0c2991dcbfebe3a41c039edf298f47f3fe6336e271fb11": "クリチバとグアラトゥバは、ヴィクトルの故郷であり、ブラジル（パラナ州）での主な居住地です。リオデジャネイロと比べると、これらの都市はブラジルの日常生活をよりリアルに、そして温かく垣間見ることができます。\n\nhttps://www.youtube.com/watch?v=J5vkPysXJTw",
+    "a56a382d631a1e88a364ed93c303cefc9f6d24635084537059b252dc3f987266": "DoDoMan - 브라질의 잘 알려지지 않은 도시 생활 탐구",
+    "d452a43deeb06f0695e87c7a315c314c618e78987c434c2c0c33938df63cbddf": "쿠리치바와 과라투바는 빅터의 고향이자 브라질에서 주로 거주하는 곳입니다(파라나 주에 위치). 리우데자네이루와 비교했을 때, 이 두 도시는 브라질 사람들의 일상생활을 더욱 진솔하고 따뜻하게 엿볼 수 있는 곳입니다.\n\nhttps://www.youtube.com/watch?v=J5vkPysXJTw"
   }
 }
