@@ -49,3 +49,10 @@ test('photo import atomically commits image, attribution and content without for
  const result=await importPhoto(request('/api/admin/photos/import','POST',body),github,fetcher);assert.equal(result.commit,'commit');const content=JSON.parse(calls.find(x=>x.path==='git/blobs'&&x.data.encoding==='utf-8').data.content);assert.equal(content.imageCredit,'Photographer / CC BY-SA 4.0');assert.equal(content.imageAltEn,'');assert.equal(content.imageAlt,'海岸風景');assert.equal(calls.at(-1).data.force,false);assert.equal(calls.find(x=>x.path==='git/trees').data.tree.length,2);
  calls.length=0;await assert.rejects(()=>importPhoto(request('/api/admin/photos/import','POST',{...body,expectedSha:'outdated'}),github,fetcher),e=>e.status===409);assert.ok(!calls.some(x=>x.path==='git/blobs'));
 });
+
+test('only place name and consent are required; optional links still validated',async()=>{
+ const env=environment(),headers={'CF-Connecting-IP':'192.0.2.9'};
+ const minimal={id:crypto.randomUUID(),name:'推薦地點',consent:true};
+ assert.equal((await api(request('/api/recommendations','POST',minimal,headers),env,writer)).status,201);
+ for(const change of [{name:'   '},{mapUrl:'https://evil.test/'},{email:'invalid'}])assert.equal((await api(request('/api/recommendations','POST',{...minimal,id:crypto.randomUUID(),...change},headers),env,writer)).status,400);
+});

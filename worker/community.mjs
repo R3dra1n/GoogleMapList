@@ -11,8 +11,9 @@ export function recommendation(body){
  const values={};const limits={country:100,city:100,name:160,mapUrl:2000,reason:3000,email:254,category:20};
  for(const [key,max] of Object.entries(limits)){if(body[key]!=null&&typeof body[key]!=='string')throw new ApiError('Invalid field');values[key]=(body[key]||'').trim();if(values[key].length>max)throw new ApiError('Field too long');}
  if(!uuid.test(body.id||'')||body.consent!==true)throw new ApiError('Invalid submission');
- for(const key of ['country','city','name','reason','mapUrl'])if(!values[key])throw new ApiError('Missing required field');
- if(!['food','sights','other'].includes(values.category)||!isMapsLink(values.mapUrl))throw new ApiError('Invalid category or Google Maps link');
+ for(const key of ['name'])if(!values[key])throw new ApiError('Missing required field');
+ values.category ||= 'other';
+ if(!['food','sights','other'].includes(values.category)||(values.mapUrl&&!isMapsLink(values.mapUrl)))throw new ApiError('Invalid category or Google Maps link');
  if(values.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))throw new ApiError('Invalid email');
  return {...values,id:body.id};
 }
