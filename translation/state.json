@@ -495,6 +495,38 @@
     "content/continents/5dde8a5d-55c3-404e-b3d5-c09e6f9a9ff3.json:nameKo": {
       "source": "b2ca29830692c5df91dbac78425d3bd4456e3a5435fece379aa288718f9f0b67",
       "output": "23ed1f9ea4944fc3c4133d4b82816a1c2d67e77e278f412db488d1743b5e27b7"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:nameHans": {
+      "source": "e389aa0ed11dbfef376f95ba18c1598ae80a1f4fbd2899e91f6c35b9755143ca",
+      "output": "c733bdf600026d8c7942bb046ce25c49e2a86271fd391286b5bc5dafba174eb7"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:descriptionHans": {
+      "source": "de8bd30f0447fc51f95fd9e6d1f5ef8f2ee05bcd38959145507e19bfe2c1f7a7",
+      "output": "e9182cc725221fa23fa8f88a14761d131680dbea5cdb3de5d3a2867aad141187"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:english": {
+      "source": "e26723086b14b3f8d6efcf0abe00b78da61d0eb61e1ad0ad91f7ba5ca6c0a714",
+      "output": "07f62b021771d3cf67e2e1faf18769cc5e5c119ad7d4d1847a11e11d6d5a7ecb"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:descriptionEn": {
+      "source": "02e3866f657e98b9d18e28a6543cf7b26caf02eab84c42baca3966fdcc2765ea",
+      "output": "5dc115c52195f9f8f173a0680251c8df5e9cfa1e2dcc4258f99bd76f2dc00b83"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:nameJa": {
+      "source": "4a4c2ef33fea8d5d3d7678fc942981c95e8b402fd1ad3cb038a124a02bdd7b89",
+      "output": "170f8cfbca8977ea4bb26163f38437f2baeb7279f944c17972fd70507d58f13f"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:descriptionJa": {
+      "source": "e3fc55b687bd7fd24b42ab781f564348b93fbe744ef48e52379ce7c412ed6861",
+      "output": "ad43ad3de943953301775c9941203ef8d842535bc0fa14ea88db5562400a9705"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:nameKo": {
+      "source": "9ce9ed03a402e81cdd725dd1aaa344ebd1b6861cf09a57416a56fcaa25b74a2f",
+      "output": "01b73d40d385b64d99ff61d866ea3af3c9ccd2e61ed6e49dca3a6ce42297352f"
+    },
+    "content/countries/9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb.json:descriptionKo": {
+      "source": "4602ca88f5b726d50bfe72e33266e389e8d778aaff44e5605b5d65b04dccd2ad",
+      "output": "7bb53c2fab4cf3ce51d372ec5131c286d8f0f96d7895af16ff348a8262ea8e94"
     }
   },
   "cache": {
@@ -642,6 +674,14 @@
     "401191d8d4754908951e4dd00e1cbae70cb27d0f7c18f1a3015b655eeff623c4": "美洲",
     "0221ef23e7b70c21cf7f85f229ef0fd8e4b8c16f292f4411710bf7386814b9ca": "America",
     "db7f85d7d098ed7761b22d82f62ddb416eeb0b43bff64200f444e4dc05e137d3": "アメリカ",
-    "b2ca29830692c5df91dbac78425d3bd4456e3a5435fece379aa288718f9f0b67": "미국"
+    "b2ca29830692c5df91dbac78425d3bd4456e3a5435fece379aa288718f9f0b67": "미국",
+    "e389aa0ed11dbfef376f95ba18c1598ae80a1f4fbd2899e91f6c35b9755143ca": "巴西",
+    "de8bd30f0447fc51f95fd9e6d1f5ef8f2ee05bcd38959145507e19bfe2c1f7a7": "巴西是南美洲最大的国家，以热带雨林、美丽海滩与丰富文化闻名。",
+    "e26723086b14b3f8d6efcf0abe00b78da61d0eb61e1ad0ad91f7ba5ca6c0a714": "Brazil",
+    "02e3866f657e98b9d18e28a6543cf7b26caf02eab84c42baca3966fdcc2765ea": "Brazil is the largest country in South America, known for its rainforests, beautiful beaches and rich culture.",
+    "4a4c2ef33fea8d5d3d7678fc942981c95e8b402fd1ad3cb038a124a02bdd7b89": "ブラジル",
+    "e3fc55b687bd7fd24b42ab781f564348b93fbe744ef48e52379ce7c412ed6861": "ブラジルは南米最大の国であり、熱帯雨林、美しいビーチ、そして豊かな文化で知られている。",
+    "9ce9ed03a402e81cdd725dd1aaa344ebd1b6861cf09a57416a56fcaa25b74a2f": "브라질",
+    "4602ca88f5b726d50bfe72e33266e389e8d778aaff44e5605b5d65b04dccd2ad": "브라질은 남아메리카에서 가장 큰 나라로, 열대우림, 아름다운 해변, 풍부한 문화로 유명합니다."
   }
 }
