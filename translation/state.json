@@ -25,8 +25,8 @@
       "output": "f5947ee930179df954bc1e49662f3de33866359959b7078d8028161138326880"
     },
     "content/cities/busan.json:imageAltJa": {
-      "source": "0c32bf1cdf4fb3be9f69c0e9d343fe5707315935ad297a4a2b2c4759182428a1",
-      "output": "f5947ee930179df954bc1e49662f3de33866359959b7078d8028161138326880"
+      "source": "15020787acfaf63650e35ae583d04c657058846d299574b56a2f01be7129e064",
+      "output": "fb33a7d4ff59ab6b2c6af9b6aff0a98561e233311ff3e0d5db0e61056c4a00f0"
     },
     "content/countries/malaysia.json:imageAltJa": {
       "source": "a2b0fce391b9aeeb996870cb2c885b7fa9443e627b1bb6bb96c4a42a5dc56bb6",
@@ -73,8 +73,8 @@
       "output": "ca9323a8d615eacddfe17115624411ba0079f67c7ff4223d1b7c539c1902ffaf"
     },
     "content/cities/busan.json:imageAltKo": {
-      "source": "69d1e674fa0278f48df45b4d398079c9fb07907857a372f28e5ba03aea0b322c",
-      "output": "ca9323a8d615eacddfe17115624411ba0079f67c7ff4223d1b7c539c1902ffaf"
+      "source": "b40a5bacd4cba5f04d7a5deed6de090dbc724095644ca0704d28ced62b498da3",
+      "output": "26fde7c68e674773d7b2bd6ddbc3f37061b81a5c1a95808efb4a38ec117f348d"
     },
     "content/countries/malaysia.json:imageAltKo": {
       "source": "6a20bea60e83c168c412813ac39413f123b3c8fa79608dc8cfb5c0072e685d0f",
@@ -175,6 +175,14 @@
     "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:nameKo": {
       "source": "91820f55576702ca877bb7160e89bd777c6a6cf636cda3f55fa85c750f96dc6b",
       "output": "bbac76f6bd275329b74cc41b94a68e8eca3a5cdaba78c6168002ff1fce49fc71"
+    },
+    "content/cities/busan.json:imageAltHans": {
+      "source": "c157c144c3b05682ef8a5b59eddfa8b42a4018f543aba2371c5f0ad4e60c4cf0",
+      "output": "4cbbfd42642e12aa3f45e5d97a0fc8d08530d464c06e20d923a6e39c5642bc85"
+    },
+    "content/cities/busan.json:imageAltEn": {
+      "source": "bfb59f63031c9801136ddbab38c2341e0c91d6f03b42d2b90f59319643b68cfa",
+      "output": "04d4f3bbae70fc968dc8d6e2105a713deb3466baf6b3e74e0ee1f979646c6858"
     }
   },
   "cache": {
@@ -214,6 +222,10 @@
     "704e3470249322ef233baeba77c3ecad5e8dcc7f525b9ebbe27d81ee177770bc": "诺福克",
     "fb1b71bdcc62b33bdb53f848566a6f7fa23d7a086edfc2e6656584d624262312": "Norfolk",
     "9d39f052f5df512872cf69217990f174cdae6bcabf969e9e686e65d25214db0e": "ノーフォーク",
-    "91820f55576702ca877bb7160e89bd777c6a6cf636cda3f55fa85c750f96dc6b": "노퍽"
+    "91820f55576702ca877bb7160e89bd777c6a6cf636cda3f55fa85c750f96dc6b": "노퍽",
+    "c157c144c3b05682ef8a5b59eddfa8b42a4018f543aba2371c5f0ad4e60c4cf0": "Centum City (센텀시티) is a urban development part of Busan, South Korea. The site was originally the location of Busan's Suyeong Airport. The Busan Cinema Center on the right was designed by Coop Himmelb(l)au and features the longest cantilever roof in the world.",
+    "bfb59f63031c9801136ddbab38c2341e0c91d6f03b42d2b90f59319643b68cfa": "Centum City (센텀시티) is an urban development part of Busan, South Korea. The site was originally the location of Busan's Suyeong Airport. The Busan Cinema Center on the right was designed by Coop Himmelb(l)au and features the longest cantilever roof in the world.",
+    "15020787acfaf63650e35ae583d04c657058846d299574b56a2f01be7129e064": "センタムシティ（센텀시티）は、韓国釜山市にある都市開発地区です。この場所はもともと釜山水営空港の跡地でした。右側に見える釜山シネマセンターは、コープ・ヒンメルブラウによって設計され、世界最長の片持ち梁屋根が特徴です。",
+    "b40a5bacd4cba5f04d7a5deed6de090dbc724095644ca0704d28ced62b498da3": "센텀시티는 대한민국 부산에 위치한 도시 개발 지역입니다. 이곳은 원래 부산 수영공항이 있던 자리입니다. 오른쪽에 보이는 부산시네마센터는 쿱 힘멜블라우가 설계했으며, 세계에서 가장 긴 캔틸레버 지붕을 자랑합니다."
   }
 }
