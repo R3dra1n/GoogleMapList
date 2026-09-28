@@ -2,7 +2,7 @@
   "descriptionKo": "브라질은 남아메리카에서 가장 큰 나라로, 열대우림, 아름다운 해변, 풍부한 문화로 유명합니다.",
   "nameJa": "ブラジル",
   "imageAltJa": "",
-  "standalone": false,
+  "standalone": true,
   "descriptionEn": "Brazil is the largest country in South America, known for its rainforests, beautiful beaches and rich culture.",
   "imageLicense": "",
   "nameHans": "巴西",
