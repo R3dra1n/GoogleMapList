@@ -1,4 +1,4 @@
-import {migrateSession,onSessionChange} from './session.js';
+import {migrateSession,onSessionChange,readSession} from './session.js';
 migrateSession();
 onSessionChange(()=>location.reload());
 import { isMapsLink, isImagePath, myMapId, mapProvider } from '../model.js';
@@ -39,6 +39,13 @@ CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
   const entries=await Promise.all(files.filter(f=>f.name.endsWith('.json')).map(async f=>{const response=await fetch(f.download_url,{cache:'no-store'});if(!response.ok)throw new Error('讀取清單失敗，請重試。');return response.json();}));
   const parent=kind==='cities'?'country':kind==='countries'?'continent':null;
   if(entries.some(x=>x.id!==data.get('id')&&x.name.trim()===data.get('name')&&(!parent||x[parent]===data.get(parent))))throw new Error('同一區域已有這個名稱，請返回修改既有項目，或使用不同名稱。');
+  if(['cities','countries','themes'].includes(kind)&&!data.get('description')?.trim()&&data.get('autoDescription')!==false){
+    status.textContent='正在由 AI 產生簡介，完成後一起儲存…';
+    const config=await (await fetch('./connection.json',{cache:'no-store'})).json();
+    const response=await fetch(config.authBaseUrl+'/api/admin/descriptions',{method:'POST',headers:{Authorization:`Bearer ${readSession()}`,'Content-Type':'application/json'},body:JSON.stringify({kind,name:data.get('name'),parent:parent?data.get(parent):undefined})});
+    const result=await response.json();if(!response.ok)throw new Error(result.error||'AI 簡介生成失敗；可關閉自動簡介後重試。');
+    data=data.set('description',result.description);
+  }
   status.textContent='正在儲存修改；完成後將自動排程發佈。';
   return data;
 }});

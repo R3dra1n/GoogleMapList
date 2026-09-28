@@ -67,6 +67,7 @@ collections:
       - { name: food, label: 地區美食清單, widget: string, required: false, default: '' }
       - { name: sights, label: 地區景點清單, widget: string, required: false, default: '' }
       - { name: myMap, label: 地區 Google 我的地圖, widget: string, required: false, default: '' }
+      - { name: autoDescription, label: 簡介留空時由 AI 自動產生, widget: boolean, required: false, default: true, hint: '發布時產生並保存繁體中文簡介，再自動翻譯。已有文字不會覆蓋；生成後可重新開啟修改。' }
       - { name: description, label: 簡短介紹, widget: text, required: false, default: '' }
       - { name: descriptionHans, label: 简体中文介紹, widget: text, required: false, default: '' }
       - { name: descriptionJa, label: 介紹（日本語）, widget: text, required: false, default: '' }
@@ -104,6 +105,7 @@ collections:
       - { name: nameJa, label: 名稱（日本語）, widget: string, required: false, default: '' }
       - { name: nameKo, label: 名稱（한국어）, widget: string, required: false, default: '' }
       - { name: country, label: 所屬國家／地區, widget: parent-relation, collection: countries, search_fields: [name], value_field: id, display_fields: [name], hint: '大洲會自動沿用所選國家／地區。' }
+      - { name: autoDescription, label: 簡介留空時由 AI 自動產生, widget: boolean, required: false, default: true, hint: '發布時產生並保存繁體中文簡介，再自動翻譯。已有文字不會覆蓋；生成後可重新開啟修改。' }
       - { name: description, label: 簡短介紹, widget: text, required: false, default: '' }
       - { name: descriptionHans, label: 简体中文介紹, widget: text, required: false, default: '' }
       - { name: descriptionJa, label: 介紹（日本語）, widget: text, required: false, default: '' }
@@ -151,6 +153,7 @@ collections:
       - { name: nameHans, label: 简体中文名稱, widget: string, required: false, default: '' }
       - { name: nameJa, label: 名稱（日本語）, widget: string, required: false, default: '' }
       - { name: nameKo, label: 名稱（한국어）, widget: string, required: false, default: '' }
+      - { name: autoDescription, label: 簡介留空時由 AI 自動產生, widget: boolean, required: false, default: true, hint: '發布時產生並保存繁體中文簡介，再自動翻譯。已有文字不會覆蓋；生成後可重新開啟修改。' }
       - { name: description, label: 簡短介紹, widget: text, required: false, default: '' }
       - { name: descriptionHans, label: 简体中文介紹, widget: text, required: false, default: '' }
       - { name: descriptionJa, label: 介紹（日本語）, widget: text, required: false, default: '' }
