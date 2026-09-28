@@ -311,6 +311,38 @@
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:nameKo": {
       "source": "30b678f30cf0a32e97ffcca9e82fa43a48ad8b0a88702256b4c6e3d3a27defef",
       "output": "17e9f37bc20a97e6379501a3a7b91974c0e9b2c46c96985066639b2d6d33227a"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:nameHans": {
+      "source": "bc7f4288212eea39e3cfa5b3c8025310bc158942885023c00eb7cf6431a17d60",
+      "output": "9bbb2789bcd76c7606e06d97db6e9d7f89559a2fc12f8921e9094f1e6800af6f"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionHans": {
+      "source": "fce9bb208eea85ad562d52b37da1271452b87cc454ec826d6a5187e21840746b",
+      "output": "5b50dec20664298d67ac5644e4c667e506e02bc04edc22d1f56b21942e495d43"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:english": {
+      "source": "98d01403edbebcf8ec8bf5d97712e002736907204e40c3b624fa3c2d2929c2d9",
+      "output": "8fa41340dea7766c3cf7758d42778758d040ccaf60576ee3442fecb225e2da4c"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionEn": {
+      "source": "8a8e9023f356dedc45455c2c9af9494ee48272981ac5502b6ec1b80ea5ac3500",
+      "output": "6457a4dfb02ce3cbde6b2ea30de3c2fb68355877b3a41b8f9e59deccbda73518"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:nameJa": {
+      "source": "21ef18c7273fc01288bf4eb4cf90570b72f38ff96e1f409189947dcf2428f4e7",
+      "output": "ee92748594709faee4b37e789e7d97af9f273138f2f64b796e1974b10ec8f6b8"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionJa": {
+      "source": "1a85700be8a8faa2b1f759df29550acf0b05dcb541aeaa271e1b7b4d9f70edbe",
+      "output": "ec46fb76bb355dd339b2798f1dfa9de1ead857f4b337e3225af08539fdb09da3"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:nameKo": {
+      "source": "d27d1c0718b37cdffc9991540cf2a3b39370346ec12782552e71f2dc5c8acba9",
+      "output": "7caceb3a22b7a933899fb691f86abe3b5b48665b719de5962af47dfc399c3e94"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionKo": {
+      "source": "b00ff29987bdad4d9fcb62bff9ae70b51f3566ea2179932dd6b63287f978973d",
+      "output": "28b5d243d76060a8c5d9ae0cfa1a7803eacc5172899bca60a7062da9534c24ee"
     }
   },
   "cache": {
@@ -394,6 +426,14 @@
     "f39385c78d28103b29b339d1d9c2f72812b0e347117b3cc4ca187381099448c7": "ドドメン - ニュージーランド",
     "ae01448203c91c5a7755dd7b1f456a0e649160fab4eedc2955693f0fd696b7c4": "DODOMENのイアンとエリックは、挑戦すること、旅行すること、そして普段はできないことや怖くてできないことを経験することに情熱を注いでおり、自分たちのコンフォートゾーンから抜け出すことを目指している。",
     "30b678f30cf0a32e97ffcca9e82fa43a48ad8b0a88702256b4c6e3d3a27defef": "도도멘 - 뉴질랜드",
-    "791da392286bee382e3cc0df40ba8ae9cf7655a878c81d243ff9f66dfe639242": "DODOMEN의 이안과 에릭은 도전 정신이 투철하며, 여행을 즐기고, 평소에는 할 수 없거나 두려워하는 일들을 경험하며 자신의 안전지대를 벗어나고자 합니다."
+    "791da392286bee382e3cc0df40ba8ae9cf7655a878c81d243ff9f66dfe639242": "DODOMEN의 이안과 에릭은 도전 정신이 투철하며, 여행을 즐기고, 평소에는 할 수 없거나 두려워하는 일들을 경험하며 자신의 안전지대를 벗어나고자 합니다.",
+    "bc7f4288212eea39e3cfa5b3c8025310bc158942885023c00eb7cf6431a17d60": "屏东",
+    "fce9bb208eea85ad562d52b37da1271452b87cc454ec826d6a5187e21840746b": "屏东位于台湾最南端，拥有丰富的自然与人文景观，是热带风情与生态探索的热门目的地。",
+    "98d01403edbebcf8ec8bf5d97712e002736907204e40c3b624fa3c2d2929c2d9": "Pingtung",
+    "8a8e9023f356dedc45455c2c9af9494ee48272981ac5502b6ec1b80ea5ac3500": "Pingtung, located at the southernmost tip of Taiwan, boasts abundant natural and cultural landscapes, making it a popular destination for tropical experiences and ecological exploration.",
+    "21ef18c7273fc01288bf4eb4cf90570b72f38ff96e1f409189947dcf2428f4e7": "屏東",
+    "1a85700be8a8faa2b1f759df29550acf0b05dcb541aeaa271e1b7b4d9f70edbe": "台湾最南端に位置する屏東県は、豊かな自然と文化景観を誇り、熱帯の体験や生態系探訪の人気の目的地となっている。",
+    "d27d1c0718b37cdffc9991540cf2a3b39370346ec12782552e71f2dc5c8acba9": "핑퉁",
+    "b00ff29987bdad4d9fcb62bff9ae70b51f3566ea2179932dd6b63287f978973d": "대만 최남단에 위치한 핑퉁은 풍부한 자연 및 문화 경관을 자랑하며, 열대 체험과 생태 탐험을 즐기기에 인기 있는 여행지입니다."
   }
 }
