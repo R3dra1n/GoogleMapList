@@ -399,6 +399,22 @@
     "content/cities/hualien.json:imageAltEn": {
       "source": "b4fc9b92d60b9423037ba367b016350b1351c181ee90a11dee68aafb72542787",
       "output": "cca21ecbc7c0f840224671ad9b87312175b098b93af3d55a82b729d19b34c430"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:imageAltHans": {
+      "source": "9feb4b816ec14efc3239ee25db4e849b2ce8dbc06272d8aae16a5e56dd5dc9c7",
+      "output": "9fa82c1e23c053cb267dbb7fc3f055285c568a5ce38944a23b3eda5f9b8f9bd9"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:imageAltEn": {
+      "source": "71d6d6f2b1ef093d36dfa63aedf8b539546a0d792b2fda7aa1100c841c535aea",
+      "output": "9fa82c1e23c053cb267dbb7fc3f055285c568a5ce38944a23b3eda5f9b8f9bd9"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:imageAltJa": {
+      "source": "7804b54d1c02af5e8c7bff52ede98ee547d0d23ffcc7e93e65f6b54db205e0f2",
+      "output": "fe3d584713c9b25cf6bdc0c3175b6bc3a25e6ff87a5440478efd59ac617407c2"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:imageAltKo": {
+      "source": "a5f4fefcde94f810b9b4da15f87e082cbfa8131e8da88c08486454b0255bcad3",
+      "output": "f59c331218197be94e9bb6340cd566551d9bd88434b07dc5ff6178437da9a8e0"
     }
   },
   "cache": {
@@ -522,6 +538,10 @@
     "62d94ed6794bd0b59e3733618658d2d64ea8bfe14ad225bbe7a94b74c3bb4536": "清水断崖",
     "b4fc9b92d60b9423037ba367b016350b1351c181ee90a11dee68aafb72542787": "Qingshui Cliff",
     "40621e6d3c3695c487454e0942acf032354b80784f78591972d1044bbee2ab63": "清水断崖",
-    "ad3a95c3151774d666a1030a1cf45ba7aa65d6a2e5b58d86f4b70fdaa6c16458": "칭수이 절벽"
+    "ad3a95c3151774d666a1030a1cf45ba7aa65d6a2e5b58d86f4b70fdaa6c16458": "칭수이 절벽",
+    "9feb4b816ec14efc3239ee25db4e849b2ce8dbc06272d8aae16a5e56dd5dc9c7": "Ho Chi Minh City (Vietnam) – statue of Ho Chi Minh in front of the Ho Chi Minh City Hall (People's Committee Building)",
+    "71d6d6f2b1ef093d36dfa63aedf8b539546a0d792b2fda7aa1100c841c535aea": "Ho Chi Minh City (Vietnam) – statue of Ho Chi Minh in front of the Ho Chi Minh City Hall (People's Committee Building)",
+    "7804b54d1c02af5e8c7bff52ede98ee547d0d23ffcc7e93e65f6b54db205e0f2": "ホーチミン市（ベトナム） – ホーチミン市庁舎（人民委員会ビル）前のホーチミン像",
+    "a5f4fefcde94f810b9b4da15f87e082cbfa8131e8da88c08486454b0255bcad3": "호찌민시(베트남) – 호찌민 시청(인민위원회 건물) 앞에 있는 호찌민 동상"
   }
 }
