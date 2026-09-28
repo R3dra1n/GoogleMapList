@@ -431,6 +431,22 @@
     "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:imageAltKo": {
       "source": "caad80db10fd2dbbab7820910e5d41525cf7ebbb376622bfc48cfe038d0f5d56",
       "output": "fee17a9430b45ee124396d385c5fd889df705033f8a67e0f899f996299b29c23"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:imageAltHans": {
+      "source": "7bc5557c3906a6b11ab5f17c7945e5b1d877f44cd09fd4f72278e27d7f1b0ce6",
+      "output": "fc1a3f6aa835125852129d5575516e7a5b738c06abcffe48b09a27c3deb7cd62"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:imageAltEn": {
+      "source": "ddd867db73bc37c66d4876ff2ee38a0327aeb24dbe3f00ad029321591703da40",
+      "output": "78ffb9f0002beb5c5538a39044e49fe25ac4a9fa5974341b38553f599cbe9743"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:imageAltJa": {
+      "source": "9220ca25be1b94eb85e56737d5e1fea664dfe76e95bfa24ab3aeb25a9ea01fab",
+      "output": "84121d3fd5f0cf24e8aa30b38e2d2982420c96b4c9ea48a79cc325ad80ad40c7"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:imageAltKo": {
+      "source": "7a9c4a8cf3b33264a2f7aafb2b4ce4daadc39ff4c1631ae97769a7865569b6e7",
+      "output": "39a62b2c88a8d111c24ef95ca65c03586aa8bdfa8faa81b2c4d2dd2a1700c51a"
     }
   },
   "cache": {
@@ -562,6 +578,10 @@
     "2f5f2aae5b3a7f88dd21643fb9e5f64c585df66993a257c30712119e18254cd8": "胡志明市市政厅",
     "3945cd672719ebd08ba2c099ceb8ea24411162123dd21d3938d70e744cdfc14b": "Ho Chi Minh City Hall",
     "a34e7a451b25ad6127aaed8632199118f22d3d201544a36937ea80d21b60725b": "ホーチミン市役所",
-    "caad80db10fd2dbbab7820910e5d41525cf7ebbb376622bfc48cfe038d0f5d56": "호찌민시청"
+    "caad80db10fd2dbbab7820910e5d41525cf7ebbb376622bfc48cfe038d0f5d56": "호찌민시청",
+    "7bc5557c3906a6b11ab5f17c7945e5b1d877f44cd09fd4f72278e27d7f1b0ce6": "威斯敏斯特宫",
+    "ddd867db73bc37c66d4876ff2ee38a0327aeb24dbe3f00ad029321591703da40": "Palace of Westminster",
+    "9220ca25be1b94eb85e56737d5e1fea664dfe76e95bfa24ab3aeb25a9ea01fab": "ウェストミンスター宮殿",
+    "7a9c4a8cf3b33264a2f7aafb2b4ce4daadc39ff4c1631ae97769a7865569b6e7": "웨스트민스터 궁전"
   }
 }
