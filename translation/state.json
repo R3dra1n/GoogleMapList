@@ -349,32 +349,32 @@
       "output": "52b9404ad0709bd90175b49716dc6319da02c65460d49a7942c976e802ac2b43"
     },
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:descriptionHans": {
-      "source": "0c482dbd0f2e9ea70b03c24b807b92ae310728992fc6d05bb52fbdc1ac791102",
-      "output": "4fd02dc45ab58ea0c0d5a0db2ee51e8b0db2cc18e1fb3af1a853087a4cc478ee"
+      "source": "f6599021b290b9cada46065f1e89bdadc342570720c031ade97257692fb4a124",
+      "output": "29a1215545f8430ea8bb00afad2b2cecc5eddb6ad6cbf2b54da7f8f34e68e9f0"
     },
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:english": {
       "source": "7d7f52a0566d436445e4cfa6e7c571453a36ed7b81c905689f6b1f29a49a454d",
       "output": "0b8bf5db95fd95ec0be6b6336ec9ccce4660967ae9d29d5f89a3f14bf8f8550d"
     },
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:descriptionEn": {
-      "source": "44b146c55f91c75b43aecf64ea554a714ef21f2acd247fcedd10578f9d5c2a97",
-      "output": "fff17377e7e8e073fcf55ac7a55cd9d16fac9f51cc6defb926659078d87d2b7a"
+      "source": "d46b4c384239a39098fdb58e6dddb4b1cab285744fb18c3559ce1575ba98ed51",
+      "output": "50eeb17ba8b5e6b31fe72c8daf6f7669806cc11d4e14ca702edcfd72dc74ac07"
     },
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:nameJa": {
       "source": "4599874397c0a635e82dd04b09fc87132081741f37da7e2d0866c71b6121ded5",
       "output": "d9cd8fac9e6531e9c4640dc62b4bed2825d2de128ebf15b1e57fe38df9a5ba79"
     },
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:descriptionJa": {
-      "source": "cbc168fe22abe8add8acce3ced1ea596c5820e5ab0279272b33f3998fc2eec29",
-      "output": "2040dad18fa1afef785099869ead83269905d8d005563285c9f05984d02bc814"
+      "source": "75e156ee73b53452387f5bb7dd4ad7c47eb55f406097f74e3060a69455464341",
+      "output": "a1adbd8cd4a0302e3c97c16773ae75639d6d17f52e9113535177778739fbae58"
     },
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:nameKo": {
       "source": "22ee0f61f8783e61ef4e3bdbac68a3fee038ffceb98502f160ba5e1ef4340c0b",
       "output": "9bf413dac0a7c2be256ac5d8c5e579e07904fb464b0f7dff2e9decb410f7ea6f"
     },
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:descriptionKo": {
-      "source": "822eba1403d7ffec857b11c6991abf2073e37ddb93208507ec820c133b388cb4",
-      "output": "b818516df3d847a2bf61d61d0630f277379f3e78c5b269db4142cac568e8694c"
+      "source": "d9266861660a84e38203853d951b40aa11f56522328131d7f2b3ddf137498cd7",
+      "output": "aa6323eb608ca82ab3438d9103772c8fb6013ed7715071b22f68b565c5ccbc2f"
     }
   },
   "cache": {
@@ -474,6 +474,10 @@
     "4599874397c0a635e82dd04b09fc87132081741f37da7e2d0866c71b6121ded5": "ドドマン - 最も美しいビーチにある、最も危険なハイキングコース（ハワイ州カウアイ島）",
     "cbc168fe22abe8add8acce3ced1ea596c5820e5ab0279272b33f3998fc2eec29": "ハワイ州カウアイ島の最も美しいビーチのすぐそばには、景観は素晴らしいものの危険なトレイルがあり、スリルを求める旅行者を惹きつけている。",
     "22ee0f61f8783e61ef4e3bdbac68a3fee038ffceb98502f160ba5e1ef4340c0b": "도도맨 - 가장 아름다운 해변에 있는 가장 위험한 하이킹 코스 (카우아이, 하와이)",
-    "822eba1403d7ffec857b11c6991abf2073e37ddb93208507ec820c133b388cb4": "하와이 카우아이 섬의 가장 아름다운 해변들 옆에는 스릴을 추구하는 여행객들을 끌어들이는 경치 좋지만 위험한 트레일이 있습니다."
+    "822eba1403d7ffec857b11c6991abf2073e37ddb93208507ec820c133b388cb4": "하와이 카우아이 섬의 가장 아름다운 해변들 옆에는 스릴을 추구하는 여행객들을 끌어들이는 경치 좋지만 위험한 트레일이 있습니다.",
+    "f6599021b290b9cada46065f1e89bdadc342570720c031ade97257692fb4a124": "「通往最美海滩的超危险步道」,是在美国夏威夷的可爱岛（Kauai），这条步道就是被许多健行者列为「地狱与天堂并存」、全美甚至全世界最危险沿海路线之一的 卡拉劳步道（Kalalau Trail）",
+    "d46b4c384239a39098fdb58e6dddb4b1cab285744fb18c3559ce1575ba98ed51": "The \"extremely dangerous trail leading to the most beautiful beach\" is the Kalalau Trail on Kauai, Hawaii. This trail is listed by many hikers as one of the most dangerous coastal routes in the United States and even the world, described as \"a place where hell and heaven coexist.\"",
+    "75e156ee73b53452387f5bb7dd4ad7c47eb55f406097f74e3060a69455464341": "「最も美しいビーチへと続く極めて危険なトレイル」とは、ハワイ州カウアイ島にあるカララウ・トレイルのことである。このトレイルは、多くのハイカーによってアメリカ国内、ひいては世界で最も危険な海岸ルートの一つとして挙げられており、「地獄と天国が共存する場所」と形容されている。",
+    "d9266861660a84e38203853d951b40aa11f56522328131d7f2b3ddf137498cd7": "\"세상에서 가장 아름다운 해변으로 이어지는 극도로 위험한 길\"은 하와이 카우아이 섬의 칼랄라우 트레일입니다. 많은 등산객들은 이 트레일을 미국은 물론 세계에서 가장 위험한 해안 코스 중 하나로 꼽으며, \"지옥과 천국이 공존하는 곳\"이라고 묘사합니다."
   }
 }
