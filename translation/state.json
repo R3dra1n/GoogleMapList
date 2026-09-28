@@ -199,6 +199,38 @@
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:descriptionKo": {
       "source": "b4e885a2fd85d325ac3ef202b6984f5e815d101e447f45fb40ad725f2e835b7c",
       "output": "0eff421e18f21d11f0c03b6aed7fabbdc7d96287817926ca96bc869cc2eeba78"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:nameHans": {
+      "source": "1c4b9cfe74c5cefcd6e46e21c0cdb3d934aaab9450ba2de211daf79a35882d2b",
+      "output": "4f498c220afbebbc1568d66b25f089affed8ec238a77f960c5110599e38a6fc8"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:descriptionHans": {
+      "source": "69f1479f1093e50492fe51e1543f44bba4507529d1ffb853e84233244d8b4902",
+      "output": "8aec11f0e01695c934a6ad835580a8bcded6307497fa05ff0f4710ded67021c2"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:english": {
+      "source": "edbbfdc0036283d7da7d5d691c48e5317535ff31bd7b39c3b0b55838ee00b119",
+      "output": "f11662c365b6449a75ba9a0a45293b05b432b19ec107ed8084e4c205bf9226c4"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:descriptionEn": {
+      "source": "0db901ef9f385792aa6751d64a1e5d181a6318951767c062cf7735fc491e6d95",
+      "output": "76139ab277a0074c3b62012ef5f03b2eacafb7b85c810760473afe819903584b"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:nameJa": {
+      "source": "454d0b0243fc819dbe8726f64fe3d6576ada2942087cba11cc2352c59cf410dc",
+      "output": "2e68e47f60cb21f5a83c9ed01d2d306ba24008b408b46bcaa9312072d6c3949a"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:descriptionJa": {
+      "source": "58712f1776f6775e392b71e65b1ac52fd99ff556bb3e544606b12bd59c7e173b",
+      "output": "796a885d09a398f4913ec3df91e50392b5dbb8ac654ea63b549b7bdc76e27ee3"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:nameKo": {
+      "source": "91397451a02650f5250f04bb9a80c6c74bce1a98735cd6ba860dad4ccb96b70e",
+      "output": "6d485aba3de4acc1bae1735ad2c8d77884c84f40d8993a55bcca0a1a1c46510f"
+    },
+    "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:descriptionKo": {
+      "source": "b3795810845e4bd2b28ee3296314e322cc37b6b831ea88d480c869761aab0603",
+      "output": "94e5348c37a6ba4c3fd064d3f9b5dd91ad47f848b21d2f1e8ca46788c8390565"
     }
   },
   "cache": {
@@ -250,6 +282,14 @@
     "f74b0f9b69b1f5d9ec41054f937c9cfcd8fde135e9bf6c1b0ba29d623f3ed6bd": "DODOMEN 是一个以创意与设计为核心的主题清单，聚焦于独特的风格与艺术表现。",
     "a247838d027ba053dd5c2287e20cddd822f687cf27fd0cb8d5361bdbd1f2cea6": "DODOMEN is a list of themes centered on creativity and design, focusing on unique styles and artistic expressions.",
     "a6591a537f6d90ddf7c46afab303882dd8d538bed4d7ebc3cf0b5d93aae32a31": "DODOMENは、創造性とデザインを中心としたテーマのリストであり、独自のスタイルと芸術的表現に焦点を当てています。",
-    "b4e885a2fd85d325ac3ef202b6984f5e815d101e447f45fb40ad725f2e835b7c": "DODOMEN은 창의성과 디자인을 중심으로 한 테마 목록으로, 독특한 스타일과 예술적 표현에 초점을 맞추고 있습니다."
+    "b4e885a2fd85d325ac3ef202b6984f5e815d101e447f45fb40ad725f2e835b7c": "DODOMEN은 창의성과 디자인을 중심으로 한 테마 목록으로, 독특한 스타일과 예술적 표현에 초점을 맞추고 있습니다.",
+    "1c4b9cfe74c5cefcd6e46e21c0cdb3d934aaab9450ba2de211daf79a35882d2b": "胡志明市：热门景点列表",
+    "69f1479f1093e50492fe51e1543f44bba4507529d1ffb853e84233244d8b4902": "胡志明市是越南最大城市，融合历史与现代风貌，拥有热门景点如中央邮局、圣母大教堂与范五老街，展现丰富的文化与都市魅力。",
+    "edbbfdc0036283d7da7d5d691c48e5317535ff31bd7b39c3b0b55838ee00b119": "Ho Chi Minh City: List of Popular Attractions",
+    "0db901ef9f385792aa6751d64a1e5d181a6318951767c062cf7735fc491e6d95": "Ho Chi Minh City, Vietnam's largest city, blends history and modernity, boasting popular attractions such as the Central Post Office, Notre Dame Cathedral, and Pham Ngu Lao Street, showcasing its rich culture and urban charm.",
+    "454d0b0243fc819dbe8726f64fe3d6576ada2942087cba11cc2352c59cf410dc": "ホーチミン市：人気観光スポット一覧",
+    "58712f1776f6775e392b71e65b1ac52fd99ff556bb3e544606b12bd59c7e173b": "ベトナム最大の都市であるホーチミン市は、歴史と現代性が融合した街であり、中央郵便局、ノートルダム大聖堂、ファム・グー・ラオ通りといった人気観光スポットを誇り、豊かな文化と都会的な魅力を誇っている。",
+    "91397451a02650f5250f04bb9a80c6c74bce1a98735cd6ba860dad4ccb96b70e": "호치민시: 인기 명소 목록",
+    "b3795810845e4bd2b28ee3296314e322cc37b6b831ea88d480c869761aab0603": "베트남 최대 도시인 호치민시는 역사와 현대가 조화를 이루는 곳으로, 중앙 우체국, 노트르담 대성당, 팜 응우 라오 거리와 같은 인기 명소를 자랑하며 풍부한 문화와 도시의 매력을 보여줍니다."
   }
 }
