@@ -415,6 +415,22 @@
     "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:imageAltKo": {
       "source": "a5f4fefcde94f810b9b4da15f87e082cbfa8131e8da88c08486454b0255bcad3",
       "output": "f59c331218197be94e9bb6340cd566551d9bd88434b07dc5ff6178437da9a8e0"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:imageAltHans": {
+      "source": "2f5f2aae5b3a7f88dd21643fb9e5f64c585df66993a257c30712119e18254cd8",
+      "output": "71fb5c7a65561f6759659c8473c3be885184cc7747ab1bfa4a63f67cfd050362"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:imageAltEn": {
+      "source": "3945cd672719ebd08ba2c099ceb8ea24411162123dd21d3938d70e744cdfc14b",
+      "output": "df10e64b0733750e442a8ceece6c3302487e574d8161b39387ab6a21154b2334"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:imageAltJa": {
+      "source": "a34e7a451b25ad6127aaed8632199118f22d3d201544a36937ea80d21b60725b",
+      "output": "8e39cd0f4fffbb799ee02d771f48e396dbcb8ed7408be814976c7237476bbc06"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:imageAltKo": {
+      "source": "caad80db10fd2dbbab7820910e5d41525cf7ebbb376622bfc48cfe038d0f5d56",
+      "output": "fee17a9430b45ee124396d385c5fd889df705033f8a67e0f899f996299b29c23"
     }
   },
   "cache": {
@@ -542,6 +558,10 @@
     "9feb4b816ec14efc3239ee25db4e849b2ce8dbc06272d8aae16a5e56dd5dc9c7": "Ho Chi Minh City (Vietnam) – statue of Ho Chi Minh in front of the Ho Chi Minh City Hall (People's Committee Building)",
     "71d6d6f2b1ef093d36dfa63aedf8b539546a0d792b2fda7aa1100c841c535aea": "Ho Chi Minh City (Vietnam) – statue of Ho Chi Minh in front of the Ho Chi Minh City Hall (People's Committee Building)",
     "7804b54d1c02af5e8c7bff52ede98ee547d0d23ffcc7e93e65f6b54db205e0f2": "ホーチミン市（ベトナム） – ホーチミン市庁舎（人民委員会ビル）前のホーチミン像",
-    "a5f4fefcde94f810b9b4da15f87e082cbfa8131e8da88c08486454b0255bcad3": "호찌민시(베트남) – 호찌민 시청(인민위원회 건물) 앞에 있는 호찌민 동상"
+    "a5f4fefcde94f810b9b4da15f87e082cbfa8131e8da88c08486454b0255bcad3": "호찌민시(베트남) – 호찌민 시청(인민위원회 건물) 앞에 있는 호찌민 동상",
+    "2f5f2aae5b3a7f88dd21643fb9e5f64c585df66993a257c30712119e18254cd8": "胡志明市市政厅",
+    "3945cd672719ebd08ba2c099ceb8ea24411162123dd21d3938d70e744cdfc14b": "Ho Chi Minh City Hall",
+    "a34e7a451b25ad6127aaed8632199118f22d3d201544a36937ea80d21b60725b": "ホーチミン市役所",
+    "caad80db10fd2dbbab7820910e5d41525cf7ebbb376622bfc48cfe038d0f5d56": "호찌민시청"
   }
 }
