@@ -479,6 +479,22 @@
     "content/countries/54c3e84a-0314-4650-b7ef-3872be67deb1.json:imageAltKo": {
       "source": "63713b3612b6e7b4657842c063a31759d35cb2f5b0d2ee78948774e8d25a2495",
       "output": "2f0dbdcd30d782dd24535ea8d6ba2278e46c1a6ebe6376abe57d31d7ca8b1af5"
+    },
+    "content/continents/5dde8a5d-55c3-404e-b3d5-c09e6f9a9ff3.json:nameHans": {
+      "source": "401191d8d4754908951e4dd00e1cbae70cb27d0f7c18f1a3015b655eeff623c4",
+      "output": "f111af1ed5db8d978b13896f339681fb00adcb4bd6082f17b01ae93fd3ff8c7d"
+    },
+    "content/continents/5dde8a5d-55c3-404e-b3d5-c09e6f9a9ff3.json:english": {
+      "source": "0221ef23e7b70c21cf7f85f229ef0fd8e4b8c16f292f4411710bf7386814b9ca",
+      "output": "98d7f113aa13e67287bf6e9657d690be9c89226c9dbd50453897022484ad2771"
+    },
+    "content/continents/5dde8a5d-55c3-404e-b3d5-c09e6f9a9ff3.json:nameJa": {
+      "source": "db7f85d7d098ed7761b22d82f62ddb416eeb0b43bff64200f444e4dc05e137d3",
+      "output": "f7f181033c4da3c495d9f0ab9967652462819fcf199b40c1ccdb5b7b6b05f193"
+    },
+    "content/continents/5dde8a5d-55c3-404e-b3d5-c09e6f9a9ff3.json:nameKo": {
+      "source": "b2ca29830692c5df91dbac78425d3bd4456e3a5435fece379aa288718f9f0b67",
+      "output": "23ed1f9ea4944fc3c4133d4b82816a1c2d67e77e278f412db488d1743b5e27b7"
     }
   },
   "cache": {
@@ -622,6 +638,10 @@
     "b8a2c72a07642fcb01d46b9c3246379e8055e01defa5d2f11ebd90c564749a75": "从卫理公会中央大厅的圆顶看威斯敏斯特宫（议会大厦）",
     "0ccac153dfe6b5673df650ae31421127b78c62372eca09001e7e5a1f087e2e99": "View of Westminster Palace (House of Parliament) from the dome of the Methodist Central Hall.",
     "c8daa7a4b9e6e72837cce0ce3104cae1d709a579798c8877b3c9bf66b04f4438": "メソジスト中央会館のドームから見たウェストミンスター宮殿（国会議事堂）。",
-    "63713b3612b6e7b4657842c063a31759d35cb2f5b0d2ee78948774e8d25a2495": "감리교 중앙회관 돔에서 바라본 웨스트민스터 궁전(국회의사당)의 모습."
+    "63713b3612b6e7b4657842c063a31759d35cb2f5b0d2ee78948774e8d25a2495": "감리교 중앙회관 돔에서 바라본 웨스트민스터 궁전(국회의사당)의 모습.",
+    "401191d8d4754908951e4dd00e1cbae70cb27d0f7c18f1a3015b655eeff623c4": "美洲",
+    "0221ef23e7b70c21cf7f85f229ef0fd8e4b8c16f292f4411710bf7386814b9ca": "America",
+    "db7f85d7d098ed7761b22d82f62ddb416eeb0b43bff64200f444e4dc05e137d3": "アメリカ",
+    "b2ca29830692c5df91dbac78425d3bd4456e3a5435fece379aa288718f9f0b67": "미국"
   }
 }
