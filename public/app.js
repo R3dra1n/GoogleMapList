@@ -1,3 +1,4 @@
+import {refreshRecommendationUI} from './recommendations.js';
 import {language,setLanguage,localized,t,suffixes} from './i18n.js';
 import {readPreference,savePreference,applyTheme} from './preferences.js';
 import {visibleData,resolveRoute,myMapId} from './model.js';
@@ -37,7 +38,7 @@ function renderStory(city,a,c){
  document.querySelectorAll('#story .cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
 }
 function translateUI(){
- setLanguage(language);
+ setLanguage(language);refreshRecommendationUI();
  $('update-label').textContent=t('update');$('refresh-content').textContent=t('refresh');
  const texts={'.skip':'skip','.intro h1':'heading','.intro-text':'intro','.save-tip strong':'saveTitle','.save-tip p':'saveText','.site-footer strong':'brand','.site-footer>div>span':'footer','#credits-button':'credits','.footer-links a':'admin','.dialog-head h2':'credits'};
  for(const [selector,key] of Object.entries(texts))document.querySelector(selector).textContent=t(key);

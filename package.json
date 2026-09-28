@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --experimental-sqlite --test tests/*.test.mjs",
     "deploy:auth": "wrangler deploy --config worker/wrangler.toml"
   },
   "engines": { "node": ">=22" }

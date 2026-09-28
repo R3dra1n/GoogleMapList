@@ -7,3 +7,9 @@ workers_dev = true
 SITE_ORIGIN = "https://r3dra1n.github.io"
 GITHUB_REPO = "R3dra1n/GoogleMapList"
 # GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET are configured via wrangler secret put.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pocket-atlas-recommendations"
+database_id = "df5e3d9b-067f-4399-98d3-8162364d7e6f"
+migrations_dir = "migrations"

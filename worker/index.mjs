@@ -1,3 +1,4 @@
+import {api} from './api.mjs';
 const COOKIE='__Host-pocket_oauth';
 const securityHeaders={'Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'};
 const text=(message,status=200)=>new Response(message,{status,headers:{...securityHeaders,'Content-Type':'text/plain; charset=utf-8'}});
@@ -11,6 +12,7 @@ export function popup(origin,token){
 }
 export function createHandler(fetcher=fetch){return async(request,env)=>{
  const url=new URL(request.url);
+ if(url.pathname.startsWith('/api/'))return api(request,env,fetcher);
  if(request.method!=='GET')return text('Method not allowed',405);
  if(url.pathname==='/health')return Response.json({ready:configured(env)},{headers:securityHeaders});
  if(!['/auth','/callback'].includes(url.pathname))return text('Not found',404);

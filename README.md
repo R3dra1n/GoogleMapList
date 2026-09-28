@@ -112,3 +112,19 @@ My Maps 欄位接受 Google 完整網址（`https://www.google.com/maps/d/viewer
 5. 在 Actions → Validate and publish Pocket Atlas → Run workflow，觸發第一次翻譯。之後正常發布內容就會自動執行。
 
 檢查待翻譯數量且不呼叫 API：`node scripts/translate-content.mjs --check`。只有 GitHub Actions 的翻譯步驟會取得密鑰；網站訪客不呼叫 Google 翻譯 API，也不會取得密鑰。
+
+## 讀者推薦與自動搜圖候選
+
+前台頁尾「推薦好地方」開啟五語推薦表單，收集國家、城市、名稱、類型、Google Maps 連結、理由和選填 Email。推薦不是公開留言：資料儲存在 Cloudflare D1 `pocket-atlas-recommendations`，不進公開 Git、不放入網站資料檔。沒有 Email 通知功能；維護者從收件箱查看。訪客每個連線來源每小時最多 5 次新推薦，使用隨機鹽雜湊計數，不保存原始 IP；另有隱藏誘捕欄位、長度校驗與冪等收件 ID。這些是基礎防垃圾機制，若遇到大量濫用可再接 Turnstile。
+
+管理後台上方 →「推薦收件箱／搜圖」→ GitHub 登入。工具使用獨立登入工作階段，權限仍由同一 GitHub 倉庫的 push 權限決定。每個管理 API 請求都重新核對權限；令牌只放在目前分頁的 sessionStorage，過期後重新登入。
+
+- 收件箱：待審核、已採納、略過，支援分頁與永久刪除。Email 不公開。採納只更新審核狀態，不直接修改 Google Maps 清單。
+- 搜圖：先儲存國家／城市，再選目的地，自動以名稱與父區域搜尋 Wikimedia Commons。可修改關鍵字；找不到時可以繼續自行上傳。
+- 候選只納入可辨識的 CC BY、CC BY-SA、CC0／公有領域授權 JPG/PNG/WebP，顯示作者、原圖與授權。搜尋不保證地點正確，需維護者選擇。
+- 確认後下載最多 2.5 MB 的預覽尺寸圖片到 `public/uploads`，與圖片描述、署名、來源、授權一起原子提交到 GitHub；原來的圖檔保留，以免破壞其他引用。新的圖片描述翻譯欄位會清空並由既有翻譯流程補齊。
+- 保存使用內容 SHA 與非強制更新，遇到其他編輯搶先修改時要求重新選擇，不覆盖。請先儲存並關閉同一筆 CMS 舊表單，再選圖；完成後重新開啟內容。
+
+Worker 設定：`DB` 綁定私密 D1、`RATE_SALT` 存於 Worker secret。資料結構在 `worker/migrations/0001_recommendations.sql`。部署順序：套用 D1 migration → `npm run deploy:auth` → 推送網站。不要把 D1 資料匯出檔提交到公開倉庫。
+
+`npm test` 使用 Node 22 的實驗性 SQLite 測試實際 SQL；`tests/community-browser.cjs` 驗證推薦失敗保留、重試、審核、刪除、選圖、衝突及登入過期。正式服務已測試推薦提交、權限、狀態更新與刪除測試資料，亦測試真實 Wikimedia 搜圖及下載；正式封面由維護者自行選擇。
