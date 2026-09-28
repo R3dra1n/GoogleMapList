@@ -131,6 +131,22 @@
     "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:nameKo": {
       "source": "2bf2988ea749a084cb05960075f688bdd881a866290c0107ea79cfd3e1a16690",
       "output": "79449ee404a67ac46114a85a8802789c9185f807012e80321d64843aba8ce407"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:imageAltHans": {
+      "source": "f03c842f20941a09e8256a8fbb666c5533fbd3cb7f9eeb3a833743de97d8218e",
+      "output": "d00af4def70fe8fa3f19138408a396fec6d06a3849c67cba530f028f893557d4"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:imageAltEn": {
+      "source": "c1b76ed1e174ccff7f9547630984a7d635b21d81cb965741d9abe1f6f8756eea",
+      "output": "efe7eb6a8f9c1401b7e147fd9031c85af1e5f66ac37b39c0e1998ac7b1ab5c16"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:imageAltJa": {
+      "source": "7b4d4ddd1d631b0e2545ab423cbd03d4376aecd082cfd0a5424ab9c9dc2bfed7",
+      "output": "cf8cc6da13207aa8f27a150ce19921d1b875a39973b1247a5cb39690d40ae3f3"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:imageAltKo": {
+      "source": "a7704129ebbbf0303e3b1d0b1f7508c27b517ea945823ceddbc7b206357a8016",
+      "output": "4c76bd250546d7fcdeb471d3f3a4c4697602b93f9a2eadd317b9e1c8da5d702c"
     }
   },
   "cache": {
@@ -158,6 +174,10 @@
     "f4d5b2c3f8e7f20130e98fa4480e589e8ef47733beb00e62b9256e38fea4c2f8": "香港",
     "2d4100fcf188fd6e7faad426e5cec1d6e81a82848e17b313d3ed3a3651909e79": "Hongkong",
     "495abc2527cea50ffd7a5854c6c143b5f7c5d026845d1d674ae568d86e64d996": "香港",
-    "2bf2988ea749a084cb05960075f688bdd881a866290c0107ea79cfd3e1a16690": "홍콩"
+    "2bf2988ea749a084cb05960075f688bdd881a866290c0107ea79cfd3e1a16690": "홍콩",
+    "f03c842f20941a09e8256a8fbb666c5533fbd3cb7f9eeb3a833743de97d8218e": "雨夜从太平山顶俯瞰香港维多利亚港与城市天际线。",
+    "c1b76ed1e174ccff7f9547630984a7d635b21d81cb965741d9abe1f6f8756eea": "A view of Victoria Harbour and the city skyline from Victoria Peak on a rainy night.",
+    "7b4d4ddd1d631b0e2545ab423cbd03d4376aecd082cfd0a5424ab9c9dc2bfed7": "雨の夜、ビクトリア・ピークから眺めるビクトリア港と市街のスカイライン。",
+    "a7704129ebbbf0303e3b1d0b1f7508c27b517ea945823ceddbc7b206357a8016": "비 오는 밤, 빅토리아 피크에서 바라본 빅토리아 항구와 도시의 스카이라인."
   }
 }
