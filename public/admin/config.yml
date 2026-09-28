@@ -61,6 +61,10 @@ collections:
       - { name: nameJa, label: 名稱（日本語）, widget: string, required: false, default: '' }
       - { name: nameKo, label: 名稱（한국어）, widget: string, required: false, default: '' }
       - { name: continent, label: 所屬大洲, widget: parent-relation, collection: continents, search_fields: [name], value_field: id, display_fields: [name] }
+      - { name: standalone, label: 不分城市，直接使用地區清單, widget: boolean, default: false, required: false, hint: '適用香港、澳門等。開啟後不必建立下級城市，即可顯示在首頁。' }
+      - { name: food, label: 地區美食清單, widget: string, required: false, default: '' }
+      - { name: sights, label: 地區景點清單, widget: string, required: false, default: '' }
+      - { name: myMap, label: 地區 Google 我的地圖, widget: string, required: false, default: '' }
       - { name: description, label: 簡短介紹, widget: text, required: false, default: '' }
       - { name: descriptionHans, label: 简体中文介紹, widget: text, required: false, default: '' }
       - { name: descriptionJa, label: 介紹（日本語）, widget: text, required: false, default: '' }

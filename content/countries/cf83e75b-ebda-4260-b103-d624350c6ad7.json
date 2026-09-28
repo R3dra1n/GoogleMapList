@@ -21,5 +21,6 @@
   "descriptionHans": "",
   "id": "cf83e75b-ebda-4260-b103-d624350c6ad7",
   "image": "",
-  "description": ""
+  "description": "",
+  "standalone": true
 }

@@ -19,3 +19,5 @@ test('duplicate names are scoped to the parent region',()=>{
   const d=clone();d.cities.push({...d.cities[0],id:'another-city'});assert.throws(()=>validate(d),/同一區域重複/);
   d.cities.at(-1).country=d.cities[0].country==='korea'?'taiwan':'korea';validate(d);
 });
+
+test('standalone regions appear without cities and respect hidden ancestors',()=>{const d=clone();d.countries.push({id:'hong-kong',name:'香港',continent:'asia',standalone:true,food:'https://maps.app.goo.gl/abc',sights:'',published:true,order:10});validate(d);const v=visibleData(d);assert.ok(v.countries.some(c=>c.id==='hong-kong'));assert.equal(visibleData(v).cities.filter(c=>c.country==='hong-kong').length,1);const r=v.cities.find(c=>c.country==='hong-kong');assert.equal(r.food,'https://maps.app.goo.gl/abc');assert.equal(resolveRoute('#/asia/hong-kong/'+r.id,v).city.id,r.id);d.countries.at(-1).published=false;assert.ok(!visibleData(d).cities.some(c=>c.country==='hong-kong'));});

@@ -36,6 +36,7 @@ export function validate(data) {
       for (const key of ['imageSource','imageLicense']) if (entry[key] && !/^https:\/\//.test(entry[key])) throw new Error(`${entry.id} 的圖片出處連結無效`);
     }
   }
+  for(const country of data.countries){if(country.standalone!=null&&typeof country.standalone!=='boolean')throw new Error('地區模式必須是布林值');for(const key of ['food','sights'])if(country[key]!=null&&(typeof country[key]!=='string'||!isMapsLink(country[key])))throw new Error('地區清單必須是 Google Maps HTTPS 連結');if(country.myMap&&!myMapId(country.myMap))throw new Error('地區 My Maps 網址無效');}
   for (const country of data.countries) if (!data.continents.some(x => x.id === country.continent)) throw new Error(`${country.name} 找不到所屬大洲`);
   for (const city of data.cities) {
     if(city.myMap&&!myMapId(city.myMap))throw new Error(`${city.name} 的 My Maps 網址無效`);
@@ -47,8 +48,9 @@ export function validate(data) {
 export function visibleData(data) {
   const sorted = xs => xs.slice().sort((a,b) => a.order-b.order || a.name.localeCompare(b.name,'zh-Hant'));
   const countries = data.countries.filter(c => c.published && data.continents.some(a => a.id===c.continent && a.published));
-  const cities = sorted(data.cities.filter(c => c.published && countries.some(p=>p.id===c.country)));
-  const availableCountries=sorted(countries.filter(c=>cities.some(x=>x.country===c.id)));
+  const cities = sorted(data.cities.filter(c => !c._region && c.published && countries.some(p=>p.id===c.country)));
+  const availableCountries=sorted(countries.filter(c=>c.standalone||cities.some(x=>x.country===c.id)));
+  for(const c of availableCountries.filter(c=>c.standalone))cities.push({...c,id:c.id+'-region',country:c.id,food:c.food||'',sights:c.sights||'',_region:true});
   return {cities,countries:availableCountries,continents:sorted(data.continents.filter(a=>a.published&&availableCountries.some(c=>c.continent===a.id)))};
 }
 export function resolveRoute(hash, data) {
