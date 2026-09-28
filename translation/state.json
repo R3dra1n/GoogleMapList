@@ -263,6 +263,38 @@
     "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:descriptionKo": {
       "source": "f8de5b30c7eaf11b36518203c702a4623f1f838cdaa92c97d15c7594bc527fa9",
       "output": "25357b17a0d565016bfdb39b7a930574f120d0e91f623ea4ac3ea92df0508b24"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:nameHans": {
+      "source": "388d11ba45c502d66f3c360e31e88f8865c950b298b660dd590a29267f7f6fd5",
+      "output": "a6c0db788b589b101392088546950a6756d330b2b5843d5b433007f6bff15930"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:descriptionHans": {
+      "source": "c91c1dba7b61b3eda88c371906fba87eb435f3a1c0c0d712063ef3f62c4cdae7",
+      "output": "6e3c8f11e8c60d620ac7161f0485b1a1e8ae750a4e3f81ecc8761f5bdbe4ee99"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:english": {
+      "source": "2c4102c352c6cf70586f49e36965b145afc51848526e409ce9fb4941741807ca",
+      "output": "ecc0e7dc084f141b29479058967d0bc07dee25d9690a98ee4e6fdad5168274d7"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:descriptionEn": {
+      "source": "88f34479211bc24d74194fb846e4988817e55c92f6f42113663d442c44ec4b87",
+      "output": "0d74673cce55ae826f45a930b93e0068d48b9feaca9d7b12ce601cedd64449c3"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:nameJa": {
+      "source": "a23257e403fe0ff80e468185661b811e2bae6142e2eca280bbb119f97de896e6",
+      "output": "c1137ca799ca1bf4673368c23594a3c268b86a975af23c074cc81ef2616c6a79"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:descriptionJa": {
+      "source": "61fa76f88f8550c9531eb3713f1936fe8f36cfa4168e53a91c66b3693ca24c3a",
+      "output": "79ef0e5e4cb52c89a87b2633ed2d17c103a63425a25634f65585f7629e4fdc1e"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:nameKo": {
+      "source": "bf35b1f9a79d095cc24dbd89992918336009618c579474adc9f54365199d42bd",
+      "output": "f1a13562d4d9a7c95dd995a81e8cbfc9487fffdc9dd738f7a780022f9c6296ad"
+    },
+    "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:descriptionKo": {
+      "source": "58e0a4c3e02e496f7d19f26beb4d9a7b64f099c3cdd2a28bdf6fb2111adc9f7b",
+      "output": "4d60d2ecd9d2a142975f8a656caff182151a82d9aa026a37ee8c296213a96a3d"
     }
   },
   "cache": {
@@ -330,6 +362,14 @@
     "599ba216f72e7bc83336e7d2016374803b625ecae23deff3b55504f4db05baa5": "ホーチミン市：有名な観光スポット",
     "e10c92b687b05320c670346f45d2f0b747bc7a5e7a9d97e5478aeb3e8c069111": "ホーチミン市はベトナム南部の重要な都市であり、ノートルダム大聖堂や中央郵便局など、フランス植民地時代の建築様式を今に伝える歴史的・文化的見どころが数多く存在する。",
     "8549e1237f36611bba9c1662486b3cebfa648c4ec60279027bf870292ca7ceaf": "호찌민시: 유명한 현지 명소",
-    "f8de5b30c7eaf11b36518203c702a4623f1f838cdaa92c97d15c7594bc527fa9": "호치민시는 베트남 남부의 중요한 도시로, 노트르담 대성당과 중앙 우체국과 같이 프랑스 식민지 시대 건축 양식을 보여주는 풍부한 역사 및 문화 명소를 자랑합니다."
+    "f8de5b30c7eaf11b36518203c702a4623f1f838cdaa92c97d15c7594bc527fa9": "호치민시는 베트남 남부의 중요한 도시로, 노트르담 대성당과 중앙 우체국과 같이 프랑스 식민지 시대 건축 양식을 보여주는 풍부한 역사 및 문화 명소를 자랑합니다.",
+    "388d11ba45c502d66f3c360e31e88f8865c950b298b660dd590a29267f7f6fd5": "伦敦",
+    "c91c1dba7b61b3eda88c371906fba87eb435f3a1c0c0d712063ef3f62c4cdae7": "伦敦是英国的首都，拥有丰富的历史与文化景点，如大英博物馆与伦敦塔。城市融合古典与现代，是艺术、时尚与政治的中心。",
+    "2c4102c352c6cf70586f49e36965b145afc51848526e409ce9fb4941741807ca": "London",
+    "88f34479211bc24d74194fb846e4988817e55c92f6f42113663d442c44ec4b87": "London, the capital of the United Kingdom, boasts a wealth of historical and cultural attractions, such as the British Museum and the Tower of London. A blend of classic and modern, the city is a center of art, fashion, and politics.",
+    "a23257e403fe0ff80e468185661b811e2bae6142e2eca280bbb119f97de896e6": "ロンドン",
+    "61fa76f88f8550c9531eb3713f1936fe8f36cfa4168e53a91c66b3693ca24c3a": "英国の首都ロンドンは、大英博物館やロンドン塔など、数多くの歴史的・文化的名所を誇ります。古典と現代が融合したこの都市は、芸術、ファッション、政治の中心地です。",
+    "bf35b1f9a79d095cc24dbd89992918336009618c579474adc9f54365199d42bd": "런던",
+    "58e0a4c3e02e496f7d19f26beb4d9a7b64f099c3cdd2a28bdf6fb2111adc9f7b": "영국의 수도인 런던은 대영 박물관과 런던탑을 비롯한 풍부한 역사 및 문화 명소를 자랑합니다. 고전과 현대가 조화를 이루는 이 도시는 예술, 패션, 정치의 중심지입니다."
   }
 }
