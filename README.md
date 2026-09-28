@@ -140,3 +140,11 @@ Worker 設定：`DB` 綁定私密 D1、`RATE_SALT` 存於 Worker secret。資料
 ### 社群分享預覽
 
 首頁的 Open Graph 與 Twitter 大圖標籤直接寫入 HTML，分享爬蟲不需執行 JavaScript。封面為原創卡片插畫 `public/assets/share-cover.jpg`（1200 × 630），可編輯來源是 `design/share-cover.html`。首頁提供 canonical 與 `sitemap.xml`。目前 hash 區域連結共用首頁預覽，並非各目的地的獨立 SEO 頁面；未來新增主題／目的地靜態頁時需給每頁自己的 canonical、OG 與 sitemap 項目。
+
+### 主題精選與其他地圖平台
+
+大洲導覽最右側的「✨ 主題精選」使用 `#/themes`，內容存於 `content/themes/`，不需要父級地區或標籤。後台可設定名稱、介紹、封面、排序、公開狀態及主要清單連結；沿用 Google 翻譯與搜圖流程。未建立主題時顯示整理中，不放入示範清單。
+
+城市、獨立地區與主題均可選填高德／百度 HTTPS 分享連結。Google 原有美食、景點欄位保持 Google 專用；替代平台入口另外顯示平台名稱。主題主要連結可使用三種平台。訪客推薦表單也接受這三種平台，依精確主機白名單驗證，不接受口令或任意網站。
+
+不會自動將 Google Maps 清單轉換成其他平台，也不猜測地點座標。請在高德或百度建立相應內容，再貼上可公開分享的連結。官方 URI 格式已以 HTTP 測試確認可開啟；中國大陸實際網路、App 喚起及收藏流程仍需當地實機驗證。

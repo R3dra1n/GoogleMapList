@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {validate,visibleData,resolveRoute,isMapsLink,isImagePath} from '../public/model.js';
+import {validate,visibleData,resolveRoute,isMapsLink,isImagePath,mapProvider} from '../public/model.js';
 const data=JSON.parse(await readFile(new URL('./fixtures/initial.json',import.meta.url),'utf8'));
 const clone=()=>structuredClone(data);
 test('initial links and hierarchy match the approved source lists',()=>{validate(data);assert.equal(data.cities.length,6);const expected={yilan:['taiwan','p8eDToV2jjbXH3tm7',''],hualien:['taiwan','5wpnSUyxxYqL2gK47','CdsGKehdXxXz7qbu9'],busan:['korea','eKAfsFhSLoqXSu1Q7','eKAfsFhSLoqXSu1Q7'],'ho-chi-minh':['vietnam','yci2TWx3K2unvujN7','yci2TWx3K2unvujN7'],'kuala-lumpur':['malaysia','KEFF4CGzh4qSEdHZ8','KEFF4CGzh4qSEdHZ8'],'chiang-mai':['thailand','2KTs2ftc481PcyUa8','2KTs2ftc481PcyUa8']};for(const c of data.cities){const [parent,f,s]=expected[c.id];assert.equal(c.country,parent);assert.equal(c.food,'https://maps.app.goo.gl/'+f);assert.equal(c.sights,s?'https://maps.app.goo.gl/'+s:'');}});
@@ -21,3 +21,5 @@ test('duplicate names are scoped to the parent region',()=>{
 });
 
 test('standalone regions appear without cities and respect hidden ancestors',()=>{const d=clone();d.countries.push({id:'hong-kong',name:'香港',continent:'asia',standalone:true,food:'https://maps.app.goo.gl/abc',sights:'',published:true,order:10});validate(d);const v=visibleData(d);assert.ok(v.countries.some(c=>c.id==='hong-kong'));assert.equal(visibleData(v).cities.filter(c=>c.country==='hong-kong').length,1);const r=v.cities.find(c=>c.country==='hong-kong');assert.equal(r.food,'https://maps.app.goo.gl/abc');assert.equal(resolveRoute('#/asia/hong-kong/'+r.id,v).city.id,r.id);d.countries.at(-1).published=false;assert.ok(!visibleData(d).cities.some(c=>c.country==='hong-kong'));});
+
+test('theme collections are independent, hidden drafts stay private and map hosts are strict',()=>{const d=clone();d.themes=[{id:'coffee',name:'咖啡',order:1,published:true,link:'https://uri.amap.com/marker?position=116,39'},{id:'draft',name:'草稿',order:2,published:false}];validate(d);assert.equal(visibleData(d).themes.length,1);assert.equal(resolveRoute('#/themes',visibleData(d)).themes,true);assert.equal(mapProvider('https://j.map.baidu.com/abc'),'baidu');assert.equal(mapProvider('https://surl.amap.com/abc'),'amap');for(const link of ['https://amap.com.evil.test/a','javascript:alert(1)','http://uri.amap.com/marker','https://user@map.baidu.com/'])assert.equal(mapProvider(link),null);d.themes[0].link='https://evil.test/';assert.throws(()=>validate(d),/主題連結/);});

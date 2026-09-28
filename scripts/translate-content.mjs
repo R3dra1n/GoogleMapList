@@ -46,7 +46,7 @@ export async function translateEntries(entries,previous,{apiKey,fetcher=fetch,ma
 async function atomicJSON(path,value){await writeFile(path+'.tmp',JSON.stringify(value,null,2)+'\n');await rename(path+'.tmp',path);}
 async function main(){
  const entries=[];
- for(const kind of ['continents','countries','cities'])for(const name of (await readdir(`content/${kind}`)).filter(n=>n.endsWith('.json')).sort()){const path=`content/${kind}/${name}`;const original=await readFile(path,'utf8');entries.push({path,original,data:JSON.parse(original)});}
+ for(const kind of ['continents','countries','cities','themes'])for(const name of (await readdir(`content/${kind}`)).filter(n=>n.endsWith('.json')).sort()){const path=`content/${kind}/${name}`;const original=await readFile(path,'utf8');entries.push({path,original,data:JSON.parse(original)});}
  const statePath='translation/state.json';let state={};try{state=JSON.parse(await readFile(statePath,'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
  if(process.argv.includes('--check')){const plan=planTranslations(entries,state);console.log(`待翻譯 ${plan.jobs.length} 個不重複文字項目，${plan.characters} 字符；未呼叫 API、未修改檔案。`);return;}
  if(!process.env.GOOGLE_TRANSLATE_API_KEY){console.log('::notice::Google 翻譯尚未連接；保留現有內容與譯文。');return;}

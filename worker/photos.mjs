@@ -20,12 +20,12 @@ export function githubClient(env,token,fetcher){return async(path,body,method)=>
 };}
 const fromBase64=value=>new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\s/g,'')),c=>c.charCodeAt(0)));
 const toBase64=bytes=>{let text='';for(let i=0;i<bytes.length;i+=8192)text+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(text);};
-const contentPath=(kind,id)=>{if(!['countries','cities'].includes(kind)||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id||''))throw new ApiError('Invalid destination');return `content/${kind}/${id}.json`;};
+const contentPath=(kind,id)=>{if(!['countries','cities','themes'].includes(kind)||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id||''))throw new ApiError('Invalid destination');return `content/${kind}/${id}.json`;};
 export async function destinations(github,offset=0,snapshot=''){
  if(!Number.isSafeInteger(offset)||offset<0||offset>100000||snapshot&&!/^[a-f0-9]{40}$/.test(snapshot))throw new ApiError('Invalid destination page');
  const revision=snapshot||(await github('git/ref/heads/main')).object.sha;
  const tree=await github(`git/trees/${revision}?recursive=1`);if(tree.truncated)throw new ApiError('Destination directory too large',503);
- const files=tree.tree.filter(f=>/^content\/(continents|countries|cities)\/[a-z0-9-]+\.json$/.test(f.path)).sort((a,b)=>a.path.localeCompare(b.path));
+ const files=tree.tree.filter(f=>/^content\/(continents|countries|cities|themes)\/[a-z0-9-]+\.json$/.test(f.path)).sort((a,b)=>a.path.localeCompare(b.path));
  const page=files.slice(offset,offset+24),entries=[];
  for(let i=0;i<page.length;i+=8)entries.push(...await Promise.all(page.slice(i,i+8).map(async f=>({path:f.path,sha:f.sha,...JSON.parse(fromBase64((await github(`git/blobs/${f.sha}`)).content))}))));
  return {snapshot:revision,nextOffset:offset+24<files.length?offset+24:null,items:entries.map(x=>({id:x.id,name:x.name,english:x.english,kind:x.path.split('/')[1],sha:x.sha,image:x.image||'',parentId:x.country||x.continent||''}))};

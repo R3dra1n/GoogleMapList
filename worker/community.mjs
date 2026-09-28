@@ -1,4 +1,4 @@
-import {isMapsLink} from '../public/model.js';
+import {mapProvider} from '../public/model.js';
 const uuid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 export class ApiError extends Error {constructor(message,status=400){super(message);this.status=status;}}
 export async function readJSON(request,max=14000){
@@ -13,7 +13,7 @@ export function recommendation(body){
  if(!uuid.test(body.id||'')||body.consent!==true)throw new ApiError('Invalid submission');
  for(const key of ['name'])if(!values[key])throw new ApiError('Missing required field');
  values.category ||= 'other';
- if(!['food','sights','other'].includes(values.category)||(values.mapUrl&&!isMapsLink(values.mapUrl)))throw new ApiError('Invalid category or Google Maps link');
+ if(!['food','sights','other'].includes(values.category)||(values.mapUrl&&!mapProvider(values.mapUrl)))throw new ApiError('Invalid category or Google Maps link');
  if(values.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))throw new ApiError('Invalid email');
  return {...values,id:body.id};
 }

@@ -62,6 +62,8 @@ collections:
       - { name: nameKo, label: 名稱（한국어）, widget: string, required: false, default: '' }
       - { name: continent, label: 所屬大洲, widget: parent-relation, collection: continents, search_fields: [name], value_field: id, display_fields: [name] }
       - { name: standalone, label: 不分城市，直接使用地區清單, widget: boolean, default: false, required: false, hint: '適用香港、澳門等。開啟後不必建立下級城市，即可顯示在首頁。' }
+      - { name: amap, label: 高德地圖分享連結, widget: string, required: false, default: '', hint: '貼上高德的 HTTPS 分享連結；不會自動轉換 Google 清單。' }
+      - { name: baidu, label: 百度地圖分享連結, widget: string, required: false, default: '', hint: '貼上百度地圖的 HTTPS 分享連結。' }
       - { name: food, label: 地區美食清單, widget: string, required: false, default: '' }
       - { name: sights, label: 地區景點清單, widget: string, required: false, default: '' }
       - { name: myMap, label: 地區 Google 我的地圖, widget: string, required: false, default: '' }
@@ -107,6 +109,8 @@ collections:
       - { name: descriptionJa, label: 介紹（日本語）, widget: text, required: false, default: '' }
       - { name: descriptionKo, label: 介紹（한국어）, widget: text, required: false, default: '' }
       - { name: descriptionEn, label: English introduction, widget: text, required: false, default: '' }
+      - { name: amap, label: 高德地圖分享連結, widget: string, required: false, default: '', hint: '貼上高德的 HTTPS 分享連結；不會自動轉換 Google 清單。' }
+      - { name: baidu, label: 百度地圖分享連結, widget: string, required: false, default: '', hint: '貼上百度地圖的 HTTPS 分享連結。' }
       - { name: food, label: 美食清單連結, widget: string, required: false, default: '', hint: '貼上 Google Maps 分享連結。留空會顯示「整理中」。' }
       - { name: sights, label: 景點清單連結, widget: string, required: false, default: '', hint: '可以與美食共用同一個連結，前台會標示綜合清單。' }
       - { name: image, label: 封面照片, widget: image, required: false, default: '', choose_url: false, hint: '上傳有權使用的 JPG、PNG、WebP 或 GIF；留空使用預設封面；儲存後可用上方「推薦收件箱／搜圖」自動搜尋候選。' }
@@ -126,3 +130,43 @@ collections:
       - { name: articleJa, label: 旅行筆記（日本語）, widget: text, required: false, default: '' }
       - { name: articleKo, label: 旅行筆記（한국어）, widget: text, required: false, default: '' }
       - { name: articleEn, label: Travel notes (English), widget: text, required: false, default: '' }
+
+  - name: themes
+    label: 主題精選
+    label_singular: 主題精選
+    folder: content/themes
+    create: true
+    delete: false
+    extension: json
+    format: json
+    identifier_field: name
+    slug: '{{id}}'
+    summary: '{{name}} · 排序 {{order}}'
+    sortable_fields: [order, name]
+    editor: { preview: false }
+    fields:
+      - { name: id, label: 固定識別碼, widget: stable-id }
+      - { name: name, label: 名稱, widget: string }
+      - { name: english, label: 英文名稱, widget: string, required: false, default: '' }
+      - { name: nameHans, label: 简体中文名稱, widget: string, required: false, default: '' }
+      - { name: nameJa, label: 名稱（日本語）, widget: string, required: false, default: '' }
+      - { name: nameKo, label: 名稱（한국어）, widget: string, required: false, default: '' }
+      - { name: description, label: 簡短介紹, widget: text, required: false, default: '' }
+      - { name: descriptionHans, label: 简体中文介紹, widget: text, required: false, default: '' }
+      - { name: descriptionJa, label: 介紹（日本語）, widget: text, required: false, default: '' }
+      - { name: descriptionKo, label: 介紹（한국어）, widget: text, required: false, default: '' }
+      - { name: descriptionEn, label: English introduction, widget: text, required: false, default: '' }
+      - { name: image, label: 封面照片, widget: image, required: false, default: '', choose_url: false, hint: '請上傳有權使用的 JPG、PNG、WebP 或 GIF。沒有照片時使用預設封面；儲存後可用上方「推薦收件箱／搜圖」自動搜尋候選。' }
+      - { name: imageAlt, label: 圖片描述, widget: string, required: false, default: '', hint: '有封面照片時必填，供無法看見圖片的人理解內容。' }
+      - { name: imageAltHans, label: 图片描述（简体中文）, widget: string, required: false, default: '' }
+      - { name: imageAltJa, label: 圖片描述（日本語）, widget: string, required: false, default: '' }
+      - { name: imageAltKo, label: 圖片描述（한국어）, widget: string, required: false, default: '' }
+      - { name: imageAltEn, label: Image description (English), widget: string, required: false, default: '' }
+      - { name: imageCredit, label: 攝影者與授權, widget: string, required: false, default: '', hint: '使用他人照片時填寫署名與授權；自有照片可填自己的名字。' }
+      - { name: imageSource, label: 原圖來源網址, widget: string, required: false, default: '' }
+      - { name: imageLicense, label: 授權條款網址, widget: string, required: false, default: '' }
+      - { name: order, label: 顯示順序, widget: number, value_type: int, default: 10, min: 0 }
+      - { name: published, label: 公開顯示, widget: boolean, default: true, hint: '關閉即可隱藏此主題。' }
+      - { name: link, label: 主題清單連結, widget: string, required: false, default: '', hint: '支援 Google Maps、高德、百度 HTTPS 分享連結。留空顯示整理中。' }
+      - { name: amap, label: 高德地圖分享連結, widget: string, required: false, default: '', hint: '貼上高德的 HTTPS 分享連結；不會自動轉換 Google 清單。' }
+      - { name: baidu, label: 百度地圖分享連結, widget: string, required: false, default: '', hint: '貼上百度地圖的 HTTPS 分享連結。' }

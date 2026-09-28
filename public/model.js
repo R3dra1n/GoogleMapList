@@ -1,4 +1,4 @@
-export const kinds = ['continents', 'countries', 'cities'];
+export const kinds = ['continents', 'countries', 'cities', 'themes'];
 export function isImagePath(value) {
   if (!value) return true;
   if (typeof value !== 'string' || !/^(assets|uploads)\//.test(value) || /[\\%?#\u0000-\u001f]/.test(value)) return false;
@@ -17,6 +17,7 @@ export function isMapsLink(value) {
 }
 export function validate(data) {
   for (const kind of kinds) {
+    if(kind==='themes'&&data.themes==null)continue;
     if (!Array.isArray(data[kind])) throw new Error(`缺少 ${kind} 資料`);
     const ids = new Set();
     const names = new Set();
@@ -31,6 +32,8 @@ export function validate(data) {
       for (const key of ['description','english','image','imageAlt','imageCredit','imageSource','imageLicense','nameEn','nameHans','descriptionEn','descriptionHans','imageAltEn','imageAltHans','article','articleEn','articleHans','nameJa','nameKo','descriptionJa','descriptionKo','imageAltJa','imageAltKo','articleJa','articleKo','myMap']) {
         if (entry[key] != null && typeof entry[key] !== 'string') throw new Error(`${entry.id} 的 ${key} 必須是文字`);
       }
+      for(const provider of ['amap','baidu'])if(entry[provider]&&(typeof entry[provider]!=='string'||mapProvider(entry[provider])!==provider))throw new Error(`${entry.id} 的 ${provider} 分享連結無效`);
+      if(kind==='themes'&&entry.link&&!mapProvider(entry.link))throw new Error('主題連結必須是支援的 HTTPS 地圖連結');
       if (!isImagePath(entry.image)) throw new Error(`${entry.id} 的封面路徑無效`);
       if (entry.image && !entry.imageAlt?.trim()) throw new Error(`${entry.id} 的圖片需要替代文字`);
       for (const key of ['imageSource','imageLicense']) if (entry[key] && !/^https:\/\//.test(entry[key])) throw new Error(`${entry.id} 的圖片出處連結無效`);
@@ -51,10 +54,11 @@ export function visibleData(data) {
   const cities = sorted(data.cities.filter(c => !c._region && c.published && countries.some(p=>p.id===c.country)));
   const availableCountries=sorted(countries.filter(c=>c.standalone||cities.some(x=>x.country===c.id)));
   for(const c of availableCountries.filter(c=>c.standalone))cities.push({...c,id:c.id+'-region',country:c.id,food:c.food||'',sights:c.sights||'',_region:true});
-  return {cities,countries:availableCountries,continents:sorted(data.continents.filter(a=>a.published&&availableCountries.some(c=>c.continent===a.id)))};
+  return {...(data.themes?{themes:sorted(data.themes.filter(x=>x.published))}:{}),cities,countries:availableCountries,continents:sorted(data.continents.filter(a=>a.published&&availableCountries.some(c=>c.continent===a.id)))};
 }
 export function resolveRoute(hash, data) {
   let parts; try { parts=decodeURIComponent(hash.replace(/^#\/?/, '')).split('/').filter(Boolean); } catch { return null; }
+  if(parts.length===1&&parts[0]==='themes')return {themes:true};
   if (parts.length>3) return null;
   const continent=data.continents.find(c=>c.id===(parts[0] || (data.continents.some(c=>c.id==='asia')?'asia':data.continents[0]?.id)));
   if (!continent) return null;
@@ -68,4 +72,13 @@ export function resolveRoute(hash, data) {
 export function myMapId(value){
  if(!value)return null;
  try{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password||u.port||!['www.google.com','google.com'].includes(u.hostname)||!/^\/maps\/d\/(?:u\/\d+\/)?(?:edit|viewer|embed)\/?$/.test(u.pathname))return null;const id=u.searchParams.get('mid');return /^[a-zA-Z0-9_-]{10,200}$/.test(id||'')?id:null;}catch{return null;}
+}
+
+export function mapProvider(value){
+ if(!value||typeof value!=='string')return null;
+ if(isMapsLink(value))return 'google';
+ try{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password||u.port)return null;
+ if(['amap.com','www.amap.com','uri.amap.com','ditu.amap.com','surl.amap.com','m.amap.com'].includes(u.hostname))return 'amap';
+ if(['map.baidu.com','api.map.baidu.com','j.map.baidu.com'].includes(u.hostname))return 'baidu';
+ }catch{}return null;
 }
