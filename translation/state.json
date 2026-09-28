@@ -147,6 +147,22 @@
     "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:imageAltKo": {
       "source": "a7704129ebbbf0303e3b1d0b1f7508c27b517ea945823ceddbc7b206357a8016",
       "output": "4c76bd250546d7fcdeb471d3f3a4c4697602b93f9a2eadd317b9e1c8da5d702c"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:descriptionHans": {
+      "source": "a331909005e24de47ff7aca6de1597696e20995eb21182b6d2e89ca5bb09f7df",
+      "output": "3f0ebb166223a627aa90088a5fbf272523aacdd142a4e7496b104816cdb8651f"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:descriptionEn": {
+      "source": "ec50f309dab3987eb715ae3e0c89a79c72387f14ed86afca89a911d25776c4d8",
+      "output": "febf17e0b292a795803988b454f8bf9f7d4bf8c51deb862602474d07e0a8fd12"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:descriptionJa": {
+      "source": "f53cb84f6884b24a06852fcfd1548c2e448ca8cd5915b381f2b43f3008216c01",
+      "output": "835511ec618f1deda3ebf817f93eb23b3038d5b9e575bb9c87af033508de53b1"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:descriptionKo": {
+      "source": "00f27b2cb37bd3190fbef64edc7b75ae32c73f02c59ae5d290c1334c8b72abc6",
+      "output": "4a2d268ef561827242a1535309ab77e40e7471d9e3217b581970d417674211a1"
     }
   },
   "cache": {
@@ -178,6 +194,10 @@
     "f03c842f20941a09e8256a8fbb666c5533fbd3cb7f9eeb3a833743de97d8218e": "雨夜从太平山顶俯瞰香港维多利亚港与城市天际线。",
     "c1b76ed1e174ccff7f9547630984a7d635b21d81cb965741d9abe1f6f8756eea": "A view of Victoria Harbour and the city skyline from Victoria Peak on a rainy night.",
     "7b4d4ddd1d631b0e2545ab423cbd03d4376aecd082cfd0a5424ab9c9dc2bfed7": "雨の夜、ビクトリア・ピークから眺めるビクトリア港と市街のスカイライン。",
-    "a7704129ebbbf0303e3b1d0b1f7508c27b517ea945823ceddbc7b206357a8016": "비 오는 밤, 빅토리아 피크에서 바라본 빅토리아 항구와 도시의 스카이라인."
+    "a7704129ebbbf0303e3b1d0b1f7508c27b517ea945823ceddbc7b206357a8016": "비 오는 밤, 빅토리아 피크에서 바라본 빅토리아 항구와 도시의 스카이라인.",
+    "a331909005e24de47ff7aca6de1597696e20995eb21182b6d2e89ca5bb09f7df": "从摩天大楼到街市排档，感受新旧交叠的城市脉动。",
+    "ec50f309dab3987eb715ae3e0c89a79c72387f14ed86afca89a911d25776c4d8": "From skyscrapers to street stalls, feel the pulse of the city where old and new intertwine.",
+    "f53cb84f6884b24a06852fcfd1548c2e448ca8cd5915b381f2b43f3008216c01": "高層ビルから露店まで、新旧が融合するこの街の鼓動を感じてください。",
+    "00f27b2cb37bd3190fbef64edc7b75ae32c73f02c59ae5d290c1334c8b72abc6": "고층 빌딩부터 길거리 노점까지, 옛것과 새것이 어우러진 도시의 생동감을 느껴보세요."
   }
 }
