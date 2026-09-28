@@ -57,8 +57,8 @@
       "output": "15d0cb0e5194e683ec1d24419368f25ccbb4c928190c560a0e951f5523f10892"
     },
     "content/cities/hualien.json:imageAltJa": {
-      "source": "1eb25a8422a01e7acd07e1fd3ebeda03d14ea7c972e96137864d56543fce031a",
-      "output": "ef26e88070c6c5e7c6532cdbca0f10a29273fdce05b7f6510fa2fe8080ad4008"
+      "source": "40621e6d3c3695c487454e0942acf032354b80784f78591972d1044bbee2ab63",
+      "output": "15a68382e8528a81076efb1cab378457d7266e81c76f64d14e1441a5ac65c31c"
     },
     "content/cities/hualien.json:articleJa": {
       "source": "6b132fbb3c52360e0172490074aad26859092af11148d0de6b8e1dd303eebd81",
@@ -105,8 +105,8 @@
       "output": "9832c48a7e196629f694bd9bfd5b7a7f33c5ea066d97a3c2562d63552af08386"
     },
     "content/cities/hualien.json:imageAltKo": {
-      "source": "f1c3ec5b2adeb63ccb5d36be11202b2173903aef78f357ef8cde646c335fa221",
-      "output": "4eaa51238f5e8dc6ca0d880db238c77d4130012a6aafc8f227baa3b6cb34d6e5"
+      "source": "ad3a95c3151774d666a1030a1cf45ba7aa65d6a2e5b58d86f4b70fdaa6c16458",
+      "output": "2c0a311a9921158a58b44ceb879f068796acbb0e0417512b0fc80dbffdec359f"
     },
     "content/cities/hualien.json:articleKo": {
       "source": "0b69d8b0848f368d5c3ad8a9e73d9f28e2566575cea3c8f652f9c70f8aaddc52",
@@ -393,12 +393,12 @@
       "output": "6f9ef92008008ba3ba26489a06f620fe6ce4e221a75b6d44437a11f64b44a5ec"
     },
     "content/cities/hualien.json:imageAltHans": {
-      "source": "157f2ca85ff497bd4e783f56d1b56c635585f2a22c97daf90ca92d98da45bde6",
-      "output": "92d5c05a50e49c3500a6c93951bfe85ec3bac29ed0e7281c468407ab17703707"
+      "source": "62d94ed6794bd0b59e3733618658d2d64ea8bfe14ad225bbe7a94b74c3bb4536",
+      "output": "15a68382e8528a81076efb1cab378457d7266e81c76f64d14e1441a5ac65c31c"
     },
     "content/cities/hualien.json:imageAltEn": {
-      "source": "1fa0be689ad5747b426e773ea3d08ecaa9d0addabc169238680b0fc08e80e38a",
-      "output": "9206f020118bb83317007629c4add04846e1cc23ca7255925a308d537287fa42"
+      "source": "b4fc9b92d60b9423037ba367b016350b1351c181ee90a11dee68aafb72542787",
+      "output": "cca21ecbc7c0f840224671ad9b87312175b098b93af3d55a82b729d19b34c430"
     }
   },
   "cache": {
@@ -518,6 +518,10 @@
     "157f2ca85ff497bd4e783f56d1b56c635585f2a22c97daf90ca92d98da45bde6": "八号公路（中横公路）穿过台湾太鲁阁峡谷",
     "1fa0be689ad5747b426e773ea3d08ecaa9d0addabc169238680b0fc08e80e38a": "Highway 8 (Central Cross-Island Highway) passes through the Taroko Gorge in Taiwan.",
     "1eb25a8422a01e7acd07e1fd3ebeda03d14ea7c972e96137864d56543fce031a": "国道8号線（中央横断道路）は、台湾の太魯閣峡谷を通過している。",
-    "f1c3ec5b2adeb63ccb5d36be11202b2173903aef78f357ef8cde646c335fa221": "대만에서는 8번 국도(중부 횡단 고속도로)가 타로코 협곡을 통과합니다."
+    "f1c3ec5b2adeb63ccb5d36be11202b2173903aef78f357ef8cde646c335fa221": "대만에서는 8번 국도(중부 횡단 고속도로)가 타로코 협곡을 통과합니다.",
+    "62d94ed6794bd0b59e3733618658d2d64ea8bfe14ad225bbe7a94b74c3bb4536": "清水断崖",
+    "b4fc9b92d60b9423037ba367b016350b1351c181ee90a11dee68aafb72542787": "Qingshui Cliff",
+    "40621e6d3c3695c487454e0942acf032354b80784f78591972d1044bbee2ab63": "清水断崖",
+    "ad3a95c3151774d666a1030a1cf45ba7aa65d6a2e5b58d86f4b70fdaa6c16458": "칭수이 절벽"
   }
 }
