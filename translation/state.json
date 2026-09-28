@@ -115,6 +115,22 @@
     "content/cities/yilan.json:imageAltKo": {
       "source": "925981dd29b703709b2909cd2723c67917a8df3be3212843cd5ac02286ed6622",
       "output": "f31d6076b02fb1506e879ffa12267d90991c49573af82c1ce588f7d192b8e139"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:nameHans": {
+      "source": "f4d5b2c3f8e7f20130e98fa4480e589e8ef47733beb00e62b9256e38fea4c2f8",
+      "output": "d448d143c4e04eb6b4f4cc790d2c17f13d0776f63746be0c27134eb225a7d36d"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:english": {
+      "source": "2d4100fcf188fd6e7faad426e5cec1d6e81a82848e17b313d3ed3a3651909e79",
+      "output": "aa335212df0db3f7c583507cd9ab2aec21059b70a6e19fc341271150a2af3f72"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:nameJa": {
+      "source": "495abc2527cea50ffd7a5854c6c143b5f7c5d026845d1d674ae568d86e64d996",
+      "output": "d448d143c4e04eb6b4f4cc790d2c17f13d0776f63746be0c27134eb225a7d36d"
+    },
+    "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:nameKo": {
+      "source": "2bf2988ea749a084cb05960075f688bdd881a866290c0107ea79cfd3e1a16690",
+      "output": "79449ee404a67ac46114a85a8802789c9185f807012e80321d64843aba8ce407"
     }
   },
   "cache": {
@@ -138,6 +154,10 @@
     "780a1ed748b2beb33ba18a619770a592ac9a28f3c42a540cb244e9eaafbd68f5": "호치민시 야간 스카이라인",
     "bdb0cf2b454d763a33e835bbaeac8590e062a0f8e8e395cae00c022374898268": "화롄 청수 절벽과 태평양",
     "0b69d8b0848f368d5c3ad8a9e73d9f28e2566575cea3c8f652f9c70f8aaddc52": "여행기 테스트\n두 번째 줄 테스트",
-    "925981dd29b703709b2909cd2723c67917a8df3be3212843cd5ac02286ed6622": "란양 평원, 해안선 및 구이산 섬"
+    "925981dd29b703709b2909cd2723c67917a8df3be3212843cd5ac02286ed6622": "란양 평원, 해안선 및 구이산 섬",
+    "f4d5b2c3f8e7f20130e98fa4480e589e8ef47733beb00e62b9256e38fea4c2f8": "香港",
+    "2d4100fcf188fd6e7faad426e5cec1d6e81a82848e17b313d3ed3a3651909e79": "Hongkong",
+    "495abc2527cea50ffd7a5854c6c143b5f7c5d026845d1d674ae568d86e64d996": "香港",
+    "2bf2988ea749a084cb05960075f688bdd881a866290c0107ea79cfd3e1a16690": "홍콩"
   }
 }
