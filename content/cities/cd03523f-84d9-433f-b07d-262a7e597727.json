@@ -1,14 +1,18 @@
 {
+  "descriptionKo": "",
+  "nameJa": "",
   "descriptionEn": "",
   "imageLicense": "",
-  "nameHans": "伦敦",
-  "name": "倫敦",
+  "nameHans": "",
+  "name": "諾福克",
   "imageAltHans": "",
   "published": true,
   "imageAlt": "",
   "order": 10,
+  "nameKo": "",
   "myMap": "",
-  "english": "London",
+  "english": "",
+  "descriptionJa": "",
   "imageCredit": "",
   "articleHans": "",
   "article": "",
@@ -21,9 +25,5 @@
   "image": "",
   "description": "",
   "food": "https://maps.app.goo.gl/tRp95j8Poucjv63o9",
-  "articleEn": "",
-  "nameJa": "ロンドン",
-  "nameKo": "런던",
-  "descriptionJa": "",
-  "descriptionKo": ""
+  "articleEn": ""
 }
