@@ -25,8 +25,8 @@
       "output": "f5947ee930179df954bc1e49662f3de33866359959b7078d8028161138326880"
     },
     "content/cities/busan.json:imageAltJa": {
-      "source": "15020787acfaf63650e35ae583d04c657058846d299574b56a2f01be7129e064",
-      "output": "fb33a7d4ff59ab6b2c6af9b6aff0a98561e233311ff3e0d5db0e61056c4a00f0"
+      "source": "df1957f4d7ada1526a86cfa337c536e275eb5929a56a5c193bc33a06cc4268ca",
+      "output": "ef67f80faefeb2a43eab7a9ab61996f5e3d34140601532f41503beb66f99002f"
     },
     "content/countries/malaysia.json:imageAltJa": {
       "source": "a2b0fce391b9aeeb996870cb2c885b7fa9443e627b1bb6bb96c4a42a5dc56bb6",
@@ -73,8 +73,8 @@
       "output": "ca9323a8d615eacddfe17115624411ba0079f67c7ff4223d1b7c539c1902ffaf"
     },
     "content/cities/busan.json:imageAltKo": {
-      "source": "b40a5bacd4cba5f04d7a5deed6de090dbc724095644ca0704d28ced62b498da3",
-      "output": "26fde7c68e674773d7b2bd6ddbc3f37061b81a5c1a95808efb4a38ec117f348d"
+      "source": "9153d571327d0ee1270f9b2d575bd3ecaab720053f8b8c51a1c53491864d67a5",
+      "output": "88562fd980f20310c8a60598494c132874fdeb52775dd5912cc321637429d67d"
     },
     "content/countries/malaysia.json:imageAltKo": {
       "source": "6a20bea60e83c168c412813ac39413f123b3c8fa79608dc8cfb5c0072e685d0f",
@@ -177,12 +177,12 @@
       "output": "bbac76f6bd275329b74cc41b94a68e8eca3a5cdaba78c6168002ff1fce49fc71"
     },
     "content/cities/busan.json:imageAltHans": {
-      "source": "c157c144c3b05682ef8a5b59eddfa8b42a4018f543aba2371c5f0ad4e60c4cf0",
-      "output": "4cbbfd42642e12aa3f45e5d97a0fc8d08530d464c06e20d923a6e39c5642bc85"
+      "source": "dca82219c33ead7d67f6ff2e25ef1914e0499267cc04d333ecdef7687a75b080",
+      "output": "fbd7595e90e56f00156d0a0b8b27d49629c5202ac0491ea9d2b63c5ba3ae2525"
     },
     "content/cities/busan.json:imageAltEn": {
-      "source": "bfb59f63031c9801136ddbab38c2341e0c91d6f03b42d2b90f59319643b68cfa",
-      "output": "04d4f3bbae70fc968dc8d6e2105a713deb3466baf6b3e74e0ee1f979646c6858"
+      "source": "b3ee8b67a49c11f322259fb880819a206b67d9cff832cc701e2a05423448e57f",
+      "output": "4c242b74e52327a4a0e09ce3e0fc4240442d4a5799f97340fb4b3c1baf5564e1"
     }
   },
   "cache": {
@@ -226,6 +226,10 @@
     "c157c144c3b05682ef8a5b59eddfa8b42a4018f543aba2371c5f0ad4e60c4cf0": "Centum City (센텀시티) is a urban development part of Busan, South Korea. The site was originally the location of Busan's Suyeong Airport. The Busan Cinema Center on the right was designed by Coop Himmelb(l)au and features the longest cantilever roof in the world.",
     "bfb59f63031c9801136ddbab38c2341e0c91d6f03b42d2b90f59319643b68cfa": "Centum City (센텀시티) is an urban development part of Busan, South Korea. The site was originally the location of Busan's Suyeong Airport. The Busan Cinema Center on the right was designed by Coop Himmelb(l)au and features the longest cantilever roof in the world.",
     "15020787acfaf63650e35ae583d04c657058846d299574b56a2f01be7129e064": "センタムシティ（센텀시티）は、韓国釜山市にある都市開発地区です。この場所はもともと釜山水営空港の跡地でした。右側に見える釜山シネマセンターは、コープ・ヒンメルブラウによって設計され、世界最長の片持ち梁屋根が特徴です。",
-    "b40a5bacd4cba5f04d7a5deed6de090dbc724095644ca0704d28ced62b498da3": "센텀시티는 대한민국 부산에 위치한 도시 개발 지역입니다. 이곳은 원래 부산 수영공항이 있던 자리입니다. 오른쪽에 보이는 부산시네마센터는 쿱 힘멜블라우가 설계했으며, 세계에서 가장 긴 캔틸레버 지붕을 자랑합니다."
+    "b40a5bacd4cba5f04d7a5deed6de090dbc724095644ca0704d28ced62b498da3": "센텀시티는 대한민국 부산에 위치한 도시 개발 지역입니다. 이곳은 원래 부산 수영공항이 있던 자리입니다. 오른쪽에 보이는 부산시네마센터는 쿱 힘멜블라우가 설계했으며, 세계에서 가장 긴 캔틸레버 지붕을 자랑합니다.",
+    "dca82219c33ead7d67f6ff2e25ef1914e0499267cc04d333ecdef7687a75b080": "新世界城（Centum City）是韩国釜山的城市开发部分。该地点原本是釜山水营机场所在地。右侧的釜山电影中心由 Coop Himmelb(l)au 设计，拥有世界上最长的悬臂屋顶。",
+    "b3ee8b67a49c11f322259fb880819a206b67d9cff832cc701e2a05423448e57f": "Centum City is an urban development in Busan, South Korea. The site was originally the location of Busan Suyeong Airport. The Busan Cinema Center on the right, designed by Coop Himmelb(l)au, boasts the world's longest cantilevered roof.",
+    "df1957f4d7ada1526a86cfa337c536e275eb5929a56a5c193bc33a06cc4268ca": "センタムシティは、韓国・釜山にある都市開発プロジェクトです。この場所はもともと釜山水営空港の跡地でした。右側に見える釜山シネマセンターは、コープ・ヒンメルブラウの設計で、世界最長の片持ち梁屋根を誇ります。",
+    "9153d571327d0ee1270f9b2d575bd3ecaab720053f8b8c51a1c53491864d67a5": "센텀시티는 대한민국 부산에 위치한 도시 개발 프로젝트입니다. 이 부지는 원래 부산수영공항이 있던 자리입니다. 오른쪽에 보이는 부산시네마센터는 쿱 힘멜블라우가 설계했으며, 세계에서 가장 긴 캔틸레버식 지붕을 자랑합니다."
   }
 }
