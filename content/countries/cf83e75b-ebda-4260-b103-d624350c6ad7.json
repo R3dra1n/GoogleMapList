@@ -2,6 +2,7 @@
   "descriptionKo": "",
   "nameJa": "香港",
   "imageAltJa": "雨の夜、ビクトリア・ピークから眺めるビクトリア港と市街のスカイライン。",
+  "standalone": true,
   "descriptionEn": "",
   "imageLicense": "https://creativecommons.org/licenses/by-sa/4.0",
   "nameHans": "香港",
@@ -17,10 +18,11 @@
   "imageCredit": "Benh LIEU SONG (Flickr) / CC BY-SA 4.0",
   "continent": "asia",
   "imageSource": "https://commons.wikimedia.org/wiki/Special:Redirect/page/82284212",
+  "sights": "",
   "imageAltEn": "A view of Victoria Harbour and the city skyline from Victoria Peak on a rainy night.",
   "descriptionHans": "",
   "id": "cf83e75b-ebda-4260-b103-d624350c6ad7",
   "image": "uploads/commons-82284212-d05bf980-c81c-4b6c-9c50-b172380cfb8f.jpg",
-  "description": "",
-  "standalone": true
+  "description": "從摩天大樓到街市排檔，感受新舊交疊的城市脈動。",
+  "food": ""
 }
