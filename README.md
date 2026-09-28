@@ -136,3 +136,7 @@ Worker 設定：`DB` 綁定私密 D1、`RATE_SALT` 存於 Worker secret。資料
 新增推薦會透過 D1 trigger 加入通知佇列。Worker 每 5 分鐘檢查，僅寄收件編號與私人收件箱連結，不寄訪客 Email 或推薦全文。供應商失敗時每小時重試，最多 6 次、首次嘗試後最多 23 小時；使用固定 idempotency key 防止重複投遞。刪除推薦也會刪除其佇列資料。通知失敗不影響推薦保存。後台顯示待寄、已交付發信服務、失敗數量；「已交付」不代表已送達收件匣。
 
 初次啟用只通知新增資料，不自動補寄既有推薦。
+
+### 社群分享預覽
+
+首頁的 Open Graph 與 Twitter 大圖標籤直接寫入 HTML，分享爬蟲不需執行 JavaScript。封面為原創卡片插畫 `public/assets/share-cover.jpg`（1200 × 630），可編輯來源是 `design/share-cover.html`。首頁提供 canonical 與 `sitemap.xml`。目前 hash 區域連結共用首頁預覽，並非各目的地的獨立 SEO 頁面；未來新增主題／目的地靜態頁時需給每頁自己的 canonical、OG 與 sitemap 項目。
