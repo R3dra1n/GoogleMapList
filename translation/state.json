@@ -159,6 +159,22 @@
     "content/countries/cf83e75b-ebda-4260-b103-d624350c6ad7.json:descriptionKo": {
       "source": "00f27b2cb37bd3190fbef64edc7b75ae32c73f02c59ae5d290c1334c8b72abc6",
       "output": "4a2d268ef561827242a1535309ab77e40e7471d9e3217b581970d417674211a1"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:nameHans": {
+      "source": "704e3470249322ef233baeba77c3ecad5e8dcc7f525b9ebbe27d81ee177770bc",
+      "output": "b2f6d09c7a60d32cd4765fb0458993c08e932dec29b100a9efdb158d5ee3fd31"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:english": {
+      "source": "fb1b71bdcc62b33bdb53f848566a6f7fa23d7a086edfc2e6656584d624262312",
+      "output": "9b3c6d54d564fd43e89fd1e6ce192f812ffd04409df7174f86a14d083b12bf4e"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:nameJa": {
+      "source": "9d39f052f5df512872cf69217990f174cdae6bcabf969e9e686e65d25214db0e",
+      "output": "53f26c3155ee533159c26f8859e1ab04126f7d1d2ba0eb151b81517ece00068b"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:nameKo": {
+      "source": "91820f55576702ca877bb7160e89bd777c6a6cf636cda3f55fa85c750f96dc6b",
+      "output": "bbac76f6bd275329b74cc41b94a68e8eca3a5cdaba78c6168002ff1fce49fc71"
     }
   },
   "cache": {
@@ -194,6 +210,10 @@
     "a331909005e24de47ff7aca6de1597696e20995eb21182b6d2e89ca5bb09f7df": "从摩天大楼到街市排档，感受新旧交叠的城市脉动。",
     "ec50f309dab3987eb715ae3e0c89a79c72387f14ed86afca89a911d25776c4d8": "From skyscrapers to street stalls, feel the pulse of the city where old and new intertwine.",
     "f53cb84f6884b24a06852fcfd1548c2e448ca8cd5915b381f2b43f3008216c01": "高層ビルから露店まで、新旧が融合するこの街の鼓動を感じてください。",
-    "00f27b2cb37bd3190fbef64edc7b75ae32c73f02c59ae5d290c1334c8b72abc6": "고층 빌딩부터 길거리 노점까지, 옛것과 새것이 어우러진 도시의 생동감을 느껴보세요."
+    "00f27b2cb37bd3190fbef64edc7b75ae32c73f02c59ae5d290c1334c8b72abc6": "고층 빌딩부터 길거리 노점까지, 옛것과 새것이 어우러진 도시의 생동감을 느껴보세요.",
+    "704e3470249322ef233baeba77c3ecad5e8dcc7f525b9ebbe27d81ee177770bc": "诺福克",
+    "fb1b71bdcc62b33bdb53f848566a6f7fa23d7a086edfc2e6656584d624262312": "Norfolk",
+    "9d39f052f5df512872cf69217990f174cdae6bcabf969e9e686e65d25214db0e": "ノーフォーク",
+    "91820f55576702ca877bb7160e89bd777c6a6cf636cda3f55fa85c750f96dc6b": "노퍽"
   }
 }
