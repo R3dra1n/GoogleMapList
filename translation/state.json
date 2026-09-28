@@ -231,6 +231,38 @@
     "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:descriptionKo": {
       "source": "b3795810845e4bd2b28ee3296314e322cc37b6b831ea88d480c869761aab0603",
       "output": "94e5348c37a6ba4c3fd064d3f9b5dd91ad47f848b21d2f1e8ca46788c8390565"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:nameHans": {
+      "source": "b168b275d29b347f1248fecc7b105acd0b615bdad2bea09b88b4c5b88287ca36",
+      "output": "a2abd44a07999d1cb76db991adfd3e627101000631b4b79f7b0468acbb48c3fe"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:descriptionHans": {
+      "source": "9cd4d8941e84bcc85dcea528a724dd61b8d166dcc21def082e6629c11274feae",
+      "output": "3e31a57d13f43106290b26ee66f35307020358a539d1fa7923da0fa85439348c"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:english": {
+      "source": "49f5ec881bfa3674b6b2b98c959accf0a303cff81368be2578b9128c5438ac13",
+      "output": "c9eea05cb88e22b60e7dedb525c706b0505db847b7e2c84f47f385930be74eec"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:descriptionEn": {
+      "source": "794e120c9f2b0ed0f5e68cbe9ac12e575c05f8b3e266e3f9574e97b29e672af3",
+      "output": "3e8c9c12327b37eca978a43c03f60a89ff93ee987a598a39e5d8d226d7c76d6f"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:nameJa": {
+      "source": "599ba216f72e7bc83336e7d2016374803b625ecae23deff3b55504f4db05baa5",
+      "output": "932acbcb25b6e158993d89ed66e94631e352a502b5379468d0f5ff282c121860"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:descriptionJa": {
+      "source": "e10c92b687b05320c670346f45d2f0b747bc7a5e7a9d97e5478aeb3e8c069111",
+      "output": "e38106169f7c27915260c3b1760355f0212d048b9deb5e9c3516adf67cc8d85c"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:nameKo": {
+      "source": "8549e1237f36611bba9c1662486b3cebfa648c4ec60279027bf870292ca7ceaf",
+      "output": "c0929628151e77779b97ed52b602057e3a2e53556b525ab1a9569aaac018d037"
+    },
+    "content/themes/dc3c4ca8-bccb-4e4d-b906-8b77ee1b8164.json:descriptionKo": {
+      "source": "f8de5b30c7eaf11b36518203c702a4623f1f838cdaa92c97d15c7594bc527fa9",
+      "output": "25357b17a0d565016bfdb39b7a930574f120d0e91f623ea4ac3ea92df0508b24"
     }
   },
   "cache": {
@@ -290,6 +322,14 @@
     "454d0b0243fc819dbe8726f64fe3d6576ada2942087cba11cc2352c59cf410dc": "ホーチミン市：人気観光スポット一覧",
     "58712f1776f6775e392b71e65b1ac52fd99ff556bb3e544606b12bd59c7e173b": "ベトナム最大の都市であるホーチミン市は、歴史と現代性が融合した街であり、中央郵便局、ノートルダム大聖堂、ファム・グー・ラオ通りといった人気観光スポットを誇り、豊かな文化と都会的な魅力を誇っている。",
     "91397451a02650f5250f04bb9a80c6c74bce1a98735cd6ba860dad4ccb96b70e": "호치민시: 인기 명소 목록",
-    "b3795810845e4bd2b28ee3296314e322cc37b6b831ea88d480c869761aab0603": "베트남 최대 도시인 호치민시는 역사와 현대가 조화를 이루는 곳으로, 중앙 우체국, 노트르담 대성당, 팜 응우 라오 거리와 같은 인기 명소를 자랑하며 풍부한 문화와 도시의 매력을 보여줍니다."
+    "b3795810845e4bd2b28ee3296314e322cc37b6b831ea88d480c869761aab0603": "베트남 최대 도시인 호치민시는 역사와 현대가 조화를 이루는 곳으로, 중앙 우체국, 노트르담 대성당, 팜 응우 라오 거리와 같은 인기 명소를 자랑하며 풍부한 문화와 도시의 매력을 보여줍니다.",
+    "b168b275d29b347f1248fecc7b105acd0b615bdad2bea09b88b4c5b88287ca36": "胡志明市：当地著名景点",
+    "9cd4d8941e84bcc85dcea528a724dd61b8d166dcc21def082e6629c11274feae": "胡志明市是越南南部的重要城市，拥有丰富的历史与文化景点，如圣母大教堂与中央邮局，展现法国殖民时期的建筑风格。",
+    "49f5ec881bfa3674b6b2b98c959accf0a303cff81368be2578b9128c5438ac13": "Ho Chi Minh City: Famous Local Attractions",
+    "794e120c9f2b0ed0f5e68cbe9ac12e575c05f8b3e266e3f9574e97b29e672af3": "Ho Chi Minh City is an important city in southern Vietnam, boasting a wealth of historical and cultural attractions, such as the Notre Dame Cathedral and the Central Post Office, which showcase the architectural style of the French colonial period.",
+    "599ba216f72e7bc83336e7d2016374803b625ecae23deff3b55504f4db05baa5": "ホーチミン市：有名な観光スポット",
+    "e10c92b687b05320c670346f45d2f0b747bc7a5e7a9d97e5478aeb3e8c069111": "ホーチミン市はベトナム南部の重要な都市であり、ノートルダム大聖堂や中央郵便局など、フランス植民地時代の建築様式を今に伝える歴史的・文化的見どころが数多く存在する。",
+    "8549e1237f36611bba9c1662486b3cebfa648c4ec60279027bf870292ca7ceaf": "호찌민시: 유명한 현지 명소",
+    "f8de5b30c7eaf11b36518203c702a4623f1f838cdaa92c97d15c7594bc527fa9": "호치민시는 베트남 남부의 중요한 도시로, 노트르담 대성당과 중앙 우체국과 같이 프랑스 식민지 시대 건축 양식을 보여주는 풍부한 역사 및 문화 명소를 자랑합니다."
   }
 }
