@@ -463,6 +463,22 @@
     "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:imageAltKo": {
       "source": "e2bb1a709c7e9a6d007d9c32bf729bca11167a7693efb9dde40e99367431d741",
       "output": "d92a0a90c7b0390028ffc2fb1a44757487b1b441e8fbabe72f252a6731f6a272"
+    },
+    "content/countries/54c3e84a-0314-4650-b7ef-3872be67deb1.json:imageAltHans": {
+      "source": "b8a2c72a07642fcb01d46b9c3246379e8055e01defa5d2f11ebd90c564749a75",
+      "output": "22e5fd82afcc5656c48006c86e0817e65150d8b13fda24abafdec65e572d6991"
+    },
+    "content/countries/54c3e84a-0314-4650-b7ef-3872be67deb1.json:imageAltEn": {
+      "source": "0ccac153dfe6b5673df650ae31421127b78c62372eca09001e7e5a1f087e2e99",
+      "output": "224035a9cf463cae6ef5ba9a480e38c549253a611d65885bd28a716b29339be6"
+    },
+    "content/countries/54c3e84a-0314-4650-b7ef-3872be67deb1.json:imageAltJa": {
+      "source": "c8daa7a4b9e6e72837cce0ce3104cae1d709a579798c8877b3c9bf66b04f4438",
+      "output": "4396cddc0b621c2881ff1425942198e33e50bc6d69caee167903755a693455c4"
+    },
+    "content/countries/54c3e84a-0314-4650-b7ef-3872be67deb1.json:imageAltKo": {
+      "source": "63713b3612b6e7b4657842c063a31759d35cb2f5b0d2ee78948774e8d25a2495",
+      "output": "2f0dbdcd30d782dd24535ea8d6ba2278e46c1a6ebe6376abe57d31d7ca8b1af5"
     }
   },
   "cache": {
@@ -602,6 +618,10 @@
     "6fa0227f6a8868ba91567f054631ec953640e4c82bc6786336a821a09f7e5116": "金斯林大教堂",
     "5e8220b182793ae5bed8ea5f7264b080b1d2cc2a19924794888b976d98c69447": "Kingsley Cathedral",
     "761ee85c00ec6b07a340e1b2e83b07851846449b94eec36a41c94f19ebbb02fa": "キングスリー大聖堂",
-    "e2bb1a709c7e9a6d007d9c32bf729bca11167a7693efb9dde40e99367431d741": "킹슬리 대성당"
+    "e2bb1a709c7e9a6d007d9c32bf729bca11167a7693efb9dde40e99367431d741": "킹슬리 대성당",
+    "b8a2c72a07642fcb01d46b9c3246379e8055e01defa5d2f11ebd90c564749a75": "从卫理公会中央大厅的圆顶看威斯敏斯特宫（议会大厦）",
+    "0ccac153dfe6b5673df650ae31421127b78c62372eca09001e7e5a1f087e2e99": "View of Westminster Palace (House of Parliament) from the dome of the Methodist Central Hall.",
+    "c8daa7a4b9e6e72837cce0ce3104cae1d709a579798c8877b3c9bf66b04f4438": "メソジスト中央会館のドームから見たウェストミンスター宮殿（国会議事堂）。",
+    "63713b3612b6e7b4657842c063a31759d35cb2f5b0d2ee78948774e8d25a2495": "감리교 중앙회관 돔에서 바라본 웨스트민스터 궁전(국회의사당)의 모습."
   }
 }
