@@ -57,8 +57,8 @@
       "output": "15d0cb0e5194e683ec1d24419368f25ccbb4c928190c560a0e951f5523f10892"
     },
     "content/cities/hualien.json:imageAltJa": {
-      "source": "87255dfb63641de159c18140a7fc90a2eb816bcafc455d16c6d56c0fdb227d8b",
-      "output": "4079f8447953d16457f1a841237b2c7a76ae77b57dab4d69f1d649cbf2bd3d90"
+      "source": "1eb25a8422a01e7acd07e1fd3ebeda03d14ea7c972e96137864d56543fce031a",
+      "output": "ef26e88070c6c5e7c6532cdbca0f10a29273fdce05b7f6510fa2fe8080ad4008"
     },
     "content/cities/hualien.json:articleJa": {
       "source": "6b132fbb3c52360e0172490074aad26859092af11148d0de6b8e1dd303eebd81",
@@ -105,8 +105,8 @@
       "output": "9832c48a7e196629f694bd9bfd5b7a7f33c5ea066d97a3c2562d63552af08386"
     },
     "content/cities/hualien.json:imageAltKo": {
-      "source": "bdb0cf2b454d763a33e835bbaeac8590e062a0f8e8e395cae00c022374898268",
-      "output": "fe4b16d447168cfcc394177e7b76ecd80360b11b64295a5fb61a9f9c9fc62d35"
+      "source": "f1c3ec5b2adeb63ccb5d36be11202b2173903aef78f357ef8cde646c335fa221",
+      "output": "4eaa51238f5e8dc6ca0d880db238c77d4130012a6aafc8f227baa3b6cb34d6e5"
     },
     "content/cities/hualien.json:articleKo": {
       "source": "0b69d8b0848f368d5c3ad8a9e73d9f28e2566575cea3c8f652f9c70f8aaddc52",
@@ -391,6 +391,14 @@
     "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:imageAltKo": {
       "source": "489ebc180b181bca2379c31b08d22ac0baf2d20d39baa5b09e19b5649b8f5ed4",
       "output": "6f9ef92008008ba3ba26489a06f620fe6ce4e221a75b6d44437a11f64b44a5ec"
+    },
+    "content/cities/hualien.json:imageAltHans": {
+      "source": "157f2ca85ff497bd4e783f56d1b56c635585f2a22c97daf90ca92d98da45bde6",
+      "output": "92d5c05a50e49c3500a6c93951bfe85ec3bac29ed0e7281c468407ab17703707"
+    },
+    "content/cities/hualien.json:imageAltEn": {
+      "source": "1fa0be689ad5747b426e773ea3d08ecaa9d0addabc169238680b0fc08e80e38a",
+      "output": "9206f020118bb83317007629c4add04846e1cc23ca7255925a308d537287fa42"
     }
   },
   "cache": {
@@ -506,6 +514,10 @@
     "29089f9a6ed9d3deca581f4d45cb4dfc5ec257fbac1bb9dfdb3e69cd6717316d": "垦丁国家公园",
     "463cb06305f9c94e856f837415f0019029f1013ed459c08b174c876e4a5d92df": "Kenting National Park",
     "b817c01b84eab9ff33e6de8443addb39d592d73453d6f4472017da2fe8863f11": "墾丁国家公園",
-    "489ebc180b181bca2379c31b08d22ac0baf2d20d39baa5b09e19b5649b8f5ed4": "컨팅 국립공원"
+    "489ebc180b181bca2379c31b08d22ac0baf2d20d39baa5b09e19b5649b8f5ed4": "컨팅 국립공원",
+    "157f2ca85ff497bd4e783f56d1b56c635585f2a22c97daf90ca92d98da45bde6": "八号公路（中横公路）穿过台湾太鲁阁峡谷",
+    "1fa0be689ad5747b426e773ea3d08ecaa9d0addabc169238680b0fc08e80e38a": "Highway 8 (Central Cross-Island Highway) passes through the Taroko Gorge in Taiwan.",
+    "1eb25a8422a01e7acd07e1fd3ebeda03d14ea7c972e96137864d56543fce031a": "国道8号線（中央横断道路）は、台湾の太魯閣峡谷を通過している。",
+    "f1c3ec5b2adeb63ccb5d36be11202b2173903aef78f357ef8cde646c335fa221": "대만에서는 8번 국도(중부 횡단 고속도로)가 타로코 협곡을 통과합니다."
   }
 }

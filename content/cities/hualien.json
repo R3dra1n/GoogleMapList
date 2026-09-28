@@ -5,7 +5,7 @@
   "imageLicense": "https://creativecommons.org/licenses/by/2.0",
   "nameHans": "花莲县",
   "name": "花蓮縣",
-  "imageAltHans": "",
+  "imageAltHans": "八号公路（中横公路）穿过台湾太鲁阁峡谷",
   "published": true,
   "imageAlt": "八號公路（中横公路）穿過台灣太魯閣峽谷",
   "order": 2,
@@ -17,7 +17,7 @@
   "imageSource": "https://commons.wikimedia.org/wiki/Special:Redirect/page/34106795",
   "sights": "https://maps.app.goo.gl/CdsGKehdXxXz7qbu9",
   "country": "taiwan",
-  "imageAltEn": "",
+  "imageAltEn": "Highway 8 (Central Cross-Island Highway) passes through the Taroko Gorge in Taiwan.",
   "descriptionHans": "在山海之间，找一顿好吃的，再出发走走。",
   "id": "hualien",
   "image": "uploads/commons-34106795-75195c9a-9800-488d-aee4-a24fb1775018.jpg",
@@ -25,8 +25,8 @@
   "food": "https://maps.app.goo.gl/5wpnSUyxxYqL2gK47",
   "articleHans": "旅行笔记测试\n第二行 测试",
   "articleEn": "Travel Notes Test\nSecond Line Test",
-  "imageAltJa": "",
+  "imageAltJa": "国道8号線（中央横断道路）は、台湾の太魯閣峡谷を通過している。",
   "articleJa": "旅行記テスト\n2行目テスト",
-  "imageAltKo": "",
+  "imageAltKo": "대만에서는 8번 국도(중부 횡단 고속도로)가 타로코 협곡을 통과합니다.",
   "articleKo": "여행기 테스트\n두 번째 줄 테스트"
 }
