@@ -375,6 +375,22 @@
     "content/themes/dcb6ff7f-9b1f-44c6-a807-e15add0df843.json:descriptionKo": {
       "source": "d9266861660a84e38203853d951b40aa11f56522328131d7f2b3ddf137498cd7",
       "output": "aa6323eb608ca82ab3438d9103772c8fb6013ed7715071b22f68b565c5ccbc2f"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:imageAltHans": {
+      "source": "29089f9a6ed9d3deca581f4d45cb4dfc5ec257fbac1bb9dfdb3e69cd6717316d",
+      "output": "196889507ccdd4776ddf2cbd0dc0ba18c5c4f25aa3e8992d892935cca0e0fb05"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:imageAltEn": {
+      "source": "463cb06305f9c94e856f837415f0019029f1013ed459c08b174c876e4a5d92df",
+      "output": "4a05872c25900e9af8ca18a82347fee9dba990b3eba05bb36edfcdf6ba12ef8e"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:imageAltJa": {
+      "source": "b817c01b84eab9ff33e6de8443addb39d592d73453d6f4472017da2fe8863f11",
+      "output": "bcb99c472f677bffd4b800e9e6eff1ebc6d3ce0f5a6a69448d56b72562c29f8c"
+    },
+    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:imageAltKo": {
+      "source": "489ebc180b181bca2379c31b08d22ac0baf2d20d39baa5b09e19b5649b8f5ed4",
+      "output": "6f9ef92008008ba3ba26489a06f620fe6ce4e221a75b6d44437a11f64b44a5ec"
     }
   },
   "cache": {
@@ -486,6 +502,10 @@
     "65c5a0c86e33b3ef94705e09941f3cb37413fbe781d54c8bb1bb814dd8dccdec": "屏东县",
     "49180e9300fc588ef537ab90ebda11115b41560fc774e193dbe5f588beb8e93b": "Pingtung County",
     "e5964043aa837e02a09f8e1ad7af9c0d8da11f08e215d064817c0f5189b641f7": "屏東県",
-    "31222d6a9c48cdf78fa947b195c5b5588283843744fbdcd413ba054664e80967": "핑퉁현"
+    "31222d6a9c48cdf78fa947b195c5b5588283843744fbdcd413ba054664e80967": "핑퉁현",
+    "29089f9a6ed9d3deca581f4d45cb4dfc5ec257fbac1bb9dfdb3e69cd6717316d": "垦丁国家公园",
+    "463cb06305f9c94e856f837415f0019029f1013ed459c08b174c876e4a5d92df": "Kenting National Park",
+    "b817c01b84eab9ff33e6de8443addb39d592d73453d6f4472017da2fe8863f11": "墾丁国家公園",
+    "489ebc180b181bca2379c31b08d22ac0baf2d20d39baa5b09e19b5649b8f5ed4": "컨팅 국립공원"
   }
 }
