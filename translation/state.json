@@ -185,20 +185,20 @@
       "output": "4c242b74e52327a4a0e09ce3e0fc4240442d4a5799f97340fb4b3c1baf5564e1"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:descriptionHans": {
-      "source": "f74b0f9b69b1f5d9ec41054f937c9cfcd8fde135e9bf6c1b0ba29d623f3ed6bd",
-      "output": "0f57b3f86f7b9e4b9e221d72f71ffd6c6e2ea315b2f0b9cd7e44777f794ffeed"
+      "source": "b7c52804c8425d66f0883728f9d03b5dfde2ec90f5fa13429bce67fd0b2ec18d",
+      "output": "42953468e84e5856d47704b9381fca30c69b41589ba37a29a1a756f0f955e177"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:descriptionEn": {
-      "source": "a247838d027ba053dd5c2287e20cddd822f687cf27fd0cb8d5361bdbd1f2cea6",
-      "output": "228bbca7253e9d3c4f7a3b824dd0fcfea47e567dbf60049692c050955f3dc89f"
+      "source": "830d1cf5c9142609a7bf6962fa4a22464c63f17716eacddb7fc79935ba256a25",
+      "output": "223410edb7115f287b482ec05fea415b998871a67d86899348e0e6f4b707460a"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:descriptionJa": {
-      "source": "a6591a537f6d90ddf7c46afab303882dd8d538bed4d7ebc3cf0b5d93aae32a31",
-      "output": "fb506903b851086c9be54e1ead818ce5f8437a05e4bd6a4378eb2d34499f0c21"
+      "source": "ae01448203c91c5a7755dd7b1f456a0e649160fab4eedc2955693f0fd696b7c4",
+      "output": "727e3ce158e5000ffc5a5ea10eb2df36bcba94e103d1d2bde2c3e638c459a590"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:descriptionKo": {
-      "source": "b4e885a2fd85d325ac3ef202b6984f5e815d101e447f45fb40ad725f2e835b7c",
-      "output": "0eff421e18f21d11f0c03b6aed7fabbdc7d96287817926ca96bc869cc2eeba78"
+      "source": "791da392286bee382e3cc0df40ba8ae9cf7655a878c81d243ff9f66dfe639242",
+      "output": "a3d8ca359f401181f7f5bd5c6b327c6bf2be6bc9b7b096089a7b86842e38b543"
     },
     "content/themes/9b27e57a-c1af-42d1-bc25-cc589e403445.json:nameHans": {
       "source": "1c4b9cfe74c5cefcd6e46e21c0cdb3d934aaab9450ba2de211daf79a35882d2b",
@@ -295,6 +295,22 @@
     "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:descriptionKo": {
       "source": "58e0a4c3e02e496f7d19f26beb4d9a7b64f099c3cdd2a28bdf6fb2111adc9f7b",
       "output": "4d60d2ecd9d2a142975f8a656caff182151a82d9aa026a37ee8c296213a96a3d"
+    },
+    "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:nameHans": {
+      "source": "a40d9aff65705dca67596beda5a78418d4d270b7f579dfc51a642a7c823f1cc3",
+      "output": "933c4ff2c94748e402f78d3d14294a6e38f568657c31b1a17d229b211eca54b6"
+    },
+    "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:english": {
+      "source": "09bd9578a68a614fb1f1136ef4956e91ded915508b96e71af40af7c283b4d998",
+      "output": "dba6e518ca31e368e3b63ae8bb385fa159f0b5876d79d7585cf20e2607f30277"
+    },
+    "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:nameJa": {
+      "source": "f39385c78d28103b29b339d1d9c2f72812b0e347117b3cc4ca187381099448c7",
+      "output": "c7343c668b9c73575920a5492e4c07793a820629a9be1123b85c7316cd327748"
+    },
+    "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:nameKo": {
+      "source": "30b678f30cf0a32e97ffcca9e82fa43a48ad8b0a88702256b4c6e3d3a27defef",
+      "output": "17e9f37bc20a97e6379501a3a7b91974c0e9b2c46c96985066639b2d6d33227a"
     }
   },
   "cache": {
@@ -370,6 +386,14 @@
     "a23257e403fe0ff80e468185661b811e2bae6142e2eca280bbb119f97de896e6": "ロンドン",
     "61fa76f88f8550c9531eb3713f1936fe8f36cfa4168e53a91c66b3693ca24c3a": "英国の首都ロンドンは、大英博物館やロンドン塔など、数多くの歴史的・文化的名所を誇ります。古典と現代が融合したこの都市は、芸術、ファッション、政治の中心地です。",
     "bf35b1f9a79d095cc24dbd89992918336009618c579474adc9f54365199d42bd": "런던",
-    "58e0a4c3e02e496f7d19f26beb4d9a7b64f099c3cdd2a28bdf6fb2111adc9f7b": "영국의 수도인 런던은 대영 박물관과 런던탑을 비롯한 풍부한 역사 및 문화 명소를 자랑합니다. 고전과 현대가 조화를 이루는 이 도시는 예술, 패션, 정치의 중심지입니다."
+    "58e0a4c3e02e496f7d19f26beb4d9a7b64f099c3cdd2a28bdf6fb2111adc9f7b": "영국의 수도인 런던은 대영 박물관과 런던탑을 비롯한 풍부한 역사 및 문화 명소를 자랑합니다. 고전과 현대가 조화를 이루는 이 도시는 예술, 패션, 정치의 중심지입니다.",
+    "a40d9aff65705dca67596beda5a78418d4d270b7f579dfc51a642a7c823f1cc3": "DODOMEN-纽西兰",
+    "b7c52804c8425d66f0883728f9d03b5dfde2ec90f5fa13429bce67fd0b2ec18d": "DODOMEN的Ian和Eric热衷做一些挑战、旅游、跟体验一些平常无法或害怕做的事，目的是尝试跳脱出自己的舒适圈",
+    "09bd9578a68a614fb1f1136ef4956e91ded915508b96e71af40af7c283b4d998": "DODOMEN - New Zealand",
+    "830d1cf5c9142609a7bf6962fa4a22464c63f17716eacddb7fc79935ba256a25": "Ian and Eric of DODOMEN are passionate about taking on challenges, traveling, and experiencing things they wouldn't normally be able to or afraid to do, with the aim of stepping outside their comfort zones.",
+    "f39385c78d28103b29b339d1d9c2f72812b0e347117b3cc4ca187381099448c7": "ドドメン - ニュージーランド",
+    "ae01448203c91c5a7755dd7b1f456a0e649160fab4eedc2955693f0fd696b7c4": "DODOMENのイアンとエリックは、挑戦すること、旅行すること、そして普段はできないことや怖くてできないことを経験することに情熱を注いでおり、自分たちのコンフォートゾーンから抜け出すことを目指している。",
+    "30b678f30cf0a32e97ffcca9e82fa43a48ad8b0a88702256b4c6e3d3a27defef": "도도멘 - 뉴질랜드",
+    "791da392286bee382e3cc0df40ba8ae9cf7655a878c81d243ff9f66dfe639242": "DODOMEN의 이안과 에릭은 도전 정신이 투철하며, 여행을 즐기고, 평소에는 할 수 없거나 두려워하는 일들을 경험하며 자신의 안전지대를 벗어나고자 합니다."
   }
 }
