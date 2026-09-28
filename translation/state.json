@@ -447,6 +447,22 @@
     "content/cities/cb9c903e-3ae6-4b7e-8c65-fcdd8be946aa.json:imageAltKo": {
       "source": "7a9c4a8cf3b33264a2f7aafb2b4ce4daadc39ff4c1631ae97769a7865569b6e7",
       "output": "39a62b2c88a8d111c24ef95ca65c03586aa8bdfa8faa81b2c4d2dd2a1700c51a"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:imageAltHans": {
+      "source": "6fa0227f6a8868ba91567f054631ec953640e4c82bc6786336a821a09f7e5116",
+      "output": "f4c453cd372c58becdc103adae45b83e56e2c9ffc9e3e2bee20cb3fb571a9590"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:imageAltEn": {
+      "source": "5e8220b182793ae5bed8ea5f7264b080b1d2cc2a19924794888b976d98c69447",
+      "output": "d3a78ff211a65879298b8722b422b4364321af97cd78e7330043663453be5fe1"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:imageAltJa": {
+      "source": "761ee85c00ec6b07a340e1b2e83b07851846449b94eec36a41c94f19ebbb02fa",
+      "output": "13ae12b4fe2526302ba2f246c603797a071110ad4fc023804b1b7c57722a88d7"
+    },
+    "content/cities/cd03523f-84d9-433f-b07d-262a7e597727.json:imageAltKo": {
+      "source": "e2bb1a709c7e9a6d007d9c32bf729bca11167a7693efb9dde40e99367431d741",
+      "output": "d92a0a90c7b0390028ffc2fb1a44757487b1b441e8fbabe72f252a6731f6a272"
     }
   },
   "cache": {
@@ -582,6 +598,10 @@
     "7bc5557c3906a6b11ab5f17c7945e5b1d877f44cd09fd4f72278e27d7f1b0ce6": "威斯敏斯特宫",
     "ddd867db73bc37c66d4876ff2ee38a0327aeb24dbe3f00ad029321591703da40": "Palace of Westminster",
     "9220ca25be1b94eb85e56737d5e1fea664dfe76e95bfa24ab3aeb25a9ea01fab": "ウェストミンスター宮殿",
-    "7a9c4a8cf3b33264a2f7aafb2b4ce4daadc39ff4c1631ae97769a7865569b6e7": "웨스트민스터 궁전"
+    "7a9c4a8cf3b33264a2f7aafb2b4ce4daadc39ff4c1631ae97769a7865569b6e7": "웨스트민스터 궁전",
+    "6fa0227f6a8868ba91567f054631ec953640e4c82bc6786336a821a09f7e5116": "金斯林大教堂",
+    "5e8220b182793ae5bed8ea5f7264b080b1d2cc2a19924794888b976d98c69447": "Kingsley Cathedral",
+    "761ee85c00ec6b07a340e1b2e83b07851846449b94eec36a41c94f19ebbb02fa": "キングスリー大聖堂",
+    "e2bb1a709c7e9a6d007d9c32bf729bca11167a7693efb9dde40e99367431d741": "킹슬리 대성당"
   }
 }
