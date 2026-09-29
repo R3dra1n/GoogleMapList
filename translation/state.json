@@ -647,6 +647,38 @@
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:imageAltKo": {
       "source": "14f71490fd509924d53ef4529ca17ed1286e54203ff4bf22f50fa43fa49eb0b2",
       "output": "07bd2b4d22f2526ad960ff0241e7767654b5f5738f13cafa81d92451caaaa373"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:nameHans": {
+      "source": "feda10dc7da53de928a71fd7759191202c01901a06af41baaaabd60088eca3a0",
+      "output": "753b892e32210702a240c172ea0172ead96e04c9c300e669d7ee54f4da2be7e4"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionHans": {
+      "source": "61496c1ed4ef7126eec86681b738f7a83761ad6183d5e07203993e7b6cb10f96",
+      "output": "c94d90775b1331094e07437a11c3257e5817f34c104a0ca5002733dbd3b8a723"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:english": {
+      "source": "e3b6e8dee605c7915860a610381bae9f4e5d21d5ac7226ddf97251622c4c813a",
+      "output": "8c32bf338296455e6004fa9a64547868da3a7a49450a500a43b5ef6409e35fda"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionEn": {
+      "source": "b1f1ee89b662b2724f6aaac31b049e6581b2e80c4ca9db9d8534a3fae8812d74",
+      "output": "e89f804c6048126f1d9da20371eeb160a89ca0b4a3e271cc62345f0faf4cdee7"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:nameJa": {
+      "source": "d6cc0c2e5a93ddddcb399ce343b4532f662d363e74d904fa2ad11795b6b6cce8",
+      "output": "c8dfe22a90223585551b12d94762fbc6564b8e979d3dada000257f8490f0cba6"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionJa": {
+      "source": "eb00c452f0668491f9d8ea310c95b0fcd34512b4bad64639f3b1d23c3c566d69",
+      "output": "f92a006985f3e5ed2a8a34c92da74ff1623dd3da7b6633486177aa4fa89f0c7e"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:nameKo": {
+      "source": "43087d825ce3b89b1bc97293f16ede17a59fcfe79d280b0ccb7a7961ef539f34",
+      "output": "72a182bf5bf2d57f9f16bb306f3c7fe9f88caeb291a7fcea6ef16d23950d44ca"
+    },
+    "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionKo": {
+      "source": "a058fdd24ac5006c0f0f56539203c9c9a6a3aee556e8dc3a25297e655aff86f8",
+      "output": "158441c3a3b5307c16ad4055409a7303498f49315440ed2bd00e0840c2b22986"
     }
   },
   "cache": {
@@ -834,6 +866,14 @@
     "50a5810cb8a1db79286184654a75916424dfc071ccbe138f1919deee24a26334": "台中市政府",
     "99a6a72530fb148d2b06318dc6b5f260673eb58bf7d190f3f81b51f8c2c8cdf5": "Taichung City Government",
     "323d58bad8bb51e8d3da89f4d72d465e946af6c221c67c1a078ee0184f0d6d99": "台中市政府",
-    "14f71490fd509924d53ef4529ca17ed1286e54203ff4bf22f50fa43fa49eb0b2": "타이중시 정부"
+    "14f71490fd509924d53ef4529ca17ed1286e54203ff4bf22f50fa43fa49eb0b2": "타이중시 정부",
+    "feda10dc7da53de928a71fd7759191202c01901a06af41baaaabd60088eca3a0": "Dcard-石榴-电车吃汉",
+    "61496c1ed4ef7126eec86681b738f7a83761ad6183d5e07203993e7b6cb10f96": "在电车沿线寻找特色汉堡，体验城市与美食的交错风景。",
+    "e3b6e8dee605c7915860a610381bae9f4e5d21d5ac7226ddf97251622c4c813a": "Dcard-Pomegranate-Train Eating Chinese",
+    "b1f1ee89b662b2724f6aaac31b049e6581b2e80c4ca9db9d8534a3fae8812d74": "Discover unique burgers along the tram line and experience the blend of city life and culinary delights.",
+    "d6cc0c2e5a93ddddcb399ce343b4532f662d363e74d904fa2ad11795b6b6cce8": "Dカード・ザクロ・トレイン・イーティング・チャイニーズ",
+    "eb00c452f0668491f9d8ea310c95b0fcd34512b4bad64639f3b1d23c3c566d69": "路面電車沿いで個性的なハンバーガーを発見し、都会の生活と美食の融合を体験してください。",
+    "43087d825ce3b89b1bc97293f16ede17a59fcfe79d280b0ccb7a7961ef539f34": "디카드-석류-기차 중국 음식",
+    "a058fdd24ac5006c0f0f56539203c9c9a6a3aee556e8dc3a25297e655aff86f8": "트램 노선을 따라 독특한 버거를 맛보고 도시 생활과 미식의 즐거움을 동시에 경험해 보세요."
   }
 }
