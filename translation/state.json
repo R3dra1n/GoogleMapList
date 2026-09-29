@@ -297,19 +297,19 @@
       "output": "4d60d2ecd9d2a142975f8a656caff182151a82d9aa026a37ee8c296213a96a3d"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:nameHans": {
-      "source": "a40d9aff65705dca67596beda5a78418d4d270b7f579dfc51a642a7c823f1cc3",
-      "output": "933c4ff2c94748e402f78d3d14294a6e38f568657c31b1a17d229b211eca54b6"
+      "source": "8cff7408e135395051bf607cf03312f76be825217d66c2aca8b75311c2c411b6",
+      "output": "14734807007b82c09345325e034c3c90628e96923aea0a09a614137e8fc2a43e"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:english": {
-      "source": "09bd9578a68a614fb1f1136ef4956e91ded915508b96e71af40af7c283b4d998",
-      "output": "dba6e518ca31e368e3b63ae8bb385fa159f0b5876d79d7585cf20e2607f30277"
+      "source": "10e0a7f292465b04a0623e1007aa756b61bc6d2a4fedc188ad5ff86ab6ee0f91",
+      "output": "790bb8fbf100305819eec731c03a0674737cc8501c8ee984f17103992acf3613"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:nameJa": {
-      "source": "f39385c78d28103b29b339d1d9c2f72812b0e347117b3cc4ca187381099448c7",
+      "source": "fa78f2e8640de25951e29f4198ac0a4d87d913bf6e6149ec4fa6a8414e7cd5fb",
       "output": "c7343c668b9c73575920a5492e4c07793a820629a9be1123b85c7316cd327748"
     },
     "content/themes/6160d849-2557-4ad0-bbfd-12347ae3d27a.json:nameKo": {
-      "source": "30b678f30cf0a32e97ffcca9e82fa43a48ad8b0a88702256b4c6e3d3a27defef",
+      "source": "2a758d381a37aec0a125ee150328671b3d0d4e0eafd67941c34fbea6e4d7d3ee",
       "output": "17e9f37bc20a97e6379501a3a7b91974c0e9b2c46c96985066639b2d6d33227a"
     },
     "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:nameHans": {
@@ -926,6 +926,10 @@
     "57f74db3db16e7b75dcfea6e0ad304cc972cca68f634dd69dd65bc545d7ae236": "Good Words - Kenting - Has Kenting really changed?",
     "6c58697c29ca4bb77cc291c56b936955bb35aabdb4f10b2c7825da77f199b943": "良い言葉 - 墾丁 - 墾丁は本当に変わったのか？",
     "a6cd8b8b5f72ecbea8c625a7a610dcaa18cc1d89e6ef86fb0f153225f14d86ae": "좋은 말 - 컨딩 - 컨딩은 정말 변했을까요?",
-    "9ce817d31d431b51e834964e124f2eaf83e2d2835238d6aaa5b596c74d92e022": "이번 굿 워즈 여행은 정말 우리의 고정관념을 완전히 깨부쉈습니다. 동강에서 호 씨와 함께 두툼한 참치 스테이크를 메인 요리로 즐긴 것부터, 해외 리조트에 온 듯한 멋진 하얀색 오션뷰 게스트하우스에서 욕조를 구경하고, 컨딩 거리에서 나폴리식 화덕 피자를 맛보고, 야시장에서 스프레이 페인팅으로 타투를 하고 사격도 해보고, 다음 날에는 바이샤 베이, 리틀 발리 아일랜드 록, 난완 비치 등 세 곳의 유명 해변을 한꺼번에 탐험하는 등, 정말 잊지 못할 경험이었습니다."
+    "9ce817d31d431b51e834964e124f2eaf83e2d2835238d6aaa5b596c74d92e022": "이번 굿 워즈 여행은 정말 우리의 고정관념을 완전히 깨부쉈습니다. 동강에서 호 씨와 함께 두툼한 참치 스테이크를 메인 요리로 즐긴 것부터, 해외 리조트에 온 듯한 멋진 하얀색 오션뷰 게스트하우스에서 욕조를 구경하고, 컨딩 거리에서 나폴리식 화덕 피자를 맛보고, 야시장에서 스프레이 페인팅으로 타투를 하고 사격도 해보고, 다음 날에는 바이샤 베이, 리틀 발리 아일랜드 록, 난완 비치 등 세 곳의 유명 해변을 한꺼번에 탐험하는 등, 정말 잊지 못할 경험이었습니다.",
+    "8cff7408e135395051bf607cf03312f76be825217d66c2aca8b75311c2c411b6": "DoDoMen-纽西兰",
+    "10e0a7f292465b04a0623e1007aa756b61bc6d2a4fedc188ad5ff86ab6ee0f91": "DoDoMen - New Zealand",
+    "fa78f2e8640de25951e29f4198ac0a4d87d913bf6e6149ec4fa6a8414e7cd5fb": "ドドメン - ニュージーランド",
+    "2a758d381a37aec0a125ee150328671b3d0d4e0eafd67941c34fbea6e4d7d3ee": "도도멘 - 뉴질랜드"
   }
 }
