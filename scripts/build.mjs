@@ -1,3 +1,4 @@
+import {optimizeImages} from './images.mjs';
 import {createHash} from 'node:crypto';
 import { readdir, readFile, writeFile, mkdir, cp, rm, access } from 'node:fs/promises';
 import { validate, visibleData, kinds } from '../public/model.js';
@@ -15,6 +16,7 @@ for(const kind of kinds)for(const item of data[kind]){
 
 for(const kind of kinds)for(const item of data[kind])if(item.image)await access(`public/${item.image}`);
 await rm('dist',{recursive:true,force:true});await mkdir('dist',{recursive:true});await cp('public','dist',{recursive:true});
+await optimizeImages(data);
 await writeFile('dist/data.json',JSON.stringify({...visibleData(data),version:process.env.GITHUB_SHA||'local',builtAt:new Date().toISOString()}));
 await writeFile('dist/.nojekyll','');
 console.log(`Built ${data.cities.length} destinations → dist/`);

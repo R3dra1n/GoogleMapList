@@ -19,13 +19,31 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: npm ci
       - run: npm test
       - name: Translate changed content
+        id: translate
+        continue-on-error: true
         if: github.event_name != 'pull_request'
         env:
           GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
           TRANSLATION_MAX_CHARACTERS: '50000'
         run: node scripts/translate-content.mjs
+      - name: Preserve translation budget even after a provider failure
+        if: always() && github.event_name != 'pull_request' && steps.translate.outcome != 'skipped'
+        run: |
+          if [ -f translation/usage.json ]; then
+            git add translation/usage.json
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "chore: record translation budget"
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Stop publication on translation failure
+        if: steps.translate.outcome == 'failure'
+        run: exit 1
       - name: Validate translated content
         run: npm run build
       - name: Save translations in the repository

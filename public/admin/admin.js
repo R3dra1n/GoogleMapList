@@ -1,6 +1,6 @@
 import {migrateSession,onSessionChange,readSession} from './session.js';
 migrateSession();
-onSessionChange(()=>location.reload());
+onSessionChange(()=>{document.getElementById('publish-status').textContent='另一個分頁的登入狀態已改變。請先複製未儲存內容，再重新整理並登入；此頁不會自動重載。';});
 import { isMapsLink, isImagePath, myMapId, mapProvider } from '../model.js';
 const status=document.getElementById('publish-status');
 const CMS=window.CMS;
@@ -22,6 +22,14 @@ CMS.registerWidget('stable-id',window.createClass({
 }));
 CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
   let data=entry.get('data');const kind=entry.get('collection');
+  const token=readSession();
+  if(token){
+    const auth=await fetch('https://api.github.com/repos/R3dra1n/GoogleMapList',{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json'},cache:'no-store'});
+    if(auth.status===401){status.textContent='GitHub 登入已失效。請先複製目前輸入，再從右上角登出並重新登入。';throw new Error('GitHub 登入已失效（Bad credentials）。目前輸入保留在此頁；請先複製備份，再登出並重新登入後重試。');}
+    if(!auth.ok)throw new Error('暫時無法確認 GitHub 授權，請稍後重試；目前輸入保留。');
+    if(!(await auth.json()).permissions?.push)throw new Error('此 GitHub 帳號沒有網站編輯權限，請使用網站維護者帳號登入。');
+  }
+
   for(const key of ['name','food','sights','image','imageAlt','imageSource','imageLicense'])if(typeof data.get(key)==='string')data=data.set(key,data.get(key).trim());
   for(const provider of ['amap','baidu'])if(data.get(provider)&&mapProvider(data.get(provider))!==provider)throw new Error('請貼上對應平台的 HTTPS 地圖分享連結。');
   if(kind==='themes'&&data.get('link')&&!mapProvider(data.get('link')))throw new Error('主題清單需要 Google Maps、高德或百度的 HTTPS 分享連結。');

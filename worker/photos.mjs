@@ -11,9 +11,17 @@ export function photoCandidate(page){
 }
 async function commons(params,fetcher){
  const url=new URL('https://commons.wikimedia.org/w/api.php');url.search=new URLSearchParams({action:'query',format:'json',formatversion:'2',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'960',...params});
- const response=await fetcher(url.href,{headers:{'User-Agent':'WilliamPocketAtlas/1.0 (https://r3dra1n.github.io/GoogleMapList/)'},signal:AbortSignal.timeout(15000)});if(!response.ok)throw new ApiError('Wikimedia search is temporarily unavailable',502);const json=await response.json();if(json.error)throw new ApiError('Wikimedia search failed',502);return (json.query?.pages||[]).map(photoCandidate).filter(Boolean);
+ const response=await fetcher(url.href,{headers:{'User-Agent':'WilliamPocketAtlas/1.0 (https://r3dra1n.github.io/GoogleMapList/)'},signal:AbortSignal.timeout(15000)});if(!response.ok)throw new ApiError('Wikimedia search is temporarily unavailable',502);const json=await response.json();if(json.error)throw new ApiError('Wikimedia search failed',502);return json;
 }
-export async function searchPhotos(query,fetcher){if(!query||query.length>160)throw new ApiError('Search needs 1–160 characters');return {items:await commons({generator:'search',gsrsearch:query,gsrnamespace:'6',gsrlimit:'18'},fetcher)};}
+export async function searchPhotos(query,fetcher,offset=0){
+ if(!query||query.length>160)throw new ApiError('Search needs 1–160 characters');
+ if(!Number.isSafeInteger(offset)||offset<0||offset>10000)throw new ApiError('Invalid search page');
+ const result=await commons({generator:'search',gsrsearch:query,gsrnamespace:'6',gsrlimit:'50',gsroffset:String(offset),iiurlwidth:'320'},fetcher);
+ const pages=(result.query?.pages||[]).sort((a,b)=>(a.index||0)-(b.index||0));
+ const items=[...new Map(pages.map(photoCandidate).filter(Boolean).map(p=>[p.pageId,p])).values()];
+ const next=result.continue?.gsroffset;
+ return {items,scanned:pages.length,filtered:pages.length-items.length,nextOffset:Number.isSafeInteger(next)&&next>offset&&next<=10000?next:null};
+}
 export function githubClient(env,token,fetcher){return async(path,body,method)=>{
  const response=await fetcher(`https://api.github.com/repos/${env.GITHUB_REPO}/${path}`,{method:method||(body?'POST':'GET'),headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','Content-Type':'application/json','User-Agent':'PocketAtlas-CMS','X-GitHub-Api-Version':'2022-11-28'},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(20000)});
  if(!response.ok)throw new ApiError(response.status===422||response.status===409?'Content changed. Refresh and choose again.':'GitHub request failed',response.status===422||response.status===409?409:502);return response.status===204?{}:response.json();
@@ -35,7 +43,7 @@ export async function importPhoto(request,github,fetcher){
  const alt=typeof body.alt==='string'?body.alt.trim():'';if(!alt||alt.length>500)throw new ApiError('Image description required (max 500 characters)');
  let stage='確認圖片授權';
  try{
- const photo=(await commons({pageids:String(body.pageId)},fetcher))[0];if(!photo)throw new ApiError('Photo has no supported, verifiable license');
+ const photo=photoCandidate((await commons({pageids:String(body.pageId)},fetcher)).query?.pages?.[0]||{});if(!photo)throw new ApiError('Photo has no supported, verifiable license');
  stage='讀取目的地';
  const ref=await github('git/ref/heads/main');const current=await github(`contents/${path}?ref=${ref.object.sha}`);if(current.sha!==body.expectedSha)throw new ApiError('Content changed. Refresh and choose again.',409);
  const data=JSON.parse(fromBase64(current.content));if(data.id!==body.id)throw new ApiError('Invalid content');

@@ -37,4 +37,4 @@ export function createHandler(fetcher=fetch){return async(request,env)=>{
   return popup(origin,auth.access_token);
  }catch{return text('登入服務暫時無法使用，請重試。',502);}
 };}
-export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(sendNotifications(env));}};
+export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(sendNotifications(env));ctx.waitUntil(env.DB.prepare('DELETE FROM submission_limits WHERE expires_at < ?').bind(Math.floor(Date.now()/1000)).run());}};

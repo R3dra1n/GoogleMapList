@@ -9,5 +9,10 @@
     "test": "node --experimental-sqlite --test tests/*.test.mjs",
     "deploy:auth": "wrangler deploy --config worker/wrangler.toml"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
 }

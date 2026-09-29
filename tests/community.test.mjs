@@ -3,8 +3,9 @@ import {sendNotifications,notificationStatus} from '../worker/notifications.mjs'
 import {api} from '../worker/api.mjs';import {photoCandidate,importPhoto} from '../worker/photos.mjs';
 const schema=await readFile(new URL('../worker/migrations/0001_recommendations.sql',import.meta.url),'utf8');
 const notificationSchema=await readFile(new URL('../worker/migrations/0002_notifications.sql',import.meta.url),'utf8');
+const usageSchema=await readFile(new URL('../worker/migrations/0003_usage_stats.sql',import.meta.url),'utf8');
 function environment(){
- const db=new DatabaseSync(':memory:');db.exec(schema);db.exec(notificationSchema);
+ const db=new DatabaseSync(':memory:');db.exec(schema);db.exec(notificationSchema);db.exec(usageSchema);
  return {SITE_ORIGIN:'https://owner.github.io',GITHUB_REPO:'owner/repo',RATE_SALT:'test-only',DB:{
   prepare(sql){
    const stmt=db.prepare(sql);let args=[];

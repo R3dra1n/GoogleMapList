@@ -1,3 +1,4 @@
+import {reserveTranslation} from './translation-budget.mjs';
 import {createHash} from 'node:crypto';
 import {readFile,writeFile,readdir,mkdir,rename} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -51,9 +52,15 @@ async function main(){
  if(process.argv.includes('--check')){const plan=planTranslations(entries,state);console.log(`待翻譯 ${plan.jobs.length} 個不重複文字項目，${plan.characters} 字符；未呼叫 API、未修改檔案。`);return;}
  if(!process.env.GOOGLE_TRANSLATE_API_KEY){console.log('::notice::Google 翻譯尚未連接；保留現有內容與譯文。');return;}
  const limit=Number(process.env.TRANSLATION_MAX_CHARACTERS||50000);if(!Number.isSafeInteger(limit)||limit<1)throw Error('翻譯字符上限無效。');
+ const characters=planTranslations(structuredClone(entries),state).characters;
+ if(characters>limit)throw Error('超過單次翻譯字符上限；未呼叫 Google。');
+ const usagePath='translation/usage.json';let usage;try{usage=JSON.parse(await readFile(usagePath,'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
+ const month=new Date().toISOString().slice(0,7);usage=reserveTranslation(usage,characters,month);
+ await mkdir('translation',{recursive:true});await atomicJSON(usagePath,usage);
  const result=await translateEntries(entries,state,{apiKey:process.env.GOOGLE_TRANSLATE_API_KEY,maxCharacters:limit});
  for(const entry of entries)if(JSON.stringify(JSON.parse(entry.original))!==JSON.stringify(entry.data))await atomicJSON(entry.path,entry.data);
  await mkdir('translation',{recursive:true});await atomicJSON(statePath,result.state);
+ usage.months[month].confirmedCharacters+=result.characters;await atomicJSON(usagePath,usage);
  console.log(`譯文已寫入內容欄位。本次送出 ${result.characters} 字符；既有人工譯文保持不變。`);
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href)main().catch(error=>{console.error(error.message);process.exitCode=1;});
