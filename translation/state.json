@@ -653,32 +653,32 @@
       "output": "753b892e32210702a240c172ea0172ead96e04c9c300e669d7ee54f4da2be7e4"
     },
     "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionHans": {
-      "source": "61496c1ed4ef7126eec86681b738f7a83761ad6183d5e07203993e7b6cb10f96",
-      "output": "c94d90775b1331094e07437a11c3257e5817f34c104a0ca5002733dbd3b8a723"
+      "source": "69f00b8e7b3a905bab122a51490f450eadccc8dbd02ddb30803452f2116fe7c3",
+      "output": "d669444cdf9dbbc56eb32d283ae4c98fe2dffc049a0dd1688519b26c810d2fa9"
     },
     "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:english": {
       "source": "e3b6e8dee605c7915860a610381bae9f4e5d21d5ac7226ddf97251622c4c813a",
       "output": "8c32bf338296455e6004fa9a64547868da3a7a49450a500a43b5ef6409e35fda"
     },
     "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionEn": {
-      "source": "b1f1ee89b662b2724f6aaac31b049e6581b2e80c4ca9db9d8534a3fae8812d74",
-      "output": "e89f804c6048126f1d9da20371eeb160a89ca0b4a3e271cc62345f0faf4cdee7"
+      "source": "81e5155c4ac53901fc10945d8b831c37d5b65cf43690c05e86a1c2f65b1770af",
+      "output": "b940c5938b717c51824dd9a98ede6b3777c7e60b97bd3a484a8f77ba2cda9bd6"
     },
     "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:nameJa": {
       "source": "d6cc0c2e5a93ddddcb399ce343b4532f662d363e74d904fa2ad11795b6b6cce8",
       "output": "c8dfe22a90223585551b12d94762fbc6564b8e979d3dada000257f8490f0cba6"
     },
     "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionJa": {
-      "source": "eb00c452f0668491f9d8ea310c95b0fcd34512b4bad64639f3b1d23c3c566d69",
-      "output": "f92a006985f3e5ed2a8a34c92da74ff1623dd3da7b6633486177aa4fa89f0c7e"
+      "source": "7f87b65216265487435b77d6652b4ddfc15747c9a42b2a367af3b8d64e2204c4",
+      "output": "ab4f3726fa763c611baddcc432cab8c928c40a80543004a9b75ef1aa98971a2d"
     },
     "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:nameKo": {
       "source": "43087d825ce3b89b1bc97293f16ede17a59fcfe79d280b0ccb7a7961ef539f34",
       "output": "72a182bf5bf2d57f9f16bb306f3c7fe9f88caeb291a7fcea6ef16d23950d44ca"
     },
     "content/themes/bedd958c-52eb-47ee-9f8c-1c6add5197ee.json:descriptionKo": {
-      "source": "a058fdd24ac5006c0f0f56539203c9c9a6a3aee556e8dc3a25297e655aff86f8",
-      "output": "158441c3a3b5307c16ad4055409a7303498f49315440ed2bd00e0840c2b22986"
+      "source": "372f0eea4a3b4aea11a0c61329fda9e81ff5c2d190812720192604d6ba4ae3e4",
+      "output": "7dc864134526eaa1b410053e55aed2389555c311536e64fba2706adf60f8e78a"
     }
   },
   "cache": {
@@ -874,6 +874,10 @@
     "d6cc0c2e5a93ddddcb399ce343b4532f662d363e74d904fa2ad11795b6b6cce8": "Dカード・ザクロ・トレイン・イーティング・チャイニーズ",
     "eb00c452f0668491f9d8ea310c95b0fcd34512b4bad64639f3b1d23c3c566d69": "路面電車沿いで個性的なハンバーガーを発見し、都会の生活と美食の融合を体験してください。",
     "43087d825ce3b89b1bc97293f16ede17a59fcfe79d280b0ccb7a7961ef539f34": "디카드-석류-기차 중국 음식",
-    "a058fdd24ac5006c0f0f56539203c9c9a6a3aee556e8dc3a25297e655aff86f8": "트램 노선을 따라 독특한 버거를 맛보고 도시 생활과 미식의 즐거움을 동시에 경험해 보세요."
+    "a058fdd24ac5006c0f0f56539203c9c9a6a3aee556e8dc3a25297e655aff86f8": "트램 노선을 따라 독특한 버거를 맛보고 도시 생활과 미식의 즐거움을 동시에 경험해 보세요.",
+    "69f00b8e7b3a905bab122a51490f450eadccc8dbd02ddb30803452f2116fe7c3": "这集电车吃汉抽到云林斗六的冷门小站「石榴站」，整趟旅程充满了意想不到的惊喜与满满人情味！从传承超过一甲子的老字号冰店大啖冲击味蕾的「香菜花生冰饼」，到晚上吃到外皮酥脆多汁、被评为 95 分的神级蒜香鸡排。最感人的莫过于在社区活动中心与「云林腰鼓队」的妈妈们相遇，一起挥汗打鼓、跳舞合体快闪，隔天更被热情的佳慧姐招待自家手作素食早午餐，边吃边大聊动漫，温暖又疗愈的乡村人情味让人看完心里暖洋洋！",
+    "81e5155c4ac53901fc10945d8b831c37d5b65cf43690c05e86a1c2f65b1770af": "This episode of \"Eating on the Tram\" takes us to the lesser-known \"Shiliu Station\" in Douliu, Yunlin, and the entire journey is filled with unexpected surprises and heartwarming moments! From indulging in the tantalizing \"Coriander and Peanut Ice Cake\" at a time-honored ice cream shop with over 60 years of history, to enjoying the crispy and juicy garlic chicken cutlet that received a 95-point rating in the evening, the most touching moment was meeting the \"Yunlin Waist Drum Team\" mothers at the community activity center. They worked up a sweat drumming and dancing together in a flash mob, and the next day, the enthusiastic Sister Jia Hui treated them to a homemade vegetarian brunch, chatting about anime while eating. The warm and healing rural hospitality left viewers feeling cozy and at ease!",
+    "7f87b65216265487435b77d6652b4ddfc15747c9a42b2a367af3b8d64e2204c4": "今回の「路面電車で食べる」では、雲林県斗六市のあまり知られていない「十六駅」を訪れます。旅の途中は、思いがけないサプライズや心温まる瞬間がいっぱい！創業60年以上の老舗アイスクリーム店で、食欲をそそる「パクチーとピーナッツのアイスケーキ」を堪能したり、夜には95点の高評価を得た、サクサクジューシーなガーリックチキンカツを味わったり。中でも最も感動的だったのは、地域活動センターで「雲林腰太鼓隊」のお母さんたちと出会ったことです。彼女たちはフラッシュモブで一緒に太鼓を叩き、踊り、汗を流しました。翌日、元気いっぱいの賈慧姉さんは、手作りのベジタリアンブランチをご馳走し、アニメについて語り合いながら食事を楽しみました。温かく癒される田舎のおもてなしは、視聴者を心地よくリラックスさせてくれました！",
+    "372f0eea4a3b4aea11a0c61329fda9e81ff5c2d190812720192604d6ba4ae3e4": "이번 \"전차 위에서 먹는 즐거움\" 편에서는 윈린성 더우류에 있는 잘 알려지지 않은 역, \"스리우역\"을 소개합니다. 전철 여행 내내 예상치 못한 놀라움과 따뜻한 순간들이 가득합니다! 100년 역사를 자랑하는 아이스크림 가게에서 군침 도는 \"고수 땅콩 빙수\"를 맛보고, 95점 만점을 받은 바삭하고 육즙 가득한 마늘 돈까스를 즐기는 등, 가장 감동적인 순간은 마을회관에서 \"윈린 허리 북 팀\" 어머니들을 만난 것이었습니다. 그들은 함께 플래시몹을 하며 땀을 흘렸고, 다음 날에는 따뜻한 마음을 가진 자후이 아주머니가 직접 만든 채식 브런치를 대접하며 애니메이션 이야기를 나누었습니다. 따뜻하고 정겨운 시골의 환대는 시청자들에게 편안하고 따뜻한 감동을 선사했습니다!"
   }
 }
