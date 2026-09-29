@@ -775,6 +775,38 @@
     "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:descriptionKo": {
       "source": "48d8488a2d82ffce6facd57fdae43a2b7bd911e0e966c855031898a738d92205",
       "output": "bf84bf09ee6685a86edd6e658495839b7051f0d818531548e69842e7a29d5dda"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:nameHans": {
+      "source": "2b13db89a8e49510574b15093a1be28c4cb137696e386bb099d73ceed98c5adc",
+      "output": "8a8796bbdf696da87424add4e5afafe89be3285ca39bf2430eb64aa68132cfa1"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:descriptionHans": {
+      "source": "e23d561c9efcc720504dfce268afa33508510feccdcc273ff00c821fbc7ecc82",
+      "output": "877e2a3700909416b1302560146365a44b15510fea41ae9271a28b89dc188a51"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:english": {
+      "source": "3fdbd6e68228d2108cc09aa3b24f23b07c6934dffb9ab1e0c0236e307e001b57",
+      "output": "7d1091aaeab0f4432f2ea2f840522ef6fb5e368d6a353494110abc00d8a2e498"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:descriptionEn": {
+      "source": "e540645fbe34bc04cde8849e9dcf478b4f3205a67440636f098dda90276bd839",
+      "output": "30f22dc66e4de279b4adb6a5affc5fbc89829c5de9b596e591259bc6ca19f7a0"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:nameJa": {
+      "source": "63beb0797c06d044c3cb9e408429d169c9554c727639b360a4357d6ce31589f7",
+      "output": "4f0d403fdf9fb8872dddf80951cb2ee1897cc8ad274ce1ba03ace9938f6f4463"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:descriptionJa": {
+      "source": "271f331f6ad97b28e6470053bec53cdd9539d23c0ebb1d26ca2bbf36069271c7",
+      "output": "0ba89972c32a4b3154b70ce729bd965263bfe24abf0838c10289a892a9d403f9"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:nameKo": {
+      "source": "d91140a3b931529602caa12f298cca300ebfb07d37dd3b847b7b52093fb3e2a7",
+      "output": "cbeb4d39cfecbecdaf3c1514d01cc4c0bf6edcfd1dc8d2fc276cbadbffb0d32c"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:descriptionKo": {
+      "source": "eda5f2599a835fb9eb49b790f6020548fdd5e7e9787c0168b1a506da203d7127",
+      "output": "693cf6713c65f1573754f9f5d1e2519fca417b0f79597f7104b104a77e476024"
     }
   },
   "cache": {
@@ -1010,6 +1042,14 @@
     "caa8397dc18061906f571c755487037da90298d9926d89ec9ece8401f71accd8": "高雄",
     "f941ab6c692dded58a3af1074fbfb8df6c071e641953a304c1e1d10dc05e8319": "高雄は台湾南部の重要な都市であり、豊かな漁港文化と活気あふれる夜市を誇り、グルメとレジャーを楽しむのに最適な場所です。",
     "0041ebac0de9df9e676ed62c7c2bbb3c665a6831dba510ec7741314bb3546a69": "가오슝",
-    "48d8488a2d82ffce6facd57fdae43a2b7bd911e0e966c855031898a738d92205": "가오슝은 대만 남부에 위치한 중요한 도시로, 풍부한 어항 문화와 활기 넘치는 야시장을 자랑하며, 음식과 여가를 즐기기에 좋은 곳입니다."
+    "48d8488a2d82ffce6facd57fdae43a2b7bd911e0e966c855031898a738d92205": "가오슝은 대만 남부에 위치한 중요한 도시로, 풍부한 어항 문화와 활기 넘치는 야시장을 자랑하며, 음식과 여가를 즐기기에 좋은 곳입니다.",
+    "2b13db89a8e49510574b15093a1be28c4cb137696e386bb099d73ceed98c5adc": "桃园",
+    "e23d561c9efcc720504dfce268afa33508510feccdcc273ff00c821fbc7ecc82": "桃园位于台湾，是融合现代化与人文风情的城市，拥有丰富的历史与多样的景点。",
+    "3fdbd6e68228d2108cc09aa3b24f23b07c6934dffb9ab1e0c0236e307e001b57": "Taoyuan",
+    "e540645fbe34bc04cde8849e9dcf478b4f3205a67440636f098dda90276bd839": "Taoyuan, located in Taiwan, is a city that blends modernity with cultural charm, boasting a rich history and diverse attractions.",
+    "63beb0797c06d044c3cb9e408429d169c9554c727639b360a4357d6ce31589f7": "桃園",
+    "271f331f6ad97b28e6470053bec53cdd9539d23c0ebb1d26ca2bbf36069271c7": "台湾に位置する桃園市は、近代性と文化的魅力が融合した都市であり、豊かな歴史と多様な観光スポットを誇っています。",
+    "d91140a3b931529602caa12f298cca300ebfb07d37dd3b847b7b52093fb3e2a7": "타오위안",
+    "eda5f2599a835fb9eb49b790f6020548fdd5e7e9787c0168b1a506da203d7127": "대만에 위치한 타오위안은 현대적인 모습과 문화적 매력이 조화를 이루는 도시로, 풍부한 역사와 다양한 볼거리를 자랑합니다."
   }
 }
