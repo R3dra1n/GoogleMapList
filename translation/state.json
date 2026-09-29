@@ -711,6 +711,38 @@
     "content/cities/85bf209e-a32d-4f6a-aeaf-eb3f075a7ff8.json:imageAltKo": {
       "source": "67a20451ab34322bf507317d64ad8c300f6bfa967f4ea92299ea98645345322a",
       "output": "4e3531d2543181291f65dcd186d932e88e841828df07b25c4d6421b51af75254"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:nameHans": {
+      "source": "abda07dfa7f704fcc3fedcaf600e15e6f2b09c6a3a2c979b1b5d3101afd99107",
+      "output": "b4415237de7351a086158572bf0b4d55451146ec8301d89830f7523d52d56eef"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:descriptionHans": {
+      "source": "cd2901e57b686601d355015a91c50ac33b54e9fbe48f3b242e50738aad65fa16",
+      "output": "2b37abb2ed7e31f93b17fd95ce4e6a47e22aaffbe933bf590c145080e913e1bc"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:english": {
+      "source": "f963d479083b5a08bdb00f684a171afe2ce0105263a95aeabe1a39d0d41edfac",
+      "output": "c805bb1a3e10d5c7300945fb2aec48e52ba796b699b6ca0b10dc26739b82aebf"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:descriptionEn": {
+      "source": "7781fff61990c8fc646b9ddf41346e5c620bb4e73a6c4e7080b54c44a876b924",
+      "output": "4bc677f86767cc2a88d206dd8ff9bf662b0809346fd9ce774c5fa31f303726e6"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:nameJa": {
+      "source": "b82666b313950f01623f9ed5dae5c541bae0dcb6ca8c97d9217714192ad4d076",
+      "output": "b4415237de7351a086158572bf0b4d55451146ec8301d89830f7523d52d56eef"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:descriptionJa": {
+      "source": "0c852a6fb3aa18c9f9fa3c077aba4a8578439e4ed7c6fabf5a480806d4800be9",
+      "output": "6e5c62eb9b8984df3a25c3ad563d446343097c07311c740489ddf30df278d72c"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:nameKo": {
+      "source": "9b7aad68901978c9f699c37fe939d4b38b44a245e5c39fbdd1aa7f1501e46c22",
+      "output": "58b286b5e0ba9d7286eddd19c6e9e3f3a78f57acc5b19e96b0f7276ec0e695ca"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:descriptionKo": {
+      "source": "bfa180ba17203e4a451eacd17e423aa09bd135452a253f17d59afa84c5902741",
+      "output": "584458c9ab5744a36bd315f6db710f0ff5e3eb0040f158bb2f96048a6f8c03b2"
     }
   },
   "cache": {
@@ -930,6 +962,14 @@
     "8cff7408e135395051bf607cf03312f76be825217d66c2aca8b75311c2c411b6": "DoDoMen-纽西兰",
     "10e0a7f292465b04a0623e1007aa756b61bc6d2a4fedc188ad5ff86ab6ee0f91": "DoDoMen - New Zealand",
     "fa78f2e8640de25951e29f4198ac0a4d87d913bf6e6149ec4fa6a8414e7cd5fb": "ドドメン - ニュージーランド",
-    "2a758d381a37aec0a125ee150328671b3d0d4e0eafd67941c34fbea6e4d7d3ee": "도도멘 - 뉴질랜드"
+    "2a758d381a37aec0a125ee150328671b3d0d4e0eafd67941c34fbea6e4d7d3ee": "도도멘 - 뉴질랜드",
+    "abda07dfa7f704fcc3fedcaf600e15e6f2b09c6a3a2c979b1b5d3101afd99107": "台北",
+    "cd2901e57b686601d355015a91c50ac33b54e9fbe48f3b242e50738aad65fa16": "台北是台湾的首都，融合现代都市与传统文化，拥有丰富的美食、艺术与历史景点。",
+    "f963d479083b5a08bdb00f684a171afe2ce0105263a95aeabe1a39d0d41edfac": "Taipei",
+    "7781fff61990c8fc646b9ddf41346e5c620bb4e73a6c4e7080b54c44a876b924": "Taipei, the capital of Taiwan, blends modern urban life with traditional culture and boasts a wealth of culinary delights, art, and historical sites.",
+    "b82666b313950f01623f9ed5dae5c541bae0dcb6ca8c97d9217714192ad4d076": "台北",
+    "0c852a6fb3aa18c9f9fa3c077aba4a8578439e4ed7c6fabf5a480806d4800be9": "台湾の首都である台北は、近代的な都市生活と伝統文化が融合した街であり、数々の美食、芸術、そして史跡を誇っている。",
+    "9b7aad68901978c9f699c37fe939d4b38b44a245e5c39fbdd1aa7f1501e46c22": "타이베이",
+    "bfa180ba17203e4a451eacd17e423aa09bd135452a253f17d59afa84c5902741": "대만의 수도 타이베이는 현대적인 도시 생활과 전통 문화가 조화를 이루는 곳으로, 풍부한 음식 문화, 예술, 그리고 역사 유적지를 자랑합니다."
   }
 }
