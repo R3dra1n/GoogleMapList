@@ -45,8 +45,8 @@
       "output": "5aca23c6f5cd6082b7618720c0e48f86ee87c8b6ff3a81d301f7fdedd25a8940"
     },
     "content/cities/chiang-mai.json:imageAltJa": {
-      "source": "564e8b4f979a46c66bdc9f24537886f537cb925eafeb4e15a8db5b923b37fbf3",
-      "output": "5aca23c6f5cd6082b7618720c0e48f86ee87c8b6ff3a81d301f7fdedd25a8940"
+      "source": "e8e6f1bbbc8383f57720bc2f15967d493aa55decd0bced87754047e486958004",
+      "output": "181c067df46b0a17c4a74ba15100bf1ad6d78fb000514534526e57132aa96b3e"
     },
     "content/countries/vietnam.json:imageAltJa": {
       "source": "65a8bd2fdcbf653ced16f14a26ba8bd00e3b1518b0de8bd537cbbb7dda9cd22a",
@@ -93,8 +93,8 @@
       "output": "d34477868fe520f623cf9a43f0a311e1a35947538017d34e15857e4714790e89"
     },
     "content/cities/chiang-mai.json:imageAltKo": {
-      "source": "58c89ebbcfdfe4d44e73382381a9c5b44add0323754101b176986b3eba45d996",
-      "output": "d34477868fe520f623cf9a43f0a311e1a35947538017d34e15857e4714790e89"
+      "source": "5561d220554a730a4295208dd53e7df08ec56a6af83b3875959cc009f6aa402d",
+      "output": "aa5024c2b3bc0340a00af155e7b7c3433b8a51cecb7e115b68ee5ae40c78c92b"
     },
     "content/countries/vietnam.json:imageAltKo": {
       "source": "780a1ed748b2beb33ba18a619770a592ac9a28f3c42a540cb244e9eaafbd68f5",
@@ -591,6 +591,14 @@
     "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:descriptionKo": {
       "source": "9496ada98e5354aca226ac0926a29ad5f668e2f7695e56dd792bb13699d86042",
       "output": "584f1a366c8ba8ad27bc1e13d6812c73bbe9674cee82868bada7341f7263fdcb"
+    },
+    "content/cities/chiang-mai.json:imageAltHans": {
+      "source": "d6ff62702c7434c45ddb37e7fffce33c913cc2256287bc03a8e5121b145b0dba",
+      "output": "516e5738a012d519987611a3470b4415e6f4931afe979785c2a18dfdab1f129a"
+    },
+    "content/cities/chiang-mai.json:imageAltEn": {
+      "source": "5fae0347c60457d89b15ed0e18719687844cd22a9151711a2ac36929f6c894ef",
+      "output": "f4fb1362777b07a4d65e3976fcc4848c7261ed737a3bc6b62a055099de4fbe5b"
     }
   },
   "cache": {
@@ -762,6 +770,10 @@
     "9a205cdbf0945e3a54b5318a88d433cac1ef5dbe11976ab6e6badc99e940f11f": "墾丁は本当に変わったのだろうか？",
     "c7342503ebdb306a6245a84d9cd226328ee802e761a99f3ee8a3fb1d381242fd": "Good Clamsは今回、私たちの固定観念を本当に打ち砕いてくれました。東港で何さんと一緒に極厚のマグロステーキを前菜に食べたり、海外のリゾートのようなバスタブ付きの素晴らしい白いオーシャンビューのゲストハウスに泊まったり、墾丁街で絶品のナポリ風オーブン焼きピザを発見したり、夜市でスプレーペイントのタトゥーを体験したり、撮影をしたり、そして翌日には白沙湾、小バリ島岩、南湾ビーチという3つの主要なビーチを一度に巡ったりしました。",
     "a295df571a1035c75198e047c2158a2ba9e16337f5268c351a7760a3fc589724": "컨팅은 정말 변했을까요?",
-    "9496ada98e5354aca226ac0926a29ad5f668e2f7695e56dd792bb13699d86042": "이번 굿 클램 여행은 정말 우리의 고정관념을 완전히 깨부쉈습니다. 동강에서 호 씨와 함께 애피타이저로 두툼한 참치 스테이크를 맛본 것부터 시작해서, 해외 리조트 같은 분위기의 멋진 하얀색 오션뷰 게스트하우스에서 욕조를 구경하고, 컨딩 거리에서 나폴리식 화덕 피자를 맛보고, 야시장에서 스프레이 페인팅 타투를 체험하고 사진 촬영도 하고, 다음 날에는 바이샤 베이, 리틀 발리 아일랜드 록, 난완 비치까지 세 곳의 유명 해변을 한 번에 탐험하는 등 정말 잊지 못할 경험이었습니다."
+    "9496ada98e5354aca226ac0926a29ad5f668e2f7695e56dd792bb13699d86042": "이번 굿 클램 여행은 정말 우리의 고정관념을 완전히 깨부쉈습니다. 동강에서 호 씨와 함께 애피타이저로 두툼한 참치 스테이크를 맛본 것부터 시작해서, 해외 리조트 같은 분위기의 멋진 하얀색 오션뷰 게스트하우스에서 욕조를 구경하고, 컨딩 거리에서 나폴리식 화덕 피자를 맛보고, 야시장에서 스프레이 페인팅 타투를 체험하고 사진 촬영도 하고, 다음 날에는 바이샤 베이, 리틀 발리 아일랜드 록, 난완 비치까지 세 곳의 유명 해변을 한 번에 탐험하는 등 정말 잊지 못할 경험이었습니다.",
+    "d6ff62702c7434c45ddb37e7fffce33c913cc2256287bc03a8e5121b145b0dba": "契迪龙寺",
+    "5fae0347c60457d89b15ed0e18719687844cd22a9151711a2ac36929f6c894ef": "Wat Chedi Luang",
+    "e8e6f1bbbc8383f57720bc2f15967d493aa55decd0bced87754047e486958004": "ワット・チェディルアン",
+    "5561d220554a730a4295208dd53e7df08ec56a6af83b3875959cc009f6aa402d": "왓 체디 루앙"
   }
 }
