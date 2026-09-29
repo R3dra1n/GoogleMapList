@@ -1,0 +1,10 @@
+{
+  "startedAt": "2026-09-29T04:12:06.476Z",
+  "months": {
+    "2026-09": {
+      "reservedCharacters": 0,
+      "confirmedCharacters": 0
+    }
+  },
+  "monthlyLimit": 400000
+}
