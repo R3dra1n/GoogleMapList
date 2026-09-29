@@ -560,37 +560,21 @@
       "source": "d452a43deeb06f0695e87c7a315c314c618e78987c434c2c0c33938df63cbddf",
       "output": "87c7e1386612354d600b91e7574d8866f88be6f1a8937728ab9bda5fcbadf971"
     },
-    "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:nameHans": {
-      "source": "b09ac715e781f552e74529c583f3f13f8e86e45a7c1ac720f71837e5badc005a",
-      "output": "fec6403d0b334af28cd0e013567e2b1dba349da4f2c4e8273591d10165f77cea"
-    },
-    "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:descriptionHans": {
-      "source": "55e37dd8f5581d7a181771192be7c336a42e4b2c94edc96d16462d89d7eb24c7",
-      "output": "b35a0e81408b26626a7ac0b6d1dbebfeb09b938adf991d17e8291987ea0b5bb4"
-    },
     "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:english": {
-      "source": "974cd7724aa7e0e219fa48c03fa0c5457db345484cd96fe8005a8740a207dd99",
-      "output": "52e46c45328b0b5772044689f14d74ac0220757833be43e96b5c2beccd0a4a19"
-    },
-    "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:descriptionEn": {
-      "source": "7f5ce040f1d92c53d7aba4baa9f9ddbc04d4a5744f270a1654deb2ba1cb3c19e",
-      "output": "cb84f1d56f0453a5269d8e9b139308d576c19ff34f3d148b1710ef2a219162e1"
+      "source": "57f74db3db16e7b75dcfea6e0ad304cc972cca68f634dd69dd65bc545d7ae236",
+      "output": "f6bb9be10bc5be8907094083d87fc77d6758290cd723265aec076092daf349c3"
     },
     "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:nameJa": {
-      "source": "9a205cdbf0945e3a54b5318a88d433cac1ef5dbe11976ab6e6badc99e940f11f",
-      "output": "e613652d614dd983330f59707b0acc11d602be8261a99ae6609dcdf00ee26db3"
-    },
-    "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:descriptionJa": {
-      "source": "c7342503ebdb306a6245a84d9cd226328ee802e761a99f3ee8a3fb1d381242fd",
-      "output": "07c0d0ec40e000eba9429780ca425488fa30bced882454a2a959395664e2f912"
+      "source": "6c58697c29ca4bb77cc291c56b936955bb35aabdb4f10b2c7825da77f199b943",
+      "output": "0ede6acfbf5be590e894691e226eb665b181759e7c62aa2935cb1746a54282eb"
     },
     "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:nameKo": {
-      "source": "a295df571a1035c75198e047c2158a2ba9e16337f5268c351a7760a3fc589724",
-      "output": "b17ee759dc96fee61451cfb70c7ff2a9eb17a961cf1fda7f337c1df8cee5d838"
+      "source": "a6cd8b8b5f72ecbea8c625a7a610dcaa18cc1d89e6ef86fb0f153225f14d86ae",
+      "output": "0a13144c050b614fae7b60df092601b0dae3fda26a190aa5e4100482a65afa60"
     },
     "content/themes/587595ac-810e-4bba-98c5-44d986a03123.json:descriptionKo": {
-      "source": "9496ada98e5354aca226ac0926a29ad5f668e2f7695e56dd792bb13699d86042",
-      "output": "584f1a366c8ba8ad27bc1e13d6812c73bbe9674cee82868bada7341f7263fdcb"
+      "source": "9ce817d31d431b51e834964e124f2eaf83e2d2835238d6aaa5b596c74d92e022",
+      "output": "6513fe038fcae648677df3d34ad816bd40080fa9269e3a20943f0d6a69066604"
     },
     "content/cities/chiang-mai.json:imageAltHans": {
       "source": "d6ff62702c7434c45ddb37e7fffce33c913cc2256287bc03a8e5121b145b0dba",
@@ -938,6 +922,10 @@
     "b35324188b002aee83a55a34b60a3db869c7f5c388f3e7b7c65a9aaf5fd54155": "城隍庙三川殿天井",
     "5ff813fd623ba9b623be2f22143eb1fbb950779968dfdb5304f25d0a44f3e958": "City God Temple Sanchuan Hall Courtyard",
     "925432a438a07cbb1d365b795cd8d46d647754dec321069908c577a6c0b418c0": "城隍廟三川殿の中庭",
-    "67a20451ab34322bf507317d64ad8c300f6bfa967f4ea92299ea98645345322a": "성신전 삼천전 안뜰"
+    "67a20451ab34322bf507317d64ad8c300f6bfa967f4ea92299ea98645345322a": "성신전 삼천전 안뜰",
+    "57f74db3db16e7b75dcfea6e0ad304cc972cca68f634dd69dd65bc545d7ae236": "Good Words - Kenting - Has Kenting really changed?",
+    "6c58697c29ca4bb77cc291c56b936955bb35aabdb4f10b2c7825da77f199b943": "良い言葉 - 墾丁 - 墾丁は本当に変わったのか？",
+    "a6cd8b8b5f72ecbea8c625a7a610dcaa18cc1d89e6ef86fb0f153225f14d86ae": "좋은 말 - 컨딩 - 컨딩은 정말 변했을까요?",
+    "9ce817d31d431b51e834964e124f2eaf83e2d2835238d6aaa5b596c74d92e022": "이번 굿 워즈 여행은 정말 우리의 고정관념을 완전히 깨부쉈습니다. 동강에서 호 씨와 함께 두툼한 참치 스테이크를 메인 요리로 즐긴 것부터, 해외 리조트에 온 듯한 멋진 하얀색 오션뷰 게스트하우스에서 욕조를 구경하고, 컨딩 거리에서 나폴리식 화덕 피자를 맛보고, 야시장에서 스프레이 페인팅으로 타투를 하고 사격도 해보고, 다음 날에는 바이샤 베이, 리틀 발리 아일랜드 록, 난완 비치 등 세 곳의 유명 해변을 한꺼번에 탐험하는 등, 정말 잊지 못할 경험이었습니다."
   }
 }
