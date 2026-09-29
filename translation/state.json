@@ -631,6 +631,22 @@
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionKo": {
       "source": "06ef567b2bed992aee1b67194750cd58afe4e6de475fcade0bd39c69e43e38ab",
       "output": "96a4d9f8e5f1926d30079ae86b372663a9bb54d2b9d9cd98d9fc6546f2c71464"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:imageAltHans": {
+      "source": "50a5810cb8a1db79286184654a75916424dfc071ccbe138f1919deee24a26334",
+      "output": "0c02af3c0b2d3cb66e6a2156310227f2db19394eb02b2397a69e198fbf243a4f"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:imageAltEn": {
+      "source": "99a6a72530fb148d2b06318dc6b5f260673eb58bf7d190f3f81b51f8c2c8cdf5",
+      "output": "34d01aca63284f2fa9752c237daa0f1b9175c3c7bbdc00949ed9c5037aa2ccbe"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:imageAltJa": {
+      "source": "323d58bad8bb51e8d3da89f4d72d465e946af6c221c67c1a078ee0184f0d6d99",
+      "output": "0c02af3c0b2d3cb66e6a2156310227f2db19394eb02b2397a69e198fbf243a4f"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:imageAltKo": {
+      "source": "14f71490fd509924d53ef4529ca17ed1286e54203ff4bf22f50fa43fa49eb0b2",
+      "output": "07bd2b4d22f2526ad960ff0241e7767654b5f5738f13cafa81d92451caaaa373"
     }
   },
   "cache": {
@@ -814,6 +830,10 @@
     "472d9b78c6c246c20981e2ed196501a961536f994fe17148f6e424fec813e184": "台中市",
     "1a987c580004ce4c29e33fa9f24e8dc17d1727951598288e9a127f4e5e660de8": "台湾中部に位置する台中市は、重要な工業、商業、文化の中心地であり、豊富な食と観光名所を擁している。",
     "4a2fb7ce09aad58988c6d48e57dbf29d6ac3c847619d7e3eb1c0fe8f46006962": "타이중시",
-    "06ef567b2bed992aee1b67194750cd58afe4e6de475fcade0bd39c69e43e38ab": "타이완 중부에 위치한 타이중시는 풍부한 먹거리와 관광 명소를 자랑하는 중요한 산업, 상업 및 문화 중심지입니다."
+    "06ef567b2bed992aee1b67194750cd58afe4e6de475fcade0bd39c69e43e38ab": "타이완 중부에 위치한 타이중시는 풍부한 먹거리와 관광 명소를 자랑하는 중요한 산업, 상업 및 문화 중심지입니다.",
+    "50a5810cb8a1db79286184654a75916424dfc071ccbe138f1919deee24a26334": "台中市政府",
+    "99a6a72530fb148d2b06318dc6b5f260673eb58bf7d190f3f81b51f8c2c8cdf5": "Taichung City Government",
+    "323d58bad8bb51e8d3da89f4d72d465e946af6c221c67c1a078ee0184f0d6d99": "台中市政府",
+    "14f71490fd509924d53ef4529ca17ed1286e54203ff4bf22f50fa43fa49eb0b2": "타이중시 정부"
   }
 }
