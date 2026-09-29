@@ -711,6 +711,22 @@
     "content/cities/85bf209e-a32d-4f6a-aeaf-eb3f075a7ff8.json:descriptionKo": {
       "source": "7dc736077e33d12822823ec9d903193597f71063f2f49c262060c6fc21e98d2d",
       "output": "afab6e0fdce908d1b6b6a002b50be68eab7c0cc67b0797b68d88271319b2d286"
+    },
+    "content/cities/85bf209e-a32d-4f6a-aeaf-eb3f075a7ff8.json:imageAltHans": {
+      "source": "b35324188b002aee83a55a34b60a3db869c7f5c388f3e7b7c65a9aaf5fd54155",
+      "output": "7f3cdbd2aeae46a5f77de8817f86c8fc3de054988a8b18dfb482a56833d01067"
+    },
+    "content/cities/85bf209e-a32d-4f6a-aeaf-eb3f075a7ff8.json:imageAltEn": {
+      "source": "5ff813fd623ba9b623be2f22143eb1fbb950779968dfdb5304f25d0a44f3e958",
+      "output": "e4f5103cf66afb03fef13c4fc42fac02edab77d63ee296e0d3dbce3e88f0ab1c"
+    },
+    "content/cities/85bf209e-a32d-4f6a-aeaf-eb3f075a7ff8.json:imageAltJa": {
+      "source": "925432a438a07cbb1d365b795cd8d46d647754dec321069908c577a6c0b418c0",
+      "output": "d5d0ee151051599bfc3ab29418b358472590fc269c1b83e5f9dd8992d105fb58"
+    },
+    "content/cities/85bf209e-a32d-4f6a-aeaf-eb3f075a7ff8.json:imageAltKo": {
+      "source": "67a20451ab34322bf507317d64ad8c300f6bfa967f4ea92299ea98645345322a",
+      "output": "4e3531d2543181291f65dcd186d932e88e841828df07b25c4d6421b51af75254"
     }
   },
   "cache": {
@@ -918,6 +934,10 @@
     "9dd24b09c7735eaa43b1062b66441965ac3359d719134f7b2a4a5c31fd543800": "新竹",
     "82fb3afa67698660918f31581073f2a53535ec1eaf1fea51b56b47d6e72af221": "新竹は台湾北部の重要な都市であり、豊かな歴史、文化、そして技術産業を誇ると同時に、伝統的な街並みや美食も大切に守り続けている。",
     "b55e4aaada932a469b7747786fad4eb8e8e583e0ef838302d2ff8f588df2b656": "신주",
-    "7dc736077e33d12822823ec9d903193597f71063f2f49c262060c6fc21e98d2d": "신주시는 대만 북부에 위치한 중요한 도시로, 풍부한 역사, 문화, 첨단 산업을 자랑하는 동시에 전통적인 거리 풍경과 맛있는 음식도 간직하고 있습니다."
+    "7dc736077e33d12822823ec9d903193597f71063f2f49c262060c6fc21e98d2d": "신주시는 대만 북부에 위치한 중요한 도시로, 풍부한 역사, 문화, 첨단 산업을 자랑하는 동시에 전통적인 거리 풍경과 맛있는 음식도 간직하고 있습니다.",
+    "b35324188b002aee83a55a34b60a3db869c7f5c388f3e7b7c65a9aaf5fd54155": "城隍庙三川殿天井",
+    "5ff813fd623ba9b623be2f22143eb1fbb950779968dfdb5304f25d0a44f3e958": "City God Temple Sanchuan Hall Courtyard",
+    "925432a438a07cbb1d365b795cd8d46d647754dec321069908c577a6c0b418c0": "城隍廟三川殿の中庭",
+    "67a20451ab34322bf507317d64ad8c300f6bfa967f4ea92299ea98645345322a": "성신전 삼천전 안뜰"
   }
 }
