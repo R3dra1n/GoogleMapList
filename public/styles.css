@@ -21,3 +21,19 @@
 .translation-footer{padding-bottom:24px}#translation-notice{justify-content:flex-end;margin:0;font-size:.75rem;gap:12px}#translation-notice img{padding:0;background:white}.translation-footer #translation-notice>a:last-child{color:var(--muted)}
 
 .list-stats{display:flex;justify-content:flex-end;align-self:stretch;margin-top:auto;padding-top:16px;color:var(--muted);font-variant-numeric:tabular-nums}.stats-count{font-size:.8rem;white-space:nowrap}.destination-card:not(.country-card){display:flex;flex-direction:column}.destination-card:not(.country-card)>.cover{flex-shrink:0}.destination-card:not(.country-card)>.card-body{display:flex;flex-direction:column;flex:1}.card-body>.combined{align-self:flex-start}.story-body>.list-stats{margin-top:20px}
+
+/* Stable card text slots keep peer actions aligned across each destination grid. */
+.card-grid{grid-auto-rows:1fr}
+.card-grid .card-title{line-height:1.5;height:3em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+.card-grid .card-top{align-items:flex-start;min-height:3.9rem}.card-grid .card-top>svg,.card-grid .card-arrow{flex-shrink:0;margin-top:5px}
+.card-grid .card-english{height:1.5em;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-grid .card-description{height:5.25em;min-height:5.25em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.card-grid .actions{min-height:44px;flex-shrink:0}
+.card-grid .combined{order:1;margin-top:12px}.card-grid .alternative-maps{order:2}.card-grid .story-link{order:3}.card-grid .list-stats{order:4}
+.theme-card .actions{grid-template-columns:1fr}
+.card-grid .story-link{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:1px solid #e0e9ff;border-radius:9px;background:#f0f5ff;color:var(--blue);font-size:.875rem;line-height:1.5;text-align:center}
+.card-grid .map-button,.travel-story .actions .map-button{background:#f0f5ff;color:var(--blue);border-color:#e0e9ff}
+.card-grid .map-button:disabled,.travel-story .actions .map-button:disabled{background:var(--soft);color:var(--muted);border-color:var(--line)}
+[data-theme=dark] .card-grid .map-button,[data-theme=dark] .card-grid .story-link,[data-theme=dark] .travel-story .actions .map-button{background:var(--soft);color:var(--navy);border-color:var(--line)}
+[data-theme=dark] .card-grid .map-button:disabled{color:#9ba8ba;opacity:.65}
+.country-card .card-meta{min-height:3.8em;align-items:flex-start}.country-card .card-meta span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;line-height:1.7}
