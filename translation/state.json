@@ -312,33 +312,21 @@
       "source": "2a758d381a37aec0a125ee150328671b3d0d4e0eafd67941c34fbea6e4d7d3ee",
       "output": "17e9f37bc20a97e6379501a3a7b91974c0e9b2c46c96985066639b2d6d33227a"
     },
-    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:nameHans": {
-      "source": "65c5a0c86e33b3ef94705e09941f3cb37413fbe781d54c8bb1bb814dd8dccdec",
-      "output": "187c6634e3d8df7c29d2c02863c1069179692182c20c87ce005ccd5d909d178e"
-    },
     "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionHans": {
       "source": "fce9bb208eea85ad562d52b37da1271452b87cc454ec826d6a5187e21840746b",
       "output": "5b50dec20664298d67ac5644e4c667e506e02bc04edc22d1f56b21942e495d43"
     },
-    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:english": {
-      "source": "49180e9300fc588ef537ab90ebda11115b41560fc774e193dbe5f588beb8e93b",
-      "output": "b198bfd6f0118f85ffef0f292dc286bfec228a7a3fea2f9ceed0e6c97abb100d"
-    },
     "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionEn": {
       "source": "8a8e9023f356dedc45455c2c9af9494ee48272981ac5502b6ec1b80ea5ac3500",
       "output": "6457a4dfb02ce3cbde6b2ea30de3c2fb68355877b3a41b8f9e59deccbda73518"
-    },
-    "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:nameJa": {
-      "source": "e5964043aa837e02a09f8e1ad7af9c0d8da11f08e215d064817c0f5189b641f7",
-      "output": "3471fbcd6e51c59ed0f8b422f1f2d948cc23ec7ebcb035f954302696d302f371"
     },
     "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionJa": {
       "source": "1a85700be8a8faa2b1f759df29550acf0b05dcb541aeaa271e1b7b4d9f70edbe",
       "output": "ec46fb76bb355dd339b2798f1dfa9de1ead857f4b337e3225af08539fdb09da3"
     },
     "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:nameKo": {
-      "source": "31222d6a9c48cdf78fa947b195c5b5588283843744fbdcd413ba054664e80967",
-      "output": "f10bc344aac12d344345a970caa53d181fee140b7b9acec8998d302da707fb47"
+      "source": "d27d1c0718b37cdffc9991540cf2a3b39370346ec12782552e71f2dc5c8acba9",
+      "output": "7caceb3a22b7a933899fb691f86abe3b5b48665b719de5962af47dfc399c3e94"
     },
     "content/cities/6a354e4e-7d0b-409e-841e-cf9b47b984d0.json:descriptionKo": {
       "source": "b00ff29987bdad4d9fcb62bff9ae70b51f3566ea2179932dd6b63287f978973d",
@@ -585,32 +573,32 @@
       "output": "f4fb1362777b07a4d65e3976fcc4848c7261ed737a3bc6b62a055099de4fbe5b"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:nameHans": {
-      "source": "1226fa889834aee30afa3f016cfdf3459e74c507ed5a205ded0fbb830169b9d6",
-      "output": "fd723da654419d9ba2c07213fc5ac26f88e04e41d71f7c7e671f7a6a19e2d937"
+      "source": "e4319bedb802c7a9fbb3ff585373242cb9589dab33914d09bc44ef7beb2e614a",
+      "output": "23e93744cf94d3135a53b6646059480edf07eb63da54efeca063694884be76c4"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionHans": {
       "source": "78ac65068ac16b3da26b28ac68e4879b1a13e5999e2ea73f1be3b9c9b64e0651",
       "output": "26043be3f205182a05be512554e3ccc7dd2e5596f83b0acfbe2bdd2aba3dcaba"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:english": {
-      "source": "a10287696dce41ef983dbb0641b50651f05ca5043e1bac2c439597d3e754a61d",
-      "output": "1aa46cb9cbedf21236456a6039e8c24eccaacdacef02d8c82ee07ed1e96bbd72"
+      "source": "c6348ed2794f23e102389ba4b66aa2e63d1deb3f7a2ea45cccb03bd77398a99d",
+      "output": "c55c5e7640608cabfca2ab47f40b5d77f8c4e786675c351c65ee9dc82f50b52d"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionEn": {
       "source": "39fce613a5a554f613d461a32fae9c2cd6b7675ad50fb6eff8900efeaa71b047",
       "output": "eca287d5a61abb05d254759a4eb58460e1ae5c2151861a3597101cadc79a9ded"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:nameJa": {
-      "source": "472d9b78c6c246c20981e2ed196501a961536f994fe17148f6e424fec813e184",
-      "output": "fd723da654419d9ba2c07213fc5ac26f88e04e41d71f7c7e671f7a6a19e2d937"
+      "source": "c91612c130b79fedec026d882d9c630ca3f3eedb927ad3706cecd78a01fbdd34",
+      "output": "23e93744cf94d3135a53b6646059480edf07eb63da54efeca063694884be76c4"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionJa": {
       "source": "1a987c580004ce4c29e33fa9f24e8dc17d1727951598288e9a127f4e5e660de8",
       "output": "0e898940476598035a07734819e3dd2aae5c996a697705a222c6511c4ba6715c"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:nameKo": {
-      "source": "4a2fb7ce09aad58988c6d48e57dbf29d6ac3c847619d7e3eb1c0fe8f46006962",
-      "output": "4d3aea0e479cbe0cbe312087fcce53f13d65c093e4e4c9569a6ea53589b89795"
+      "source": "2c43ad4a8f70b8e934ead543f9f530fb4f022de3cc482a60843e0022a5f4d4a8",
+      "output": "cc511a6a886b01e788213da914d1db23cf5eaee15a79d077a3ad189637ec0dc1"
     },
     "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionKo": {
       "source": "06ef567b2bed992aee1b67194750cd58afe4e6de475fcade0bd39c69e43e38ab",
@@ -1050,6 +1038,10 @@
     "63beb0797c06d044c3cb9e408429d169c9554c727639b360a4357d6ce31589f7": "桃園",
     "271f331f6ad97b28e6470053bec53cdd9539d23c0ebb1d26ca2bbf36069271c7": "台湾に位置する桃園市は、近代性と文化的魅力が融合した都市であり、豊かな歴史と多様な観光スポットを誇っています。",
     "d91140a3b931529602caa12f298cca300ebfb07d37dd3b847b7b52093fb3e2a7": "타오위안",
-    "eda5f2599a835fb9eb49b790f6020548fdd5e7e9787c0168b1a506da203d7127": "대만에 위치한 타오위안은 현대적인 모습과 문화적 매력이 조화를 이루는 도시로, 풍부한 역사와 다양한 볼거리를 자랑합니다."
+    "eda5f2599a835fb9eb49b790f6020548fdd5e7e9787c0168b1a506da203d7127": "대만에 위치한 타오위안은 현대적인 모습과 문화적 매력이 조화를 이루는 도시로, 풍부한 역사와 다양한 볼거리를 자랑합니다.",
+    "e4319bedb802c7a9fbb3ff585373242cb9589dab33914d09bc44ef7beb2e614a": "台中",
+    "c6348ed2794f23e102389ba4b66aa2e63d1deb3f7a2ea45cccb03bd77398a99d": "Taichung",
+    "c91612c130b79fedec026d882d9c630ca3f3eedb927ad3706cecd78a01fbdd34": "台中",
+    "2c43ad4a8f70b8e934ead543f9f530fb4f022de3cc482a60843e0022a5f4d4a8": "타이중"
   }
 }
