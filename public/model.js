@@ -33,6 +33,7 @@ export function validate(data) {
         if (entry[key] != null && typeof entry[key] !== 'string') throw new Error(`${entry.id} 的 ${key} 必須是文字`);
       }
       for(const provider of ['amap','baidu'])if(entry[provider]&&(typeof entry[provider]!=='string'||mapProvider(entry[provider])!==provider))throw new Error(`${entry.id} 的 ${provider} 分享連結無效`);
+      if(kind==='themes'&&entry.myMap&&!myMapId(entry.myMap))throw new Error('主題 My Maps 網址無效');
       if(kind==='themes'&&entry.link&&!mapProvider(entry.link))throw new Error('主題連結必須是支援的 HTTPS 地圖連結');
       if (!isImagePath(entry.image)) throw new Error(`${entry.id} 的封面路徑無效`);
       if (entry.image && !entry.imageAlt?.trim()) throw new Error(`${entry.id} 的圖片需要替代文字`);
@@ -58,7 +59,7 @@ export function visibleData(data) {
 }
 export function resolveRoute(hash, data) {
   let parts; try { parts=decodeURIComponent(hash.replace(/^#\/?/, '')).split('/').filter(Boolean); } catch { return null; }
-  if(parts.length===1&&parts[0]==='themes')return {themes:true};
+  if(parts[0]==='themes'){if(parts.length===1)return {themes:true};const theme=parts.length===2&&(data.themes||[]).find(x=>x.id===parts[1]&&x.published);return theme?{themes:true,theme}:null;}
   if (parts.length>3) return null;
   const continent=data.continents.find(c=>c.id===(parts[0] || (data.continents.some(c=>c.id==='asia')?'asia':data.continents[0]?.id)));
   if (!continent) return null;

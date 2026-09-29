@@ -4,6 +4,7 @@ compatibility_date = "2026-09-01"
 workers_dev = true
 
 [vars]
+CF_ACCOUNT_ID = "03ef4b7f6a3c94748505c94aa1aa3635"
 SITE_ORIGIN = "https://r3dra1n.github.io"
 GITHUB_REPO = "R3dra1n/GoogleMapList"
 # GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET are configured via wrangler secret put.

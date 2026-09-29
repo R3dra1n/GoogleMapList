@@ -1,3 +1,4 @@
+import {costMonitor,monitorSettings} from './cost-monitor.mjs';
 import {importDescription} from './import-description.mjs';
 import {stats} from './stats.mjs';
 import {usage,reserve} from './usage.mjs';
@@ -25,6 +26,8 @@ export async function api(request,env,fetcher){
   if(!check.ok||!(await check.json()).permissions?.push)throw new ApiError('Editor access required',403);
   const github=githubClient(env,token,fetcher);
   if(url.pathname==='/api/admin/import-description'&&request.method==='POST')return json(await importDescription(request,github,fetcher));
+  if(url.pathname==='/api/admin/cost-monitor'&&request.method==='GET')return json(await costMonitor(request,env,fetcher));
+  if(url.pathname==='/api/admin/cost-settings'&&request.method==='POST')return json(await monitorSettings(request,env));
   if(url.pathname==='/api/admin/usage'&&request.method==='GET')return json(await usage(env,github));
   if(url.pathname==='/api/admin/descriptions'&&request.method==='POST')return json(await generateDescription(request,env,github,token));
   if(url.pathname==='/api/admin/notifications'&&request.method==='GET')return json(await notificationStatus(env));

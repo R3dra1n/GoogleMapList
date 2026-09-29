@@ -1,3 +1,4 @@
+import {monitorSnapshot,sendUsageAlerts} from './cost-monitor.mjs';
 import {sendNotifications} from './notifications.mjs';
 import {api} from './api.mjs';
 const COOKIE='__Host-pocket_oauth';
@@ -37,4 +38,4 @@ export function createHandler(fetcher=fetch){return async(request,env)=>{
   return popup(origin,auth.access_token);
  }catch{return text('登入服務暫時無法使用，請重試。',502);}
 };}
-export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(sendNotifications(env));ctx.waitUntil(env.DB.prepare('DELETE FROM submission_limits WHERE expires_at < ?').bind(Math.floor(Date.now()/1000)).run());}};
+export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(sendNotifications(env));ctx.waitUntil(monitorSnapshot(env).then(()=>sendUsageAlerts(env)).catch(()=>console.error("COST_MONITOR_REFRESH_FAILED")));ctx.waitUntil(env.DB.prepare('DELETE FROM submission_limits WHERE expires_at < ?').bind(Math.floor(Date.now()/1000)).run());}};

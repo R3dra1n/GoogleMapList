@@ -182,3 +182,10 @@ collections:
       - { name: link, label: 主題清單連結, widget: string, required: false, default: '', hint: '支援 Google Maps、高德、百度 HTTPS 分享連結。留空顯示整理中。' }
       - { name: amap, label: 高德地圖分享連結, widget: string, required: false, default: '', hint: '貼上高德的 HTTPS 分享連結；不會自動轉換 Google 清單。' }
       - { name: baidu, label: 百度地圖分享連結, widget: string, required: false, default: '', hint: '貼上百度地圖的 HTTPS 分享連結。' }
+
+      - { name: myMap, label: Google 我的地圖, widget: string, required: false, default: '', hint: '貼上完整的 https://www.google.com/maps/d/viewer?mid=... 網址。地圖須開放公開瀏覽才能嵌入；不用貼 iframe。' }
+      - { name: article, label: 遊記（繁體中文）, widget: text, required: false, default: '', hint: '以空行分段，適合行程、交通與旅行心得；前台會建立可分享的主題文章頁。' }
+      - { name: articleHans, label: 游记（简体中文）, widget: text, required: false, default: '' }
+      - { name: articleJa, label: 遊記（日本語）, widget: text, required: false, default: '' }
+      - { name: articleKo, label: 遊記（한국어）, widget: text, required: false, default: '' }
+      - { name: articleEn, label: Travel notes (English), widget: text, required: false, default: '' }

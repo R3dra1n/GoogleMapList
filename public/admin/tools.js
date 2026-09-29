@@ -1,3 +1,4 @@
+import {renderCostPanel} from './cost-panel.js';
 import {readSession,saveSession,clearSession,migrateSession,onSessionChange} from './session.js';
 import '../preferences.js';
 const $=id=>document.getElementById(id);
@@ -44,12 +45,7 @@ try{const config=await (await fetch('./connection.json',{cache:'no-store'})).jso
 if(location.hash==='#photos')tab(true);
 
 const metricNames={ai_attempts:'AI 生成嘗試',ai_successes:'AI 成功生成',ai_tokens:'AI 回報 tokens（非 neurons）',photo_search_attempts:'搜圖頁次',stats_attempts:'統計寫入嘗試',email_attempts:'Email 發送嘗試',email_month_attempts:'Email 本月預留次數',email_provider_accepted:'Email 服務接受次數（非送達）'};
-async function showUsage(){
- $('usage-result').textContent='正在讀取…';
- try{const u=await api('/api/admin/usage');const month=u.day.slice(0,7),tr=u.translation?.months?.[month];
- $('usage-result').innerHTML=`<p>${escape(u.note)}（UTC ${escape(u.day)}）</p><h3>實際記錄：本月</h3><ul>${u.observed.map(r=>`<li>${escape(r.day)} · ${escape(metricNames[r.metric]||r.metric)}：${r.value}</li>`).join('')||'<li>尚無記錄，並不代表歷史用量為零。</li>'}</ul><h3>Google 翻譯</h3><p>${tr?`本月預留上界 ${tr.reservedCharacters} 字符；成功批次 ${tr.confirmedCharacters} 字符。估算未扣免費額度的牌價上界 US$${(tr.reservedCharacters*20/1000000).toFixed(2)}，不是帳單。`:'尚無本站字符記錄；先前用量未知。'}</p><h3>本站操作限制</h3><p>AI 50 次／日；搜圖 300 頁／日；統計 2,000 次／日；Email 嘗試 90 次／日、2,500 次／月；翻譯 400,000 字符／月、50,000 字符／次。</p><p>Cloudflare 請求數、CPU、D1 讀寫與儲存、AI neurons、Google 帳號總字符、Resend 帳單：尚未連接，請查看供應商後台。超額不等於零費用。</p>`;
- }catch(error){$('usage-result').textContent=error.message;}
-}
+async function showUsage(){await renderCostPanel($('usage-result'),api);}
 $('tab-usage').onclick=()=>{tab(false);$('inbox-panel').hidden=true;$('usage-panel').hidden=false;$('tab-inbox').setAttribute('aria-pressed','false');$('tab-usage').setAttribute('aria-pressed','true');showUsage()};$('refresh-usage').onclick=showUsage;
 let descriptionSha='',descriptionTarget='',previewText='';
 function resetImport(){descriptionSha='';descriptionTarget='';previewText='';$('description-source').replaceChildren();$('description-text').value='';$('description-current').textContent='';$('description-result').textContent='';$('description-confirm').checked=false;$('description-save').disabled=true;}
@@ -59,3 +55,5 @@ $('description-info').onclick=async()=>{resetImport();const target=$('destinatio
 $('description-preview').onclick=async()=>{const target=$('destination').value,source=$('description-source').value;try{const r=await importCall({mode:'preview',source});if(target!==$('destination').value||source!==$('description-source').value)return;previewText=r.text;$('description-text').value=r.text;$('description-confirm').checked=false;$('description-result').textContent=r.notice;}catch(e){$('description-result').textContent=e.message}};
 $('description-source').onchange=()=>{previewText='';$('description-text').value='';$('description-confirm').checked=false;};
 $('description-save').onclick=async()=>{if(descriptionTarget!==$('destination').value)return;const button=$('description-save');button.disabled=true;try{await importCall({mode:'save',source:$('description-source').value,expectedSha:descriptionSha,text:$('description-text').value,confirmed:$('description-confirm').checked,method:previewText&&previewText===$('description-text').value?'public-preview-reviewed':'manual-copy'});$('description-result').textContent='已保存說明與來源，等待網站發布。';descriptionSha='';}catch(e){$('description-result').textContent=e.message;button.disabled=false}};
+
+if(location.hash==='#usage')$('tab-usage').click();
