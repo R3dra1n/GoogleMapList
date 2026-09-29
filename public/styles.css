@@ -20,4 +20,4 @@
 
 .translation-footer{padding-bottom:24px}#translation-notice{justify-content:flex-end;margin:0;font-size:.75rem;gap:12px}#translation-notice img{padding:0;background:white}.translation-footer #translation-notice>a:last-child{color:var(--muted)}
 
-.list-stats{display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;margin-top:1rem}.list-stats button{border:1px solid var(--line,#cbd5e1);border-radius:12px;padding:.5rem .75rem;background:transparent;color:inherit;cursor:pointer}.list-stats button[aria-pressed=true]{background:#174de0;color:white}.stats-count{opacity:.75}
+.list-stats{display:flex;justify-content:flex-end;align-self:stretch;margin-top:auto;padding-top:16px;color:var(--muted);font-variant-numeric:tabular-nums}.stats-count{font-size:.8rem;white-space:nowrap}.destination-card:not(.country-card){display:flex;flex-direction:column}.destination-card:not(.country-card)>.cover{flex-shrink:0}.destination-card:not(.country-card)>.card-body{display:flex;flex-direction:column;flex:1}.card-body>.combined{align-self:flex-start}.story-body>.list-stats{margin-top:20px}
