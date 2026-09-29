@@ -599,6 +599,38 @@
     "content/cities/chiang-mai.json:imageAltEn": {
       "source": "5fae0347c60457d89b15ed0e18719687844cd22a9151711a2ac36929f6c894ef",
       "output": "f4fb1362777b07a4d65e3976fcc4848c7261ed737a3bc6b62a055099de4fbe5b"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:nameHans": {
+      "source": "1226fa889834aee30afa3f016cfdf3459e74c507ed5a205ded0fbb830169b9d6",
+      "output": "fd723da654419d9ba2c07213fc5ac26f88e04e41d71f7c7e671f7a6a19e2d937"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionHans": {
+      "source": "78ac65068ac16b3da26b28ac68e4879b1a13e5999e2ea73f1be3b9c9b64e0651",
+      "output": "26043be3f205182a05be512554e3ccc7dd2e5596f83b0acfbe2bdd2aba3dcaba"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:english": {
+      "source": "a10287696dce41ef983dbb0641b50651f05ca5043e1bac2c439597d3e754a61d",
+      "output": "1aa46cb9cbedf21236456a6039e8c24eccaacdacef02d8c82ee07ed1e96bbd72"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionEn": {
+      "source": "39fce613a5a554f613d461a32fae9c2cd6b7675ad50fb6eff8900efeaa71b047",
+      "output": "eca287d5a61abb05d254759a4eb58460e1ae5c2151861a3597101cadc79a9ded"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:nameJa": {
+      "source": "472d9b78c6c246c20981e2ed196501a961536f994fe17148f6e424fec813e184",
+      "output": "fd723da654419d9ba2c07213fc5ac26f88e04e41d71f7c7e671f7a6a19e2d937"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionJa": {
+      "source": "1a987c580004ce4c29e33fa9f24e8dc17d1727951598288e9a127f4e5e660de8",
+      "output": "0e898940476598035a07734819e3dd2aae5c996a697705a222c6511c4ba6715c"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:nameKo": {
+      "source": "4a2fb7ce09aad58988c6d48e57dbf29d6ac3c847619d7e3eb1c0fe8f46006962",
+      "output": "4d3aea0e479cbe0cbe312087fcce53f13d65c093e4e4c9569a6ea53589b89795"
+    },
+    "content/cities/bf929e21-77a7-46ff-b73c-1baaa49c2399.json:descriptionKo": {
+      "source": "06ef567b2bed992aee1b67194750cd58afe4e6de475fcade0bd39c69e43e38ab",
+      "output": "96a4d9f8e5f1926d30079ae86b372663a9bb54d2b9d9cd98d9fc6546f2c71464"
     }
   },
   "cache": {
@@ -774,6 +806,14 @@
     "d6ff62702c7434c45ddb37e7fffce33c913cc2256287bc03a8e5121b145b0dba": "契迪龙寺",
     "5fae0347c60457d89b15ed0e18719687844cd22a9151711a2ac36929f6c894ef": "Wat Chedi Luang",
     "e8e6f1bbbc8383f57720bc2f15967d493aa55decd0bced87754047e486958004": "ワット・チェディルアン",
-    "5561d220554a730a4295208dd53e7df08ec56a6af83b3875959cc009f6aa402d": "왓 체디 루앙"
+    "5561d220554a730a4295208dd53e7df08ec56a6af83b3875959cc009f6aa402d": "왓 체디 루앙",
+    "1226fa889834aee30afa3f016cfdf3459e74c507ed5a205ded0fbb830169b9d6": "台中市",
+    "78ac65068ac16b3da26b28ac68e4879b1a13e5999e2ea73f1be3b9c9b64e0651": "台中市位于台湾中部，是台湾重要的工商与文化中心，拥有丰富的美食与观光景点。",
+    "a10287696dce41ef983dbb0641b50651f05ca5043e1bac2c439597d3e754a61d": "Taichung City",
+    "39fce613a5a554f613d461a32fae9c2cd6b7675ad50fb6eff8900efeaa71b047": "Taichung City, located in central Taiwan, is an important industrial, commercial and cultural center with abundant food and tourist attractions.",
+    "472d9b78c6c246c20981e2ed196501a961536f994fe17148f6e424fec813e184": "台中市",
+    "1a987c580004ce4c29e33fa9f24e8dc17d1727951598288e9a127f4e5e660de8": "台湾中部に位置する台中市は、重要な工業、商業、文化の中心地であり、豊富な食と観光名所を擁している。",
+    "4a2fb7ce09aad58988c6d48e57dbf29d6ac3c847619d7e3eb1c0fe8f46006962": "타이중시",
+    "06ef567b2bed992aee1b67194750cd58afe4e6de475fcade0bd39c69e43e38ab": "타이완 중부에 위치한 타이중시는 풍부한 먹거리와 관광 명소를 자랑하는 중요한 산업, 상업 및 문화 중심지입니다."
   }
 }
