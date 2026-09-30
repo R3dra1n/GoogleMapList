@@ -10,3 +10,4 @@
 #continents{margin-top:30px;gap:26px;overflow:visible;flex-wrap:wrap}#continents[hidden]{display:none}#continents .continent-tab{border-radius:0;background:none;color:var(--muted);padding:10px 0;border-bottom:2px solid transparent}#continents .continent-tab[aria-current]{color:var(--blue);border-bottom-color:var(--blue)}
 .profile-intro{padding-top:36px}.profile-search{margin:12px 0 24px;color:var(--muted)}.profile-search summary{cursor:pointer;padding:10px 0}.platform-intro{padding-top:52px;padding-bottom:22px}#catalog-top:empty{display:none}.intro[hidden]{display:none}
 @media(max-width:650px){.global-bar{flex-direction:column;align-items:stretch;gap:12px;padding-block:16px}#global-nav{justify-content:space-between;gap:12px}#header-search{width:100%}#global-nav a{font-size:.85rem}.platform-intro{padding-top:32px}}
+.card-grid .catalog-card .catalog-chips{order:4}.card-grid .catalog-card .list-stats{order:5}
