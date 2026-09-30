@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {editOwnProfile,validateProfile} from '../worker/creator-profile.mjs';
+const account={userId:'a',creatorId:'creator-a'},record={...account,published:false,role:'creator'},input={name:'Alice',description:'旅行與散步',links:[{label:'Website',url:'https://example.com/'}]};
+test('creator may edit only their own profile with server-owned identity preserved',()=>{const result=editOwnProfile(account,record,input);assert.equal(result.name,'Alice');assert.equal(result.userId,'a');assert.equal(result.published,false);for(const actor of [null,{userId:'b',creatorId:'creator-b'},{...account,suspended:true}])assert.throws(()=>editOwnProfile(actor,record,input));});
+test('profile rejects ownership, moderation and editorial privilege escalation',()=>{for(const key of ['userId','creatorId','role','published','curated','avatar','banner'])assert.throws(()=>editOwnProfile(account,record,{...input,[key]:'injected'}));});
+test('profile bounds fields and rejects unsafe social links',()=>{for(const url of ['javascript:alert(1)','http://example.com','https://user:password@example.com'])assert.throws(()=>validateProfile({...input,links:[{label:'x',url}]}));assert.throws(()=>validateProfile({...input,name:' '}));assert.throws(()=>validateProfile({...input,description:'x'.repeat(501)}));});
