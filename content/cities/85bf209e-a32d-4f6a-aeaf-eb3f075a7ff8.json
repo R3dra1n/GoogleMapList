@@ -32,5 +32,8 @@
   "baidu": "",
   "description": "新竹是台灣北部的重要城市，擁有豐富的歷史文化與科技產業，同時也保留了傳統街區與美食風貌。",
   "food": "https://maps.app.goo.gl/JvTUC4E32kpEte9b7",
-  "articleEn": ""
+  "articleEn": "",
+  "tags": [
+    "美食"
+  ]
 }

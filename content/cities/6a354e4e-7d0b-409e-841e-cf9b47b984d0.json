@@ -32,5 +32,8 @@
   "baidu": "",
   "description": "屏東位於台灣最南端，擁有豐富的自然與人文景觀，是熱帶風情與生態探索的熱門目的地。",
   "food": "https://maps.app.goo.gl/gv2HoEM5R8f6fNnZA",
-  "articleEn": ""
+  "articleEn": "",
+  "tags": [
+    "美食"
+  ]
 }

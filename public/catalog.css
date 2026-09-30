@@ -16,3 +16,6 @@
 
 .catalog-card{position:relative}.catalog-card .card-main-link::after{content:"";position:absolute;inset:0;z-index:2}.catalog-card .catalog-byline a,.catalog-card .catalog-chips a,.catalog-card .card-title a{position:relative;z-index:3}.catalog-card:focus-within{outline:2px solid var(--blue);outline-offset:3px}
 .map-fallback{display:inline-block;margin:14px 0;color:var(--blue);font-size:.85rem}.catalog-byline{overflow-wrap:anywhere}
+
+.catalog-card .card-title .card-main-link{position:static;z-index:auto}.catalog-card .catalog-footer{margin-top:22px}.catalog-card .card-title{overflow:visible;display:block}.catalog-card .card-title .card-main-link{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.catalog-byline a{display:inline-block;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:color .15s,background-color .15s,text-decoration-color .15s;border-radius:3px}.catalog-byline a:hover,.catalog-byline a:focus-visible{color:var(--blue);background:var(--soft);text-decoration-color:currentColor}.catalog-chips a:hover,.catalog-chips a:focus-visible{color:var(--blue);border-color:var(--blue)}

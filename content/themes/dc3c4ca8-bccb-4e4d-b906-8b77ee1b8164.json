@@ -27,5 +27,14 @@
   "description": "胡志明市是越南南部的重要城市，擁有豐富的歷史與文化景點，如聖母大教堂與中央郵局，展現法國殖民時期的建築風格。",
   "curated": true,
   "originalAuthor": "Google Maps",
-  "originalAuthorSource": "https://maps.app.goo.gl/pTwunQdHfj6ogD5BA"
+  "originalAuthorSource": "https://maps.app.goo.gl/pTwunQdHfj6ogD5BA",
+  "tags": [
+    "景點探索"
+  ],
+  "destinations": [
+    "vietnam"
+  ],
+  "locationNames": [
+    "胡志明市"
+  ]
 }

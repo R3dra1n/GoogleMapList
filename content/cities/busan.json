@@ -23,5 +23,9 @@
   "id": "busan",
   "image": "uploads/commons-137538746-3c1effc1-af6a-451b-8294-5df40fe9d474.jpg",
   "description": "海邊散步、在地料理與城市探索。綜合清單可能包含周邊地點。",
-  "food": "https://maps.app.goo.gl/eKAfsFhSLoqXSu1Q7"
+  "food": "https://maps.app.goo.gl/eKAfsFhSLoqXSu1Q7",
+  "tags": [
+    "美食",
+    "景點"
+  ]
 }

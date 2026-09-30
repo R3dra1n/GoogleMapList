@@ -28,5 +28,9 @@
   "image": "uploads/commons-53940993-33a4ea30-29af-4163-9fe2-5154184c7efc.jpg",
   "description": "在山海之間，找一頓好吃的，再出發走走。",
   "food": "https://maps.app.goo.gl/5wpnSUyxxYqL2gK47",
-  "articleEn": "Travel Notes Test\nSecond Line Test"
+  "articleEn": "Travel Notes Test\nSecond Line Test",
+  "tags": [
+    "美食",
+    "景點"
+  ]
 }

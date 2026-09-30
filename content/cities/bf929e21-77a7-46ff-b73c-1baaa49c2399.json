@@ -32,5 +32,9 @@
   "baidu": "",
   "description": "台中市位於台灣中部，是台灣重要的工商與文化中心，擁有豐富的美食與觀光景點。",
   "food": "https://maps.app.goo.gl/GPkuAdKw9eu1eVKi8",
-  "articleEn": ""
+  "articleEn": "",
+  "tags": [
+    "美食",
+    "景點"
+  ]
 }

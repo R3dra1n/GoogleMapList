@@ -15,7 +15,7 @@ export function validateCatalog(data){
   if(item.originalAuthorSource){const source=new URL(item.originalAuthorSource);if(source.protocol!=='https:'||source.username||source.password)throw Error('原作者來源須為 HTTPS');}
   for(const id of [item.owner,...(item.sources||[])].filter(Boolean))if(!ids.has(id))throw Error('找不到創作者：'+id);
   for(const id of item.destinations||[])if(!data.countries.some(x=>x.id===id)&&!data.cities.some(x=>x.id===id))throw Error('找不到目的地：'+id);
-  for(const field of ['tags','keywords'])if(item[field]&&(!Array.isArray(item[field])||item[field].some(x=>typeof x!=='string'||x.length>80)))throw Error(field+' 必須為文字列表');
+  for(const field of ['tags','keywords','locationNames'])if(item[field]&&(!Array.isArray(item[field])||item[field].some(x=>typeof x!=='string'||x.length>80)))throw Error(field+' 必須為文字列表');
   const seen=new Set();for(const e of mapEntries(item,kind)){if(!/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$/.test(e.id||'')||seen.has(e.id)||!entryPlatform(e.url)||!['food','sights','myMap','collection','guide','reviews'].includes(e.purpose))throw Error('地圖入口識別碼或網址無效');seen.add(e.id);}
   for(const v of item.videos||[])if(!youtubeId(v.url)||!Number.isInteger(v.start||0)||(v.start||0)<0||typeof(v.title||'')!=='string')throw Error('YouTube 網址或起播秒數無效');
   for(const p of item.places||[])if(typeof p.name!=='string'||!p.name.trim()||(p.url&&!entryPlatform(p.url))||(p.source&&!/^https:\/\//.test(p.source))||(p.keywords&&(!Array.isArray(p.keywords)||p.keywords.some(x=>typeof x!=='string'))))throw Error('景點名稱、關鍵字或來源無效');

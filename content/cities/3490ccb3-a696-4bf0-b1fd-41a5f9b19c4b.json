@@ -32,5 +32,8 @@
   "baidu": "",
   "description": "桃園位於台灣，是融合現代化與人文風情的城市，擁有豐富的歷史與多樣的景點。",
   "food": "https://maps.app.goo.gl/To3fdffmWQSWxMtK8",
-  "articleEn": ""
+  "articleEn": "",
+  "tags": [
+    "美食"
+  ]
 }

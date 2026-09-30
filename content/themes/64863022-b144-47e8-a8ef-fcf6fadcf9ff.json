@@ -25,5 +25,11 @@
   "amap": "",
   "baidu": "",
   "description": "庫里奇巴（Curitiba）與瓜拉圖巴（Guaratuba）這兩座城市是 Victor 在巴西的家鄉與主要生活圈（位於巴拉那州），相較於里約，這裡展現了更真實、溫暖的巴西在地日常\n\nhttps://www.youtube.com/watch?v=J5vkPysXJTw",
-  "curated": true
+  "curated": true,
+  "tags": [
+    "城市生活"
+  ],
+  "destinations": [
+    "9723b3bb-d59c-44dc-ac96-eaa65fe4fdeb"
+  ]
 }

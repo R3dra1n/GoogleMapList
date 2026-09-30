@@ -26,5 +26,11 @@
   "amap": "",
   "baidu": "",
   "description": "DoDoMan在2026 年中旬受紐西蘭觀光局邀請，與團隊夥伴 Penny 一同前往紐西蘭進行了 11 天的深度南北島夢幻之旅\n北島- https://www.youtube.com/watch?v=UWtpWR53veg\n南島- https://www.youtube.com/watch?v=1Fyf36FAYt8",
-  "curated": true
+  "curated": true,
+  "tags": [
+    "旅遊影片"
+  ],
+  "locationNames": [
+    "紐西蘭"
+  ]
 }

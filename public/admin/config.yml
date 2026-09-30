@@ -58,7 +58,9 @@ collections:
       - { name: originalAuthorSource, label: 原清單作者來源網址, widget: string, required: false }
       - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
       - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
-      - { name: tags, label: 主題標籤, widget: list, required: false }
+      - { name: destinations, label: 地名標籤：國家／地區, widget: relation, collection: countries, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
+      - { name: locationNames, label: 地名標籤：補充地名, widget: list, required: false, hint: '例如墾丁、可愛島；未建立國家／城市資料時也可填寫，點選可篩選同地名清單。' }
+      - { name: tags, label: 類別標籤, widget: list, required: false }
       - { name: keywords, label: 搜尋關鍵字與別名, widget: list, required: false }
       - name: videos
         label: YouTube 原影片（上下排列）
@@ -129,7 +131,9 @@ collections:
       - { name: originalAuthorSource, label: 原清單作者來源網址, widget: string, required: false }
       - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
       - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
-      - { name: tags, label: 主題標籤, widget: list, required: false }
+      - { name: destinations, label: 地名標籤：國家／地區, widget: relation, collection: countries, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
+      - { name: locationNames, label: 地名標籤：補充地名, widget: list, required: false, hint: '例如墾丁、可愛島；未建立國家／城市資料時也可填寫，點選可篩選同地名清單。' }
+      - { name: tags, label: 類別標籤, widget: list, required: false }
       - { name: keywords, label: 搜尋關鍵字與別名, widget: list, required: false }
       - name: videos
         label: YouTube 原影片（上下排列）
@@ -206,7 +210,9 @@ collections:
       - { name: originalAuthorSource, label: 原清單作者來源網址, widget: string, required: false }
       - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
       - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
-      - { name: tags, label: 主題標籤, widget: list, required: false }
+      - { name: destinations, label: 地名標籤：國家／地區, widget: relation, collection: countries, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
+      - { name: locationNames, label: 地名標籤：補充地名, widget: list, required: false, hint: '例如墾丁、可愛島；未建立國家／城市資料時也可填寫，點選可篩選同地名清單。' }
+      - { name: tags, label: 類別標籤, widget: list, required: false }
       - { name: keywords, label: 搜尋關鍵字與別名, widget: list, required: false }
       - name: videos
         label: YouTube 原影片（上下排列）
