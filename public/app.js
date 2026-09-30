@@ -24,8 +24,8 @@ function render(moveFocus=false){
 
  if(route?.themes){
  if(route.theme){document.title=localized(route.theme,'name')+'｜'+t('brand');$('section-kicker').textContent='CURATED COLLECTIONS';renderStory(route.theme,null,null);return;}
- document.title=collectionText('themes')+'｜'+t('brand');$('breadcrumbs').textContent=collectionText('themes');$('section-title').textContent=collectionText('themes');$('section-count').textContent=String((data.themes||[]).length);$('section-kicker').textContent='CURATED COLLECTIONS';
- $('cards').innerHTML=(data.themes||[]).map(item=>catalogCard({...item,_kind:'themes',_id:item.id,owner:item.owner||'william'},data,{cover,display,statMarkup})).join('')||`<p class="empty">${collectionText('empty')}</p>`;
+ document.title=collectionText('themes')+'｜'+t('brand');$('breadcrumbs').textContent=collectionText('themes');$('section-title').textContent=collectionText('themes');$('section-count').textContent=String((data.themes||[]).filter(item=>item.curated===true).length);$('section-kicker').textContent='CURATED COLLECTIONS';
+ $('cards').innerHTML=(data.themes||[]).filter(item=>item.curated===true).map(item=>catalogCard({...item,_kind:'themes',_id:item.id,owner:item.owner||'william'},data,{cover,display,statMarkup})).join('')||`<p class="empty">${collectionText('empty')}</p>`;
  document.querySelectorAll('.cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
 document.querySelector('.save-tip p').textContent=collectionText('tip');if(moveFocus)$('section-title').focus({preventScroll:true});return;
  }

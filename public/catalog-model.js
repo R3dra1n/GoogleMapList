@@ -10,6 +10,9 @@ export function validateCatalog(data){
  const creators=data.creators||[],ids=new Set();
  for(const c of creators){if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(c.id)||ids.has(c.id)||typeof c.name!=='string'||!c.name.trim()||typeof c.published!=='boolean')throw Error('創作者識別碼、名稱或公開狀態無效');ids.add(c.id);for(const l of c.links||[]){const u=new URL(l.url);if(u.protocol!=='https:'||u.username||u.password)throw Error('創作者連結必須是 HTTPS');}}
  for(const kind of ['cities','countries','themes'])for(const item of data[kind]||[]){
+  if(item.curated!=null&&typeof item.curated!=='boolean')throw Error('精選狀態無效');
+  if(item.originalAuthor!=null&&(typeof item.originalAuthor!=='string'||item.originalAuthor.length>120))throw Error('原作者名稱無效');
+  if(item.originalAuthorSource){const source=new URL(item.originalAuthorSource);if(source.protocol!=='https:'||source.username||source.password)throw Error('原作者來源須為 HTTPS');}
   for(const id of [item.owner,...(item.sources||[])].filter(Boolean))if(!ids.has(id))throw Error('找不到創作者：'+id);
   for(const id of item.destinations||[])if(!data.countries.some(x=>x.id===id)&&!data.cities.some(x=>x.id===id))throw Error('找不到目的地：'+id);
   for(const field of ['tags','keywords'])if(item[field]&&(!Array.isArray(item[field])||item[field].some(x=>typeof x!=='string'||x.length>80)))throw Error(field+' 必須為文字列表');
@@ -20,3 +23,11 @@ export function validateCatalog(data){
  for(const ref of data.featured||[])if(!/^(cities|countries|themes)\/[a-z0-9-]+$/.test(ref))throw Error('精選識別碼無效');
 }
 export function publicCatalog(data){const creators=(data.creators||[]).filter(c=>c.published);return {creators,featured:data.featured||[]};}
+// Taipei calendar day: stable across refreshes; rotates independently of source order.
+export function dailySelection(items,now=new Date(),limit=6){
+ const pool=[...items].sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0);
+ if(!pool.length)return [];
+ const day=Math.floor((now.getTime()+8*3600000)/86400000);
+ const start=((day*limit)%pool.length+pool.length)%pool.length;
+ return Array.from({length:Math.min(limit,pool.length)},(_,i)=>pool[(start+i)%pool.length]);
+}

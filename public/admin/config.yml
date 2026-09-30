@@ -54,6 +54,8 @@ collections:
     sortable_fields: [order, name]
     editor: { preview: false }
     fields:
+      - { name: originalAuthor, label: 原清單作者（非本站收錄者）, widget: string, required: false }
+      - { name: originalAuthorSource, label: 原清單作者來源網址, widget: string, required: false }
       - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
       - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
       - { name: tags, label: 主題標籤, widget: list, required: false }
@@ -123,6 +125,8 @@ collections:
     sortable_fields: [order, name]
     editor: { preview: false }
     fields:
+      - { name: originalAuthor, label: 原清單作者（非本站收錄者）, widget: string, required: false }
+      - { name: originalAuthorSource, label: 原清單作者來源網址, widget: string, required: false }
       - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
       - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
       - { name: tags, label: 主題標籤, widget: list, required: false }
@@ -197,6 +201,9 @@ collections:
     sortable_fields: [order, name]
     editor: { preview: false }
     fields:
+      - { name: curated, label: 納入主題精選, widget: boolean, default: false, required: false, hint: '僅管理員策展選入；公開但未精選的清單仍可被搜尋與首頁輪替。' }
+      - { name: originalAuthor, label: 原清單作者（非本站收錄者）, widget: string, required: false }
+      - { name: originalAuthorSource, label: 原清單作者來源網址, widget: string, required: false }
       - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
       - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
       - { name: tags, label: 主題標籤, widget: list, required: false }
