@@ -3,3 +3,10 @@
 @media(max-width:800px){.creator-grid{grid-template-columns:1fr}.platform-intro{padding-top:40px}}@media(max-width:500px){.catalog-search-row input{padding:14px 10px;font-size:.85rem}.catalog-search-row button{padding:10px;font-size:.8rem}.catalog-filters>div{flex-direction:column}.platform-intro h1{font-size:2rem}.catalog-detail .actions{grid-template-columns:1fr}}
 
 .platform-intro h1{text-wrap:balance}.catalog-card .card-title a{color:inherit}.catalog-card .catalog-byline{margin-top:0}
+/* One site-wide navigation; pills are reserved for content metadata. */
+.global-bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px;border-bottom:1px solid var(--line)}
+#global-nav{display:flex;gap:28px;flex-wrap:wrap;align-items:center}#global-nav a{padding:10px 0;font-size:.9rem;color:var(--muted);border-bottom:2px solid transparent}#global-nav a[aria-current]{color:var(--blue);border-bottom-color:var(--blue)}
+#header-search{display:flex;width:260px;max-width:100%;border-bottom:1px solid var(--line)}#header-query{min-width:0;width:100%;background:transparent;border:0;color:var(--navy);padding:9px 0;font:inherit;font-size:.8rem}#header-search button{background:none;border:0;color:var(--muted);font-size:22px;padding:4px 10px}
+#continents{margin-top:30px;gap:26px;overflow:visible;flex-wrap:wrap}#continents[hidden]{display:none}#continents .continent-tab{border-radius:0;background:none;color:var(--muted);padding:10px 0;border-bottom:2px solid transparent}#continents .continent-tab[aria-current]{color:var(--blue);border-bottom-color:var(--blue)}
+.profile-intro{padding-top:36px}.profile-search{margin:12px 0 24px;color:var(--muted)}.profile-search summary{cursor:pointer;padding:10px 0}.platform-intro{padding-top:52px;padding-bottom:22px}#catalog-top:empty{display:none}.intro[hidden]{display:none}
+@media(max-width:650px){.global-bar{flex-direction:column;align-items:stretch;gap:12px;padding-block:16px}#global-nav{justify-content:space-between;gap:12px}#header-search{width:100%}#global-nav a{font-size:.85rem}.platform-intro{padding-top:32px}}
