@@ -54,6 +54,28 @@ collections:
     sortable_fields: [order, name]
     editor: { preview: false }
     fields:
+      - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
+      - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
+      - { name: tags, label: 主題標籤, widget: list, required: false }
+      - { name: keywords, label: 搜尋關鍵字與別名, widget: list, required: false }
+      - name: videos
+        label: YouTube 原影片（上下排列）
+        widget: list
+        required: false
+        fields:
+          - { name: url, label: YouTube 網址, widget: string }
+          - { name: title, label: 影片標題, widget: string, required: false }
+          - { name: start, label: 起播秒數, widget: number, value_type: int, min: 0, default: 0 }
+      - name: places
+        label: 已確認收錄的景點
+        widget: list
+        required: false
+        fields:
+          - { name: name, label: 景點名稱, widget: string }
+          - { name: keywords, label: 搜尋別名, widget: list, required: false }
+          - { name: url, label: 地圖網址, widget: string, required: false }
+          - { name: source, label: 資料來源網址, widget: string, required: false }
+          - { name: note, label: 備註, widget: text, required: false }
       - { name: id, label: 固定識別碼, widget: stable-id }
       - { name: name, label: 名稱, widget: string }
       - { name: english, label: 英文名稱, widget: string, required: false, default: '' }
@@ -101,6 +123,28 @@ collections:
     sortable_fields: [order, name]
     editor: { preview: false }
     fields:
+      - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
+      - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
+      - { name: tags, label: 主題標籤, widget: list, required: false }
+      - { name: keywords, label: 搜尋關鍵字與別名, widget: list, required: false }
+      - name: videos
+        label: YouTube 原影片（上下排列）
+        widget: list
+        required: false
+        fields:
+          - { name: url, label: YouTube 網址, widget: string }
+          - { name: title, label: 影片標題, widget: string, required: false }
+          - { name: start, label: 起播秒數, widget: number, value_type: int, min: 0, default: 0 }
+      - name: places
+        label: 已確認收錄的景點
+        widget: list
+        required: false
+        fields:
+          - { name: name, label: 景點名稱, widget: string }
+          - { name: keywords, label: 搜尋別名, widget: list, required: false }
+          - { name: url, label: 地圖網址, widget: string, required: false }
+          - { name: source, label: 資料來源網址, widget: string, required: false }
+          - { name: note, label: 備註, widget: text, required: false }
       - { name: id, label: 固定識別碼, widget: stable-id }
       - { name: name, label: 城市／縣市名稱, widget: string }
       - { name: english, label: 英文名稱, widget: string, required: false, default: '' }
@@ -153,6 +197,28 @@ collections:
     sortable_fields: [order, name]
     editor: { preview: false }
     fields:
+      - { name: owner, label: 整理者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], required: false, default: william }
+      - { name: sources, label: 來源創作者, widget: relation, collection: creators, search_fields: [name], value_field: id, display_fields: [name], multiple: true, required: false }
+      - { name: tags, label: 主題標籤, widget: list, required: false }
+      - { name: keywords, label: 搜尋關鍵字與別名, widget: list, required: false }
+      - name: videos
+        label: YouTube 原影片（上下排列）
+        widget: list
+        required: false
+        fields:
+          - { name: url, label: YouTube 網址, widget: string }
+          - { name: title, label: 影片標題, widget: string, required: false }
+          - { name: start, label: 起播秒數, widget: number, value_type: int, min: 0, default: 0 }
+      - name: places
+        label: 已確認收錄的景點
+        widget: list
+        required: false
+        fields:
+          - { name: name, label: 景點名稱, widget: string }
+          - { name: keywords, label: 搜尋別名, widget: list, required: false }
+          - { name: url, label: 地圖網址, widget: string, required: false }
+          - { name: source, label: 資料來源網址, widget: string, required: false }
+          - { name: note, label: 備註, widget: text, required: false }
       - { name: id, label: 固定識別碼, widget: stable-id }
       - { name: name, label: 名稱, widget: string }
       - { name: english, label: 英文名稱, widget: string, required: false, default: '' }
@@ -189,3 +255,20 @@ collections:
       - { name: articleJa, label: 遊記（日本語）, widget: text, required: false, default: '' }
       - { name: articleKo, label: 遊記（한국어）, widget: text, required: false, default: '' }
       - { name: articleEn, label: Travel notes (English), widget: text, required: false, default: '' }
+  - name: creators
+    label: 創作者頁面
+    folder: content/creators
+    create: true
+    delete: false
+    extension: json
+    format: json
+    identifier_field: name
+    slug: '{{id}}'
+    fields:
+      - { name: id, label: 固定識別碼, widget: stable-id }
+      - { name: name, label: 名稱, widget: string }
+      - { name: english, label: 英文名稱, widget: string, required: false }
+      - { name: aliases, label: 搜尋別名, widget: list, required: false }
+      - { name: description, label: 簡介, widget: text, required: false }
+      - { name: published, label: 公開顯示, widget: boolean, default: true }
+      - { name: order, label: 排序, widget: number, default: 10 }

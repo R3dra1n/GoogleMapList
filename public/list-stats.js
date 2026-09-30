@@ -13,6 +13,7 @@ function paint(root){const values=entries(root).map(e=>counts.get(e.id));root.qu
 async function call(id){const r=await fetch((await base())+'/api/stats',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,action:'use',visitor:visitor()}),keepalive:true});if(!r.ok)throw Error();return r.json();}
 function roots(){return [...document.querySelectorAll('.list-stats')].filter(x=>!x.closest('[hidden]'));}
 export function bindStats(){
+ if(window.ATLAS_PREVIEW){for(const root of roots()){root.parentElement.append(root);root.querySelector('.stats-count').textContent=labels[language]+' —';}return;}
  for(const root of roots()){
   // One total at the end of each card/article, including My Maps and alternative links.
   root.parentElement.append(root);paint(root);
@@ -24,7 +25,7 @@ export function bindStats(){
  }
  refresh();
 }
-async function refresh(){if(refreshing||document.visibilityState!=='visible')return;const nodes=roots();if(!nodes.length)return;refreshing=true;try{
+async function refresh(){if(window.ATLAS_PREVIEW)return;if(refreshing||document.visibilityState!=='visible')return;const nodes=roots();if(!nodes.length)return;refreshing=true;try{
  const ids=[...new Set(nodes.flatMap(n=>entries(n).map(e=>e.id)))];for(let i=0;i<ids.length;i+=24){const batch=ids.slice(i,i+24),r=await fetch((await base())+'/api/stats?ids='+encodeURIComponent(batch.join(',')),{cache:'no-store'});if(!r.ok)throw Error();const data=await r.json();for(const id of batch){const row=data.items.find(x=>x.list_id===id);if(Number.isFinite(row?.used))counts.set(id,row.used);else counts.delete(id);}}
  for(const n of roots())paint(n);
  }catch{for(const n of roots())n.querySelector('.stats-count').textContent=`${labels[language]} —`;}finally{refreshing=false}}

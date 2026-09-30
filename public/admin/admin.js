@@ -1,3 +1,4 @@
+import {youtubeId,entryPlatform} from '../catalog-model.js';
 import {migrateSession,onSessionChange,readSession} from './session.js';
 migrateSession();
 onSessionChange(()=>{document.getElementById('publish-status').textContent='另一個分頁的登入狀態已改變。請先複製未儲存內容，再重新整理並登入；此頁不會自動重載。';});
@@ -22,6 +23,8 @@ CMS.registerWidget('stable-id',window.createClass({
 }));
 CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
   let data=entry.get('data');const kind=entry.get('collection');
+  for(const v of data.get('videos')?.toJS()||[])if(!youtubeId(v.url)||!Number.isInteger(v.start||0)||(v.start||0)<0)throw new Error('請填入有效 YouTube HTTPS 網址與非負整數起播秒數。');
+  for(const p of data.get('places')?.toJS()||[])if(!p.name?.trim()||(p.url&&!entryPlatform(p.url))||(p.source&&!/^https:\/\//.test(p.source)))throw new Error('請確認景點名稱、地圖與 HTTPS 來源網址。');
   const token=readSession();
   if(token){
     const auth=await fetch('https://api.github.com/repos/R3dra1n/GoogleMapList',{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json'},cache:'no-store'});

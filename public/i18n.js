@@ -40,3 +40,5 @@ words.refresh=['載入最新內容','加载最新内容','Load updates','最新�
 export const suffixes={'zh-Hant':'','zh-Hans':'Hans',en:'En',ja:'Ja',ko:'Ko'};
 export const t=key=>words[key]?.[languages.indexOf(language)]||key;
 export function localized(item,key){const suffix=suffixes[language];return suffix?(item[key+suffix]||(key==='name'&&language==='en'?item.english:'')||item[key]||''):(item[key]||'');}
+
+words.brand=['口袋地圖','口袋地图','Pocket Atlas','旅のポケットマップ','포켓 지도'];
