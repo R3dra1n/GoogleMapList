@@ -13,3 +13,5 @@
 .card-grid .catalog-card .catalog-chips{order:4}.card-grid .catalog-card .list-stats{order:5}
 
 .card-grid .catalog-heading{min-height:5.4rem}.card-grid .catalog-heading .card-title{height:auto;max-height:3em}.card-grid .catalog-heading .catalog-byline{margin-top:7px}.card-grid .catalog-footer{order:4;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}.card-grid .catalog-footer .catalog-chips{margin:0;min-height:0;flex:1}.card-grid .catalog-footer .list-stats{margin:0;padding:0;flex-shrink:0;align-self:center}.card-grid .country-card .card-top{min-height:0}.card-grid .country-card .card-title{height:auto;max-height:3em}.card-grid .country-card .card-english{margin-top:5px}.card-grid .country-card .card-top + .card-english{margin-bottom:12px}
+
+.catalog-card{position:relative}.catalog-card .card-main-link::after{content:"";position:absolute;inset:0;z-index:2}.catalog-card .catalog-byline a,.catalog-card .catalog-chips a,.catalog-card .card-title a{position:relative;z-index:3}.catalog-card:focus-within{outline:2px solid var(--blue);outline-offset:3px}
