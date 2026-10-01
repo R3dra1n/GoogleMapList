@@ -1,3 +1,4 @@
+import {accounts,cleanAccounts} from './accounts.mjs';
 import {monitorSnapshot,sendUsageAlerts} from './cost-monitor.mjs';
 import {sendNotifications} from './notifications.mjs';
 import {api} from './api.mjs';
@@ -14,6 +15,7 @@ export function popup(origin,token){
 }
 export function createHandler(fetcher=fetch){return async(request,env)=>{
  const url=new URL(request.url);
+ if(url.pathname==='/account'||url.pathname.startsWith('/account/'))return accounts(request,env,fetcher);
  if(url.pathname.startsWith('/api/'))return api(request,env,fetcher);
  if(request.method!=='GET')return text('Method not allowed',405);
  if(url.pathname==='/health')return Response.json({ready:configured(env)},{headers:securityHeaders});
@@ -38,4 +40,4 @@ export function createHandler(fetcher=fetch){return async(request,env)=>{
   return popup(origin,auth.access_token);
  }catch{return text('登入服務暫時無法使用，請重試。',502);}
 };}
-export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(sendNotifications(env));ctx.waitUntil(monitorSnapshot(env).then(()=>sendUsageAlerts(env)).catch(()=>console.error("COST_MONITOR_REFRESH_FAILED")));ctx.waitUntil(env.DB.prepare('DELETE FROM submission_limits WHERE expires_at < ?').bind(Math.floor(Date.now()/1000)).run());}};
+export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(cleanAccounts(env));ctx.waitUntil(sendNotifications(env));ctx.waitUntil(monitorSnapshot(env).then(()=>sendUsageAlerts(env)).catch(()=>console.error("COST_MONITOR_REFRESH_FAILED")));ctx.waitUntil(env.DB.prepare('DELETE FROM submission_limits WHERE expires_at < ?').bind(Math.floor(Date.now()/1000)).run());}};
