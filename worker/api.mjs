@@ -8,7 +8,7 @@ import {ApiError,submitRecommendation,manageRecommendations} from './community.m
 import {githubClient,destinations,searchPhotos,importPhoto} from './photos.mjs';
 export async function api(request,env,fetcher){
  const url=new URL(request.url),origin=request.headers.get('Origin');
- const allowed=env.SITE_ORIGIN;
+ const allowed=origin===url.origin?url.origin:env.SITE_ORIGIN;
  const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',Vary:'Origin',...(origin===allowed?{'Access-Control-Allow-Origin':allowed,'Access-Control-Allow-Methods':'GET, POST, PATCH, DELETE, OPTIONS','Access-Control-Allow-Headers':'Content-Type, Authorization','Access-Control-Max-Age':'600'}:{})};
  const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
  if(origin&&origin!==allowed)return json({error:'Origin not allowed'},403);

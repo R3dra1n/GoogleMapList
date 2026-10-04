@@ -7,6 +7,14 @@ workers_dev = true
 CF_ACCOUNT_ID = "03ef4b7f6a3c94748505c94aa1aa3635"
 SITE_ORIGIN = "https://r3dra1n.github.io"
 GITHUB_REPO = "R3dra1n/GoogleMapList"
+AUTH_PROVIDER = "firebase"
+FIREBASE_PROJECT_ID = "pocket-540c0"
+FIREBASE_API_KEY = "AIzaSyBHx5N5Y4ATHVBzv_xTYB_yXcDS4auCPMo"
+FIREBASE_APP_ID = "1:449491437429:web:b74ccb19796cb3660a753c"
+# Public Firebase Web config; access is enforced by verified tokens and invitations.
+# Enable only after D1 migrations and Firebase provider/domain setup are verified.
+CREATOR_ACCOUNTS_ENABLED = "true"
+CREATOR_REGISTRATION = "open"
 # GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET are configured via wrangler secret put.
 
 [[d1_databases]]
@@ -20,3 +28,8 @@ crons = ["*/5 * * * *"]
 
 [ai]
 binding = "AI"
+
+[assets]
+directory = "../dist"
+binding = "ASSETS"
+run_worker_first = true

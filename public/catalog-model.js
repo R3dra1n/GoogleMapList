@@ -5,7 +5,7 @@ export function mapEntries(item,kind){
  if(Array.isArray(item.mapEntries))return item.mapEntries;
  return (kind==='themes'?['link','myMap','amap','baidu']:['food','sights','myMap','amap','baidu']).filter(key=>item[key]).map(id=>({id,url:item[id],purpose:['food','sights','myMap'].includes(id)?id:'collection',label:''}));
 }
-export function catalogItems(data){return [...data.cities.map(item=>({...item,_kind:item._region?'countries':'cities',_id:item._region?item.country:item.id})),...(data.themes||[]).map(item=>({...item,_kind:'themes',_id:item.id}))].map(item=>({...item,key:`${item._kind}/${item._id}`,owner:item.owner||'william'}));}
+export function catalogItems(data){return [...data.cities.map(item=>({...item,_kind:item._region?'countries':'cities',_id:item._region?item.country:item.id})),...(data.themes||[]).map(item=>({...item,_kind:'themes',_id:item.id})),...(data.community||[])].map(item=>({...item,key:`${item._kind}/${item._id}`,owner:item.owner||'william'}));}
 export function validateCatalog(data){
  const creators=data.creators||[],ids=new Set();
  for(const c of creators){if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(c.id)||ids.has(c.id)||typeof c.name!=='string'||!c.name.trim()||typeof c.published!=='boolean')throw Error('創作者識別碼、名稱或公開狀態無效');ids.add(c.id);for(const l of c.links||[]){const u=new URL(l.url);if(u.protocol!=='https:'||u.username||u.password)throw Error('創作者連結必須是 HTTPS');}}

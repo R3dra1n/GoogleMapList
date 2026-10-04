@@ -15,11 +15,21 @@ export function popup(origin,token){
 }
 export function createHandler(fetcher=fetch){return async(request,env)=>{
  const url=new URL(request.url);
+ if(url.pathname==='/preview')return Response.redirect(url.origin+'/preview/',302);
+ if(url.pathname.startsWith('/preview/')&&env.ASSETS){const assetURL=new URL(request.url);assetURL.pathname=assetURL.pathname.slice(8)||'/';const response=await env.ASSETS.fetch(new Request(assetURL,request));const headers=new Headers(response.headers);headers.set('X-Robots-Tag','noindex, nofollow');return new Response(response.body,{status:response.status,headers});}
  if(url.pathname==='/account'||url.pathname.startsWith('/account/'))return accounts(request,env,fetcher);
  if(url.pathname.startsWith('/api/'))return api(request,env,fetcher);
  if(request.method!=='GET')return text('Method not allowed',405);
+ // Editorial CMS content remains published by GitHub Actions; account data stays same-origin.
+ if(url.pathname==='/data.json'||url.pathname.startsWith('/assets/')){
+  try{const upstream=await fetcher('https://r3dra1n.github.io/GoogleMapList'+url.pathname,{signal:AbortSignal.timeout(5000)});
+   if(upstream.ok){if(url.pathname==='/data.json'){const payload=await upstream.json();if(payload.applicationVersion==='1.2.0')return Response.json(payload,{headers:{'Cache-Control':'no-cache'}});}else return upstream;}
+  }catch{}
+  return env.ASSETS?env.ASSETS.fetch(request):text('Not found',404);
+ }
+
  if(url.pathname==='/health')return Response.json({ready:configured(env)},{headers:securityHeaders});
- if(!['/auth','/callback'].includes(url.pathname))return text('Not found',404);
+ if(!['/auth','/callback'].includes(url.pathname)){if(url.pathname.startsWith('/admin'))return Response.redirect('https://r3dra1n.github.io/GoogleMapList'+url.pathname+url.search,302);return env.ASSETS?env.ASSETS.fetch(request):text('Not found',404);}
  if(!configured(env))return text('管理員登入尚未完成設定。網站清單仍可正常瀏覽。',503);
  const origin=new URL(env.SITE_ORIGIN).origin;
  if(url.pathname==='/auth'){

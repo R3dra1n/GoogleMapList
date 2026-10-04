@@ -1,3 +1,4 @@
+import {communityData} from './community-data.js';
 import {renderCatalog,chips,catalogCard} from './catalog-view.js';
 import {statMarkup,bindStats} from './list-stats.js';
 import {collectionText,providerButton,alternativeMaps} from './collections.js';
@@ -11,10 +12,10 @@ const display=(item,key)=>{const destination=key==='name'&&language==='en'?'engl
 const icons={pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',food:'<path d="M5 3v7m4-7v7M3 3v5a4 4 0 0 0 8 0V3M7 12v9M19 3c-3 3-4 7-4 10h4m0-10v18"/>',sights:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="m8 6 2-3h4l2 3"/><circle cx="12" cy="13" r="4"/>'};
 const icon=name=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
 const path=(a,c)=>`#/${a}${c?`/${c}`:''}`;
-function cover(item,label){return `<div class="cover"><div class="cover-fallback" ${item.image?'hidden':''} aria-hidden="true">${escape(localized(item,'name'))}</div>${item.image?`<img src="./${escape(item.image)}" alt="${escape(localized(item,'imageAlt'))}" ${item._imageVariants?`srcset="${item._imageVariants.map(v=>`./${escape(v.path)} ${v.width}w`).join(', ')}" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw"`:""} decoding="async" loading="lazy" width="720" height="440">`:''}${label?`<span class="region-tag">${escape(label)}</span>`:''}</div>`;}
+function cover(item,label){return `<div class="cover"><div class="cover-fallback" ${item.image?'hidden':''} aria-hidden="true">${escape(localized(item,'name'))}</div>${item.image?`<img src="${escape(item.image.startsWith('/')?item.image:'./'+item.image)}" alt="${escape(localized(item,'imageAlt'))}" ${item._imageVariants?`srcset="${item._imageVariants.map(v=>`./${escape(v.path)} ${v.width}w`).join(', ')}" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw"`:""} decoding="async" loading="lazy" width="720" height="440">`:''}${label?`<span class="region-tag">${escape(label)}</span>`:''}</div>`;}
 function mapButton(url,label,name){return url?`<a class="map-button ${name==='sights'?'secondary':''}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${t('mapsOpen')}">${icon(name)}${label}<span aria-hidden="true">↗</span></a>`:`<button class="map-button" disabled>${icon(name)}${label}・${t('soon')}</button>`;}
 const hasStory=item=>['myMap','article','articleEn','articleHans','articleJa','articleKo'].some(key=>item[key]);
-let data;let version;let pendingData;
+let data;let version;let pendingData;let community={community:[],creators:[]};
 function render(moveFocus=false){
  queueMicrotask(()=>{document.querySelectorAll('#cards .card-title,#cards .card-description').forEach(e=>e.title=e.textContent);bindStats();const first=document.querySelector('.cover img');if(first){first.loading='eager';first.fetchPriority='high';}});
  document.querySelector('.save-tip').hidden=false;
@@ -70,7 +71,7 @@ function translateUI(){
 $('language').value=language;$('theme').value=readPreference('atlas-theme','system');translateUI();
 $('language').addEventListener('change',e=>{setLanguage(e.target.value);savePreference('atlas-language',language);translateUI();if(data)render();});
 $('theme').addEventListener('change',e=>{savePreference('atlas-theme',e.target.value);applyTheme(e.target.value);});
-try{const response=await fetch('./data.json',{cache:'no-store'});if(!response.ok)throw new Error('load');const payload=await response.json();version=payload.version;data={...visibleData(payload),creators:payload.creators||[],featured:payload.featured||[]};$('release-version').textContent='v'+(payload.applicationVersion||'1.0.0');translateUI();render();window.addEventListener('hashchange',()=>render(true));}catch{$('cards').setAttribute('aria-busy','false');$('cards').innerHTML=`<p class="empty">${t('loadError')}</p>`;}
+try{const response=await fetch('./data.json',{cache:'no-store'});if(!response.ok)throw new Error('load');const payload=await response.json();version=payload.version;data={...visibleData(payload),creators:payload.creators||[],featured:payload.featured||[]};$('release-version').textContent='v'+(payload.applicationVersion||'1.0.0');translateUI();render();window.addEventListener('hashchange',()=>render(true));try{community=await communityData();data={...data,community:community.community,creators:[...data.creators,...community.creators]};render();}catch{const notice=document.createElement('p');notice.textContent=language.startsWith('zh')?'社群資料暫時無法載入，請重新整理。':'Community unavailable. Please refresh.';$('catalog-top').append(notice);}}catch{$('cards').setAttribute('aria-busy','false');$('cards').innerHTML=`<p class="empty">${t('loadError')}</p>`;}
 $('credits-button').addEventListener('click',()=>$('credits').showModal());$('close-credits').addEventListener('click',()=>$('credits').close());$('credits').addEventListener('click',e=>{if(e.target===$('credits')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
 
 // Check when returning to a previously opened tab; never discard the active route.
@@ -80,5 +81,8 @@ async function checkUpdates(){
  checking=true;
  try{const response=await fetch('./data.json',{cache:'no-store'});if(!response.ok)return;const next=await response.json();if(next.version!==version){pendingData=next;$('content-update').hidden=false;}}catch{}finally{checking=false;}
 }
-$('refresh-content').addEventListener('click',()=>{if(!pendingData)return;data={...visibleData(pendingData),creators:pendingData.creators||[],featured:pendingData.featured||[]};version=pendingData.version;pendingData=null;$('content-update').hidden=true;translateUI();render(true);});
+$('refresh-content').addEventListener('click',()=>{if(!pendingData)return;data={...visibleData(pendingData),community:community.community,creators:[...(pendingData.creators||[]),...community.creators],featured:pendingData.featured||[]};version=pendingData.version;pendingData=null;$('content-update').hidden=true;translateUI();render(true);});
 window.addEventListener('focus',checkUpdates);document.addEventListener('visibilitychange',checkUpdates);setInterval(checkUpdates,60000);
+
+// Keep initials visible when a creator has not uploaded a public avatar.
+document.addEventListener('error',e=>{if(e.target.matches?.('.byline-avatar img,.profile-banner img'))e.target.remove();},true);

@@ -50,3 +50,16 @@ Authorized redirect URI 必須完全一致：
 圖片經瀏覽器縮小，後端驗證檔頭、類型及大小；每人兩個槽位（頭像最多 256 KB，Banner 最多 1 MB），以 D1 暫存。大量使用者前需評估物件儲存方案，不應無限制擴大這個試用版。
 
 沿用 Workers、D1 與 Resend；未新增付費服務。Email 登入會共用現有寄信嘗試上限（全站每日 90／每月 2,500），另有每地址每日 5 次、每 IP 每日 30 次登入操作限制，媒體每日全站 100 次。這些是應用端限制，不是帳單保證，也不能防止請求本身帶來 Workers 用量。雲端方案、供應商配額與帳單仍需查核。
+
+## 目前採用：Firebase（preview.2）
+
+上方自建 OAuth/Resend 操作僅供舊模式參考。新模式不需要自有寄件網域或 Google Client Secret。
+
+1. 在 Firebase 導入選定的 Google Cloud 專案；確認 Spark 免費方案，不自動接受 Blaze 升級。既有帳單解除可能影響專案資源，須先確認。
+2. Authentication 啟用 Google、Email/Password；加入帳號頁使用的 workers.dev 主機至 authorized domains。註冊 Web App，取得公開 SDK config。不要啟用 Analytics、Firestore、Storage 或其他本功能未使用服務。
+3. Worker vars 設 AUTH_PROVIDER=firebase、FIREBASE_PROJECT_ID、FIREBASE_API_KEY、FIREBASE_APP_ID。API key 是 Firebase Web 公開設定，不是管理員憑證；權限仍由伺服器 token 驗證、邀請和 D1 所有權管控。
+4. 備份 D1 後套用 migrations 0005/0006；先建立獲邀信箱，再啟用 CREATOR_ACCOUNTS_ENABLED。預設邀请制；明確設 CREATOR_REGISTRATION=open 才開放創作者後台。
+5. 真實驗收 Google、Email 驗證/登入/重設、未邀請拒絕、登出、資料隔離及圖片上傳，再發布。未邀請者可能在 Firebase 建立帳號，但不得進入本站創作者後台。
+6. Firebase 撤銷/停用在新登入時檢查；既有本站 Session 最長一小時。本地停權立即生效。
+
+目前測試只用模擬 SDK/供應商；真實 Firebase 專案設定及驗收未完成。個人頁僅私人草稿，尚未公開發布。
