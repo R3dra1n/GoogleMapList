@@ -4,7 +4,7 @@ import {language} from './i18n.js';
 const labels={'zh-Hant':'人氣','zh-Hans':'人气',en:'Popularity',ja:'人気',ko:'인기도'};
 let basePromise,refreshing=false;
 const counts=new Map(),bound=new WeakSet();
-const base=()=>basePromise??=fetch('./admin/connection.json').then(r=>r.json()).then(c=>new URL(c.authBaseUrl).origin);
+const base=()=>basePromise??=(location.hostname==='pocket-atlas-auth.huayang-hsu.workers.dev'?Promise.resolve(location.origin):fetch('./admin/connection.json').then(r=>r.json()).then(c=>new URL(c.authBaseUrl).origin));
 function visitor(){let id=localStorage.getItem('atlas-visitor');if(!id){id=crypto.randomUUID();localStorage.setItem('atlas-visitor',id)}return id;}
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const entries=root=>JSON.parse(root.dataset.entries);

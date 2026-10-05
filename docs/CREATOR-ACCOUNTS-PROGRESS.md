@@ -159,3 +159,10 @@
 - Moved location/tags/popularity toward card bottom: removed reserved empty tag-row height, aligned popularity with tags, retained 16px bottom padding and larger separation from description.
 - Build and integration browser checks passed. Live preview footer measured after deploy; production GitHub Pages unchanged pending user review.
 - Worker deployment: 1bf3f717-c66c-45cc-a826-84c4389ce670.
+
+## 2026-10-06 — v1.2.2
+- Removed public footer CMS link; direct GitHub admin URL remains available.
+- ParentRelation safely handles missing React state/nextState; regression covers the reported initialOptions exception.
+- Community cards/details now use real map-link popularity counters, validated against current published list/profile and non-suspended owner. Hidden entries cannot read or write stats. Same browser remains deduplicated.
+- Stats configuration resolves same-origin directly on Worker, avoiding cross-origin CMS config redirect.
+- 69 tests plus integration browser passed. No database migration needed.

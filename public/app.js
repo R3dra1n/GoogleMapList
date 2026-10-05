@@ -57,7 +57,7 @@ function renderStory(city,a,c){
 function translateUI(){
  setLanguage(language);refreshRecommendationUI();
  $('update-label').textContent=t('update');$('refresh-content').textContent=t('refresh');
- const texts={'.skip':'skip','.intro h1':'heading','.intro-text':'intro','.save-tip strong':'saveTitle','.save-tip p':'saveText','.site-footer strong':'brand','.site-footer>div>span':'footer','#credits-button':'credits','.footer-links a':'admin','.dialog-head h2':'credits'};
+ const texts={'.skip':'skip','.intro h1':'heading','.intro-text':'intro','.save-tip strong':'saveTitle','.save-tip p':'saveText','.site-footer strong':'brand','.site-footer>div>span':'footer','#credits-button':'credits','.dialog-head h2':'credits'};
  for(const [selector,key] of Object.entries(texts))document.querySelector(selector).textContent=t(key);
  if(['zh-Hant','zh-Hans'].includes(language)){const heading=document.querySelector('.intro h1');const [first,rest]=t('heading').split('，');heading.replaceChildren(document.createTextNode(first+'，'),Object.assign(document.createElement('br'),{className:'mobile-break'}),document.createTextNode(rest));}
  const brand=document.querySelector('.brand>span:last-child');brand.firstChild.textContent=t('brand');document.querySelector('.brand').setAttribute('aria-label',t('brand'));

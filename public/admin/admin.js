@@ -12,7 +12,7 @@ const relation=CMS.getWidget('relation');
 // display metadata. Only an actual parent change should dirty this form.
 class ParentRelation extends relation.control {
   shouldComponentUpdate(nextProps,nextState){
-    return super.shouldComponentUpdate(nextProps,nextState)||nextState.initialOptions!==this.state.initialOptions;
+    return super.shouldComponentUpdate(nextProps,nextState)||nextState?.initialOptions!==this.state?.initialOptions;
   }
   triggerInitialOnChange(){}
 }
