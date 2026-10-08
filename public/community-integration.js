@@ -5,7 +5,8 @@ if(active){
  const zh=()=>document.documentElement.lang.startsWith('zh');const text=(a,b)=>zh()?a:b;
  const el=(tag,value,cls)=>{const n=document.createElement(tag);if(value)n.textContent=value;if(cls)n.className=cls;return n};
  const api=async path=>{const r=await fetch('/account/api/'+path,{cache:'no-store'});if(!r.ok)throw Error(String(r.status));return r.json()};
- const menu=el('details',null,'community-menu');const summary=el('summary',text('登入','Sign in'));menu.append(summary);document.querySelector('.preferences').append(menu);
+ const existingEntry=document.querySelector('.account-entry');
+ const menu=el('details',null,'community-menu');const summary=el('summary',text('登入','Sign in'));menu.append(summary);if(existingEntry)existingEntry.replaceWith(menu);else document.querySelector('.preferences').append(menu);
  const photo=(url,name)=>{const i=el('img');i.src=url;i.alt='';i.loading='lazy';i.onerror=()=>i.replaceWith(el('span',name.slice(0,1),'community-initial'));return i};
  const anchor=(title,href)=>{const a=el('a',title);a.href=href;return a};
  let user;try{user=await api('me')}catch{}

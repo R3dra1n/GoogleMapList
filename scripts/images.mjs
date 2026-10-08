@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 export async function optimizeImages(data){
  await mkdir('dist/media',{recursive:true});const cache=new Map();let originalBytes=0,smallBytes=0;
- for(const entries of Object.values(data))for(const item of entries){
+ for(const entries of Object.values(data).filter(Array.isArray))for(const item of entries){
   if(!item.image)continue;
   if(!cache.has(item.image)){
    const input=await readFile('public/'+item.image),hash=createHash('sha256').update(input).digest('hex').slice(0,16),variants=[];

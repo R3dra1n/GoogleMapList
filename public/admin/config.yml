@@ -285,3 +285,36 @@ collections:
       - { name: description, label: 簡介, widget: text, required: false }
       - { name: published, label: 公開顯示, widget: boolean, default: true }
       - { name: order, label: 排序, widget: number, default: 10 }
+
+  - name: homepage
+    label: 首頁版面設定
+    files:
+      - name: home
+        label: 首頁主圖與目的地入口
+        file: content/site.json
+        fields:
+          - { name: featured, label: 保留的精選識別碼, widget: list, required: false }
+          - name: home
+            label: 首頁呈現
+            widget: object
+            fields:
+              - { name: heroList, label: 主圖清單識別碼, widget: string, default: 'cities/hualien', hint: '填 cities/城市ID 或 themes/主題ID。主圖、署名與圖片說明會取自該清單，點擊開啟清單詳情。' }
+              - name: destinations
+                label: 下一站目的地（可拖曳排序）
+                widget: relation
+                collection: countries
+                search_fields: [name, id]
+                value_field: id
+                display_fields: [name]
+                multiple: true
+                required: false
+              - { name: title, label: '大標題（繁體中文）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: description, label: '副標題（繁體中文）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: titleHans, label: '大標題（简体中文）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: descriptionHans, label: '副標題（简体中文）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: titleEn, label: '大標題（English）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: descriptionEn, label: '副標題（English）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: titleJa, label: '大標題（日本語）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: descriptionJa, label: '副標題（日本語）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: titleKo, label: '大標題（한국어）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }
+              - { name: descriptionKo, label: '副標題（한국어）', widget: text, required: false, hint: '留空使用預設文案；可換行。' }

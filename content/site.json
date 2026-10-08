@@ -1,1 +1,11 @@
-{"featured":[]}
+{
+  "featured": [],
+  "home": {
+    "heroList": "cities/hualien",
+    "destinations": [
+      "taiwan",
+      "korea",
+      "vietnam"
+    ]
+  }
+}

@@ -7,7 +7,7 @@ import { validate, visibleData, kinds } from '../public/model.js';
 const data={};
 for(const kind of kinds){data[kind]=await Promise.all((await readdir(`content/${kind}`)).filter(f=>f.endsWith('.json')).sort().map(async f=>{const entry=JSON.parse(await readFile(`content/${kind}/${f}`,'utf8'));if(f!==`${entry.id}.json`)throw new Error(`ID 與檔名不同：${f}`);return entry;}));}
 data.creators=await Promise.all((await readdir('content/creators')).filter(f=>f.endsWith('.json')).map(async f=>JSON.parse(await readFile('content/creators/'+f,'utf8'))));
-data.featured=JSON.parse(await readFile('content/site.json','utf8')).featured;
+const site=JSON.parse(await readFile('content/site.json','utf8'));data.featured=site.featured;data.home=site.home||{};
 validate(data);validateCatalog(data);
 let translationState={};try{translationState=JSON.parse(await readFile('translation/state.json','utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
 for(const kind of kinds)for(const item of data[kind]){

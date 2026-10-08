@@ -7,6 +7,12 @@ export function mapEntries(item,kind){
 }
 export function catalogItems(data){return [...data.cities.map(item=>({...item,_kind:item._region?'countries':'cities',_id:item._region?item.country:item.id})),...(data.themes||[]).map(item=>({...item,_kind:'themes',_id:item.id})),...(data.community||[])].map(item=>({...item,key:`${item._kind}/${item._id}`,owner:item.owner||'william'}));}
 export function validateCatalog(data){
+ const home=data.home;
+ if(home){if(typeof home!=='object'||Array.isArray(home))throw Error('首頁設定無效');
+ if(home.heroList&&!/^(cities|countries|themes)\/[a-z0-9-]+$/.test(home.heroList))throw Error('首頁主圖清單識別碼無效');
+ if(home.destinations&&(!Array.isArray(home.destinations)||home.destinations.length>6||new Set(home.destinations).size!==home.destinations.length||home.destinations.some(id=>!data.countries.some(c=>c.id===id))))throw Error('首頁目的地請選擇最多六個不同國家');
+ for(const key of ['title','description'])for(const suffix of ['','Hans','En','Ja','Ko'])if(home[key+suffix]!=null&&(typeof home[key+suffix]!=='string'||home[key+suffix].length>400))throw Error('首頁文案過長或格式錯誤');
+ }
  const creators=data.creators||[],ids=new Set();
  for(const c of creators){if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(c.id)||ids.has(c.id)||typeof c.name!=='string'||!c.name.trim()||typeof c.published!=='boolean')throw Error('創作者識別碼、名稱或公開狀態無效');ids.add(c.id);for(const l of c.links||[]){const u=new URL(l.url);if(u.protocol!=='https:'||u.username||u.password)throw Error('創作者連結必須是 HTTPS');}}
  for(const kind of ['cities','countries','themes'])for(const item of data[kind]||[]){
@@ -22,7 +28,7 @@ export function validateCatalog(data){
  }
  for(const ref of data.featured||[])if(!/^(cities|countries|themes)\/[a-z0-9-]+$/.test(ref))throw Error('精選識別碼無效');
 }
-export function publicCatalog(data){const creators=(data.creators||[]).filter(c=>c.published);return {creators,featured:data.featured||[]};}
+export function publicCatalog(data){const creators=(data.creators||[]).filter(c=>c.published);return {creators,featured:data.featured||[],home:data.home||{}};}
 // Taipei calendar day: stable across refreshes; rotates independently of source order.
 export function dailySelection(items,now=new Date(),limit=6){
  const pool=[...items].sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0);
