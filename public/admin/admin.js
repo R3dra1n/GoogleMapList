@@ -1,3 +1,4 @@
+import {registerHeroPicker} from './hero-picker.js';
 import {youtubeId,entryPlatform} from '../catalog-model.js';
 import {migrateSession,onSessionChange,readSession} from './session.js';
 migrateSession();
@@ -7,6 +8,7 @@ const status=document.getElementById('publish-status');
 const CMS=window.CMS;
 if(!CMS){document.getElementById('admin-setup').hidden=false;document.getElementById('admin-setup').textContent='管理介面未能載入，請檢查網路後重新整理。';throw new Error('CMS unavailable');}
 const h=window.h;
+registerHeroPicker(CMS,h,window.createClass);
 const relation=CMS.getWidget('relation');
 // Decap's relation control re-emits the unchanged parent when it reloads
 // display metadata. Only an actual parent change should dirty this form.
@@ -33,6 +35,12 @@ CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
     if(!(await auth.json()).permissions?.push)throw new Error('此 GitHub 帳號沒有網站編輯權限，請使用網站維護者帳號登入。');
   }
 
+  if(kind==='homepage'){
+    const home=data.get('home')?.toJS()||{};
+    if(home.heroList&&!/^(cities|countries|themes)\/[a-z0-9-]+$/.test(home.heroList))throw Error('請選擇有效的主圖清單。');
+    if(home.destinations?.length>6)throw Error('首頁目的地最多六個。');
+    status.textContent='正在儲存首頁設定；完成後會自動發布。';return data;
+  }
   for(const key of ['name','food','sights','image','imageAlt','imageSource','imageLicense'])if(typeof data.get(key)==='string')data=data.set(key,data.get(key).trim());
   for(const provider of ['amap','baidu'])if(data.get(provider)&&mapProvider(data.get(provider))!==provider)throw new Error('請貼上對應平台的 HTTPS 地圖分享連結。');
   if(kind==='themes'&&data.get('link')&&!mapProvider(data.get('link')))throw new Error('主題清單需要 Google Maps、高德或百度的 HTTPS 分享連結。');

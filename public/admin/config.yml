@@ -269,7 +269,7 @@ collections:
       - { name: articleKo, label: 遊記（한국어）, widget: text, required: false, default: '' }
       - { name: articleEn, label: Travel notes (English), widget: text, required: false, default: '' }
   - name: creators
-    label: 創作者頁面
+    label: 編輯部作者資料
     folder: content/creators
     create: true
     delete: false
@@ -298,7 +298,7 @@ collections:
             label: 首頁呈現
             widget: object
             fields:
-              - { name: heroList, label: 主圖清單識別碼, widget: string, default: 'cities/hualien', hint: '填 cities/城市ID 或 themes/主題ID。主圖、署名與圖片說明會取自該清單，點擊開啟清單詳情。' }
+              - { name: heroList, label: 首頁主圖清單, widget: hero-list, default: 'cities/hualien', hint: '按名稱選擇已發布且有封面的城市或主題清單，毋須填寫識別碼。' }
               - name: destinations
                 label: 下一站目的地（可拖曳排序）
                 widget: relation

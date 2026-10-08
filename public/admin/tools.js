@@ -1,3 +1,4 @@
+import {renderMembersPanel} from './members-panel.js';
 import {renderCostPanel} from './cost-panel.js';
 import {readSession,saveSession,clearSession,migrateSession,onSessionChange} from './session.js';
 import '../preferences.js';
@@ -7,7 +8,7 @@ let base,token='',items=[],choice=null,nextOffset=null,popup=null,deleteId=null,
 const status=text=>$('tool-status').textContent=text;
 migrateSession();token=readSession();
 onSessionChange(next=>{token=next;if(next)signedIn();else signedOut();});
-function signedOut(){token='';try{clearSession();}catch{}$('workspace').hidden=true;$('login').hidden=false;$('logout').hidden=true;$('recommendations').replaceChildren();}
+function signedOut(){$('members-result').replaceChildren();token='';try{clearSession();}catch{}$('workspace').hidden=true;$('login').hidden=false;$('logout').hidden=true;$('recommendations').replaceChildren();}
 async function api(path,options={}){const response=await fetch(base+path,{...options,headers:{Authorization:`Bearer ${token}`,...(options.body?{'Content-Type':'application/json'}:{})}});let data;try{data=await response.json();}catch{throw Error('服務暫時無法使用，請稍後再試。');}if(!response.ok){if(response.status===401){signedOut();throw Error('登入已過期，請重新登入。');}if(response.status===403)throw Error('此 GitHub 帳號沒有網站編輯權限。');if(response.status===409)throw Error('內容已被修改，請重新整理目的地後再選圖。');throw Error(data.error||'操作失敗，請重試。');}return data;}
 function report(error){status(error.message||'網路連線失敗，請重試。');}
 async function inbox(append=false){
@@ -23,11 +24,11 @@ async function loadDestinations(){
  items=all.filter(x=>x.kind!=='continents').map(item=>({...item,parent:all.find(x=>x.id===item.parentId)?.name||item.parent||'',parentEnglish:all.find(x=>x.id===item.parentId)?.english||item.parentEnglish||''}));
  const previous=$('destination').value;$('destination').replaceChildren(new Option('選擇城市／國家',''));for(const item of items)$('destination').add(new Option(`${item.parent} · ${item.name}（${item.kind==='cities'?'城市':item.kind==='themes'?'主題':'國家／地區'}）`,`${item.kind}/${item.id}`));if(items.some(i=>`${i.kind}/${i.id}`===previous))$('destination').value=previous;
 }
-async function signedIn(){try{await loadDestinations();$('workspace').hidden=false;$('login').hidden=true;$('logout').hidden=false;status('已登入。推薦資料只供網站維護者查看。');await inbox();}catch(error){signedOut();report(error);}}
+async function signedIn(){try{await loadDestinations();$('workspace').hidden=false;$('login').hidden=true;$('logout').hidden=false;status('已登入。推薦資料只供網站維護者查看。');await inbox();if(location.hash==='#members')showMembers();}catch(error){signedOut();report(error);}}
 $('login').addEventListener('click',()=>{popup=window.open(`${base}/auth?provider=github&site_id=${encodeURIComponent(location.hostname)}`,'atlas-tools-login','width=650,height=750');if(!popup)status('請允許登入彈出視窗，再試一次。');else status('請在 GitHub 視窗完成登入。');});
 window.addEventListener('message',event=>{if(!popup||event.source!==popup||event.origin!==base||typeof event.data!=='string')return;if(event.data==='authorizing:github'){popup.postMessage('authorizing:github',base);return;}const prefix='authorization:github:success:';if(!event.data.startsWith(prefix))return;try{const auth=JSON.parse(event.data.slice(prefix.length));if(auth.provider!=='github'||typeof auth.token!=='string'||!auth.token)throw Error();token=auth.token;try{saveSession(token);}catch{}popup.close();popup=null;signedIn();}catch{status('登入回應無效，請重試。');}});
 $('logout').addEventListener('click',()=>{signedOut();status('已登出管理工具。');});
-function tab(photos){$('usage-panel').hidden=true;$('tab-usage').setAttribute('aria-pressed','false');$('inbox-panel').hidden=photos;$('photos-panel').hidden=!photos;$('tab-inbox').setAttribute('aria-pressed',String(!photos));$('tab-photos').setAttribute('aria-pressed',String(photos));}
+function tab(photos){$('members-panel').hidden=true;$('tab-members').setAttribute('aria-pressed','false');$('usage-panel').hidden=true;$('tab-usage').setAttribute('aria-pressed','false');$('inbox-panel').hidden=photos;$('photos-panel').hidden=!photos;$('tab-inbox').setAttribute('aria-pressed',String(!photos));$('tab-photos').setAttribute('aria-pressed',String(photos));}
 $('tab-inbox').addEventListener('click',()=>tab(false));$('tab-photos').addEventListener('click',()=>tab(true));$('inbox-filter').addEventListener('change',()=>inbox());$('refresh-inbox').addEventListener('click',()=>inbox());$('more-inbox').addEventListener('click',()=>inbox(true));
 $('cancel-delete').addEventListener('click',()=>$('delete-dialog').close());$('confirm-delete').addEventListener('click',async()=>{const button=$('confirm-delete');button.disabled=true;try{await api('/api/admin/recommendations',{method:'DELETE',body:JSON.stringify({id:deleteId})});$('delete-dialog').close();status('推薦內容與 Email 已刪除。');await inbox();}catch(error){report(error);}finally{button.disabled=false;}});
 const destination=()=>items.find(i=>`${i.kind}/${i.id}`===$('destination').value);
@@ -57,3 +58,6 @@ $('description-source').onchange=()=>{previewText='';$('description-text').value
 $('description-save').onclick=async()=>{if(descriptionTarget!==$('destination').value)return;const button=$('description-save');button.disabled=true;try{await importCall({mode:'save',source:$('description-source').value,expectedSha:descriptionSha,text:$('description-text').value,confirmed:$('description-confirm').checked,method:previewText&&previewText===$('description-text').value?'public-preview-reviewed':'manual-copy'});$('description-result').textContent='已保存說明與來源，等待網站發布。';descriptionSha='';}catch(e){$('description-result').textContent=e.message;button.disabled=false}};
 
 if(location.hash==='#usage')$('tab-usage').click();
+
+function showMembers(){tab(false);$('inbox-panel').hidden=true;$('members-panel').hidden=false;$('tab-inbox').setAttribute('aria-pressed','false');$('tab-members').setAttribute('aria-pressed','true');const current=token;renderMembersPanel($('members-result'),api,()=>token===current&&!$('workspace').hidden);}
+$('tab-members').onclick=showMembers;

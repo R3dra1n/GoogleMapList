@@ -1,3 +1,4 @@
+import {memberOverview} from './member-admin.mjs';
 import {costMonitor,monitorSettings} from './cost-monitor.mjs';
 import {importDescription} from './import-description.mjs';
 import {stats} from './stats.mjs';
@@ -24,6 +25,7 @@ export async function api(request,env,fetcher){
   const check=await fetcher(`https://api.github.com/repos/${env.GITHUB_REPO}`,{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','User-Agent':'PocketAtlas-CMS'},signal:AbortSignal.timeout(15000)});
   if(check.status===401)throw new ApiError('Please sign in again',401);
   if(!check.ok||!(await check.json()).permissions?.push)throw new ApiError('Editor access required',403);
+  if(url.pathname==='/api/admin/members'&&request.method==='GET')return json(await memberOverview(url,env));
   const github=githubClient(env,token,fetcher);
   if(url.pathname==='/api/admin/import-description'&&request.method==='POST')return json(await importDescription(request,github,fetcher));
   if(url.pathname==='/api/admin/cost-monitor'&&request.method==='GET')return json(await costMonitor(request,env,fetcher));
