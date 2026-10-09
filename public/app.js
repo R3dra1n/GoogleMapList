@@ -1,3 +1,4 @@
+import {setupCardPagination} from './card-pagination.js';
 import {communityData} from './community-data.js';
 import {renderCatalog,chips,catalogCard} from './catalog-view.js';
 import {statMarkup,bindStats} from './list-stats.js';
@@ -7,6 +8,7 @@ import {language,setLanguage,localized,t,suffixes} from './i18n.js';
 import {readPreference,savePreference,applyTheme} from './preferences.js';
 import {visibleData,resolveRoute,myMapId} from './model.js';
 const $=id=>document.getElementById(id);
+setupCardPagination($('cards'));
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const display=(item,key)=>{const destination=key==='name'&&language==='en'?'english':key+suffixes[language];const value=escape(localized(item,key));return language!=='zh-Hant'&&item._machineFields?.includes(destination)?`<span lang="${language}-x-mtfrom-zh-TW">${value}</span>`:value;};
 const icons={pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',food:'<path d="M5 3v7m4-7v7M3 3v5a4 4 0 0 0 8 0V3M7 12v9M19 3c-3 3-4 7-4 10h4m0-10v18"/>',sights:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="m8 6 2-3h4l2 3"/><circle cx="12" cy="13" r="4"/>'};
