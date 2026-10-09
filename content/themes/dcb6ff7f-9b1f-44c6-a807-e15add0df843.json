@@ -15,23 +15,29 @@
   "myMap": "https://www.google.com/maps/d/u/0/edit?mid=1EtWeN1AN6b3-X6G3QfqkAGq-f3fNH84&usp=sharing",
   "english": "DoDoMan - The Most Dangerous Hiking Trail on the Most Beautiful Beach (Kauai, Hawaii)",
   "imageAltKo": "",
+  "curated": true,
+  "locationNames": [
+    "夏威夷",
+    "可愛島"
+  ],
   "descriptionJa": "「最も美しいビーチへと続く極めて危険なトレイル」とは、ハワイ州カウアイ島にあるカララウ・トレイルのことである。このトレイルは、多くのハイカーによってアメリカ国内、ひいては世界で最も危険な海岸ルートの一つとして挙げられており、「地獄と天国が共存する場所」と形容されている。",
   "imageCredit": "",
   "imageSource": "",
   "imageAltEn": "",
+  "videos": [
+    {
+      "start": 0,
+      "url": "https://www.youtube.com/watch?v=X-Ftb4ZQBdE&t=1998s"
+    }
+  ],
+  "tags": [
+    "海灘"
+  ],
   "descriptionHans": "「通往最美海滩的超危险步道」,是在美国夏威夷的可爱岛（Kauai），这条步道就是被许多健行者列为「地狱与天堂并存」、全美甚至全世界最危险沿海路线之一的 卡拉劳步道（Kalalau Trail）",
   "link": "https://maps.app.goo.gl/yaopZ6KN1RhxVYfX7",
   "id": "dcb6ff7f-9b1f-44c6-a807-e15add0df843",
   "image": "",
   "amap": "",
   "baidu": "",
-  "description": "「通往最美海灘的超危險步道」,是在美國夏威夷的可愛島（Kauai），這條步道就是被許多健行者列為「地獄與天堂並存」、全美甚至全世界最危險沿海路線之一的 卡拉勞步道（Kalalau Trail）",
-  "curated": true,
-  "tags": [
-    "海灘"
-  ],
-  "locationNames": [
-    "夏威夷",
-    "可愛島"
-  ]
+  "description": "「通往最美海灘的超危險步道」,是在美國夏威夷的可愛島（Kauai），這條步道就是被許多健行者列為「地獄與天堂並存」、全美甚至全世界最危險沿海路線之一的 卡拉勞步道（Kalalau Trail）"
 }
