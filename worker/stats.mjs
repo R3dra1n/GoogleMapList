@@ -18,7 +18,7 @@ async function isKnown(id,known,env){
  if(typeof id!=='string')return false;
  if(!id.startsWith('community/'))return known.has(id);
  const match=id.match(/^community\/([a-zA-Z0-9-]+)\/collection$/);if(!match)return false;
- return !!await env.DB.prepare('SELECT l.id FROM pilot_lists l JOIN pilot_profiles p ON p.user_id=l.user_id JOIN creator_users u ON u.id=l.user_id WHERE l.id=? AND l.visible=1 AND l.published IS NOT NULL AND p.visible=1 AND u.suspended=0').bind(match[1]).first();
+ return !!await env.DB.prepare('SELECT l.id FROM pilot_lists l JOIN pilot_profiles p ON p.user_id=l.user_id JOIN creator_users u ON u.id=l.user_id WHERE l.id=? AND l.visible=1 AND NOT EXISTS(SELECT 1 FROM list_moderation m WHERE m.list_id=l.id AND m.hidden=1) AND l.published IS NOT NULL AND p.visible=1 AND u.suspended=0').bind(match[1]).first();
 }
 const hash=async value=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value))),v=>v.toString(16).padStart(2,'0')).join('');
 export async function stats(request,env,fetcher){

@@ -1,0 +1,36 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {setup} from './helpers/accounts-env.mjs';import {api} from '../worker/api.mjs';import {accounts,digest} from '../worker/accounts.mjs';
+const origin='https://site.test',id='aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';
+test('moderation requires admin rights, hides feed/media/stats, survives author edits and supports audited restore',async()=>{
+ const {env,db}=setup();env.SITE_ORIGIN=origin;env.GITHUB_REPO='owner/repo';env.PUBLIC_DATA_URL='https://data.test/moderation';
+ const profile={name:'Writer',links:[]};const content={title:'City food',description:'Local food',url:'https://maps.apple.com/guides?user=x',destination:'Taipei',tags:[],cover:'data:image/webp;base64,'+Buffer.from('RIFF0000WEBPtest').toString('base64')};
+ db.prepare('INSERT INTO creator_users VALUES(?,?,0,0)').run('alice','alice@example.test');db.prepare('INSERT INTO creator_profiles(user_id,creator_id,name,updated_at) VALUES(?,?,?,0)').run('alice','alice','Writer');db.prepare('INSERT INTO pilot_profiles VALUES(?,?,?,1,1)').run('alice','alice',JSON.stringify(profile));db.prepare('INSERT INTO pilot_lists VALUES(?,?,?,?,1,1,1,1)').run(id,'alice',JSON.stringify(content),JSON.stringify(content));
+ db.prepare('INSERT INTO creator_sessions VALUES(?,?,?,?)').run(await digest('a'.repeat(64)),'alice','csrf',Math.floor(Date.now()/1000)+3600);
+ const fetcher=async url=>url==='https://api.github.com/user'?Response.json({login:'editor'}):url===env.PUBLIC_DATA_URL?Response.json({cities:[],themes:[]}):Response.json({permissions:{push:true}});
+ const admin=(data,token='editor',from=origin)=>new Request(origin+'/api/admin/lists',{method:'PATCH',headers:{'Content-Type':'application/json',Origin:from,...(token?{Authorization:'Bearer '+token}:{})},body:JSON.stringify(data)});
+ const change={id,revision:0,hidden:true,reason:'Needs permission'};
+ assert.equal((await api(admin(change,''),env,fetcher)).status,401);
+ assert.equal((await api(admin(change),env,async()=>Response.json({permissions:{push:false}}))).status,403);
+ assert.equal((await api(admin(change,'editor','https://evil.test'),env,fetcher)).status,403);
+ assert.equal((await api(admin({...change,reason:''}),env,fetcher)).status,400);
+ const publicReq=path=>new Request(origin+'/account/api/pilot/'+path);
+ assert.equal((await(await accounts(publicReq('feed'),env)).json()).items.length,1);
+ assert.equal((await api(admin(change),env,fetcher)).status,200);
+ assert.equal((await(await accounts(publicReq('feed'),env)).json()).items.length,0);
+ assert.equal((await accounts(publicReq('covers/'+id),env)).status,404);
+ assert.equal((await api(new Request(origin+'/api/stats?ids=community/'+id+'/collection'),env,fetcher)).status,400);
+ const owner=(path,method='GET',data)=>new Request(origin+'/account/api/pilot/'+path,{method,headers:{Cookie:'__Host-atlas_session='+'a'.repeat(64),Origin:origin,'X-CSRF-Token':'csrf','Content-Type':'application/json'},...(data?{body:JSON.stringify(data)}:{})});
+ const mine=await(await accounts(owner('mine'),env)).json();assert.equal(mine.items[0].moderated,true);assert.equal(mine.items[0].visible,false);
+ assert.equal((await accounts(owner('lists/'+id,'PATCH',{...content,title:'Changed',version:1}),env)).status,200);
+ assert.equal((await accounts(owner('lists/'+id+'/publish','POST',{version:2}),env)).status,403);
+ assert.equal((await api(admin({...change,hidden:false}),env,fetcher)).status,409);
+ assert.equal((await api(admin({...change,revision:1,hidden:false,reason:'Permission confirmed'}),env,fetcher)).status,200);
+ assert.equal((await(await accounts(publicReq('feed'),env)).json()).items.length,1);
+ assert.equal(db.prepare('SELECT COUNT(*) AS n FROM list_moderation_log').get().n,2);assert.equal(db.prepare('SELECT actor FROM list_moderation_log LIMIT 1').get().actor,'editor');
+ // Restoring a moderation block must never publish an author's private list.
+ db.prepare('UPDATE pilot_lists SET visible=0 WHERE id=?').run(id);
+ await api(admin({...change,revision:2}),env,fetcher);await api(admin({...change,revision:3,hidden:false}),env,fetcher);
+ assert.equal((await(await accounts(publicReq('feed'),env)).json()).items.length,0);
+ const overview=await(await api(new Request(origin+'/api/admin/lists',{headers:{Authorization:'Bearer editor'}}),env,fetcher)).json();assert.equal(overview.items[0].public,0);assert.equal(overview.items[0].revision,4);
+ db.close();
+});

@@ -1,6 +1,6 @@
 import {DatabaseSync} from 'node:sqlite';
 import {readFile} from 'node:fs/promises';
-const schemas=await Promise.all(['0001_recommendations.sql','0003_usage_stats.sql','0005_creator_accounts.sql','0006_firebase_identity.sql','0007_creator_pilot.sql'].map(f=>readFile(new URL('../../worker/migrations/'+f,import.meta.url),'utf8')));
+const schemas=await Promise.all(['0001_recommendations.sql','0003_usage_stats.sql','0005_creator_accounts.sql','0006_firebase_identity.sql','0007_creator_pilot.sql','0008_list_moderation.sql'].map(f=>readFile(new URL('../../worker/migrations/'+f,import.meta.url),'utf8')));
 export function setup(){
  const db=new DatabaseSync(':memory:');for(const schema of schemas)db.exec(schema);
  const env={CREATOR_ACCOUNTS_ENABLED:'true',RATE_SALT:'test',RESEND_API_KEY:'test',LOGIN_EMAIL_FROM:'Atlas <login@example.com>',GOOGLE_LOGIN_CLIENT_ID:'test-client',GOOGLE_LOGIN_CLIENT_SECRET:'test-secret'};

@@ -79,3 +79,15 @@ body{background:var(--page)}.container,.header-inner{max-width:1240px}.site-head
  .card-grid .card-meta{font-size:11px;padding-top:8px;margin-top:10px}
  .card-grid .cover .region-tag{font-size:10px;top:8px;left:8px;padding:3px 6px}
 }
+.search-note{font-size:13px;line-height:1.7;color:var(--muted);margin:12px 0 24px}
+.footer-links{flex-wrap:wrap;gap:12px 20px}
+@media(max-width:600px){
+ .editorial-hero{min-height:370px;padding:25px 22px 82px}
+ .hero-copy h1{font-size:29px;line-height:1.45}
+ .hero-description{margin:12px 0 18px}
+ .photo-caption{bottom:24px}
+ .destination-ribbon{margin:22px 0;gap:8px;padding:16px 0}
+ .catalog-chips a{min-height:24px;display:inline-flex;align-items:center}
+ .card-grid .catalog-byline a{min-height:24px}
+ .card-grid .catalog-chips a{font-size:11px}
+}

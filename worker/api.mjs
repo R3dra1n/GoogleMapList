@@ -1,3 +1,4 @@
+import {listOverview,moderateList} from './list-admin.mjs';
 import {memberOverview} from './member-admin.mjs';
 import {costMonitor,monitorSettings} from './cost-monitor.mjs';
 import {importDescription} from './import-description.mjs';
@@ -26,6 +27,15 @@ export async function api(request,env,fetcher){
   if(check.status===401)throw new ApiError('Please sign in again',401);
   if(!check.ok||!(await check.json()).permissions?.push)throw new ApiError('Editor access required',403);
   if(url.pathname==='/api/admin/members'&&request.method==='GET')return json(await memberOverview(url,env));
+  if(url.pathname==='/api/admin/lists'){
+   if(request.method==='GET')return json(await listOverview(url,env));
+   if(request.method==='PATCH'){
+    if(origin!==allowed)throw new ApiError('Origin required',403);
+    const actorResponse=await fetcher('https://api.github.com/user',{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','User-Agent':'PocketAtlas-CMS'},signal:AbortSignal.timeout(15000)});
+    const actor=actorResponse.ok?await actorResponse.json():null;if(!actor?.login)throw new ApiError('無法確認管理員身分',403);
+    return json(await moderateList(request,env,actor.login));
+   }
+  }
   const github=githubClient(env,token,fetcher);
   if(url.pathname==='/api/admin/import-description'&&request.method==='POST')return json(await importDescription(request,github,fetcher));
   if(url.pathname==='/api/admin/cost-monitor'&&request.method==='GET')return json(await costMonitor(request,env,fetcher));

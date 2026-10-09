@@ -25,10 +25,10 @@ export async function pilotApi(req,env,{session,csrf,body,json}){
  if(req.method==='GET'&&path==='/feed'){
   const creator=url.searchParams.get('creator')||'';if(creator.length>60)bad('Invalid creator');
   const page=Number(url.searchParams.get('page')||0);if(!Number.isSafeInteger(page)||page<0||page>1000)bad('Invalid page');
-  const {results}=await env.DB.prepare(`SELECT l.id,l.published,l.published_at,p.creator_id,p.payload FROM pilot_lists l JOIN pilot_profiles p ON p.user_id=l.user_id JOIN creator_users u ON u.id=l.user_id WHERE l.visible=1 AND p.visible=1 AND u.suspended=0 AND (?='' OR p.creator_id=?) ORDER BY l.published_at DESC,l.id DESC LIMIT 13 OFFSET ?`).bind(creator,creator,page*12).all();
+  const {results}=await env.DB.prepare(`SELECT l.id,l.published,l.published_at,p.creator_id,p.payload FROM pilot_lists l JOIN pilot_profiles p ON p.user_id=l.user_id JOIN creator_users u ON u.id=l.user_id WHERE l.visible=1 AND NOT EXISTS(SELECT 1 FROM list_moderation m WHERE m.list_id=l.id AND m.hidden=1) AND p.visible=1 AND u.suspended=0 AND (?='' OR p.creator_id=?) ORDER BY l.published_at DESC,l.id DESC LIMIT 13 OFFSET ?`).bind(creator,creator,page*12).all();
   return json({items:results.slice(0,12).map(r=>({id:r.id,...publicList(JSON.parse(r.published),r.id),publishedAt:r.published_at,creator:{id:r.creator_id,name:JSON.parse(r.payload).name}})),hasMore:results.length>12});
  }
- if(req.method==='GET'&&path.startsWith('/covers/')){const row=await env.DB.prepare('SELECT l.published FROM pilot_lists l JOIN pilot_profiles p ON p.user_id=l.user_id JOIN creator_users u ON u.id=l.user_id WHERE l.id=? AND l.visible=1 AND p.visible=1 AND u.suspended=0').bind(path.slice(8)).first();const cover=row&&JSON.parse(row.published).cover;if(!cover)bad('Not found',404);return new Response(Uint8Array.from(atob(cover.split(',')[1]),c=>c.charCodeAt(0)),{headers:{'Content-Type':'image/webp','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});}
+ if(req.method==='GET'&&path.startsWith('/covers/')){const row=await env.DB.prepare('SELECT l.published FROM pilot_lists l JOIN pilot_profiles p ON p.user_id=l.user_id JOIN creator_users u ON u.id=l.user_id WHERE l.id=? AND l.visible=1 AND NOT EXISTS(SELECT 1 FROM list_moderation m WHERE m.list_id=l.id AND m.hidden=1) AND p.visible=1 AND u.suspended=0').bind(path.slice(8)).first();const cover=row&&JSON.parse(row.published).cover;if(!cover)bad('Not found',404);return new Response(Uint8Array.from(atob(cover.split(',')[1]),c=>c.charCodeAt(0)),{headers:{'Content-Type':'image/webp','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});}
  if(req.method==='GET'&&path.startsWith('/creators/')){
   const parts=path.split('/'),id=parts[2];const p=await env.DB.prepare('SELECT p.* FROM pilot_profiles p JOIN creator_users u ON u.id=p.user_id WHERE p.creator_id=? AND p.visible=1 AND u.suspended=0').bind(id).first();if(!p)bad('Profile not published',404);
   if(parts.length===3)return json({id:p.creator_id,...JSON.parse(p.payload),publishedAt:p.published_at});
@@ -38,9 +38,9 @@ export async function pilotApi(req,env,{session,csrf,body,json}){
  const actor=req.method==='GET'?await session(req,env):await csrf(req,env);
  if(req.method!=='GET')await reserve(env,'pilot_writes_'+actor.user_id,300);
  if(req.method==='GET'&&path==='/mine'){
-  const {results}=await env.DB.prepare('SELECT id,draft,visible,version,published_at FROM pilot_lists WHERE user_id=? ORDER BY updated_at DESC,id').bind(actor.user_id).all();
+  const {results}=await env.DB.prepare("SELECT l.id,l.draft,l.visible,l.version,l.published_at,COALESCE(m.hidden,0) AS moderated,COALESCE(m.reason,'') AS moderationReason FROM pilot_lists l LEFT JOIN list_moderation m ON m.list_id=l.id WHERE l.user_id=? ORDER BY l.updated_at DESC,l.id").bind(actor.user_id).all();
   const p=await env.DB.prepare('SELECT creator_id,visible,published_at FROM pilot_profiles WHERE user_id=?').bind(actor.user_id).first();
-  return json({profile:p?{id:p.creator_id,visible:!!p.visible,publishedAt:p.published_at}:null,items:results.map(x=>({id:x.id,...JSON.parse(x.draft),visible:!!x.visible,version:x.version}))});
+  return json({profile:p?{id:p.creator_id,visible:!!p.visible,publishedAt:p.published_at}:null,items:results.map(x=>({id:x.id,...JSON.parse(x.draft),visible:!!x.visible&&!x.moderated,moderated:!!x.moderated,moderationReason:x.moderationReason,version:x.version}))});
  }
  if(req.method==='POST'&&path==='/profile/publish'){
   const input=await body(req);const p=await env.DB.prepare('SELECT * FROM creator_profiles WHERE user_id=?').bind(actor.user_id).first();if(!p||!p.name.trim())bad('Save your profile first');if(input.version!==p.version)bad('Profile changed. Reload and review before publishing.',409);
@@ -60,6 +60,7 @@ export async function pilotApi(req,env,{session,csrf,body,json}){
  if(match){const list=await env.DB.prepare('SELECT * FROM pilot_lists WHERE id=? AND user_id=?').bind(match[1],actor.user_id).first();if(!list)bad('Not found',404);const input=await body(req,200000);if(input.version!==list.version)bad('List changed. Reload before saving.',409);
   if(req.method==='PATCH'&&!match[2]){const {version,...values}=input;const data=validatePilotList(values);const changed=await env.DB.prepare('UPDATE pilot_lists SET draft=?,version=version+1,updated_at=? WHERE id=? AND user_id=? AND version=? RETURNING version').bind(JSON.stringify(data),now(),list.id,actor.user_id,version).first();if(!changed)bad('List changed. Reload before saving.',409);return json({ok:true,version:changed.version});}
   if(req.method==='POST'&&match[2]){
+   if(match[2]==='publish'&&await env.DB.prepare('SELECT list_id FROM list_moderation WHERE list_id=? AND hidden=1').bind(list.id).first())bad('清單已由管理員下架；修改可儲存為草稿，請聯絡管理員申請恢復。',403);
    if(match[2]==='publish'&&!await env.DB.prepare('SELECT user_id FROM pilot_profiles WHERE user_id=? AND visible=1').bind(actor.user_id).first())bad('Publish your profile first',409);
    const publish=match[2]==='publish';const changed=await env.DB.prepare(publish?'UPDATE pilot_lists SET published=draft,visible=1,published_at=?,version=version+1 WHERE id=? AND user_id=? AND version=? RETURNING version':'UPDATE pilot_lists SET visible=0,version=version+1 WHERE ? IS NOT NULL AND id=? AND user_id=? AND version=? RETURNING version').bind(now(),list.id,actor.user_id,input.version).first();if(!changed)bad('List changed. Reload before publishing.',409);return json({ok:true,version:changed.version});
   }
