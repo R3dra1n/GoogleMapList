@@ -795,6 +795,22 @@
     "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:descriptionKo": {
       "source": "eda5f2599a835fb9eb49b790f6020548fdd5e7e9787c0168b1a506da203d7127",
       "output": "693cf6713c65f1573754f9f5d1e2519fca417b0f79597f7104b104a77e476024"
+    },
+    "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltHans": {
+      "source": "aa34f78bf9c0acb69f710858522b8703b38668958d248d73532b638ff04cf60d",
+      "output": "ba57792f193612baed001bdf11c38a014a07c9d1b9ecaf5972903b9a11ad5afb"
+    },
+    "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltEn": {
+      "source": "779f6d6e8ae0742cd889b2b36b69d8d32794aa073d4ba1715c9a7cc277598fed",
+      "output": "5b65f7e8671dcc3b4ea2224a0d053e5c3db19493946febdaa22a470214f9769c"
+    },
+    "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltJa": {
+      "source": "bb767d6e591a3d4f32c75ca2807acdcd4f1c5793f10b2f5291428bc0d4a2f836",
+      "output": "3d80026e13633295974e5a2dddf8c7ca367175894a3779866a4385b3e479cedf"
+    },
+    "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltKo": {
+      "source": "1f788d1118be0d0ceecc6b0dab5ff016d67610a3c8644e9483bb7f28302949d4",
+      "output": "8e81ca66921d3f09681deffdb4b4c67ad937c40654280a01310e0bb2a92bec47"
     }
   },
   "cache": {
@@ -1042,6 +1058,10 @@
     "e4319bedb802c7a9fbb3ff585373242cb9589dab33914d09bc44ef7beb2e614a": "台中",
     "c6348ed2794f23e102389ba4b66aa2e63d1deb3f7a2ea45cccb03bd77398a99d": "Taichung",
     "c91612c130b79fedec026d882d9c630ca3f3eedb927ad3706cecd78a01fbdd34": "台中",
-    "2c43ad4a8f70b8e934ead543f9f530fb4f022de3cc482a60843e0022a5f4d4a8": "타이중"
+    "2c43ad4a8f70b8e934ead543f9f530fb4f022de3cc482a60843e0022a5f4d4a8": "타이중",
+    "aa34f78bf9c0acb69f710858522b8703b38668958d248d73532b638ff04cf60d": "2022年元宵节高雄音乐中心",
+    "779f6d6e8ae0742cd889b2b36b69d8d32794aa073d4ba1715c9a7cc277598fed": "Kaohsiung Music Center, Lantern Festival 2022",
+    "bb767d6e591a3d4f32c75ca2807acdcd4f1c5793f10b2f5291428bc0d4a2f836": "高雄音楽センター、ランタンフェスティバル2022",
+    "1f788d1118be0d0ceecc6b0dab5ff016d67610a3c8644e9483bb7f28302949d4": "가오슝 음악센터, 2022년 등불 축제"
   }
 }
