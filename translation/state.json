@@ -827,6 +827,22 @@
     "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:imageAltKo": {
       "source": "25683edf729b2a5675838d026c5d1fa79b4785c7af85910d404d4bf90532c2cd",
       "output": "1679af627d27057e6f21c05a6cf401363212a8e9ca7c075620c43d8bb9511fd4"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:imageAltHans": {
+      "source": "e8a51be30f621cb9c4db030de2c2072c0c1e11050ca854d407ddb6fd3254c5f6",
+      "output": "e08306bd68182111af495419fa060b2fff341868b446fb4b6415768e23c18735"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:imageAltEn": {
+      "source": "6652de8b4bea4140c9e9c89a84f3aab39975298d345992c4b508b5e357410ee3",
+      "output": "372ccbf09516da4d76dafeb90e703393819af2499a1ba2ecaf9b451e63f84415"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:imageAltJa": {
+      "source": "f3f8f1f6b549563d32ada0d79dfa581b5d9f7aaa84dd5c7e0991db3f13a2037d",
+      "output": "09b3705b9ecdadc1e5483f709b749862d127e1c70e70808e19036266056ea785"
+    },
+    "content/cities/37282031-8083-4ba9-92b7-f23ce39c843a.json:imageAltKo": {
+      "source": "865c93e10b4d0ced5d9dd5543426998ac16a7d45469372b43c4d7ade5a5a770b",
+      "output": "1b54eae206c1abf682ade681e7a74a1c6971c758f01249ec74d13e7a115be2ec"
     }
   },
   "cache": {
@@ -1082,6 +1098,10 @@
     "b1539dd913df864d6cd785e522b36f24aa479282330c32d7d39ff01a993b450f": "桃园机场",
     "fa0b43ac427f73ce933a200da5d1d73238fbdc9a3be008cffdb873d984a59729": "Taoyuan Airport",
     "d55bee8d048cf5a60b579bfa70e50a1a9e34ed760549e5da8e2b008a078c3d0c": "桃園空港",
-    "25683edf729b2a5675838d026c5d1fa79b4785c7af85910d404d4bf90532c2cd": "타오위안 공항"
+    "25683edf729b2a5675838d026c5d1fa79b4785c7af85910d404d4bf90532c2cd": "타오위안 공항",
+    "e8a51be30f621cb9c4db030de2c2072c0c1e11050ca854d407ddb6fd3254c5f6": "象山看台北风景",
+    "6652de8b4bea4140c9e9c89a84f3aab39975298d345992c4b508b5e357410ee3": "Viewing Taipei from Elephant Mountain",
+    "f3f8f1f6b549563d32ada0d79dfa581b5d9f7aaa84dd5c7e0991db3f13a2037d": "象山から台北を眺める",
+    "865c93e10b4d0ced5d9dd5543426998ac16a7d45469372b43c4d7ade5a5a770b": "코끼리산에서 바라본 타이베이 전경"
   }
 }
