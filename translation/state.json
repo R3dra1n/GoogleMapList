@@ -811,6 +811,22 @@
     "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltKo": {
       "source": "1f788d1118be0d0ceecc6b0dab5ff016d67610a3c8644e9483bb7f28302949d4",
       "output": "8e81ca66921d3f09681deffdb4b4c67ad937c40654280a01310e0bb2a92bec47"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:imageAltHans": {
+      "source": "b1539dd913df864d6cd785e522b36f24aa479282330c32d7d39ff01a993b450f",
+      "output": "adf9bc170142698290d7948a18f9d7fdc4740a9e5f0d6b4efa5ddc6a90f0d31c"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:imageAltEn": {
+      "source": "fa0b43ac427f73ce933a200da5d1d73238fbdc9a3be008cffdb873d984a59729",
+      "output": "c27e4fd8e5f6945132c4a092d16310fca07af6afdcfd2dcb7d1cd5a750c4ceae"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:imageAltJa": {
+      "source": "d55bee8d048cf5a60b579bfa70e50a1a9e34ed760549e5da8e2b008a078c3d0c",
+      "output": "cf21262f0330a954538141b0a2ce3c633516806054ef580cd2bd3760b9820b9e"
+    },
+    "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:imageAltKo": {
+      "source": "25683edf729b2a5675838d026c5d1fa79b4785c7af85910d404d4bf90532c2cd",
+      "output": "1679af627d27057e6f21c05a6cf401363212a8e9ca7c075620c43d8bb9511fd4"
     }
   },
   "cache": {
@@ -1062,6 +1078,10 @@
     "aa34f78bf9c0acb69f710858522b8703b38668958d248d73532b638ff04cf60d": "2022年元宵节高雄音乐中心",
     "779f6d6e8ae0742cd889b2b36b69d8d32794aa073d4ba1715c9a7cc277598fed": "Kaohsiung Music Center, Lantern Festival 2022",
     "bb767d6e591a3d4f32c75ca2807acdcd4f1c5793f10b2f5291428bc0d4a2f836": "高雄音楽センター、ランタンフェスティバル2022",
-    "1f788d1118be0d0ceecc6b0dab5ff016d67610a3c8644e9483bb7f28302949d4": "가오슝 음악센터, 2022년 등불 축제"
+    "1f788d1118be0d0ceecc6b0dab5ff016d67610a3c8644e9483bb7f28302949d4": "가오슝 음악센터, 2022년 등불 축제",
+    "b1539dd913df864d6cd785e522b36f24aa479282330c32d7d39ff01a993b450f": "桃园机场",
+    "fa0b43ac427f73ce933a200da5d1d73238fbdc9a3be008cffdb873d984a59729": "Taoyuan Airport",
+    "d55bee8d048cf5a60b579bfa70e50a1a9e34ed760549e5da8e2b008a078c3d0c": "桃園空港",
+    "25683edf729b2a5675838d026c5d1fa79b4785c7af85910d404d4bf90532c2cd": "타오위안 공항"
   }
 }
