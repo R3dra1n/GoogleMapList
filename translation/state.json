@@ -797,19 +797,19 @@
       "output": "693cf6713c65f1573754f9f5d1e2519fca417b0f79597f7104b104a77e476024"
     },
     "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltHans": {
-      "source": "aa34f78bf9c0acb69f710858522b8703b38668958d248d73532b638ff04cf60d",
+      "source": "5b2add3d25aeaae263b490a0cf3124bd740141930269ec331ac58b969716ac2b",
       "output": "ba57792f193612baed001bdf11c38a014a07c9d1b9ecaf5972903b9a11ad5afb"
     },
     "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltEn": {
-      "source": "779f6d6e8ae0742cd889b2b36b69d8d32794aa073d4ba1715c9a7cc277598fed",
+      "source": "afd11380ee0fd9611ad17c69110a07ea3fbd26d864bbee5c45d6f131895c6e69",
       "output": "5b65f7e8671dcc3b4ea2224a0d053e5c3db19493946febdaa22a470214f9769c"
     },
     "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltJa": {
-      "source": "bb767d6e591a3d4f32c75ca2807acdcd4f1c5793f10b2f5291428bc0d4a2f836",
+      "source": "26e20a5d8d19890906cfdc14d153272f4c089dcb72001ef7e1a287924e1734cf",
       "output": "3d80026e13633295974e5a2dddf8c7ca367175894a3779866a4385b3e479cedf"
     },
     "content/cities/71aff111-db21-4727-bf2a-40cf210cf104.json:imageAltKo": {
-      "source": "1f788d1118be0d0ceecc6b0dab5ff016d67610a3c8644e9483bb7f28302949d4",
+      "source": "fd63d35d1697f06b63426f43859ff63399f754f9c00c54bd0c7879ebb0a3d123",
       "output": "8e81ca66921d3f09681deffdb4b4c67ad937c40654280a01310e0bb2a92bec47"
     },
     "content/cities/3490ccb3-a696-4bf0-b1fd-41a5f9b19c4b.json:imageAltHans": {
@@ -1102,6 +1102,10 @@
     "e8a51be30f621cb9c4db030de2c2072c0c1e11050ca854d407ddb6fd3254c5f6": "象山看台北风景",
     "6652de8b4bea4140c9e9c89a84f3aab39975298d345992c4b508b5e357410ee3": "Viewing Taipei from Elephant Mountain",
     "f3f8f1f6b549563d32ada0d79dfa581b5d9f7aaa84dd5c7e0991db3f13a2037d": "象山から台北を眺める",
-    "865c93e10b4d0ced5d9dd5543426998ac16a7d45469372b43c4d7ade5a5a770b": "코끼리산에서 바라본 타이베이 전경"
+    "865c93e10b4d0ced5d9dd5543426998ac16a7d45469372b43c4d7ade5a5a770b": "코끼리산에서 바라본 타이베이 전경",
+    "5b2add3d25aeaae263b490a0cf3124bd740141930269ec331ac58b969716ac2b": "2022年元宵节高雄音乐中心",
+    "afd11380ee0fd9611ad17c69110a07ea3fbd26d864bbee5c45d6f131895c6e69": "Kaohsiung Music Center, Lantern Festival 2022",
+    "26e20a5d8d19890906cfdc14d153272f4c089dcb72001ef7e1a287924e1734cf": "高雄音楽センター、ランタンフェスティバル2022",
+    "fd63d35d1697f06b63426f43859ff63399f754f9c00c54bd0c7879ebb0a3d123": "가오슝 음악센터, 2022년 등불 축제"
   }
 }
