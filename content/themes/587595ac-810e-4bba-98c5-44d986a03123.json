@@ -3,6 +3,9 @@
   "nameJa": "良い言葉 - 墾丁 - 墾丁は本当に変わったのか？",
   "imageAltJa": "",
   "descriptionEn": "好口唄 really shattered our stereotypes this time. From having an extra-thick tuna steak with Mr. Ho in Donggang as an appetizer, to unpacking stunning white ocean-view guesthouses with bathtubs that felt like resorts abroad, to discovering amazing Napoli-style oven-baked pizza on Kenting Street, experiencing spray-painted tattoos and shooting at the night market, and then exploring three major beaches in one go: Baisha Bay, Little Bali Island Rock, and Nanwan Beach the next day.",
+  "destinations": [
+    "taiwan"
+  ],
   "imageLicense": "",
   "nameHans": "好口呗-垦丁-垦丁真的改变了？",
   "name": "好口唄-墾丁-墾丁真的改變了？",
@@ -15,25 +18,28 @@
   "myMap": "https://www.google.com/maps/d/u/0/edit?mid=13prKaAixdZCmlOMNsND4skAR669X0jw&usp=sharing",
   "english": "Good Words - Kenting - Has Kenting really changed?",
   "imageAltKo": "",
+  "curated": true,
+  "locationNames": [
+    "墾丁"
+  ],
   "descriptionJa": "好口唄は今回、私たちの固定観念を本当に打ち砕いてくれました。東港で何さんと一緒に極厚のマグロステーキを前菜に食べたり、海外のリゾートのようなバスタブ付きの素晴らしい白いオーシャンビューのゲストハウスに泊まったり、墾丁街で絶品のナポリ風オーブン焼きピザを発見したり、夜市でスプレーペイントのタトゥーを体験したり、撮影をしたり、そして翌日には白沙湾、小バリ島岩、南湾ビーチという3つの主要なビーチを一度に巡ったりしました。",
   "imageCredit": "",
   "imageSource": "",
   "imageAltEn": "",
+  "videos": [
+    {
+      "start": 0,
+      "url": "https://www.youtube.com/watch?v=9XkZd-M1DO8&t=1563s"
+    }
+  ],
+  "tags": [
+    "旅遊影片"
+  ],
   "descriptionHans": "好口呗这次直接带我们打破刻板印象。从东港找何董吃超厚鲔鱼牛排当前菜，一路开箱美到像置身国外度假村的纯白海景浴缸民宿，再到垦丁大街挖出惊为天人的拿坡里窑烤披萨、体验喷绘刺青跟夜市打靶，隔天更一口气玩遍白沙湾、小巴里岛岩与南湾三大海滩",
   "link": "https://maps.app.goo.gl/8WjieYjkwGVwuZDp9",
   "id": "587595ac-810e-4bba-98c5-44d986a03123",
   "image": "",
   "amap": "",
   "baidu": "",
-  "description": "好口唄這次直接帶我們打破刻板印象。從東港找何董吃超厚鮪魚牛排當前菜，一路開箱美到像置身國外度假村的純白海景浴缸民宿，再到墾丁大街挖出驚為天人的拿坡里窯烤披薩、體驗噴繪刺青跟夜市打靶，隔天更一口氣玩遍白沙灣、小巴里島岩與南灣三大海灘",
-  "curated": true,
-  "tags": [
-    "旅遊影片"
-  ],
-  "destinations": [
-    "taiwan"
-  ],
-  "locationNames": [
-    "墾丁"
-  ]
+  "description": "好口唄這次直接帶我們打破刻板印象。從東港找何董吃超厚鮪魚牛排當前菜，一路開箱美到像置身國外度假村的純白海景浴缸民宿，再到墾丁大街挖出驚為天人的拿坡里窯烤披薩、體驗噴繪刺青跟夜市打靶，隔天更一口氣玩遍白沙灣、小巴里島岩與南灣三大海灘"
 }
