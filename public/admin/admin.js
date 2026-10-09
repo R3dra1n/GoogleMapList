@@ -3,7 +3,7 @@ import {youtubeId,entryPlatform} from '../catalog-model.js';
 import {migrateSession,onSessionChange,readSession} from './session.js';
 migrateSession();
 onSessionChange(()=>{document.getElementById('publish-status').textContent='另一個分頁的登入狀態已改變。請先複製未儲存內容，再重新整理並登入；此頁不會自動重載。';});
-import { isMapsLink, isImagePath, myMapId, mapProvider } from '../model.js';
+import { isCollectionLink, isImagePath, myMapId, mapProvider } from '../model.js';
 const status=document.getElementById('publish-status');
 const CMS=window.CMS;
 if(!CMS){document.getElementById('admin-setup').hidden=false;document.getElementById('admin-setup').textContent='管理介面未能載入，請檢查網路後重新整理。';throw new Error('CMS unavailable');}
@@ -43,12 +43,12 @@ CMS.registerEventListener({name:'preSave',handler:async({entry})=>{
   }
   for(const key of ['name','food','sights','image','imageAlt','imageSource','imageLicense'])if(typeof data.get(key)==='string')data=data.set(key,data.get(key).trim());
   for(const provider of ['amap','baidu'])if(data.get(provider)&&mapProvider(data.get(provider))!==provider)throw new Error('請貼上對應平台的 HTTPS 地圖分享連結。');
-  if(kind==='themes'&&data.get('link')&&!mapProvider(data.get('link')))throw new Error('主題清單需要 Google Maps、高德或百度的 HTTPS 分享連結。');
+  if(kind==='themes'&&data.get('link')&&!mapProvider(data.get('link')))throw new Error('主題清單需要 Google Maps、Apple Maps、高德或百度的 HTTPS 分享連結。');
   if(!data.get('name'))throw new Error('請填寫名稱。');
   if(data.get('image')&&!data.get('imageAlt'))throw new Error('請為封面照片填寫圖片描述。');
   if(!isImagePath(data.get('image')))throw new Error('請上傳 JPG、PNG、WebP 或 GIF 圖片；檔名不能包含 %、? 或 #。');
   if(['cities','countries','themes'].includes(kind)&&data.get('myMap')&&!myMapId(data.get('myMap')))throw new Error('請貼上 Google 我的地圖完整網址（含 mid），不要貼 iframe 程式碼。');
-  if(['cities','countries'].includes(kind))for(const field of ['food','sights']){data=data.set(field,data.get(field)||'');if(!isMapsLink(data.get(field)))throw new Error('請貼上 HTTPS 的 Google Maps 分享連結。');}
+  if(['cities','countries'].includes(kind))for(const field of ['food','sights']){data=data.set(field,data.get(field)||'');if(!isCollectionLink(data.get(field)))throw new Error('請貼上 HTTPS 的 Google Maps 或 Apple Maps 分享連結。');}
   for(const field of ['imageSource','imageLicense'])if(data.get(field)&&!/^https:\/\//.test(data.get(field)))throw new Error('圖片來源與授權網址必須使用 HTTPS。');
   // Fetch the latest branch, rather than a possibly stale deployed content snapshot.
   const repo='R3dra1n/GoogleMapList';

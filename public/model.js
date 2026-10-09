@@ -40,12 +40,12 @@ export function validate(data) {
       for (const key of ['imageSource','imageLicense']) if (entry[key] && !/^https:\/\//.test(entry[key])) throw new Error(`${entry.id} 的圖片出處連結無效`);
     }
   }
-  for(const country of data.countries){if(country.standalone!=null&&typeof country.standalone!=='boolean')throw new Error('地區模式必須是布林值');for(const key of ['food','sights'])if(country[key]!=null&&(typeof country[key]!=='string'||!isMapsLink(country[key])))throw new Error('地區清單必須是 Google Maps HTTPS 連結');if(country.myMap&&!myMapId(country.myMap))throw new Error('地區 My Maps 網址無效');}
+  for(const country of data.countries){if(country.standalone!=null&&typeof country.standalone!=='boolean')throw new Error('地區模式必須是布林值');for(const key of ['food','sights'])if(country[key]!=null&&(typeof country[key]!=='string'||!isCollectionLink(country[key])))throw new Error('地區清單必須是 Google Maps 或 Apple Maps HTTPS 連結');if(country.myMap&&!myMapId(country.myMap))throw new Error('地區 My Maps 網址無效');}
   for (const country of data.countries) if (!data.continents.some(x => x.id === country.continent)) throw new Error(`${country.name} 找不到所屬大洲`);
   for (const city of data.cities) {
     if(city.myMap&&!myMapId(city.myMap))throw new Error(`${city.name} 的 My Maps 網址無效`);
     if (!data.countries.some(x => x.id === city.country)) throw new Error(`${city.name} 找不到所屬國家／地區`);
-    for (const key of ['food', 'sights']) if (typeof city[key] !== 'string' || !isMapsLink(city[key])) throw new Error(`${city.name} 的 ${key} 不是有效的 Google Maps HTTPS 連結`);
+    for (const key of ['food', 'sights']) if (typeof city[key] !== 'string' || !isCollectionLink(city[key])) throw new Error(`${city.name} 的 ${key} 不是有效的 Google Maps 或 Apple Maps HTTPS 連結`);
   }
   return data;
 }
@@ -75,10 +75,13 @@ export function myMapId(value){
  try{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password||u.port||!['www.google.com','google.com'].includes(u.hostname)||!/^\/maps\/d\/(?:u\/\d+\/)?(?:edit|viewer|embed)\/?$/.test(u.pathname))return null;const id=u.searchParams.get('mid');return /^[a-zA-Z0-9_-]{10,200}$/.test(id||'')?id:null;}catch{return null;}
 }
 
+export function isCollectionLink(value){return value===''||['google','apple'].includes(mapProvider(value));}
+
 export function mapProvider(value){
  if(!value||typeof value!=='string')return null;
  if(isMapsLink(value))return 'google';
  try{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password||u.port)return null;
+ if(u.hostname==='maps.apple.com')return 'apple';
  if(['amap.com','www.amap.com','uri.amap.com','ditu.amap.com','surl.amap.com','m.amap.com'].includes(u.hostname))return 'amap';
  if(['map.baidu.com','api.map.baidu.com','j.map.baidu.com'].includes(u.hostname))return 'baidu';
  }catch{}return null;

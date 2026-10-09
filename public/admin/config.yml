@@ -258,7 +258,7 @@ collections:
       - { name: imageLicense, label: 授權條款網址, widget: string, required: false, default: '' }
       - { name: order, label: 顯示順序, widget: number, value_type: int, default: 10, min: 0 }
       - { name: published, label: 公開顯示, widget: boolean, default: true, hint: '關閉即可隱藏此主題。' }
-      - { name: link, label: 主題清單連結, widget: string, required: false, default: '', hint: '支援 Google Maps、高德、百度 HTTPS 分享連結。留空顯示整理中。' }
+      - { name: link, label: 主題清單連結, widget: string, required: false, default: '', hint: '支援 Google Maps、Apple Maps、高德、百度 HTTPS 分享連結。留空顯示整理中。' }
       - { name: amap, label: 高德地圖分享連結, widget: string, required: false, default: '', hint: '貼上高德的 HTTPS 分享連結；不會自動轉換 Google 清單。' }
       - { name: baidu, label: 百度地圖分享連結, widget: string, required: false, default: '', hint: '貼上百度地圖的 HTTPS 分享連結。' }
 
