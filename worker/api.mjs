@@ -24,13 +24,19 @@ export async function api(request,env,fetcher,ctx){
   if(url.pathname==='/api/stats'){if(request.method==='POST'&&origin!==allowed)throw new ApiError('Origin required',403);return json(await stats(request,env,fetcher));}
   if(url.pathname==='/api/list-places'&&request.method==='GET')return json(await readSaved(env,url.searchParams.get('url')));
   if(url.pathname==='/api/saved-places'&&request.method==='GET')return json(await readSaved(env,url.searchParams.get('url')));
+  if(url.pathname.startsWith('/api/background/map-places/')){
+   const key=request.headers.get('Authorization')?.match(/^Bearer ([a-f0-9]{64})$/)?.[1],expected=env.MAP_PLACES_SYNC_KEY;
+   let difference=0;if(key&&expected?.length===64)for(let i=0;i<64;i++)difference|=key.charCodeAt(i)^expected.charCodeAt(i);else difference=1;
+   if(difference)throw new ApiError('Background job authorization required',403);
+   if(url.pathname==='/api/background/map-places/jobs'&&request.method==='GET')return json(await claimGoogleJobs(env));
+   if(url.pathname==='/api/background/map-places/result'&&request.method==='POST'){if(origin!==allowed)throw new ApiError('Origin required',403);return json(await completeGoogleJob(env,await request.json()));}
+   throw new ApiError('Not found',404);
+  }
   if(!url.pathname.startsWith('/api/admin/'))throw new ApiError('Not found',404);
   const token=request.headers.get('Authorization')?.match(/^Bearer ([^\s]+)$/)?.[1];if(!token)throw new ApiError('Please sign in',401);
   const check=await fetcher(`https://api.github.com/repos/${env.GITHUB_REPO}`,{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','User-Agent':'PocketAtlas-CMS'},signal:AbortSignal.timeout(15000)});
   if(check.status===401)throw new ApiError('Please sign in again',401);
   if(!check.ok||!(await check.json()).permissions?.push)throw new ApiError('Editor access required',403);
-  if(url.pathname==='/api/admin/map-places/jobs'&&request.method==='GET')return json(await claimGoogleJobs(env));
-  if(url.pathname==='/api/admin/map-places/result'&&request.method==='POST'){if(origin!==allowed)throw new ApiError('Origin required',403);return json(await completeGoogleJob(env,await request.json()));}
   if(url.pathname==='/api/admin/map-places'&&request.method==='POST'){
    if(origin!==allowed)throw new ApiError('Origin required',403);
    const data=await request.json();if(!Array.isArray(data.urls)||data.urls.length>20||data.urls.some(x=>typeof x!=='string'||x.length>4096))throw new ApiError('Invalid sources',400);

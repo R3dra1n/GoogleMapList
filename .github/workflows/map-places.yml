@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: map-places-sync
   cancel-in-progress: false
@@ -21,5 +21,5 @@ jobs:
           node-version: 22
       - name: Parse queued public Google lists and save snapshots
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAP_PLACES_SYNC_KEY: ${{ secrets.MAP_PLACES_SYNC_KEY }}
         run: node scripts/sync-saved-places.mjs
