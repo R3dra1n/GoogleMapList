@@ -16,3 +16,20 @@ body,input,select,button,h1,h2,h3{font-family:var(--font)}body{background:var(--
 .spots-toolbar{display:flex;gap:8px;flex-wrap:wrap}.fixed-nav .community-menu-avatar{width:32px;height:32px}
 .fixed-nav .community-options{color:var(--navy);background:var(--surface);border-color:var(--line);border-radius:20px}.fixed-nav .community-menu summary{width:34px;height:34px;border-radius:50%;padding:0}.fixed-nav .community-options a,.fixed-nav .community-options button{font:600 13px var(--font)}
 .fixed-nav.is-collapsed>:not(.nav-toggle):not(.nav-surface){display:none!important}.fixed-nav.is-collapsed{min-height:46px;height:auto;max-width:160px}.fixed-nav.is-collapsed .nav-toggle{font-size:13px}
+/* Keep the hero still; only actionable controls respond to hover. */
+.hero-photo:hover img,.editorial-hero:hover .hero-photo img{transform:none!important;transition:none!important}
+.hero-primary{transition:background-color .16s,color .16s,transform .16s,box-shadow .16s}
+.hero-primary:hover,.hero-primary:focus-visible{background:#c8e3ae;color:#143922!important;transform:translateY(-2px);box-shadow:0 5px 18px #0003}
+.fixed-nav #global-nav a,.explore-all{border-radius:999px;transition:background-color .16s,color .16s,transform .16s}
+.fixed-nav #global-nav a{padding:8px 10px;margin-inline:-5px}
+.fixed-nav #global-nav a:hover,.fixed-nav #global-nav a:focus-visible,.explore-all:hover,.explore-all:focus-visible{background:var(--soft);color:var(--blue);transform:translateY(-1px)}
+.explore-all{padding:10px 16px}
+.fixed-nav #theme{display:none!important}.fixed-nav .theme-toggle{display:grid;place-items:center;flex:none;width:34px;height:34px;border:0;border-radius:50%;padding:7px;background:var(--soft);color:inherit;cursor:pointer}
+.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle .sun-icon{display:none}:root[data-theme=dark] .theme-toggle .sun-icon{display:block}:root[data-theme=dark] .theme-toggle .moon-icon{display:none}
+.theme-toggle:hover,.theme-toggle:focus-visible{background:var(--line)}
+.catalog-card .card-cover-link{position:absolute;inset:0;z-index:1;cursor:pointer}
+.catalog-card .card-main-link::after{content:none}
+.catalog-card .card-body,.catalog-card .card-tags{pointer-events:none}
+.catalog-card .card-body a,.catalog-card .card-tags a{pointer-events:auto;position:relative;z-index:3}
+@media(prefers-reduced-motion:reduce){.hero-primary,.fixed-nav #global-nav a,.explore-all{transition:none}}
