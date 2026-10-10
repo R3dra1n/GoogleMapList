@@ -1,4 +1,4 @@
-import {listPlaces,mapData} from './list-places.mjs';
+import {enqueueSources,processPlaces,readSaved} from './saved-places.mjs';
 import {listOverview,moderateList} from './list-admin.mjs';
 import {memberOverview} from './member-admin.mjs';
 import {costMonitor,monitorSettings} from './cost-monitor.mjs';
@@ -9,7 +9,7 @@ import {generateDescription} from './descriptions.mjs';
 import {notificationStatus} from './notifications.mjs';
 import {ApiError,submitRecommendation,manageRecommendations} from './community.mjs';
 import {githubClient,destinations,searchPhotos,importPhoto} from './photos.mjs';
-export async function api(request,env,fetcher){
+export async function api(request,env,fetcher,ctx){
  const url=new URL(request.url),origin=request.headers.get('Origin');
  const allowed=origin===url.origin?url.origin:env.SITE_ORIGIN;
  const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',Vary:'Origin',...(origin===allowed?{'Access-Control-Allow-Origin':allowed,'Access-Control-Allow-Methods':'GET, POST, PATCH, DELETE, OPTIONS','Access-Control-Allow-Headers':'Content-Type, Authorization','Access-Control-Max-Age':'600'}:{})};
@@ -22,13 +22,18 @@ export async function api(request,env,fetcher){
    return json(await submitRecommendation(request,env),201);
   }
   if(url.pathname==='/api/stats'){if(request.method==='POST'&&origin!==allowed)throw new ApiError('Origin required',403);return json(await stats(request,env,fetcher));}
-  if(url.pathname==='/api/list-places'&&request.method==='GET')return json(await listPlaces(url,fetcher));
-  if(url.pathname==='/api/map-data'&&request.method==='GET')return json(await mapData(url,fetcher));
+  if(url.pathname==='/api/list-places'&&request.method==='GET')return json(await readSaved(env,url.searchParams.get('url')));
+  if(url.pathname==='/api/saved-places'&&request.method==='GET')return json(await readSaved(env,url.searchParams.get('url')));
   if(!url.pathname.startsWith('/api/admin/'))throw new ApiError('Not found',404);
   const token=request.headers.get('Authorization')?.match(/^Bearer ([^\s]+)$/)?.[1];if(!token)throw new ApiError('Please sign in',401);
   const check=await fetcher(`https://api.github.com/repos/${env.GITHUB_REPO}`,{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','User-Agent':'PocketAtlas-CMS'},signal:AbortSignal.timeout(15000)});
   if(check.status===401)throw new ApiError('Please sign in again',401);
   if(!check.ok||!(await check.json()).permissions?.push)throw new ApiError('Editor access required',403);
+  if(url.pathname==='/api/admin/map-places'&&request.method==='POST'){
+   if(origin!==allowed)throw new ApiError('Origin required',403);
+   const data=await request.json();if(!Array.isArray(data.urls)||data.urls.length>20||data.urls.some(x=>typeof x!=='string'||x.length>4096))throw new ApiError('Invalid sources',400);
+   const queued=await enqueueSources(env,data.urls,{refresh:true});if(ctx)ctx.waitUntil(processPlaces(env,fetcher,2).catch(()=>console.error('MAP_PLACES_SYNC_FAILED')));return json({queued},202);
+  }
   if(url.pathname==='/api/admin/members'&&request.method==='GET')return json(await memberOverview(url,env));
   if(url.pathname==='/api/admin/lists'){
    if(request.method==='GET')return json(await listOverview(url,env));

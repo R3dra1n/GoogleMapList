@@ -1,3 +1,4 @@
+import {enqueueSources,processPlaces} from './saved-places.mjs';
 import {reserve} from './usage.mjs';
 import {ProfileError} from './creator-profile.mjs';
 const bad=(message,status=400)=>{throw new ProfileError(message,status)};
@@ -15,7 +16,8 @@ export function validatePilotList(input){
  if(u.protocol!=='https:'||u.username||u.password)bad('Use an HTTPS link without credentials');out.url=u.href;
  if(!Array.isArray(input.tags)||input.tags.length>5||input.tags.some(x=>typeof x!=='string'||!x.trim()||x.length>30))bad('Use up to 5 tags, 30 characters each');out.tags=[...new Set(input.tags.map(x=>x.trim()))];return out;
 }
-export async function pilotApi(req,env,{session,csrf,body,json}){
+export async function pilotApi(req,env,{session,csrf,body,json,fetcher,ctx}){
+ const queue=async source=>{try{await enqueueSources(env,[source],{refresh:true});if(ctx)ctx.waitUntil(processPlaces(env,fetcher,1).catch(()=>console.error('MAP_PLACES_SYNC_FAILED')));}catch{console.error('MAP_PLACES_QUEUE_FAILED');}};
  const url=new URL(req.url),path=url.pathname.slice('/account/api/pilot'.length);
  if(req.method==='GET'&&path==='/creators'){
   const page=Number(url.searchParams.get('page')||0);if(!Number.isSafeInteger(page)||page<0||page>1000)bad('Invalid page');
@@ -54,11 +56,11 @@ export async function pilotApi(req,env,{session,csrf,body,json}){
  if(req.method==='POST'&&path==='/profile/unpublish'){await env.DB.prepare('UPDATE pilot_profiles SET visible=0 WHERE user_id=?').bind(actor.user_id).run();return json({ok:true});}
  if(req.method==='POST'&&path==='/lists'){
   const data=validatePilotList(await body(req,200000));const count=await env.DB.prepare('SELECT COUNT(*) AS n FROM pilot_lists WHERE user_id=?').bind(actor.user_id).first();if(count.n>=20)bad('Pilot limit: 20 lists per account',409);
-  const id=crypto.randomUUID();const inserted=await env.DB.prepare('INSERT INTO pilot_lists(id,user_id,draft,updated_at) SELECT ?,?,?,? WHERE (SELECT COUNT(*) FROM pilot_lists WHERE user_id=?)<20 RETURNING id').bind(id,actor.user_id,JSON.stringify(data),now(),actor.user_id).first();if(!inserted)bad('Pilot limit: 20 lists per account',409);return json({id,version:1});
+  const id=crypto.randomUUID();const inserted=await env.DB.prepare('INSERT INTO pilot_lists(id,user_id,draft,updated_at) SELECT ?,?,?,? WHERE (SELECT COUNT(*) FROM pilot_lists WHERE user_id=?)<20 RETURNING id').bind(id,actor.user_id,JSON.stringify(data),now(),actor.user_id).first();if(!inserted)bad('Pilot limit: 20 lists per account',409);await queue(data.url);return json({id,version:1});
  }
  const match=path.match(/^\/lists\/([a-f0-9-]{36})(?:\/(publish|unpublish))?$/);
  if(match){const list=await env.DB.prepare('SELECT * FROM pilot_lists WHERE id=? AND user_id=?').bind(match[1],actor.user_id).first();if(!list)bad('Not found',404);const input=await body(req,200000);if(input.version!==list.version)bad('List changed. Reload before saving.',409);
-  if(req.method==='PATCH'&&!match[2]){const {version,...values}=input;const data=validatePilotList(values);const changed=await env.DB.prepare('UPDATE pilot_lists SET draft=?,version=version+1,updated_at=? WHERE id=? AND user_id=? AND version=? RETURNING version').bind(JSON.stringify(data),now(),list.id,actor.user_id,version).first();if(!changed)bad('List changed. Reload before saving.',409);return json({ok:true,version:changed.version});}
+  if(req.method==='PATCH'&&!match[2]){const {version,...values}=input;const data=validatePilotList(values);const changed=await env.DB.prepare('UPDATE pilot_lists SET draft=?,version=version+1,updated_at=? WHERE id=? AND user_id=? AND version=? RETURNING version').bind(JSON.stringify(data),now(),list.id,actor.user_id,version).first();if(!changed)bad('List changed. Reload before saving.',409);await queue(data.url);return json({ok:true,version:changed.version});}
   if(req.method==='POST'&&match[2]){
    if(match[2]==='publish'&&await env.DB.prepare('SELECT list_id FROM list_moderation WHERE list_id=? AND hidden=1').bind(list.id).first())bad('清單已由管理員下架；修改可儲存為草稿，請聯絡管理員申請恢復。',403);
    if(match[2]==='publish'&&!await env.DB.prepare('SELECT user_id FROM pilot_profiles WHERE user_id=? AND visible=1').bind(actor.user_id).first())bad('Publish your profile first',409);

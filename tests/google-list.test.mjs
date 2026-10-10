@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validListURL,readGoogleList,parseGoogleList} from '../worker/google-list.mjs';
-import {listPlaces,mapData} from '../worker/list-places.mjs';
+import {mapData} from '../worker/list-places.mjs';
+import {readSaved} from '../worker/saved-places.mjs';
 const fixture=()=>{const row=[];row[4]='公開清單';row[8]=[['x',[null,null,null,null,null,[null,null,24,121]],'披薩','午餐'],['x',[null,null,null,null,null,[null,null,24,121]],'披薩','午餐']];row[12]=1;return JSON.stringify([row])};
 test('public list parser deduplicates places and reports completeness',()=>{const data=parseGoogleList(")]}'\n"+fixture());assert.equal(data.places.length,1);assert.equal(data.complete,true);assert.match(data.places[0].url,/24%2C121/);const row=JSON.parse(fixture());row[0][12]=3;assert.equal(parseGoogleList(JSON.stringify(row)).complete,false)});
 test('URL reader rejects credentials, non Google and unsafe redirects',async()=>{for(const url of ['http://maps.app.goo.gl/a','https://localhost/maps/a','https://google.com.evil.test/maps/a','https://x:y@google.com/maps/a','https://google.com:444/maps/a'])assert.equal(validListURL(url),false);let calls=0;await assert.rejects(readGoogleList('https://maps.app.goo.gl/test',async()=>{calls++;return new Response(null,{status:302,headers:{location:'https://127.0.0.1/maps/x'}})}));assert.equal(calls,1)});
 test('reader uses only the public page endpoint',async()=>{let calls=0;const result=await readGoogleList('https://www.google.com/maps/list/test',async url=>{calls++;return new Response(url.includes('getlist')?fixture():'<a href="/maps/preview/entitylist/getlist?x=1&amp;y=2">List</a>')});assert.equal(calls,2);assert.equal(result.places[0].name,'披薩')});
-test('public APIs validate input before fetching',async()=>{const fetcher=()=>{throw Error('must not fetch')};await assert.rejects(listPlaces(new URL('https://site/api/list-places?url=https://evil.test/maps/x'),fetcher),{status:400});await assert.rejects(mapData(new URL('https://site/api/map-data?mid=../../x'),fetcher),{status:400})});
+test('public APIs validate input before fetching',async()=>{const fetcher=()=>{throw Error('must not fetch')};await assert.rejects(readSaved({},'https://evil.test/maps/x'),{status:400});await assert.rejects(mapData(new URL('https://site/api/map-data?mid=../../x'),fetcher),{status:400})});

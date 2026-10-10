@@ -43,7 +43,7 @@ async function identify(env,provider,subject,address,target){
 async function login(req,env,id,age=7*86400){const user=await env.DB.prepare('SELECT suspended FROM creator_users WHERE id=?').bind(id).first();if(!user||user.suspended)fail('帳號暫停使用',403);const token=random();const old=readCookie(req,SESSION);if(old)await env.DB.prepare('DELETE FROM creator_sessions WHERE hash=?').bind(await digest(old)).run();await env.DB.prepare('INSERT INTO creator_sessions(hash,user_id,csrf,expires_at) VALUES(?,?,?,?)').bind(await digest(token),id,random(),now()+age).run();return cookie(SESSION,token,age);}
 async function limit(req,env,address=''){if(!env.RATE_SALT)fail('登入服務尚未設定',503);const bucket=await digest(env.RATE_SALT+':'+(address||req.headers.get('CF-Connecting-IP')||'unknown'));await reserve(env,'account_'+bucket, address?5:30);}
 export async function cleanAccounts(env){if(env.CREATOR_ACCOUNTS_ENABLED!=='true')return;await env.DB.batch([env.DB.prepare('DELETE FROM creator_challenges WHERE expires_at<?').bind(now()),env.DB.prepare('DELETE FROM creator_sessions WHERE expires_at<?').bind(now())]);}
-export async function accounts(req,env,fetcher=fetch){
+export async function accounts(req,env,fetcher=fetch,ctx){
  const url=new URL(req.url),path=url.pathname;
  if(path==='/account/community'&&req.method==='GET'){const nonce=random();return new Response(pilotPage(nonce),{headers:{...security,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':`default-src 'none'; script-src 'nonce-${nonce}'; style-src 'nonce-${nonce}'; img-src 'self' data: blob:; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'`}});}
  if(path==='/account'||path==='/account/'||path==='/account/verify'){if(req.method!=='GET')return json({error:'Method not allowed'},405);const nonce=random();return new Response(accountPage(nonce,env.AUTH_PROVIDER==='firebase'),{headers:{...security,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':`default-src 'none'; script-src 'nonce-${nonce}' https://www.gstatic.com https://apis.google.com; frame-src https://${env.FIREBASE_PROJECT_ID||'unconfigured'}.firebaseapp.com https://accounts.google.com; style-src 'nonce-${nonce}'; img-src 'self' blob:; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://${env.FIREBASE_PROJECT_ID||'unconfigured'}.firebaseapp.com; base-uri 'none'; form-action 'self'; frame-ancestors 'none'`}});}
@@ -51,7 +51,7 @@ export async function accounts(req,env,fetcher=fetch){
  if(env.CREATOR_ACCOUNTS_ENABLED!=='true'||!env.DB)return json({error:'創作者登入尚未開放'},503);
  try{
   if(['POST','PATCH','DELETE'].includes(req.method)&&req.headers.get('Origin')!==url.origin)fail('Origin not allowed',403);
-  if(path.startsWith('/account/api/pilot/'))return await pilotApi(req,env,{session,csrf,body,json});
+  if(path.startsWith('/account/api/pilot/'))return await pilotApi(req,env,{session,csrf,body,json,fetcher,ctx});
   if(env.AUTH_PROVIDER==='firebase'&&(/\/api\/(google|email)\//.test(path)||path==='/account/google/callback'))fail('請使用新版登入頁',410);
   if(path==='/account/api/firebase/session'&&req.method==='POST'){
    if(env.AUTH_PROVIDER!=='firebase')fail('Firebase 尚未啟用',503);

@@ -1,3 +1,4 @@
+import {discoverPlaces,processPlaces} from './saved-places.mjs';
 import {accounts,cleanAccounts} from './accounts.mjs';
 import {monitorSnapshot,sendUsageAlerts} from './cost-monitor.mjs';
 import {sendNotifications} from './notifications.mjs';
@@ -13,12 +14,12 @@ export function popup(origin,token){
  const html=`<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>登入完成</title><p>登入成功，正在返回清單管理頁面…</p><script nonce="${nonce}">const origin=${JSON.stringify(origin)};const receive=(event)=>{if(event.origin!==origin||event.source!==window.opener||event.data!=='authorizing:github')return;window.opener.postMessage(${payload},origin);window.removeEventListener('message',receive);window.close();};window.addEventListener('message',receive);if(window.opener)window.opener.postMessage('authorizing:github',origin);</script></html>`;
  return new Response(html,{headers:{...securityHeaders,'Content-Type':'text/html; charset=utf-8','Set-Cookie':cookie('',0),'Content-Security-Policy':`default-src 'none'; script-src 'nonce-${nonce}'; base-uri 'none'; frame-ancestors 'none'`}});
 }
-export function createHandler(fetcher=fetch){return async(request,env)=>{
+export function createHandler(fetcher=fetch){return async(request,env,ctx)=>{
  const url=new URL(request.url);
  if(url.pathname==='/preview')return Response.redirect(url.origin+'/preview/',302);
  if(url.pathname.startsWith('/preview/')&&env.ASSETS){const assetURL=new URL(request.url);assetURL.pathname=assetURL.pathname.slice(8)||'/';const response=await env.ASSETS.fetch(new Request(assetURL,request));const headers=new Headers(response.headers);headers.set('X-Robots-Tag','noindex, nofollow');return new Response(response.body,{status:response.status,headers});}
- if(url.pathname==='/account'||url.pathname.startsWith('/account/'))return accounts(request,env,fetcher);
- if(url.pathname.startsWith('/api/'))return api(request,env,fetcher);
+ if(url.pathname==='/account'||url.pathname.startsWith('/account/'))return accounts(request,env,fetcher,ctx);
+ if(url.pathname.startsWith('/api/'))return api(request,env,fetcher,ctx);
  if(request.method!=='GET')return text('Method not allowed',405);
  // Editorial CMS content remains published by GitHub Actions; account data stays same-origin.
  if(url.pathname==='/data.json'||['/assets/','/uploads/','/media/'].some(prefix=>url.pathname.startsWith(prefix))){
@@ -50,4 +51,4 @@ export function createHandler(fetcher=fetch){return async(request,env)=>{
   return popup(origin,auth.access_token);
  }catch{return text('登入服務暫時無法使用，請重試。',502);}
 };}
-export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(cleanAccounts(env));ctx.waitUntil(sendNotifications(env));ctx.waitUntil(monitorSnapshot(env).then(()=>sendUsageAlerts(env)).catch(()=>console.error("COST_MONITOR_REFRESH_FAILED")));ctx.waitUntil(env.DB.prepare('DELETE FROM submission_limits WHERE expires_at < ?').bind(Math.floor(Date.now()/1000)).run());}};
+export default {fetch:createHandler(),scheduled(_event,env,ctx){ctx.waitUntil(discoverPlaces(env).then(()=>processPlaces(env)).catch(()=>console.error("MAP_PLACES_SYNC_FAILED")));ctx.waitUntil(cleanAccounts(env));ctx.waitUntil(sendNotifications(env));ctx.waitUntil(monitorSnapshot(env).then(()=>sendUsageAlerts(env)).catch(()=>console.error("COST_MONITOR_REFRESH_FAILED")));ctx.waitUntil(env.DB.prepare('DELETE FROM submission_limits WHERE expires_at < ?').bind(Math.floor(Date.now()/1000)).run());}};

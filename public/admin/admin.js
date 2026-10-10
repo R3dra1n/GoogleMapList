@@ -1,5 +1,5 @@
 import {registerHeroPicker} from './hero-picker.js';
-import {youtubeId,entryPlatform} from '../catalog-model.js';
+import {youtubeId,entryPlatform,mapEntries} from '../catalog-model.js';
 import {migrateSession,onSessionChange,readSession} from './session.js';
 migrateSession();
 onSessionChange(()=>{document.getElementById('publish-status').textContent='另一個分頁的登入狀態已改變。請先複製未儲存內容，再重新整理並登入；此頁不會自動重載。';});
@@ -82,3 +82,6 @@ try {
   setup.append(p,a);status.textContent='公開網站可瀏覽 · 管理登入尚未連接';
 }
 new ResizeObserver(entries=>document.documentElement.style.setProperty('--banner-height',`${entries[0].target.getBoundingClientRect().height}px`)).observe(document.querySelector('.admin-banner'));
+
+// Queue parsing only after the CMS has saved the content successfully.
+for(const event of ['postSave','postPublish'])CMS.registerEventListener({name:event,handler:async({entry})=>{const kind=entry?.get('collection');if(!['cities','countries','themes'].includes(kind))return;const token=readSession();if(!token)return;const item=entry.get('data').toJS(),urls=mapEntries(item,kind).map(e=>e.url);if(!urls.length)return;try{const connection=await(await fetch('./connection.json')).json();const response=await fetch(connection.authBaseUrl+'/api/admin/map-places',{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({urls})});if(!response.ok)throw Error();if(!(await response.json()).queued)return;status.textContent='清單已儲存，景點正在背景解析並保存；完成後會顯示於詳情頁。';}catch{status.textContent='清單已儲存，景點將由背景排程自動解析；網站發佈完成後可查看。';}}});
