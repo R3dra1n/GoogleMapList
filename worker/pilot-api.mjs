@@ -17,7 +17,7 @@ export function validatePilotList(input){
  if(!Array.isArray(input.tags)||input.tags.length>5||input.tags.some(x=>typeof x!=='string'||!x.trim()||x.length>30))bad('Use up to 5 tags, 30 characters each');out.tags=[...new Set(input.tags.map(x=>x.trim()))];return out;
 }
 export async function pilotApi(req,env,{session,csrf,body,json,fetcher,ctx}){
- const queue=async source=>{try{await enqueueSources(env,[source],{refresh:true});if(ctx)ctx.waitUntil(processPlaces(env,fetcher,1).catch(()=>console.error('MAP_PLACES_SYNC_FAILED')));}catch{console.error('MAP_PLACES_QUEUE_FAILED');}};
+ const queue=async source=>{try{await enqueueSources(env,[source],{refresh:true});if(ctx)ctx.waitUntil(processPlaces(env,fetcher,1,{myMapsOnly:true}).catch(()=>console.error('MAP_PLACES_SYNC_FAILED')));}catch{console.error('MAP_PLACES_QUEUE_FAILED');}};
  const url=new URL(req.url),path=url.pathname.slice('/account/api/pilot'.length);
  if(req.method==='GET'&&path==='/creators'){
   const page=Number(url.searchParams.get('page')||0);if(!Number.isSafeInteger(page)||page<0||page>1000)bad('Invalid page');
