@@ -1,6 +1,7 @@
+import {renderJourney} from './journey.js';
 import {setupCardPagination} from './card-pagination.js';
 import {communityData} from './community-data.js';
-import {renderCatalog,chips,catalogCard} from './catalog-view.js';
+import {renderCatalog,chips,catalogCard,metadata} from './catalog-view.js';
 import {statMarkup,bindStats} from './list-stats.js';
 import {collectionText,providerButton,alternativeMaps} from './collections.js';
 import {refreshRecommendationUI} from './recommendations.js';
@@ -51,9 +52,7 @@ function renderStory(city,a,c){
  $('cards').hidden=true;$('story').hidden=false;
  $('section-title').textContent=localized(city,'name');$('section-count').textContent=t('story');
  $('breadcrumbs').innerHTML=!a?`<a href="#/themes">${collectionText('themes')}</a><span>/</span><span aria-current="page">${escape(localized(city,'name'))}</span>`:`<a href="./">首頁</a><span aria-hidden="true">/</span><a href="#/asia">${t('destinations')}</a><span>/</span><a href="${path(a.id)}">${escape(localized(a,'name'))}</a><span>/</span><a href="${path(a.id,c.id)}">${escape(localized(c,'name'))}</a><span>/</span><span aria-current="page">${escape(localized(city,'name'))}</span>`;
- const mid=myMapId(city.myMap);const body=localized(city,'article');const suffix=suffixes[language];
- $('story').innerHTML=`<article class="travel-story">${cover(city,c?localized(c,'name'):collectionText('themes'))}<div class="story-body"><p class="card-description">${display(city,'description')}</p><div class="actions">${a?mapButton(city.food,t('food'),'food')+mapButton(city.sights,t('sights'),'sights'):providerButton(city.link)}</div>${alternativeMaps(city)}${chips(city,data)}${statMarkup(city,a?'cities':'themes')}${body?`${language!=='zh-Hant'&&!city['article'+suffix]?`<p class="translation-note">${t('fallback')}</p>`:''}<div class="story-prose" lang="${language!=='zh-Hant'&&city._machineFields?.includes('article'+suffix)?language+'-x-mtfrom-zh-TW':language}">${body.split(/\n\s*\n/).map(p=>`<p>${escape(p)}</p>`).join('')}</div>`:''}${mid?`<section class="embedded-map"><div id="map-frame"><iframe src="https://www.google.com/maps/d/embed?mid=${mid}" title="${escape(t('myMap'))}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></section>`:''}</div></article>`;
- document.querySelectorAll('#story .cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
+ document.body.classList.add('journey-page');const item={...city,_kind:a?'cities':'themes',_id:city.id,owner:city.owner||'william'};renderJourney($('story'),item,data,{statMarkup,bind:bindStats},metadata(item,data));
 }
 function translateUI(){
  setLanguage(language);refreshRecommendationUI();

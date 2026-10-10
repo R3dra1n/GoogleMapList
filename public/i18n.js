@@ -6,7 +6,7 @@ export function setLanguage(value){language=languages.includes(value)?value:'zh-
 const words={
  brand:['口袋地圖','口袋地图',"口袋地圖"],
  explore:['探索目的地','探索目的地','Explore destinations'],
- heading:['下一站，從口袋清單出發。','下一站，从口袋清单出发。','Your next stop starts here.'],
+ heading:['下一站，從口袋地圖出發。','下一站，从口袋地图出发。','Your next stop starts here.'],
  intro:['想吃的、想去的，都收在這裡。\n選一個目的地，帶著地圖慢慢探索。','想吃的、想去的，都收在这里。\n选一个目的地，带着地图慢慢探索。','Places to eat. Places to wander.\nChoose a destination and take your time.'],
  destinations:['目的地','目的地','Destinations'],
  next:['下一站，','下一站，','Next stop: '],

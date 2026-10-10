@@ -1,3 +1,4 @@
+import {listPlaces,mapData} from './list-places.mjs';
 import {listOverview,moderateList} from './list-admin.mjs';
 import {memberOverview} from './member-admin.mjs';
 import {costMonitor,monitorSettings} from './cost-monitor.mjs';
@@ -21,6 +22,8 @@ export async function api(request,env,fetcher){
    return json(await submitRecommendation(request,env),201);
   }
   if(url.pathname==='/api/stats'){if(request.method==='POST'&&origin!==allowed)throw new ApiError('Origin required',403);return json(await stats(request,env,fetcher));}
+  if(url.pathname==='/api/list-places'&&request.method==='GET')return json(await listPlaces(url,fetcher));
+  if(url.pathname==='/api/map-data'&&request.method==='GET')return json(await mapData(url,fetcher));
   if(!url.pathname.startsWith('/api/admin/'))throw new ApiError('Not found',404);
   const token=request.headers.get('Authorization')?.match(/^Bearer ([^\s]+)$/)?.[1];if(!token)throw new ApiError('Please sign in',401);
   const check=await fetcher(`https://api.github.com/repos/${env.GITHUB_REPO}`,{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','User-Agent':'PocketAtlas-CMS'},signal:AbortSignal.timeout(15000)});
