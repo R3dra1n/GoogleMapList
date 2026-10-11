@@ -33,3 +33,26 @@ body,input,select,button,h1,h2,h3{font-family:var(--font)}body{background:var(--
 .catalog-card .card-body,.catalog-card .card-tags{pointer-events:none}
 .catalog-card .card-body a,.catalog-card .card-tags a{pointer-events:auto;position:relative;z-index:3}
 @media(prefers-reduced-motion:reduce){.hero-primary,.fixed-nav #global-nav a,.explore-all{transition:none}}
+/* Keep creator counts on one baseline regardless of biography length. */
+.creator-tile{gap:6px}
+.creator-tile .creator-heading{min-height:40px;align-items:center}
+.creator-tile p{line-height:1.5;min-height:0;flex-shrink:1}
+.creator-tile>small{margin-top:auto;flex:none;line-height:16px}
+.card-grid .catalog-card .catalog-location{display:flex;align-items:center;gap:5px;line-height:1.4}
+.catalog-location svg{width:1em;height:1em;display:block;flex:none}
+.catalog-location span{display:block}
+/* One map entry control retains access to distinct food/sight lists. */
+.map-entry-menu{position:relative;max-width:100%;z-index:4}
+.map-entry-menu summary{display:inline-flex;padding:12px 20px;background:var(--blue);color:var(--page);border-radius:999px;font:700 13px var(--font);cursor:pointer;list-style:none;align-items:center;gap:12px}
+.map-entry-menu summary::-webkit-details-marker{display:none}
+.map-entry-menu summary:after{content:'⌄'}
+.map-entry-menu[open] summary:after{content:'⌃'}
+.map-entry-menu>div{position:absolute;top:calc(100% + 8px);left:0;min-width:200px;padding:8px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:0 8px 24px #0003}
+.spots-toolbar .map-entry-menu a{display:block;padding:10px 12px;background:none;color:var(--navy);border-radius:10px}
+.spots-toolbar .map-entry-menu a:hover{background:var(--soft)}
+.spot-grid.vertical{gap:10px}
+.spot{min-height:0;padding:16px 18px}
+.spot.has-photo{min-height:150px}
+.spot h3{margin:6px 0;font-size:17px}
+.spot p{margin:6px 0}
+@media(max-width:650px){.spot{padding:14px}.spot.has-photo{min-height:140px}}
