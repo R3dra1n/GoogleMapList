@@ -1,3 +1,5 @@
+import {youtubeId} from '../public/catalog-model.js';
+import {myMapId} from '../public/model.js';
 import {enqueueSources,processPlaces} from './saved-places.mjs';
 import {reserve} from './usage.mjs';
 import {ProfileError} from './creator-profile.mjs';
@@ -5,12 +7,18 @@ const bad=(message,status=400)=>{throw new ProfileError(message,status)};
 const now=()=>Math.floor(Date.now()/1000);
 export function validatePilotList(input){
  if(!input||typeof input!=='object'||Array.isArray(input))bad('Invalid list');
- for(const key of Object.keys(input))if(!['title','description','url','destination','tags','cover','coverAlt','role','sourceName','sourceUrl'].includes(key))bad('Unsupported field');
+ for(const key of Object.keys(input))if(!['title','description','url','destination','tags','cover','coverAlt','role','sourceName','sourceUrl','youtubeUrl','myMapsUrl'].includes(key))bad('Unsupported field');
  const out={cover:'',coverAlt:'',role:input.role||'author',sourceName:'',sourceUrl:''};if(!['author','curator','sharer'].includes(out.role))bad('Invalid role');if(out.role==='sharer'){if(typeof input.sourceName!=='string'||!input.sourceName.trim()||input.sourceName.length>100)bad('Original author required');out.sourceName=input.sourceName.trim();if(input.sourceUrl){let source;try{source=new URL(input.sourceUrl)}catch{bad('Invalid source URL')}if(source.protocol!=='https:'||source.username||source.password||input.sourceUrl.length>2048)bad('Invalid source URL');out.sourceUrl=source.href;}}
  if(input.cover){if(typeof input.cover!=='string'||input.cover.length>180000||!/^data:image\/webp;base64,[A-Za-z0-9+/]+=*$/.test(input.cover))bad('Invalid cover image');let bytes;try{bytes=atob(input.cover.split(',')[1])}catch{bad('Invalid cover image')}if(bytes.length>131072||bytes.slice(0,4)!=='RIFF'||bytes.slice(8,12)!=='WEBP')bad('Use a WebP cover under 128 KB');out.cover=input.cover;}
  if(input.coverAlt!==undefined){if(typeof input.coverAlt!=='string'||input.coverAlt.length>160)bad('Invalid image description');out.coverAlt=input.coverAlt.trim();}
  for(const [field,max]of [['title',100],['description',1500],['url',2048],['destination',100]]){
   if(typeof input[field]!=='string'||input[field].length>max)bad('Invalid '+field);out[field]=input[field].trim();
+ }
+ for(const field of ['youtubeUrl','myMapsUrl']){
+  const value=input[field]??'';if(typeof value!=='string'||value.length>2048)bad('Invalid '+field);
+  out[field]=value.trim();if(!out[field])continue;
+  if(field==='youtubeUrl'&&!youtubeId(out[field]))bad('請貼上有效的 YouTube 影片網址（HTTPS）。');
+  if(field==='myMapsUrl'&&!myMapId(out[field]))bad('請貼上有效的 Google My Maps 共用網址（HTTPS）。');
  }
  if(!out.title)bad('Title is required');let u;try{u=new URL(out.url)}catch{bad('Invalid URL')}
  if(u.protocol!=='https:'||u.username||u.password)bad('Use an HTTPS link without credentials');out.url=u.href;
@@ -56,11 +64,11 @@ export async function pilotApi(req,env,{session,csrf,body,json,fetcher,ctx}){
  if(req.method==='POST'&&path==='/profile/unpublish'){await env.DB.prepare('UPDATE pilot_profiles SET visible=0 WHERE user_id=?').bind(actor.user_id).run();return json({ok:true});}
  if(req.method==='POST'&&path==='/lists'){
   const data=validatePilotList(await body(req,200000));const count=await env.DB.prepare('SELECT COUNT(*) AS n FROM pilot_lists WHERE user_id=?').bind(actor.user_id).first();if(count.n>=20)bad('Pilot limit: 20 lists per account',409);
-  const id=crypto.randomUUID();const inserted=await env.DB.prepare('INSERT INTO pilot_lists(id,user_id,draft,updated_at) SELECT ?,?,?,? WHERE (SELECT COUNT(*) FROM pilot_lists WHERE user_id=?)<20 RETURNING id').bind(id,actor.user_id,JSON.stringify(data),now(),actor.user_id).first();if(!inserted)bad('Pilot limit: 20 lists per account',409);await queue(data.url);return json({id,version:1});
+  const id=crypto.randomUUID();const inserted=await env.DB.prepare('INSERT INTO pilot_lists(id,user_id,draft,updated_at) SELECT ?,?,?,? WHERE (SELECT COUNT(*) FROM pilot_lists WHERE user_id=?)<20 RETURNING id').bind(id,actor.user_id,JSON.stringify(data),now(),actor.user_id).first();if(!inserted)bad('Pilot limit: 20 lists per account',409);await queue(data.url);if(data.myMapsUrl)await queue(data.myMapsUrl);return json({id,version:1});
  }
  const match=path.match(/^\/lists\/([a-f0-9-]{36})(?:\/(publish|unpublish))?$/);
  if(match){const list=await env.DB.prepare('SELECT * FROM pilot_lists WHERE id=? AND user_id=?').bind(match[1],actor.user_id).first();if(!list)bad('Not found',404);const input=await body(req,200000);if(input.version!==list.version)bad('List changed. Reload before saving.',409);
-  if(req.method==='PATCH'&&!match[2]){const {version,...values}=input;const data=validatePilotList(values);const changed=await env.DB.prepare('UPDATE pilot_lists SET draft=?,version=version+1,updated_at=? WHERE id=? AND user_id=? AND version=? RETURNING version').bind(JSON.stringify(data),now(),list.id,actor.user_id,version).first();if(!changed)bad('List changed. Reload before saving.',409);await queue(data.url);return json({ok:true,version:changed.version});}
+  if(req.method==='PATCH'&&!match[2]){const {version,...values}=input;const data=validatePilotList(values);const changed=await env.DB.prepare('UPDATE pilot_lists SET draft=?,version=version+1,updated_at=? WHERE id=? AND user_id=? AND version=? RETURNING version').bind(JSON.stringify(data),now(),list.id,actor.user_id,version).first();if(!changed)bad('List changed. Reload before saving.',409);await queue(data.url);if(data.myMapsUrl)await queue(data.myMapsUrl);return json({ok:true,version:changed.version});}
   if(req.method==='POST'&&match[2]){
    if(match[2]==='publish'&&await env.DB.prepare('SELECT list_id FROM list_moderation WHERE list_id=? AND hidden=1').bind(list.id).first())bad('清單已由管理員下架；修改可儲存為草稿，請聯絡管理員申請恢復。',403);
    if(match[2]==='publish'&&!await env.DB.prepare('SELECT user_id FROM pilot_profiles WHERE user_id=? AND visible=1').bind(actor.user_id).first())bad('Publish your profile first',409);

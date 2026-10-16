@@ -31,3 +31,21 @@ test('attribution defaults and source validation',()=>{assert.equal(validatePilo
 test('creator directory only exposes published, unsuspended snapshots',async()=>{const {env,db}=await fixture();const read=async()=> (await accounts(req('pilot/creators'),env)).json();assert.deepEqual((await read()).items,[]);await accounts(req('pilot/profile/publish','alice','POST',{version:0}),env);assert.equal((await read()).items[0].name,'alice');assert(!JSON.stringify(await read()).includes('@example.com'));db.prepare('UPDATE creator_users SET suspended=1 WHERE id=?').run('alice');assert.deepEqual((await read()).items,[]);assert.equal((await accounts(req('pilot/creators?page=-1'),env)).status,400);db.close();});
 
 test('saving a list queues background parsing, including link changes; other owners cannot queue changes',async()=>{const {env,db}=await fixture();const result=await(await accounts(req('pilot/lists','alice','POST',entry),env)).json();assert.equal(db.prepare('SELECT state FROM saved_map_places WHERE source_url=?').get(entry.url).state,'pending');const changed='https://maps.app.goo.gl/updated';assert.equal((await accounts(req('pilot/lists/'+result.id,'bob','PATCH',{...entry,url:changed,version:1}),env)).status,404);assert.equal(db.prepare('SELECT COUNT(*) AS n FROM saved_map_places').get().n,1);assert.equal((await accounts(req('pilot/lists/'+result.id,'alice','PATCH',{...entry,url:changed,version:1}),env)).status,200);assert.equal(db.prepare('SELECT state FROM saved_map_places WHERE source_url=?').get(changed).state,'pending');db.close();});
+
+test('optional My Maps and YouTube survive draft/public snapshots and can be removed',async()=>{
+ const media={myMapsUrl:'https://www.google.com/maps/d/u/0/edit?mid=abcdefghijklmno',youtubeUrl:'https://youtu.be/J5vKPysXJTw'};
+ assert.equal(validatePilotList(entry).youtubeUrl,'');
+ for(const youtubeUrl of ['https://evil.test/watch?v=J5vKPysXJTw','javascript:alert(1)','https://youtube.com/watch?v=bad'])assert.throws(()=>validatePilotList({...entry,youtubeUrl}));
+ for(const myMapsUrl of ['https://evil.test/maps/d/viewer?mid=abcdefghijklmno','https://www.google.com/maps/d/viewer?mid=bad','http://www.google.com/maps/d/viewer?mid=abcdefghijklmno'])assert.throws(()=>validatePilotList({...entry,myMapsUrl}));
+ const {env,db}=await fixture();try{
+ const call=(...args)=>accounts(req(...args),env);
+ const saved=await(await call('pilot/lists','alice','POST',{...entry,...media})).json();
+ const own=await(await call('pilot/mine','alice')).json();assert.equal(own.items[0].youtubeUrl,media.youtubeUrl);assert.equal(own.items[0].myMapsUrl,media.myMapsUrl);
+ assert(db.prepare('SELECT source_url FROM saved_map_places WHERE source_url LIKE ?').get('%abcdefghijklmno%'));
+ await call('pilot/profile/publish','alice','POST',{version:0});await call('pilot/lists/'+saved.id+'/publish','alice','POST',{version:1});
+ let feed=await(await call('pilot/feed')).json();assert.equal(feed.items[0].youtubeUrl,media.youtubeUrl);assert.equal(feed.items[0].myMapsUrl,media.myMapsUrl);
+ assert.equal((await call('pilot/lists/'+saved.id,'alice','PATCH',{...entry,youtubeUrl:'',myMapsUrl:'',version:2})).status,200);
+ feed=await(await call('pilot/feed')).json();assert.equal(feed.items[0].youtubeUrl,media.youtubeUrl);
+ await call('pilot/lists/'+saved.id+'/publish','alice','POST',{version:3});feed=await(await call('pilot/feed')).json();assert.equal(feed.items[0].youtubeUrl,'');assert.equal(feed.items[0].myMapsUrl,'');
+ }finally{db.close();}
+});
