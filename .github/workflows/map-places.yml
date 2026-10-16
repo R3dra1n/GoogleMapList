@@ -23,3 +23,9 @@ jobs:
         env:
           MAP_PLACES_SYNC_KEY: ${{ secrets.MAP_PLACES_SYNC_KEY }}
         run: node scripts/sync-saved-places.mjs
+
+      - name: Match licensed Wikimedia photos for stored places
+        if: always()
+        env:
+          MAP_PLACES_SYNC_KEY: ${{ secrets.MAP_PLACES_SYNC_KEY }}
+        run: node scripts/sync-place-photos.mjs

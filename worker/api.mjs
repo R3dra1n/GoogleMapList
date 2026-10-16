@@ -1,3 +1,5 @@
+import {ownPhotoPage} from './list-photo-editor.mjs';
+import {claimPhotoJobs,completePhotoJob,publicPlaceImage,publicListVisible,updatePhotoOverride} from './place-photo-cache.mjs';
 import {enqueueSources,processPlaces,readSaved,claimGoogleJobs,completeGoogleJob} from './saved-places.mjs';
 import {listOverview,moderateList} from './list-admin.mjs';
 import {memberOverview} from './member-admin.mjs';
@@ -7,7 +9,7 @@ import {stats} from './stats.mjs';
 import {usage,reserve} from './usage.mjs';
 import {generateDescription} from './descriptions.mjs';
 import {notificationStatus} from './notifications.mjs';
-import {ApiError,submitRecommendation,manageRecommendations} from './community.mjs';
+import {ApiError,readJSON,submitRecommendation,manageRecommendations} from './community.mjs';
 import {githubClient,destinations,searchPhotos,importPhoto} from './photos.mjs';
 export async function api(request,env,fetcher,ctx){
  const url=new URL(request.url),origin=request.headers.get('Origin');
@@ -22,12 +24,14 @@ export async function api(request,env,fetcher,ctx){
    return json(await submitRecommendation(request,env),201);
   }
   if(url.pathname==='/api/stats'){if(request.method==='POST'&&origin!==allowed)throw new ApiError('Origin required',403);return json(await stats(request,env,fetcher));}
-  if(url.pathname==='/api/list-places'&&request.method==='GET')return json(await readSaved(env,url.searchParams.get('url')));
-  if(url.pathname==='/api/saved-places'&&request.method==='GET')return json(await readSaved(env,url.searchParams.get('url')));
+  if(url.pathname==='/api/place-photo'&&request.method==='GET')return await publicPlaceImage(env,url,fetcher);
+  if(['/api/list-places','/api/saved-places'].includes(url.pathname)&&request.method==='GET'){let list=url.searchParams.get('list')||'';if(list.length>200)throw new ApiError('Invalid list');if(list.startsWith('community/')&&!await publicListVisible(env,list,fetcher))list='';return json(await readSaved(env,url.searchParams.get('url'),list));}
   if(url.pathname.startsWith('/api/background/map-places/')){
    const key=request.headers.get('Authorization')?.match(/^Bearer ([a-f0-9]{64})$/)?.[1],expected=env.MAP_PLACES_SYNC_KEY;
    let difference=0;if(key&&expected?.length===64)for(let i=0;i<64;i++)difference|=key.charCodeAt(i)^expected.charCodeAt(i);else difference=1;
    if(difference)throw new ApiError('Background job authorization required',403);
+   if(url.pathname==='/api/background/map-places/photos/jobs'&&request.method==='GET')return json(await claimPhotoJobs(env));
+   if(url.pathname==='/api/background/map-places/photos/result'&&request.method==='POST'){if(origin!==allowed)throw new ApiError('Origin required',403);return json(await completePhotoJob(env,await readJSON(request,16000)));}
    if(url.pathname==='/api/background/map-places/jobs'&&request.method==='GET')return json(await claimGoogleJobs(env));
    if(url.pathname==='/api/background/map-places/result'&&request.method==='POST'){if(origin!==allowed)throw new ApiError('Origin required',403);return json(await completeGoogleJob(env,await request.json()));}
    throw new ApiError('Not found',404);
@@ -41,6 +45,14 @@ export async function api(request,env,fetcher,ctx){
    if(origin!==allowed)throw new ApiError('Origin required',403);
    const data=await request.json();if(!Array.isArray(data.urls)||data.urls.length>20||data.urls.some(x=>typeof x!=='string'||x.length>4096))throw new ApiError('Invalid sources',400);
    const queued=await enqueueSources(env,data.urls,{refresh:true});if(ctx)ctx.waitUntil(processPlaces(env,fetcher,2,{myMapsOnly:true}).catch(()=>console.error('MAP_PLACES_SYNC_FAILED')));return json({queued},202);
+  }
+  if(url.pathname==='/api/admin/place-photos'){
+   const source=url.searchParams.get('url')||'';
+   const list=url.searchParams.get('list')||'';if(!/^(?:cities|themes|countries)\/[a-z0-9-]+$/.test(list))throw new ApiError('Invalid list');
+   const github=githubClient(env,token,fetcher);const file=await github('contents/content/'+list+'.json?ref=main');const content=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(file.content.replace(/\s/g,'')),c=>c.charCodeAt(0))));
+   const {mapEntries}=await import('../public/catalog-model.js');const {sourceURL}=await import('./saved-places.mjs');const sources=mapEntries(content,list.split('/')[0]).map(x=>x.url).filter(x=>sourceURL(x));if(request.method==='GET'&&!source)return json({sources});if(!sources.some(x=>sourceURL(x)===sourceURL(source)))throw new ApiError('Source not in list',403);const snapshot=await readSaved(env,source,list);
+   if(request.method==='GET')return json(await ownPhotoPage(env,list,snapshot.places||[],Number(url.searchParams.get('offset')||0)));
+   if(request.method==='POST'){if(origin!==allowed)throw new ApiError('Origin required',403);await reserve(env,'admin_place_photo_writes',300);return json(await updatePhotoOverride(env,list,snapshot.places||[],await readJSON(request,180000)));}
   }
   if(url.pathname==='/api/admin/members'&&request.method==='GET')return json(await memberOverview(url,env));
   if(url.pathname==='/api/admin/lists'){

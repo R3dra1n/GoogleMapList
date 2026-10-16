@@ -1,3 +1,5 @@
+import {listPhotoPoints,ownPhotoPage} from './list-photo-editor.mjs';
+import {updatePhotoOverride} from './place-photo-cache.mjs';
 import {youtubeId} from '../public/catalog-model.js';
 import {myMapId} from '../public/model.js';
 import {enqueueSources,processPlaces} from './saved-places.mjs';
@@ -47,6 +49,8 @@ export async function pilotApi(req,env,{session,csrf,body,json,fetcher,ctx}){
  }
  const actor=req.method==='GET'?await session(req,env):await csrf(req,env);
  if(req.method!=='GET')await reserve(env,'pilot_writes_'+actor.user_id,300);
+ const photoMatch=path.match(/^\/lists\/([a-f0-9-]{36})\/photos$/);
+ if(photoMatch){const list=await env.DB.prepare('SELECT draft FROM pilot_lists WHERE id=? AND user_id=?').bind(photoMatch[1],actor.user_id).first();if(!list)bad('Not found',404);const key='community/'+photoMatch[1],points=await listPhotoPoints(env,JSON.parse(list.draft),key);if(req.method==='GET')return json(await ownPhotoPage(env,key,points,Number(url.searchParams.get('offset')||0)));if(req.method==='POST'){const input=await body(req,180000);return json(await updatePhotoOverride(env,key,points,input));}bad('Not found',404);}
  if(req.method==='GET'&&path==='/mine'){
   const {results}=await env.DB.prepare("SELECT l.id,l.draft,l.visible,l.version,l.published_at,COALESCE(m.hidden,0) AS moderated,COALESCE(m.reason,'') AS moderationReason FROM pilot_lists l LEFT JOIN list_moderation m ON m.list_id=l.id WHERE l.user_id=? ORDER BY l.updated_at DESC,l.id").bind(actor.user_id).all();
   const p=await env.DB.prepare('SELECT creator_id,visible,published_at FROM pilot_profiles WHERE user_id=?').bind(actor.user_id).first();

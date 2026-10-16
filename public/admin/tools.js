@@ -1,3 +1,4 @@
+import {mountPlacePhotoEditor} from '../place-photo-editor.js';
 import {renderListsPanel} from './lists-panel.js';
 import {renderMembersPanel} from './members-panel.js';
 import {renderCostPanel} from './cost-panel.js';
@@ -65,3 +66,9 @@ $('tab-members').onclick=showMembers;
 
 function showLists(){tab(false);$('inbox-panel').hidden=true;$('tab-inbox').setAttribute('aria-pressed','false');$('lists-panel').hidden=false;$('tab-lists').setAttribute('aria-pressed','true');const current=token;renderListsPanel($('lists-result'),api,()=>token===current&&!$('workspace').hidden);}
 $('tab-lists').onclick=showLists;
+
+const placePhotoButton=document.createElement('button');placePhotoButton.type='button';placePhotoButton.textContent='管理這份清單的景點照片';const placePhotoSource=document.createElement('select');placePhotoSource.hidden=true;placePhotoSource.setAttribute('aria-label','景點照片的地圖來源');const placePhotoTarget=document.createElement('section');placePhotoTarget.hidden=true;$('current-photo').after(placePhotoButton,placePhotoSource,placePhotoTarget);let placePhotoList='';
+function openPlacePhotos(){const source=placePhotoSource.value,list=placePhotoList;if(!source)return;placePhotoTarget.hidden=false;mountPlacePhotoEditor(placePhotoTarget,{request:async(method,data,offset=0)=>api('/api/admin/place-photos?'+new URLSearchParams({url:source,list,offset}),{method,...(data?{body:JSON.stringify(data)}:{})})});}
+placePhotoSource.onchange=openPlacePhotos;
+placePhotoButton.onclick=async()=>{try{const item=destination();if(!item)throw Error('請先選擇目的地');const selected=$('destination').value;const r=await api('/api/admin/place-photos?list='+encodeURIComponent(selected));if($('destination').value!==selected)return;placePhotoList=selected;placePhotoSource.replaceChildren(...r.sources.map((url,i)=>new Option('地圖來源 '+(i+1),url)));placePhotoSource.hidden=r.sources.length<2;if(!r.sources.length)throw Error('這份清單尚無可解析的 Google 地圖連結');openPlacePhotos();}catch(e){report(e);}};
+$('destination').addEventListener('change',()=>{placePhotoTarget.hidden=true;placePhotoTarget.replaceChildren();placePhotoSource.hidden=true;placePhotoList='';});

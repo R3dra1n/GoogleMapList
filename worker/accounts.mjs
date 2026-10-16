@@ -1,3 +1,4 @@
+import {ApiError} from './community.mjs';
 import {pilotApi} from './pilot-api.mjs';
 import {pilotPage} from './pilot-page.mjs';
 import {firebaseConfig,verifyFirebase} from './firebase-auth.mjs';
@@ -45,7 +46,7 @@ async function limit(req,env,address=''){if(!env.RATE_SALT)fail('登入服務尚
 export async function cleanAccounts(env){if(env.CREATOR_ACCOUNTS_ENABLED!=='true')return;await env.DB.batch([env.DB.prepare('DELETE FROM creator_challenges WHERE expires_at<?').bind(now()),env.DB.prepare('DELETE FROM creator_sessions WHERE expires_at<?').bind(now())]);}
 export async function accounts(req,env,fetcher=fetch,ctx){
  const url=new URL(req.url),path=url.pathname;
- if(path==='/account/community'&&req.method==='GET'){const nonce=random();return new Response(pilotPage(nonce),{headers:{...security,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':`default-src 'none'; script-src 'nonce-${nonce}'; style-src 'nonce-${nonce}'; img-src 'self' data: blob:; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'`}});}
+ if(path==='/account/community'&&req.method==='GET'){const nonce=random();return new Response(pilotPage(nonce),{headers:{...security,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':`default-src 'none'; script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'; img-src 'self' data: blob: https://upload.wikimedia.org https://thumb.wikimedia.org; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'`}});}
  if(path==='/account'||path==='/account/'||path==='/account/verify'){if(req.method!=='GET')return json({error:'Method not allowed'},405);const nonce=random();return new Response(accountPage(nonce,env.AUTH_PROVIDER==='firebase'),{headers:{...security,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':`default-src 'none'; script-src 'nonce-${nonce}' https://www.gstatic.com https://apis.google.com; frame-src https://${env.FIREBASE_PROJECT_ID||'unconfigured'}.firebaseapp.com https://accounts.google.com; style-src 'nonce-${nonce}'; img-src 'self' blob:; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://${env.FIREBASE_PROJECT_ID||'unconfigured'}.firebaseapp.com; base-uri 'none'; form-action 'self'; frame-ancestors 'none'`}});}
  if(path==='/account/api/config'&&req.method==='GET'){const enabled=env.CREATOR_ACCOUNTS_ENABLED==='true';return json({enabled,google:enabled&&googleReady(env),email:enabled&&mailReady(env),invitationOnly:env.CREATOR_REGISTRATION!=='open',firebase:env.AUTH_PROVIDER==='firebase'?firebaseConfig(env):null});}
  if(env.CREATOR_ACCOUNTS_ENABLED!=='true'||!env.DB)return json({error:'創作者登入尚未開放'},503);
@@ -82,5 +83,5 @@ export async function accounts(req,env,fetcher=fetch,ctx){
    if(req.method==='POST'){const s=await csrf(req,env);await reserve(env,'creator_media_uploads',100);const max=slot==='avatar'?256*1024:1024*1024;if(Number(req.headers.get('Content-Length'))>max)fail('圖片過大',413);const bytes=await boundedBytes(req,max);if(bytes.length>max||bytes.length<12)fail('圖片過大或格式不正確',413);const sig=String.fromCharCode(...bytes.slice(0,12));const mime=bytes[0]===255&&bytes[1]===216&&bytes[2]===255?'image/jpeg':bytes.slice(0,8).join(',')==='137,80,78,71,13,10,26,10'?'image/png':sig.startsWith('RIFF')&&sig.slice(8)==='WEBP'?'image/webp':null;if(!mime||req.headers.get('Content-Type')!==mime)fail('只支援 JPG、PNG、WebP');await env.DB.prepare('INSERT INTO creator_media(user_id,slot,mime,bytes,updated_at) VALUES(?,?,?,?,?) ON CONFLICT(user_id,slot) DO UPDATE SET mime=excluded.mime,bytes=excluded.bytes,updated_at=excluded.updated_at').bind(s.user_id,slot,mime,bytes.buffer,now()).run();return json({ok:true});}
   }
   fail('Not found',404);
- }catch(e){return json({error:e instanceof ProfileError?e.message:e.status===429?'今日操作額度已達上限':'登入服務暫時無法使用'},e instanceof ProfileError?e.status:e.status===429?429:502);}
+ }catch(e){return json({error:(e instanceof ProfileError||e instanceof ApiError)?e.message:e.status===429?'今日操作額度已達上限':'登入服務暫時無法使用'},(e instanceof ProfileError||e instanceof ApiError)?e.status:e.status===429?429:502);}
 }
