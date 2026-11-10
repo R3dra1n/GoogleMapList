@@ -3,6 +3,9 @@ import {accounts,cleanAccounts} from './accounts.mjs';
 import {monitorSnapshot,sendUsageAlerts} from './cost-monitor.mjs';
 import {sendNotifications} from './notifications.mjs';
 import {api} from './api.mjs';
+const PUBLIC_ORIGIN='https://mapspot.hellohsu.com',LEGACY_HOST='pocket-atlas-auth.huayang-hsu.workers.dev';
+// Public pages moved to the custom domain. API, account, admin and OAuth routes stay where they are.
+const movedPage=path=>path==='/'||path==='/index.html'||/^\/(lists|creators)\//.test(path)||['/contact.html','/privacy.html','/terms.html','/translation.html','/sitemap.xml'].includes(path);
 const COOKIE='__Host-pocket_oauth';
 const securityHeaders={'Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'};
 const text=(message,status=200)=>new Response(message,{status,headers:{...securityHeaders,'Content-Type':'text/plain; charset=utf-8'}});
@@ -16,6 +19,7 @@ export function popup(origin,token){
 }
 export function createHandler(fetcher=fetch){return async(request,env,ctx)=>{
  const url=new URL(request.url);
+ if(url.hostname===LEGACY_HOST&&['GET','HEAD'].includes(request.method)&&movedPage(url.pathname))return Response.redirect(PUBLIC_ORIGIN+url.pathname+url.search,301);
  if(url.pathname==='/preview')return Response.redirect(url.origin+'/preview/',302);
  if(url.pathname.startsWith('/preview/')&&env.ASSETS){const assetURL=new URL(request.url);assetURL.pathname=assetURL.pathname.slice(8)||'/';const response=await env.ASSETS.fetch(new Request(assetURL,request));const headers=new Headers(response.headers);headers.set('X-Robots-Tag','noindex, nofollow');return new Response(response.body,{status:response.status,headers});}
  if(url.pathname==='/account'||url.pathname.startsWith('/account/'))return accounts(request,env,fetcher,ctx);

@@ -10,3 +10,12 @@ test('new CMS uploads and optimized images follow published editorial content wi
 test('editorial media falls back to bundled copy during upstream outage',async()=>{
  const response=await createHandler(async()=>new Response('',{status:503}))(new Request('https://site.example/media/old.webp'),{ASSETS:{fetch:async()=>new Response('bundled')}});assert.equal(await response.text(),'bundled');
 });
+
+test('legacy workers.dev public pages redirect to the custom domain while API and account routes stay', async()=>{
+ const handler=createHandler(async()=>new Response('{}'));const env={ASSETS:{fetch:async()=>new Response('asset')}};
+ const moved=await handler(new Request('https://pocket-atlas-auth.huayang-hsu.workers.dev/lists/cities/busan/?x=1'),env);
+ assert.equal(moved.status,301);assert.equal(moved.headers.get('location'),'https://mapspot.hellohsu.com/lists/cities/busan/?x=1');
+ assert.equal((await handler(new Request('https://pocket-atlas-auth.huayang-hsu.workers.dev/health'),env)).status,200);
+ assert.equal((await handler(new Request('https://pocket-atlas-auth.huayang-hsu.workers.dev/account/'),env)).status===301,false);
+ assert.equal((await handler(new Request('https://mapspot.hellohsu.com/'),env)).status,200);
+});
