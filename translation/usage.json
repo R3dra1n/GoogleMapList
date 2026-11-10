@@ -8,6 +8,10 @@
     "2026-10": {
       "reservedCharacters": 156,
       "confirmedCharacters": 156
+    },
+    "2026-11": {
+      "reservedCharacters": 0,
+      "confirmedCharacters": 0
     }
   },
   "monthlyLimit": 400000
