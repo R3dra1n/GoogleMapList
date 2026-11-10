@@ -1,7 +1,7 @@
+import {isProductionHost} from './site-config.js';
 // Enabled only on the same-origin integration preview.
-const active=(location.pathname.startsWith('/preview/')||location.hostname==='pocket-atlas-auth.huayang-hsu.workers.dev');
+const active=(location.pathname.startsWith('/preview/')||isProductionHost());
 if(active){
- const style=document.createElement('link');style.rel='stylesheet';style.href=new URL('./community-integration.css',import.meta.url);document.head.append(style);
  const zh=()=>document.documentElement.lang.startsWith('zh');const text=(a,b)=>zh()?a:b;
  const el=(tag,value,cls)=>{const n=document.createElement(tag);if(value)n.textContent=value;if(cls)n.className=cls;return n};
  const api=async path=>{const r=await fetch('/account/api/'+path,{cache:'no-store'});if(!r.ok)throw Error(String(r.status));return r.json()};

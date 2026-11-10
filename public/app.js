@@ -16,7 +16,7 @@ const icons={pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><cir
 const icon=name=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
 const path=(a,c)=>`#/${a}${c?`/${c}`:''}`;
 function cover(item,label){return `<div class="cover"><div class="cover-fallback" ${item.image?'hidden':''} aria-hidden="true">${escape(localized(item,'name'))}</div>${item.image?`<img src="${escape(item.image.startsWith('/')?item.image:'./'+item.image)}" alt="${escape(localized(item,'imageAlt'))}" ${item._imageVariants?`srcset="${item._imageVariants.map(v=>`./${escape(v.path)} ${v.width}w`).join(', ')}" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw"`:""} decoding="async" loading="lazy" width="720" height="440">`:''}${label?`<span class="region-tag">${escape(label)}</span>`:''}</div>`;}
-function mapButton(url,label,name){return url?`<a class="map-button ${name==='sights'?'secondary':''}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${t('mapsOpen')}">${icon(name)}${label}<span aria-hidden="true">↗</span></a>`:`<button class="map-button" disabled>${icon(name)}${label}・${t('soon')}</button>`;}
+function mapButton(url,label,name){return url?`<a class="map-button ${name==='sights'?'secondary':''}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${t('mapsOpen')}">${icon(name)}${label}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>`:`<button class="map-button" disabled>${icon(name)}${label}・${t('soon')}</button>`;}
 const hasStory=item=>['myMap','article','articleEn','articleHans','articleJa','articleKo'].some(key=>item[key]);
 let data;let version;let pendingData;let community={community:[],creators:[]};
 function render(moveFocus=false){
@@ -27,8 +27,8 @@ function render(moveFocus=false){
  $('continents').innerHTML=data.continents.map(a=>`<a class="continent-tab" href="${path(a.id)}" ${route?.continent?.id===a.id?'aria-current="page"':''}>${escape(localized(a,'name'))}</a>`).join('');
 
  if(route?.themes){
- if(route.theme){document.title=localized(route.theme,'name')+'｜'+t('brand');$('section-kicker').textContent='CURATED COLLECTIONS';renderStory(route.theme,null,null);return;}
- document.title=collectionText('themes')+'｜'+t('brand');$('breadcrumbs').textContent=collectionText('themes');$('section-title').textContent=collectionText('themes');$('section-count').textContent=String((data.themes||[]).filter(item=>item.curated===true).length);$('section-kicker').textContent='CURATED COLLECTIONS';
+ if(route.theme){document.title=localized(route.theme,'name')+'｜'+t('brand');$('section-kicker').textContent='';renderStory(route.theme,null,null);return;}
+ document.title=collectionText('themes')+'｜'+t('brand');$('breadcrumbs').textContent=collectionText('themes');$('section-title').textContent=collectionText('themes');$('section-count').textContent=String((data.themes||[]).filter(item=>item.curated===true).length);$('section-kicker').textContent='';
  $('cards').innerHTML=(data.themes||[]).filter(item=>item.curated===true).map(item=>catalogCard({...item,_kind:'themes',_id:item.id,owner:item.owner||'william'},data,{cover,display,statMarkup})).join('')||`<p class="empty">${collectionText('empty')}</p>`;
  document.querySelectorAll('.cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
 document.querySelector('.save-tip p').textContent=collectionText('tip');if(moveFocus)$('section-title').focus({preventScroll:true});return;
@@ -39,11 +39,11 @@ document.querySelector('.save-tip p').textContent=collectionText('tip');if(moveF
  document.title=`${localized(city||c||a,'name')}｜${t('brand')}`;
  $('breadcrumbs').innerHTML=`<a href="./">首頁</a><span aria-hidden="true">/</span><a href="#/asia">${t('destinations')}</a><span aria-hidden="true">/</span>${c?`<a href="${path(a.id)}">${escape(localized(a,'name'))}</a><span aria-hidden="true">/</span><span aria-current="page">${escape(localized(c,'name'))}</span>`:`<span aria-current="page">${escape(localized(a,'name'))}</span>`}`;
  $('section-title').textContent=c?`${t('next')}${localized(c,'name')}`:`${t('discover')}${localized(a,'name')}`;
- $('section-kicker').textContent=c?'YOUR NEXT STOP':'THE DESTINATIONS';
+ $('section-kicker').textContent='';
  if(city){renderStory(city,a,c);if(moveFocus)$('section-title').focus({preventScroll:true});return;}
  const items=c?data.cities.filter(x=>x.country===c.id):data.countries.filter(x=>x.continent===a.id);
  $('section-count').textContent=`${items.length} ${t(c?'cities':'countries')}`;
- $('cards').innerHTML=items.map(item=>c?catalogCard({...item,_kind:item._region?'countries':'cities',_id:item._region?item.country:item.id,owner:item.owner||'william'},data,{cover,display,statMarkup}):`<article class="destination-card country-card"><a href="${path(a.id,item.id)}" aria-label="${t('discover')}${escape(localized(item,'name'))}">${cover(item,localized(a,'name'))}<div class="card-body"><div class="card-top"><h3 class="card-title">${display(item,'name')}</h3><span class="card-arrow" aria-hidden="true">↗</span></div><p class="card-english">${escape(item.english)}</p><p class="card-description">${display(item,'description')}</p><div class="card-meta">${icon('pin')}<span>${data.cities.filter(x=>x.country===item.id).map(x=>escape(localized(x,'name'))).join('・')}</span></div></div></a></article>`).join('');
+ $('cards').innerHTML=items.map(item=>c?catalogCard({...item,_kind:item._region?'countries':'cities',_id:item._region?item.country:item.id,owner:item.owner||'william'},data,{cover,display,statMarkup}):`<article class="destination-card country-card"><a href="${path(a.id,item.id)}" aria-label="${t('discover')}${escape(localized(item,'name'))}">${cover(item,localized(a,'name'))}<div class="card-body"><div class="card-top"><h3 class="card-title">${display(item,'name')}</h3></div><p class="card-english">${escape(item.english)}</p><p class="card-description">${display(item,'description')}</p><div class="card-meta">${icon('pin')}<span>${data.cities.filter(x=>x.country===item.id).map(x=>escape(localized(x,'name'))).join('・')}</span></div></div></a></article>`).join('');
  document.querySelectorAll('.cover img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;img.previousElementSibling.hidden=false;},{once:true}));
  if(moveFocus)$('section-title').focus({preventScroll:true});
 }
@@ -57,10 +57,10 @@ function renderStory(city,a,c){
 function translateUI(){
  setLanguage(language);refreshRecommendationUI();
  $('update-label').textContent=t('update');$('refresh-content').textContent=t('refresh');
- const texts={'.skip':'skip','.intro h1':'heading','.intro-text':'intro','.save-tip strong':'saveTitle','.save-tip p':'saveText','.site-footer strong':'brand','.site-footer>div>span':'footer','#credits-button':'credits','.dialog-head h2':'credits'};
+ const texts={'.skip':'skip','.intro h1':'heading','.intro-text':'intro','.save-tip strong':'saveTitle','.save-tip p':'saveText','.site-footer>div>span':'footer','#credits-button':'credits','.dialog-head h2':'credits'};
  for(const [selector,key] of Object.entries(texts))document.querySelector(selector).textContent=t(key);
  if(['zh-Hant','zh-Hans'].includes(language)){const heading=document.querySelector('.intro h1');const [first,rest]=t('heading').split('，');heading.replaceChildren(document.createTextNode(first+'，'),Object.assign(document.createElement('br'),{className:'mobile-break'}),document.createTextNode(rest));}
- const brand=document.querySelector('.brand>span:last-child');brand.firstChild.textContent=t('brand');document.querySelector('.brand').setAttribute('aria-label',t('brand'));
+ document.querySelector('.brand').setAttribute('aria-label',t('brand'));
  $('close-credits').setAttribute('aria-label',t('close'));$('theme').setAttribute('aria-label',t('theme'));$('language').setAttribute('aria-label',t('language'));$('continents').setAttribute('aria-label',t('destinations'));$('breadcrumbs').setAttribute('aria-label',t('destinations'));
  for(const option of $('theme').options)option.textContent=t(option.value);
  if(!data)return;

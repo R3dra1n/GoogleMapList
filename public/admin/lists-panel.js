@@ -9,7 +9,7 @@ export function renderListsPanel(root,api,active=()=>true){
  async function load(offset=0){const revision=++sequence;submit.disabled=more.disabled=true;status.textContent='讀取中…';
  try{const result=await api('/api/admin/lists?q='+encodeURIComponent(query.value.trim())+'&state='+filter.value+'&offset='+offset);if(!active()||revision!==sequence)return;
  if(!offset)rows.replaceChildren();for(const item of result.items){const box=el('article');box.className='recommendation';box.append(el('h3',item.title||'未命名清單'),el('p',(item.author||'未命名作者')+' · '+(item.destination||'未填地點')),el('p',item.moderated?'管理員已下架：'+item.reason:item.public?'公開中':'作者未公開／草稿'));
- if(item.public){const a=el('a','查看公開清單 ↗');a.href='https://pocket-atlas-auth.huayang-hsu.workers.dev/#/lists/community/'+encodeURIComponent(item.id);a.target='_blank';a.rel='noopener noreferrer';box.append(a);}
+ if(item.public){const a=el('a','查看公開清單 ↗');a.href='https://mapspot.hellohsu.com/#/lists/community/'+encodeURIComponent(item.id);a.target='_blank';a.rel='noopener noreferrer';box.append(a);}
  const details=el('details');details.append(el('summary','查看清單內容'),el('p',item.description||'未填簡介'));try{const url=new URL(item.url);if(url.protocol==='https:'&&!url.username&&!url.password){const source=el('a','查看原始地圖 ↗');source.href=url.href;source.target='_blank';source.rel='noopener noreferrer';details.append(source);}}catch{}box.append(details);
  const action=el('button',item.moderated?'恢復清單':'下架清單');action.type='button';action.onclick=()=>confirmAction(item);box.append(action);rows.append(box);}
  next=result.nextOffset;more.hidden=next==null;status.textContent=result.items.length?'已更新。':'沒有符合的清單。';

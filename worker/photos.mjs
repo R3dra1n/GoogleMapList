@@ -11,7 +11,7 @@ export function photoCandidate(page){
 }
 async function commons(params,fetcher){
  const url=new URL('https://commons.wikimedia.org/w/api.php');url.search=new URLSearchParams({action:'query',format:'json',formatversion:'2',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'960',...params});
- const response=await fetcher(url.href,{headers:{'User-Agent':'WilliamPocketAtlas/1.0 (https://r3dra1n.github.io/GoogleMapList/)'},signal:AbortSignal.timeout(15000)});if(!response.ok)throw new ApiError('Wikimedia search is temporarily unavailable',502);const json=await response.json();if(json.error)throw new ApiError('Wikimedia search failed',502);return json;
+ const response=await fetcher(url.href,{headers:{'User-Agent':'mapSpot/1.0 (https://mapspot.hellohsu.com/)'},signal:AbortSignal.timeout(15000)});if(!response.ok)throw new ApiError('Wikimedia search is temporarily unavailable',502);const json=await response.json();if(json.error)throw new ApiError('Wikimedia search failed',502);return json;
 }
 export async function searchPhotos(query,fetcher,offset=0){
  if(!query||query.length>160)throw new ApiError('Search needs 1–160 characters');
@@ -51,7 +51,7 @@ export async function importPhoto(request,github,fetcher){
  let downloadUrl=photo.url,response;
  for(let redirects=0;redirects<=3;redirects++){
   if(!trustedImage(downloadUrl))throw new ApiError('圖片下載跳轉至不受信任的來源，請換一張照片。',502);
-  response=await fetcher(downloadUrl,{redirect:'manual',headers:{'User-Agent':'WilliamPocketAtlas/1.0 (https://r3dra1n.github.io/GoogleMapList/)'},signal:AbortSignal.timeout(20000)});
+  response=await fetcher(downloadUrl,{redirect:'manual',headers:{'User-Agent':'mapSpot/1.0 (https://mapspot.hellohsu.com/)'},signal:AbortSignal.timeout(20000)});
   if(![301,302,303,307,308].includes(response.status))break;
   const location=response.headers.get('location');await response.body?.cancel();
   if(!location||redirects===3)throw new ApiError('圖片下載跳轉次數過多，請換一張照片。',502);

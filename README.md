@@ -1,4 +1,6 @@
-# William 的口袋地圖
+# mapSpot
+
+> 原名「口袋地圖」，2026-11 起更名為 mapSpot。本文件下方較早的段落可能仍沿用舊名或舊說明，以 `docs/AI-HANDOFF.md` 為準。
 
 以目的地為中心的 Google Maps 清單目錄。靜態網站以 GitHub Pages 發佈；Decap CMS 管理內容；Cloudflare Worker 處理 GitHub OAuth。
 
@@ -109,7 +111,7 @@ My Maps 欄位接受 Google 完整網址（`https://www.google.com/maps/d/viewer
 2. 在「API 和服務 → 憑證」建立 API key，將 API 限制設為 **Cloud Translation API**。此 key 供 GitHub Actions 伺服器使用，不是瀏覽器 referrer key。
 3. 在 GitHub 倉庫 Settings → Secrets and variables → Actions → New repository secret，名稱填 `GOOGLE_TRANSLATE_API_KEY`，值填 API key。不要放在公開程式碼、CMS 欄位或聊天裡。
 4. 也可填入本機 `.env.translation`，執行 `node scripts/configure-translation.mjs` 安全上傳（此檔已被 `.gitignore` 排除）。
-5. 在 Actions → Validate and publish Pocket Atlas → Run workflow，觸發第一次翻譯。之後正常發布內容就會自動執行。
+5. 在 Actions → Validate and publish mapSpot → Run workflow，觸發第一次翻譯。之後正常發布內容就會自動執行。
 
 檢查待翻譯數量且不呼叫 API：`node scripts/translate-content.mjs --check`。只有 GitHub Actions 的翻譯步驟會取得密鑰；網站訪客不呼叫 Google 翻譯 API，也不會取得密鑰。
 
@@ -131,7 +133,7 @@ Worker 設定：`DB` 綁定私密 D1、`RATE_SALT` 存於 Worker secret。資料
 
 ### 推薦 Email 通知
 
-接收地址使用 Worker Secret `NOTIFICATION_EMAIL`，發信 API Key 使用 `RESEND_API_KEY`，不放入公開內容。預設寄件者為 `Pocket Atlas <onboarding@resend.dev>`，只用於通知同一 Resend 帳號的已驗證信箱；使用其他收件地址時需先驗證自己的寄信網域，再設定 `NOTIFICATION_FROM`。
+接收地址使用 Worker Secret `NOTIFICATION_EMAIL`，發信 API Key 使用 `RESEND_API_KEY`，不放入公開內容。預設寄件者為 `mapSpot <onboarding@resend.dev>`，只用於通知同一 Resend 帳號的已驗證信箱；使用其他收件地址時需先驗證自己的寄信網域，再設定 `NOTIFICATION_FROM`。
 
 新增推薦會透過 D1 trigger 加入通知佇列。Worker 每 5 分鐘檢查，僅寄收件編號與私人收件箱連結，不寄訪客 Email 或推薦全文。供應商失敗時每小時重試，最多 6 次、首次嘗試後最多 23 小時；使用固定 idempotency key 防止重複投遞。刪除推薦也會刪除其佇列資料。通知失敗不影響推薦保存。後台顯示待寄、已交付發信服務、失敗數量；「已交付」不代表已送達收件匣。
 

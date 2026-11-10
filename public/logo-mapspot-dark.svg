@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 10 1040 270" role="img" aria-label="mapSpot">
+<g fill="none" stroke="#ecefe6" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+<path d="M0 90V190M0 130C0 100 20 90 35 90C50 90 70 100 70 130V190M70 130C70 100 90 90 105 90C120 90 140 100 140 130V190"/>
+<circle cx="234" cy="140" r="50"/><path d="M284 90V190"/>
+<path d="M328 90V260"/><circle cx="378" cy="140" r="50"/>
+<path d="M560 70C550 50 532 40 514 40C488 40 472 56 472 78C472 118 560 106 560 150C560 176 540 190 514 190C492 190 476 180 468 162"/>
+<path d="M604 90V260"/><circle cx="654" cy="140" r="50"/>
+<path d="M912 50V160C912 182 922 190 944 190H952M886 90H952"/>
+</g>
+<path d="M798 226C770 204 748 180 748 142a50 50 0 0 1 100 0c0 38-22 62-50 84Z" fill="none" stroke="#e8855f" stroke-width="22" stroke-linejoin="round"/><circle cx="798" cy="142" r="13" fill="#e8855f"/></svg>

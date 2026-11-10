@@ -1,15 +1,16 @@
 import {myMapId} from './model.js';
 import {listEntries} from './list-keys.js';
 import {language} from './i18n.js';
+import {isProductionHost} from './site-config.js';
 const labels={'zh-Hant':'人氣','zh-Hans':'人气',en:'Popularity',ja:'人気',ko:'인기도'};
 let basePromise,refreshing=false;
 const counts=new Map(),bound=new WeakSet();
-const base=()=>basePromise??=(location.hostname==='pocket-atlas-auth.huayang-hsu.workers.dev'?Promise.resolve(location.origin):fetch('./admin/connection.json').then(r=>r.json()).then(c=>new URL(c.authBaseUrl).origin));
+const base=()=>basePromise??=(isProductionHost()?Promise.resolve(location.origin):fetch('./admin/connection.json').then(r=>r.json()).then(c=>new URL(c.authBaseUrl).origin));
 function visitor(){let id=localStorage.getItem('atlas-visitor');if(!id){id=crypto.randomUUID();localStorage.setItem('atlas-visitor',id)}return id;}
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const entries=root=>JSON.parse(root.dataset.entries);
 export function statMarkup(item,kind){const lists=listEntries(item,kind);return lists.length?`<div class="list-stats" data-entries="${escape(JSON.stringify(lists))}"><small class="stats-count" role="status">${labels[language]} …</small></div>`:'';}
-function paint(root){const values=entries(root).map(e=>counts.get(e.id));root.querySelector('.stats-count').textContent=`${labels[language]} ${values.every(Number.isFinite)?values.reduce((a,b)=>a+b,0).toLocaleString(): '—'}`;}
+function paint(root){const values=entries(root).map(e=>counts.get(e.id));const known=values.every(Number.isFinite);root.querySelector('.stats-count').textContent=`${labels[language]} ${known?values.reduce((a,b)=>a+b,0).toLocaleString(): '—'}`;root.toggleAttribute('data-empty',!known);}
 async function call(id){const r=await fetch((await base())+'/api/stats',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,action:'use',visitor:visitor()}),keepalive:true});if(!r.ok)throw Error();return r.json();}
 function roots(){return [...document.querySelectorAll('.list-stats')].filter(x=>!x.closest('[hidden]'));}
 export function bindStats(){
