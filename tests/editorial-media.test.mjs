@@ -19,3 +19,9 @@ test('legacy workers.dev public pages redirect to the custom domain while API an
  assert.equal((await handler(new Request('https://pocket-atlas-auth.huayang-hsu.workers.dev/account/'),env)).status===301,false);
  assert.equal((await handler(new Request('https://mapspot.hellohsu.com/'),env)).status,200);
 });
+
+test('static files revalidate while images are cached',async()=>{
+ const env={ASSETS:{fetch:async()=>new Response('x',{headers:{'Cache-Control':'no-store'}})}};const handler=createHandler(async()=>new Response('{}'));
+ assert.equal((await handler(new Request('https://mapspot.hellohsu.com/app.js'),env)).headers.get('cache-control'),'public, max-age=0, must-revalidate');
+ assert.equal((await handler(new Request('https://mapspot.hellohsu.com/icon-192.png'),env)).headers.get('cache-control'),'public, max-age=86400');
+});

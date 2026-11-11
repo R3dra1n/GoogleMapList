@@ -8,6 +8,8 @@ const PUBLIC_ORIGIN='https://mapspot.hellohsu.com',LEGACY_HOST='pocket-atlas-aut
 const movedPage=path=>path==='/'||path==='/index.html'||/^\/(lists|creators)\//.test(path)||['/contact.html','/privacy.html','/terms.html','/translation.html','/sitemap.xml'].includes(path);
 const COOKIE='__Host-pocket_oauth';
 const securityHeaders={'Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'};
+// Static files: always revalidate pages, scripts and styles; let images and icons be cached for a day.
+const staticFile=async(env,request)=>{const response=await env.ASSETS.fetch(request);if(request.method!=='GET'||response.status!==200)return response;const path=new URL(request.url).pathname;const long=/\.(?:png|jpe?g|webp|svg|ico|woff2?)$/i.test(path)&&!/^\/(?:logo|favicon|app-icon)/.test(path)||/^\/(?:assets|uploads|media)\//.test(path);const headers=new Headers(response.headers);headers.set('Cache-Control',long?'public, max-age=86400':'public, max-age=0, must-revalidate');headers.set('X-Content-Type-Options','nosniff');return new Response(response.body,{status:response.status,headers});};
 const text=(message,status=200)=>new Response(message,{status,headers:{...securityHeaders,'Content-Type':'text/plain; charset=utf-8'}});
 const cookie=(value,maxAge=600)=>`${COOKIE}=${value}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
 const configured=env=>Boolean(env.GITHUB_CLIENT_ID&&env.GITHUB_CLIENT_SECRET&&env.GITHUB_REPO&&env.SITE_ORIGIN);
@@ -34,7 +36,7 @@ export function createHandler(fetcher=fetch){return async(request,env,ctx)=>{
  }
 
  if(url.pathname==='/health')return Response.json({ready:configured(env)},{headers:securityHeaders});
- if(!['/auth','/callback'].includes(url.pathname)){if(url.pathname.startsWith('/admin'))return Response.redirect('https://r3dra1n.github.io/GoogleMapList'+url.pathname+url.search,302);return env.ASSETS?env.ASSETS.fetch(request):text('Not found',404);}
+ if(!['/auth','/callback'].includes(url.pathname)){if(url.pathname.startsWith('/admin'))return Response.redirect('https://r3dra1n.github.io/GoogleMapList'+url.pathname+url.search,302);return env.ASSETS?staticFile(env,request):text('Not found',404);}
  if(!configured(env))return text('管理員登入尚未完成設定。網站清單仍可正常瀏覽。',503);
  const origin=new URL(env.SITE_ORIGIN).origin;
  if(url.pathname==='/auth'){

@@ -9,7 +9,7 @@ export function renderJourney(target,item,d,h,byline){
 }
 async function load(root,item,d,h,byline){
  const $=id=>root.querySelector('#'+id),kind=item._kind,maps=mapEntries(item,kind),video=(item.videos||[]).find(v=>youtubeId(v.url)),map=maps.find(m=>myMapId(m.url));
-$('detail-heading').innerHTML='<p class="eyebrow">mapSpot ／ '+esc((item.locationNames||[]).join('・')||d.countries.find(x=>x.id===item.country)?.name||'旅人的私藏')+'</p><h1>'+esc(localized(item,'name'))+'</h1>';
+$('detail-heading').innerHTML='<p class="eyebrow">'+esc((item.locationNames||[]).join('・')||d.countries.find(x=>x.id===item.country)?.name||'旅人的私藏')+'</p><h1>'+esc(localized(item,'name'))+'</h1>';
 $('intro').innerHTML=byline+'<p>'+esc((localized(item,'description')||'').length>300?localized(item,'description').slice(0,300)+'…':localized(item,'description'))+'</p>'+((localized(item,'description')||'').length>300?'<a class="text-link" href="#long-copy">閱讀完整介紹</a>':'');
 $('media').innerHTML=video?'<iframe title="清單影片" src="https://www.youtube-nocookie.com/embed/'+youtubeId(video.url)+'" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>':item.image?'<img src="'+esc(item.image)+'" alt="'+esc(localized(item,'name'))+'">':'';if(!video&&!item.image){$('media').hidden=true;root.querySelector('.detail-intro').classList.add('text-only')}
 const full=[(localized(item,'description')||'').length>300?localized(item,'description'):'',localized(item,'article')||''].filter(Boolean).join('\n\n');if(full){$('long-copy').hidden=false;$('long-copy').innerHTML='<h2>關於這份清單</h2><div class="reading-copy">'+full.split(/\n\s*\n/).map(p=>'<p>'+esc(p)+'</p>').join('')+'</div>'}
