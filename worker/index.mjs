@@ -5,7 +5,7 @@ import {sendNotifications} from './notifications.mjs';
 import {api} from './api.mjs';
 const PUBLIC_ORIGIN='https://mapspot.hellohsu.com',LEGACY_HOST='pocket-atlas-auth.huayang-hsu.workers.dev';
 // Public pages moved to the custom domain. API, account, admin and OAuth routes stay where they are.
-const movedPage=path=>path==='/'||path==='/index.html'||/^\/(lists|creators)\//.test(path)||['/contact.html','/privacy.html','/terms.html','/translation.html','/sitemap.xml'].includes(path);
+const movedPage=path=>path==='/'||path==='/index.html'||path==='/admin'||path.startsWith('/admin/')||/^\/(lists|creators)\//.test(path)||['/contact.html','/privacy.html','/terms.html','/translation.html','/sitemap.xml'].includes(path);
 const COOKIE='__Host-pocket_oauth';
 const securityHeaders={'Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'};
 // Static files: always revalidate pages, scripts and styles; let images and icons be cached for a day.
@@ -36,7 +36,7 @@ export function createHandler(fetcher=fetch){return async(request,env,ctx)=>{
  }
 
  if(url.pathname==='/health')return Response.json({ready:configured(env)},{headers:securityHeaders});
- if(!['/auth','/callback'].includes(url.pathname)){if(url.pathname.startsWith('/admin'))return Response.redirect('https://r3dra1n.github.io/GoogleMapList'+url.pathname+url.search,302);return env.ASSETS?staticFile(env,request):text('Not found',404);}
+ if(!['/auth','/callback'].includes(url.pathname)){return env.ASSETS?staticFile(env,request):text('Not found',404);}
  if(!configured(env))return text('管理員登入尚未完成設定。網站清單仍可正常瀏覽。',503);
  const origin=new URL(env.SITE_ORIGIN).origin;
  if(url.pathname==='/auth'){

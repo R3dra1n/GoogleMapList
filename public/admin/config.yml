@@ -9,8 +9,8 @@ backend:
     update: 'content: 更新 {{collection}} {{slug}}'
     delete: 'content: 刪除 {{collection}} {{slug}}'
 locale: zh_Hant
-site_url: https://r3dra1n.github.io/GoogleMapList/
-display_url: https://r3dra1n.github.io/GoogleMapList/
+site_url: https://mapspot.hellohsu.com/
+display_url: https://mapspot.hellohsu.com/
 media_folder: public/uploads
 public_folder: uploads
 publish_mode: simple

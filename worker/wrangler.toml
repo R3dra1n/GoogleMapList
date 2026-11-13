@@ -7,7 +7,7 @@ routes = [{ pattern = "mapspot.hellohsu.com", custom_domain = true }]
 
 [vars]
 CF_ACCOUNT_ID = "03ef4b7f6a3c94748505c94aa1aa3635"
-SITE_ORIGIN = "https://r3dra1n.github.io"
+SITE_ORIGIN = "https://mapspot.hellohsu.com"
 GITHUB_REPO = "R3dra1n/GoogleMapList"
 AUTH_PROVIDER = "firebase"
 FIREBASE_PROJECT_ID = "pocket-540c0"

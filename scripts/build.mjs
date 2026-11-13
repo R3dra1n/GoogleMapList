@@ -30,5 +30,7 @@ await writeFile('dist/data.json',JSON.stringify(payload));
 await mkdir('dist/vendor',{recursive:true});await cp('node_modules/fuse.js/dist/fuse.mjs','dist/vendor/fuse.mjs');await cp('node_modules/fuse.js/LICENSE','dist/vendor/FUSE-LICENSE');
 await buildPages(payload,preview);
 if(preview){const admin=await readFile('dist/admin/index.html','utf8');await writeFile('dist/admin/index.html',admin.replace('<head>','<head><script>window.ATLAS_PREVIEW=true;</script>'));}
+// The admin lives only on the Worker domain (behind Cloudflare Access); GitHub Pages must not publish it.
+if(process.env.SITE_DEPLOY_TARGET!=='worker'&&!preview)await rm('dist/admin',{recursive:true,force:true});
 await writeFile('dist/.nojekyll','');
 console.log(`Built ${data.cities.length} destinations → dist/`);
