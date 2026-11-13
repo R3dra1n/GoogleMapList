@@ -25,3 +25,9 @@ test('static files revalidate while images are cached',async()=>{
  assert.equal((await handler(new Request('https://mapspot.hellohsu.com/app.js'),env)).headers.get('cache-control'),'public, max-age=0, must-revalidate');
  assert.equal((await handler(new Request('https://mapspot.hellohsu.com/icon-192.png'),env)).headers.get('cache-control'),'public, max-age=86400');
 });
+
+test('HEAD requests for pages are answered like GET instead of 405',async()=>{
+ const env={ASSETS:{fetch:async()=>new Response('x')}};const handler=createHandler(async()=>new Response('{}'));
+ assert.equal((await handler(new Request('https://mapspot.hellohsu.com/',{method:'HEAD'}),env)).status,200);
+ assert.equal((await handler(new Request('https://mapspot.hellohsu.com/',{method:'DELETE'}),env)).status,405);
+});

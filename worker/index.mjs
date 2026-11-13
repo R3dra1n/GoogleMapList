@@ -26,7 +26,7 @@ export function createHandler(fetcher=fetch){return async(request,env,ctx)=>{
  if(url.pathname.startsWith('/preview/')&&env.ASSETS){const assetURL=new URL(request.url);assetURL.pathname=assetURL.pathname.slice(8)||'/';const response=await env.ASSETS.fetch(new Request(assetURL,request));const headers=new Headers(response.headers);headers.set('X-Robots-Tag','noindex, nofollow');return new Response(response.body,{status:response.status,headers});}
  if(url.pathname==='/account'||url.pathname.startsWith('/account/'))return accounts(request,env,fetcher,ctx);
  if(url.pathname.startsWith('/api/'))return api(request,env,fetcher,ctx);
- if(request.method!=='GET')return text('Method not allowed',405);
+ if(!['GET','HEAD'].includes(request.method))return text('Method not allowed',405);
  // Editorial CMS content remains published by GitHub Actions; account data stays same-origin.
  if(url.pathname==='/data.json'||['/assets/','/uploads/','/media/'].some(prefix=>url.pathname.startsWith(prefix))){
   try{const upstream=await fetcher('https://r3dra1n.github.io/GoogleMapList'+url.pathname,{signal:AbortSignal.timeout(5000)});
